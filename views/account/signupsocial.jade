@@ -1,0 +1,80 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Confirm Email
+
+block content
+  .container
+    .row
+      .col-sm-6.col-sm-offset-3
+        .page-header
+          h1 Complete Your Sign Up!
+        form(action='/signupsocial', method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+            label(for='email') Please confirm (or enter) your email address:
+            input.form-control(type='email', name='email', id='email', value='#{email}', placeholder='Your Email Address', required)
+            #hint
+          .form-group
+            button.btn.btn-primary.btn-reset(type='submit') Create My Account!
+        hr
+        p We only use this information when necessary. We will <strong>never</strong> spam you.
+
+block scripts
+  script.
+    $(document).ready(function() {
+      if ( $('input[name="email"]').val() === '' ) {
+        $('input[name="email"]').focus();
+      } else {
+        $('button').focus();
+      }
+
+      //- Get Mailcheck Script
+      $.ajax({
+        type: 'GET',
+        url: '/lib/mailcheck/src/mailcheck.min.js',
+        dataType: 'script',
+        cache: true
+      }).done(function(script, textStatus) {
+        // initiate mailcheck
+        $('#email').on('blur', function() {
+          $(this).mailcheck({
+            //- domains: domains,                       // optional
+            //- topLevelDomains: topLevelDomains,       // optional
+            //- distanceFunction: superStringDistance,  // optional
+            suggested: function(element, suggestion) {
+              if (!$('#hint').html()) {
+                  // First error - fill in/show entire hint element
+                  suggestion = '<em>Did you mean <span class="suggestion">' +
+                      '<span class="address">' + suggestion.address + '</span>' +
+                      '@<a href="#" id="suggestion"><strong>' + suggestion.domain +
+                      '</strong></a></span>?</em>';
+                  $('#hint').html(suggestion).fadeIn(200);
+                  // Use suggestion
+                  $( '#suggestion' ).click(function () {
+                    // On click, fill in the field with the suggestion and remove the hint
+                    $('#email').val($('.suggestion').text());
+                    $('#hint').fadeOut(150, function() {
+                      $(this).empty();
+                    });
+                    //go to next field
+                    $('button').focus();
+                    //- return false;
+                  });
+              } else {
+                  // Subsequent errors
+                  $('.address').html(suggestion.address);
+                  $('.domain').html(suggestion.domain);
+              }
+            },
+            empty: function(element) {
+              // callback code
+            }
+          });
+        });
+      })
+      .fail(function(jqxhr, settings, exception) {
+          console.log('Mailcheck load failed.');
+      });
+
+    });

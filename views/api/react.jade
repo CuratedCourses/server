@@ -1,0 +1,120 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; React Example
+
+block styles
+  link(rel='stylesheet', href='/css/page-react.min.css')
+
+block content
+
+  .container
+    .page-header
+      h2
+        i.fa.fa-file-text
+        | &nbsp;Markdown Editor Example
+      p.lead
+        | This uses the marked library and react to parse markdown and render it on the page.
+      p
+        a(href='http://daringfireball.net/projects/markdown/syntax') Markdown syntax
+    .btn-group.btn-group-justified.hidden-xs
+      a.btn.btn-primary(href='http://facebook.github.io/react/docs/getting-started.html', rel='external')
+        i.fa.fa-check-square-o
+        | &nbsp;React
+      a.btn.btn-primary(href='https://github.com/chjj/marked', rel='external')
+        i.fa.fa-check-square-o
+        | &nbsp;Marked
+
+    #example
+    #gist
+
+block scripts
+  script(src='/lib/react/react.min.js')
+  script(src='/lib/react/JSXTransformer.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js')
+  script(type='text/jsx').
+    /** @jsx React.DOM */
+
+    var MarkdownEditor = React.createClass({
+      getInitialState: function() {
+        return {value: 'Type some **markdown** here!'};
+      },
+      handleChange: function() {
+        this.setState({value: this.refs.textarea.getDOMNode().value});
+      },
+      render: function() {
+        return (
+          <div className='MarkdownEditor'>
+            <div className='row'>
+              <div className='col-sm-6'>
+                <h3>Input <i className='fa fa-arrow-circle-up'/></h3>
+                <textarea
+                  className='input-markdown'
+                  onChange={this.handleChange}
+                  ref='textarea'
+                  defaultValue={this.state.value} />
+              </div>
+              <div className='col-sm-6'>
+                <h3>Output <i className='fa fa-arrow-circle-down'/></h3>
+                <div
+                  className='compiled-markdown'
+                  dangerouslySetInnerHTML={{
+                    __html: marked(this.state.value)
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        );
+      }
+    });
+
+    React.renderComponent(<MarkdownEditor />, document.getElementById('example'));
+  
+    // Load Initial Data via AJAX Example
+    // This example fetches the desired Github user's latest gist:
+
+    var UserGist = React.createClass({
+      getInitialState: function() {
+        return {
+          username: '',
+          lastGistUrl: ''
+        };
+      },
+      
+      // Fetch data in componentDidMount. When the response arrives, 
+      // store the data in state, triggering a render to update your UI.
+    
+      componentDidMount: function() {
+        $.get(this.props.source, function(result) {
+          var lastGist = result[0];
+          
+          // be sure to check that the component is still mounted 
+          // before updating its state by using this.isMounted().
+        
+          if (this.isMounted()) {
+            this.setState({
+              username: lastGist.owner.login,
+              lastGistUrl: lastGist.html_url
+            });
+          }
+        }.bind(this));
+      },
+        
+      render: function() {
+        return (
+          <div>
+            {this.state.username}'s last gist is&nbsp;
+            <a href={this.state.lastGistUrl}>here</a>.
+          </div>
+        );
+      }
+    });
+        
+    React.render(
+      <UserGist source="https://api.github.com/users/dstroot/gists" />,
+      document.getElementById('gist')
+    );
+    
+    
+    

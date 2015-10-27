@@ -1,0 +1,31 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Tumblr
+
+block content
+  .container
+    .page-header
+      h2
+        i.fa.fa-tumblr-square
+        | &nbsp;Tumblr API
+
+    .btn-group.btn-group-justified.hidden-xs
+      a.btn.btn-primary(href='http://www.tumblr.com/docs/en/api/v2#overview', rel='external')
+        i.fa.fa-check-square-o
+        | &nbsp;Overview
+      a.btn.btn-primary(href='https://api.tumblr.com/console', rel='external')
+        i.fa.fa-laptop
+        | &nbsp;API Console
+      a.btn.btn-primary(href='http://www.tumblr.com/docs/en/api/v2#blog_methods', rel='external')
+        i.fa.fa-code-fork
+        | &nbsp;API Endpoints
+
+    h3.text-primary #{blog.name}'s blog
+    .btn.btn-xs.btn-primary-outline
+      i.fa.fa-file-text-o
+      | #{blog.posts} posts
+    h4 Latest Photo Post
+    for photo in photoset
+      img.img-responsive(src='#{photo.original_size.url}')
+    br

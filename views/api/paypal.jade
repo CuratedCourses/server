@@ -1,0 +1,39 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Paypal
+
+block content
+  .container
+    .page-header
+      h2
+        i.fa.fa-dollar(style='color: #1B4A7D')
+        | &nbsp;PayPal API
+
+    .btn-group.btn-group-justified.hidden-xs
+      a.btn.btn-primary(href='https://developer.paypal.com/docs/integration/direct/make-your-first-call/', rel='external')
+        i.fa.fa-check-square-o
+        | &nbsp;Quickstart
+      a.btn.btn-primary(href='https://developer.paypal.com/docs/api/', rel='external')
+        i.fa.fa-code
+        | &nbsp;API Reference
+      a.btn.btn-primary(href='https://devtools-paypal.com/hateoas/index.html', rel='external')
+        i.fa.fa-gear
+        | &nbsp;API Playground
+
+    h3
+      img(src='/img/paypal.png', width=50, height=50)
+      span  Sample Payment
+
+    if result
+      if canceled
+        h4.red Payment was canceled!
+      if success
+        h4.green Payment was executed successfully!
+      a(href='/api/paypal')
+          button.btn.btn-primary Make a Payment
+    else
+      div
+        p Redirects to PayPal and allows authorizing a <strong>test</strong> payment. This is done in the PayPal test/sandbox environment (you will not really make a payment).
+        a(href=approval_url)
+          button.btn.btn-primary Authorize payment

@@ -1,0 +1,269 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; My Account
+
+block content
+  .container
+    .row
+      .col-sm-6
+        .page-header
+          h2 Profile Information
+        .row
+          .col-sm-4
+            p.hidden-xs
+              strong Picture:
+            p.hidden-xs
+              img(src="#{user.profile.picture}", class='profile', width='100', height='100')
+          .col-sm-4
+            p.hidden-xs
+              strong Gravatar:
+            p.hidden-xs
+              img(src="#{user.gravatar()}", class='profile', width='100', height='100')
+        form(action='/account/profile', method='POST')
+          input.form-control(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+            label.sr-only(for='name') Name
+            input.form-control(type='text', name='name', id='name', placeholder='Your Name', value='#{user.profile.name}', required)
+          .form-group
+            label.sr-only(for='email') Email
+            input.form-control(type='email', name='email', id='email', value='#{user.email}', required)
+            #hint
+          .form-group
+            label.sr-only(for='email') Mobile Phone
+            input.form-control(type='tel', name='phoneMobile', id='phoneMobile', value='#{user.profile.phone.mobile}', placeholder='+1 (999) 999-9999', pattern='/(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]‌​)\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)([2-9]1[02-9]‌​|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/', title='Phone Number: +1 (999) 999-9999')
+          .form-group
+            label.sr-only(for='location') Location
+            input.form-control(type='text', name='location', id='location', placeholder='Anywhere, USA', value='#{user.profile.location}')
+          .form-group
+            label.sr-only(for='website') Website
+            input.form-control(type='url', name='website', id='website', placeholder='http://yoursite.here', value='#{user.profile.website}')
+          .form-group
+            label.sr-only(for='gender') Gender
+            .radio
+              label
+                input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
+                | Male
+            .radio
+              label
+                input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
+                | Female
+          .form-group
+            button.btn.btn.btn-primary(type='submit')
+              i.fa.fa-check
+              | &nbsp;Update Profile
+      .col-sm-2
+      .col-sm-4
+        .page-header
+          h2 Social Accounts
+        p Link your accounts here. Then you can sign in using <strong>any</strong> linked account with <strong>one click!</strong>
+        if config.facebookAuth
+          if user.facebook
+            a.btn.btn-block.btn-social.btn-facebook(href='/account/unlink/facebook')
+              i.fa.fa-facebook.fa-lg.fa-fw
+              | &nbsp;Disconnect Facebook
+          else
+            a.btn.btn-block.btn-social.btn-success(href='/account/link/facebook')
+              i.fa.fa-facebook.fa-lg.fa-fw
+              | &nbsp;Connect Facebook
+        if config.twitterAuth
+          if user.twitter
+            a.btn.btn-block.btn-social.btn-twitter(href='/account/unlink/twitter')
+              i.fa.fa-twitter.fa-lg.fa-fw
+              | &nbsp;Disconnect Twitter
+          else
+            a.btn.btn-block.btn-social.btn-success(href='/account/link/twitter')
+              i.fa.fa-twitter.fa-lg.fa-fw
+              | &nbsp;Connect Twitter
+        if config.githubAuth
+          if user.github
+            a.btn.btn-block.btn-social.btn-github(href='/account/unlink/github')
+              i.fa.fa-github.fa-lg.fa-fw
+              | &nbsp;Disconnect GitHub
+          else
+            a.btn.btn-block.btn-social.btn-success(href='/account/link/github')
+              i.fa.fa-github.fa-lg.fa-fw
+              | &nbsp;Connect GitHub
+        if config.googleAuth
+          if user.google
+            a.btn.btn-block.btn-social.btn-google-plus(href='/account/unlink/google')
+              i.fa.fa-google-plus.fa-lg.fa-fw
+              | &nbsp;Disconnect Google
+          else
+            a.btn.btn-block.btn-social.btn-success(href='/account/link/google')
+              i.fa.fa-google-plus.fa-lg.fa-fw
+              | &nbsp;Connect Google
+        if config.enhancedSecurity
+          .page-header
+            h2 Enhanced Security
+          if user.enhancedSecurity.enabled
+            a.btn.btn-block.btn-danger(href='/disable-enhanced-security')
+              i.fa.fa-unlock
+              | &nbsp;Disable Enhanced Security
+          else
+            p
+              i.fa.fa-question-circle.fa-fw
+              | Enhanced security adds an extra layer of protection to your account. Once enabled, a security code is required whenever you sign in. The code <strong>changes every 30 seconds</strong> making it <strong>very difficult for hackers</strong> to gain access to your account.
+            a.btn.btn-block.btn-success(href='/enable-enhanced-security')
+              i.fa.fa-lock
+              | &nbsp;Enable Enhanced Security
+    .row
+      .col-sm-6
+        .page-header
+          h2 Change Your Password
+        form(action='/account/password', method='POST')
+          input.form-control(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+            label.sr-only(for='password') New Password
+            input.form-control(type='password', name='password', id='password', placeholder='New Password', autocomplete='off', required, pattern='^[^\S]{4,}', title='At least 4 characters!')
+            .progress
+              .progress-bar(role='progressbar')
+          .form-group
+            label.sr-only(for='confirmPassword') Confirm Password
+            input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm New Password', autocomplete='off', required, pattern='^[^\S]{4,}', title='At least 4 characters!')
+          .form-group
+            button.btn.btn.btn-primary(type='submit')
+              i.fa.fa-check
+              | &nbsp;Change Password
+      .col-sm-2
+      .col-sm-4
+        .page-header
+          h2 Delete Account
+        #accordion.panel-group
+          .panel.panel-default
+            .panel-heading.panel-button
+              p.panel-title
+                a.noDecoration(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+                  | Delete my account&nbsp;
+                  b.caret
+            #collapseOne.panel-collapse.collapse
+              .panel-body
+                p You can delete your account anytime.
+                P You can always sign up again if you want to come back!
+                form(action='/account/delete', method='POST')
+                  input.form-control(type='hidden', name='_csrf', value=_csrf)
+                  button.btn.btn-block.btn-danger(type='submit')
+                    i.fa.fa-trash-o
+                    | &nbsp;Delete my account
+
+block scripts
+  script.
+    $(document).ready(function() {
+
+      //- Get Mailcheck Script
+      $.ajax({
+        type: 'GET',
+        url: '/lib/mailcheck/src/mailcheck.min.js',
+        dataType: 'script',
+        cache: true
+      }).done(function(script, textStatus) {
+        // initiate mailcheck
+        $('#email').on('blur', function() {
+          $(this).mailcheck({
+            //- domains: domains,                       // optional
+            //- topLevelDomains: topLevelDomains,       // optional
+            //- distanceFunction: superStringDistance,  // optional
+            suggested: function(element, suggestion) {
+              if (!$('#hint').html()) {
+                  // First error - fill in/show entire hint element
+                  suggestion = '<em>Did you mean <span class="suggestion">' +
+                      '<span class="address">' + suggestion.address + '</span>' +
+                      '@<a href="#" id="suggestion"><strong>' + suggestion.domain +
+                      '</strong></a></span>?</em>';
+                  $('#hint').html(suggestion).fadeIn(200);
+                  // use suggestion
+                  $( '#suggestion' ).click(function () {
+                    // On click, fill in the field with the suggestion and remove the hint
+                    $('#email').val($('.suggestion').text());
+                    $('#hint').fadeOut(150, function() {
+                      $(this).empty();
+                    });
+                    return false;
+                  });
+              } else {
+                  // Subsequent errors
+                  $('.address').html(suggestion.address);
+                  $('.domain').html(suggestion.domain);
+              }
+            },
+            empty: function(element) {
+              // callback code
+            }
+          });
+        });
+      })
+      .fail(function(jqxhr, settings, exception) {
+          console.log('Mailcheck load failed.');
+      });
+
+      // Hide progress bar until we need it
+      $('.progress').hide();
+
+      $.ajax({
+        type: 'GET',
+        url: '/lib/jquery.complexify.js/jquery.complexify.banlist.js',
+        dataType: 'script',
+        cache: true
+      }).done(function(script, textStatus) {
+
+          $.ajax({
+            type: 'GET',
+            url: '/lib/jquery.complexify.js/jquery.complexify.js',
+            dataType: 'script',
+            cache: true
+          }).done(function(script, textStatus) {
+
+              $('#password').complexify({
+                minimumChars        : 6,
+                strengthScaleFactor : 0.5,
+                banmode             : 'loose',
+                evaluateOnInit      : false
+                }, function (valid, complexity) {
+
+                  // Show the bar
+                  $('.progress').fadeIn(200);
+
+                  // Change colors
+                  if (!valid) {
+                    $('.progress-bar').css({'width': complexity + '%'}).removeClass('progress-bar-success').addClass('progress-bar-danger');
+                  } else {
+                    $('.progress-bar').css({'width': complexity + '%'}).removeClass('progress-bar-danger').addClass('progress-bar-success');
+                  }
+
+                  // Label progress bar
+                  switch (true)
+                  {
+                    case (complexity > 81):
+                      $('.progress-bar').html('Excellent Complexity!').fadeIn(150);
+                      break;
+                    case (complexity > 61):
+                      $('.progress-bar').html('Strong Complexity!').fadeIn(150);
+                      break;
+                    case (complexity > 41):
+                      $('.progress-bar').html('Good Complexity').fadeIn(150);
+                      break;
+                    case (complexity > 31):
+                      $('.progress-bar').html('Average Complexity').fadeIn(150);
+                      break;
+                    case (complexity > 21):
+                      $('.progress-bar').html('Weak').fadeIn(150);
+                      break;
+                    default:
+                      $('.progress-bar').html(':(').fadeIn(150);
+                      break;
+                  }
+                }
+              );
+            // Hide, our work is done ;)
+            $('#password').on('blur', function() {
+              $('.progress').fadeOut(150);
+            });
+          })
+          .fail(function(jqxhr, settings, exception) {
+            console.log('Complexify load failed.');
+          });
+        })
+        .fail(function( jqxhr, settings, exception ) {
+          console.log('Complexify banlist load failed.');
+      });
+    });

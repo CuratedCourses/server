@@ -1,0 +1,47 @@
+footer.footer.bg-black
+  .container
+    p
+      | Copyright © #{moment().format('YYYY')}&nbsp;
+      img.hidden-xs(src='/favicon.png', width='50px')
+      | &nbsp;#{application}, all rights reserved. |&nbsp;
+      a(href='/terms') Terms of Use&nbsp;
+      | |&nbsp;
+      a(href='/privacy') Privacy Policy
+
+//- Load jQuery, food for thought:
+//- https://palant.de/2014/06/30/please-don-t-use-externally-hosted-javascript-libraries
+script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+//- Backup just in case
+script window.jQuery || document.write('<script src="/lib/jquery/dist/jquery.min.js"><\/script>')
+//- Then use jQuery to async load everything else
+script.
+  $(document).ready(function() {
+    //- Async load main project js
+    $.ajax({
+      type: 'GET',
+      url: '/js/#{application}.min.js',
+      dataType: 'script',
+      cache: true
+    }).done(function () {
+      window.addEventListener('load', function() {
+        FastClick.attach(document.body);
+      }, false);
+    });
+    //- Async load socket.io
+    $.ajax({
+      type: 'GET',
+      url: '//cdn.socket.io/socket.io-1.2.1.js',
+      dataType: 'script',
+      cache: true
+    }).done(function () {
+      $(function(){
+        var socket = io(window.location.hostname);
+        socket.on('connect', function () {
+          socket.emit('pageview', window.location.href);
+        });
+        window.onhashchange = function () {
+          socket.emit('pageview', window.location.href);
+        };
+      });
+    });
+  });

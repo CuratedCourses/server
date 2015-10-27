@@ -1,0 +1,53 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Twitter
+
+block content
+  .container
+    .page-header
+      h2
+        i.fa.fa-twitter(style='color: #4099ff')
+        | &nbsp;Twitter API
+
+    .btn-group.btn-group-justified.hidden-xs
+      a.btn.btn-primary(href='https://github.com/ttezel/twit', rel='external')
+        i.fa.fa-file-text-o
+        | &nbsp;Twit Library Docs
+      a.btn.btn-primary(href='https://dev.twitter.com/docs', rel='external')
+        i.fa.fa-check-square-o
+        | &nbsp;Overview
+      a.btn.btn-primary(href='https://dev.twitter.com/docs/api/1.1', rel='external')
+        i.fa.fa-code-fork
+        | &nbsp;API Endpoints
+
+    br
+
+    .well
+      h4 Compose a new tweet:
+      form(role='form', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group
+          input.form-control(type='text', name='tweet', autofocus)
+          p.help-block This tweet will be posted on <strong>your</strong> Twitter profile!
+        button.btn.btn-primary(type='submit')
+          i.fa.fa-twitter
+          |  Tweet
+
+    br
+
+    .lead Latest <strong>10</strong> popular Tweets containing <strong>iPhone 6</strong>:
+
+    ul.list-unstyled
+      for tweet in tweets
+        li
+          .panel.panel-default
+            .panel-body
+              .clearfix
+                - var image = tweet.user.profile_image_url.replace('_normal', '');
+                img.pull-left(src='#{image}', width=50, height=50, style='margin-right: 10px')
+
+                p= tweet.user.name
+                  | &nbsp;&nbsp;
+                  span.text-muted @#{tweet.user.screen_name}
+                p #{tweet.text}

@@ -1,0 +1,216 @@
+extends ../layouts/layout
+//- http://cwbuecheler.com/web/tutorials/2014/restful-web-app-node-express-mongodb/
+
+block head
+  title #{application} &middot; Accounts
+
+block content
+  .container
+    .row
+      .col-md-4.col-md-push-8
+        .page-header
+          h2
+            i.fa.fa-user
+            | &nbsp;Account Details
+        //- USER INFO
+        #userInfo.well
+          p
+            img(id='userPicture', src='', width='100px')
+          p
+            strong Name:
+            |  <span id='userInfoName'></span>
+          p.hidden-xs
+            strong Email:
+            | &nbsp;
+            a(href='', id='userInfoEmail')
+          p.hidden-xs
+            strong Location:
+            |  <span id='userInfoLocation'></span>
+          p.hidden-xs
+            strong Gender:
+            |  <span id='userInfoGender'></span>
+          p.hidden-xs
+            strong Website:
+            | &nbsp;
+            a(href='', id='userInfoWebsite')
+          p
+            strong Date Established:
+            |  <span id='userInfoEstablished'></span>
+          p
+            strong Last Logon:
+            |  <span id='userInfoLogon'></span>
+          p.hidden-xs
+            strong Last Update:
+            |  <span id='userInfoUpdate'></span>
+        //- /USER INFO
+      .col-md-8.col-md-pull-4
+        .page-header
+          h2
+            i.fa.fa-users
+            | &nbsp;#{application} Accounts
+        //- Wrapper
+        #wrapper
+
+          //- USER LIST
+          #userList
+            table.table.table-striped
+              thead
+                th Name
+                th.hidden-xs Email
+                th.hidden-xs Date Established
+                th Last Active
+                th Delete?
+              tbody
+          //- /USER LIST
+
+        //- /WRAPPER
+
+
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title Delete confirmation
+          .modal-body
+            h4 Are you sure?
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') No
+            button#yes.btn.btn-primary(type='button') Yes!
+
+  //- script(src='lib/moment/min/moment.min.js')
+  //- script(src='lib/bootstrap/js/modal.js')
+block scripts
+  script.
+    // Userlist data array for filling in info box
+    var userListData = [];
+
+    // DOM Ready =============================================================
+    $(document).ready(function() {
+
+      //- Async Load Bootstrap Modal
+      $.ajax({
+        type: 'GET',
+        url: 'lib/bootstrap/js/modal.js',
+        dataType: 'script',
+        cache: true
+      });
+
+      //- Async Load moment.js
+      $.ajax({
+        type: 'GET',
+        url: 'lib/moment/min/moment.min.js',
+        dataType: 'script',
+        cache: true
+      }).done(function(script, textStatus) {
+        // Now populate the user table
+        populateTable();
+      });
+
+      // Username link click
+      $('#userList table tbody').on('click', 'td a.linkshowuser', showUserInfo);
+
+      // Delete User link click
+      $('#userList table tbody').on('click', 'td a.linkdeleteuser', deleteUser);
+
+    });
+
+    // Functions =============================================================
+
+    // Fill table with data
+    function populateTable() {
+
+      // Empty content string
+      var tableContent = '';
+
+      // jQuery AJAX call for JSON
+      $.getJSON( '/accountlist', function( data ) {
+
+        // Stick our user data array into a userlist variable in the global object
+        userListData = data;
+
+        // For each item in our JSON, add a table row and cells to the content string
+        $.each(data, function(){
+          tableContent += '<tr>';
+          tableContent += '<td><a href="#" class="linkshowuser btn btn-info btn-xs"" rel="' + this._id + '" title="Show Details">' + this.profile.name + '</td>';
+          tableContent += '<td class="hidden-xs"><a href="mailto:' + this.email + '">' + this.email + '</a></td>';
+          tableContent += '<td class="hidden-xs">' + moment(this.activity.date_established).format('MMMM Do YYYY') + '</td>';
+          tableContent += '<td>' + moment(this.activity.last_logon).fromNow() + '</td>';
+          tableContent += '<td><a href="#" class="linkdeleteuser btn btn-danger btn-xs" rel="' + this._id + '">Danger!</a></td>';
+        });
+
+        // Inject the whole content string into our existing HTML table
+        $('#userList table tbody').html(tableContent);
+      });
+
+    };
+
+    // Show User Info
+    function showUserInfo(event) {
+
+      // Prevent Link from Firing
+      event.preventDefault();
+
+      // Retrieve username from link rel attribute
+      var thisUserName = $(this).attr('rel');
+
+      // Get Index of object based on id value
+      var arrayPosition = userListData.map(function(arrayItem) { return arrayItem._id; }).indexOf(thisUserName);
+
+      // Get our User Object
+      var thisUserObject = userListData[arrayPosition];
+
+      //Populate Info Box  .attr("src", src)
+      $('#userPicture').attr("src", (thisUserObject.profile.picture));
+      $('#userInfoName').text(thisUserObject.profile.name);
+      $('#userInfoEmail').attr('href', 'mailto:' + thisUserObject.email).text(thisUserObject.email);
+      $('#userInfoLocation').text(thisUserObject.profile.location);
+      $('#userInfoGender').text(thisUserObject.profile.gender);
+      if (thisUserObject.profile.website) {
+        $('#userInfoWebsite').attr('href', thisUserObject.profile.website).text('Website Link');
+      }
+      $('#userInfoEstablished').text(moment(thisUserObject.activity.date_established).format('MMMM Do YYYY'));
+      $('#userInfoLogon').text(moment(thisUserObject.activity.last_logon).fromNow());
+      $('#userInfoUpdate').text(moment(thisUserObject.activity.last_update).fromNow());
+    };
+
+    // Delete User
+    function deleteUser(event) {
+
+      // Prevent Link from Firing
+      event.preventDefault();
+
+      // Pop up a confirmation dialog
+      // Convoluted because we have to
+      // pass the user's id through
+      function showmodal(userid) {
+        // show modal
+        $('#myModal').modal({keyboard:true,backdrop:'static'});
+        // if "yes" clicked
+        $('#yes').on('click', function () {
+          // do our delete
+          $.ajax({
+            type: 'DELETE',
+            //- headers: { 'X-CSRF-Token': '#{token}' },
+            headers: { 'X-CSRF-Token': $('meta[name="x-csrf-token"]').attr('content')},
+            url: '/accountlist/' + userid
+          }).done(function( response ) {
+            // Check for a successful (blank) response
+            if (response.msg === '') {
+            }
+            else {
+              alert('Error: ' + response.msg);
+            }
+            // Update the table
+            populateTable();
+          });
+          // close the modal
+          $('#myModal').modal('hide');
+        });
+      }
+
+      // call modal function with the user's account id
+      showmodal($(this).attr('rel'));
+
+    };
+

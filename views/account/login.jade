@@ -1,0 +1,87 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Sign In
+
+block content
+  .container
+    .row
+      .col-sm-6.col-sm-offset-3
+        br
+        br
+        form(method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          legend Sign In
+          .form-group
+            if config.facebookAuth
+              a.btn.btn-block.btn-social.btn-facebook.btn-lg(href='/auth/facebook')
+                i.fa.fa-fw.fa-facebook
+                | &nbsp;Sign in with Facebook
+            if config.twitterAuth
+              a.btn.btn-block.btn-social.btn-twitter.btn-lg(href='/auth/twitter')
+                i.fa.fa-fw.fa-twitter
+                | &nbsp;Sign in with Twitter
+            if config.githubAuth
+              a.btn.btn-block.btn-social.btn-github.btn-lg(href='/auth/github')
+                i.fa.fa-fw.fa-github
+                | &nbsp;Sign in with GitHub
+            if config.googleAuth
+              a.btn.btn-block.btn-social.btn-google-plus.btn-lg(href='/auth/google')
+                i.fa.fa-fw.fa-google-plus
+                | &nbsp;Sign in with Google
+          if config.localAuth
+            hr
+            #accordion.panel-group
+              .panel.panel-default
+                .panel-heading.panel-button
+                  p.panel-title
+                    a.noDecoration(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+                      | Use your email and password&nbsp;
+                      b.caret
+                #collapseOne.panel-collapse.collapse
+                  .panel-body
+                    .form-group
+                      label.sr-only(for='email') Email:
+                      input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus=true, required)
+                    .form-group
+                      label.sr-only(for='password') Password:
+
+                      //- Set the autocomplete attribute of any password fields in any form to "off".
+                      //- You can keep other aspects of the form autocompletable, but force the user
+                      //- to retype his/her own password, helping ensure they are who they say they are.
+
+                      input.form-control(type='password', name='password', id='password', placeholder='Password', autocomplete='off', required)
+                    .form-group
+                      button.btn.btn-primary(type='submit')
+                        i.fa.fa-unlock-alt
+                        | &nbsp;Login
+                      | &nbsp;
+                      a.btn.btn-link(href='/forgot') Forget your password?
+            p Want a local #{application} account?&nbsp;&nbsp;
+              a.btn.btn-success(href='signup')
+                i.fa.fa-check
+                | &nbsp;Sign Up
+
+            p.text-muted Note: You get <strong>one click</strong> access when using one of the authentication providers above <strong>and you don't need to remember another password!</strong>
+        hr
+        p.text-muted <em>I accept #{application}'s
+          a(href='/terms')  Terms of Use
+          |  and
+          a(href='/privacy')  Privacy Policy.</em>
+
+block scripts
+  script.
+    $(document).ready(function() {
+      if ( #{tooManyAttempts} === true ) {
+        $("input").prop('disabled', true);
+        $("button").prop('disabled', true);
+      }
+    });
+
+//- Form Notes
+//- ===========================================
+//- 1) Always add labels!
+//-    Screen readers will have trouble with your forms if you don't include a label for every input.
+//-    NOTE: you can hide the labels using the .sr-only class.
+//- 2) Use proper HTML5 input types (email, password, date, etc.)  This adds some HTML5 validation as
+//-    well as the correct keyboard on mobile devices.

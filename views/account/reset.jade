@@ -1,0 +1,110 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Password Reset
+
+block content
+  .container
+    .row
+      .col-sm-6.col-sm-offset-3
+        .page-header
+          h1 Reset Your Password
+        form(method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+            label.sr-only(for='password') New Password:
+            input.form-control(type='password', name='password', id='password', placeholder='New password', autocomplete='off', autofocus=true, required, pattern='^[^\S]{4,}', title='At least 4 characters!')
+            .progress
+              .progress-bar(role='progressbar')
+          .form-group
+            label.sr-only(for='confirm') Confirm Password:
+            input.form-control(type='password', name='confirm', placeholder='Confirm your new password', autocomplete='off', required, pattern='^[^\S]{4,}', title='At least 4 characters!')
+          .form-group
+            button.btn.btn-primary.btn-reset(type='submit') Set Password
+        hr
+        p Need to try again?
+          a(href='/forgot') <strong> Forgot my password</strong>
+
+//- Form Notes
+//- ===========================================
+//- 1) Always add labels!
+//-    Screen readers will have trouble with your forms if you don't include a label for every input.
+//-    NOTE: you can hide the labels using the .sr-only class.
+//- 2) Use proper HTML5 input types (email, password, date, etc.)  This adds some HTML5 validation as
+//-    well as the correct keyboard on mobile devices.
+
+block scripts
+  script.
+    $(document).ready(function() {
+
+      // Hide progress bar until we need it
+      $('.progress').hide();
+
+      $.ajax({
+        type: 'GET',
+        url: '/lib/jquery.complexify.js/jquery.complexify.banlist.js',
+        dataType: 'script',
+        cache: true
+      }).done(function(script, textStatus) {
+
+          $.ajax({
+            type: 'GET',
+            url: '/lib/jquery.complexify.js/jquery.complexify.js',
+            dataType: 'script',
+            cache: true
+          }).done(function(script, textStatus) {
+
+              $('#password').complexify({
+                minimumChars        : 6,
+                strengthScaleFactor : 0.5,
+                banmode             : 'loose',
+                evaluateOnInit      : false
+                }, function (valid, complexity) {
+
+                  // Show the bar
+                  $('.progress').fadeIn(200);
+
+                  // Change colors
+                  if (!valid) {
+                    $('.progress-bar').css({'width': complexity + '%'}).removeClass('progress-bar-success').addClass('progress-bar-danger');
+                  } else {
+                    $('.progress-bar').css({'width': complexity + '%'}).removeClass('progress-bar-danger').addClass('progress-bar-success');
+                  }
+
+                  // Label progress bar
+                  switch (true)
+                  {
+                    case (complexity > 81):
+                      $('.progress-bar').html('Excellent Complexity!');
+                      break;
+                    case (complexity > 61):
+                      $('.progress-bar').html('Strong Complexity!');
+                      break;
+                    case (complexity > 41):
+                      $('.progress-bar').html('Good Complexity');
+                      break;
+                    case (complexity > 31):
+                      $('.progress-bar').html('Average Complexity');
+                      break;
+                    case (complexity > 21):
+                      $('.progress-bar').html('Weak');
+                      break;
+                    default:
+                      $('.progress-bar').html(':(');
+                      break;
+                  }
+                }
+              );
+            // Hide, our work is done ;)
+            $('#password').on('blur', function() {
+              $('.progress').fadeOut(150);
+            });
+          })
+          .fail(function(jqxhr, settings, exception) {
+            console.log('Complexify load failed.');
+          });
+        })
+        .fail(function( jqxhr, settings, exception ) {
+          console.log('Complexify banlist load failed.');
+      });
+    });

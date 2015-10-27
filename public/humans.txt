@@ -1,0 +1,42 @@
+/* the humans responsible for building Skeleton.com */
+
+/* TEAM */
+  Designer + Coder:      Dan Stroot
+  Site:                  danstroot.com
+  Contact:               dan.stroot[at]gmail.com
+  Location:              California, USA
+
+/* THANKS */
+  Bootstrap              (http://getbootstrap.com/)
+  jQuery                 (http://jquery.com/)
+  etc.
+
+/* SITE */
+  Standards:             HTML5, CSS3
+  Components:            jQuery, Bootstrap, FontAwesome, etc.
+
+
+
+                               -o/-
+                               +oo//-
+                              :ooo+//:
+                             -ooooo///-
+                             /oooooo//:
+                            :ooooooo+//-
+                           -+oooooooo///-
+           -://////////////+oooooooooo++////////////::
+            :+ooooooooooooooooooooooooooooooooooooo+:::-
+              -/+ooooooooooooooooooooooooooooooo+/::////:-
+                -:+oooooooooooooooooooooooooooo/::///////:-
+                  --/+ooooooooooooooooooooo+::://////:-
+                     -:+ooooooooooooooooo+:://////:--
+                       /ooooooooooooooooo+//////:-
+                      -ooooooooooooooooooo////-
+                      /ooooooooo+oooooooooo//:
+                     :ooooooo+/::/+oooooooo+//-
+                    -oooooo/::///////+oooooo///-
+                    /ooo+::://////:---:/+oooo//:
+                   -o+/::///////:-      -:/+o+//-
+                   :-:///////:-            -:/://
+                     -////:-                 --//:
+                       --                       -:

@@ -1,0 +1,19 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Enhanced Security
+
+block content
+  .container
+    .row
+      .col-sm-8.col-sm-offset-2
+        .page-header
+          h2 Enhanced Security Setup Completed!
+        br
+        p Congratulations! Your account is now protected with enhanced security. When you log in in the future you will see an extra prompt to enter the security code from your smartphone app or SMS (text) message.
+        p It's pretty simple and it adds a great deal of additional protection to your account for a small amount of extra effort.
+        P Please remember to logout when using any computer you do not directly control!
+        br
+        a.btn.btn-success(href='/account')
+          i.fa.fa-check
+          | &nbsp;Continue

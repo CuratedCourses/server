@@ -1,0 +1,35 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Twilio
+
+block content
+  .container
+    .page-header
+      h2
+        i.fa.fa-phone
+        | &nbsp;Twilio API
+      p.lead
+        | Why this is cool - using Twilio's library we can send text messages from our server. This is not just for play, as we can use text messages to implement two-factor security as we have for this site (check your account profile if you want to try it).
+
+    .btn-group.btn-group-justified.hidden-xs
+      a.btn.btn-primary(href='http://twilio.github.io/twilio-node/', rel='external')
+        i.fa.fa-check-square-o
+        | &nbsp;Twilio Node
+      a.btn.btn-primary(href='https://apigee.com/console/twilio', rel='external')
+        i.fa.fa-laptop
+        | &nbsp;API Console
+      a.btn.btn-primary(href='https://www.twilio.com/docs/api/rest', rel='external')
+        i.fa.fa-code-fork
+        | &nbsp;REST API
+
+    h4 Send a text message to yourself!
+    .row
+      .col-sm-6
+        form(role='form', method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+            label.sr-only(for='name') Mobile Number:
+            input.form-control(type='text', name='telephone', placeholder='Enter *Your* Mobile Phone Number: 9993334444')
+          .form-group
+            button.btn.btn-success(type='submit') Send

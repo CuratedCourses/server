@@ -1,0 +1,24 @@
+extends ../layouts/error
+
+block head
+  title #{application} &middot; 500
+
+block content
+
+  .mini-tron
+    .container
+      h1 500 Error!
+      p
+        | That is unfortunate!
+      p
+        | Error:&nbsp;
+        span.lime #{error.message}
+
+  .container
+    .row
+      .col-md-12
+        br
+        if error.stack
+          pre.well #{error.stack}
+        else
+          pre.well An error ocurred!

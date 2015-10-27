@@ -1,0 +1,142 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Welcome!
+
+block styles
+  link(rel='stylesheet', href='/lib/animate.css/animate.css')
+
+block content
+  .jumbotron.white
+    .container
+      h1 Complete Boilerplate Site!
+      .row
+        .col-md-7.col-md-push-5
+          img.center-block.img-responsive.animated.bounceInLeft(alt='Skeleton App', src='img/Octocat.png', width='400px')
+        .col-md-4.col-md-offset-1.col-md-pull-7
+          ul.fa-ul.visible-md.visible-lg
+            li
+              i.fa.fa-li.fa-users
+              | OAUTH Authentication
+            li
+              i.fa.fa-li.fa-magic
+              | API Examples
+            li
+              i.fa.fa-li.fa-cogs
+              | Admin Dashboard
+            li
+              i.fa.fa-li.fa-magic
+              | Gulp Build System
+
+          br
+          a.btn.btn-white(href='/login', role='button') Sign in Now!
+      .row.hidden-xs
+        .col-md-12
+          h2 Why choose #{application}?
+      .row.hidden-xs
+        .col-md-4
+          h3
+            i.fa.fa-group.fa-lg.green
+            | &nbsp;&nbsp;Built for you
+          p
+            | #{application} Is built with standard components such as Bootstrap and FontAwesome and is easy to customize.
+        .col-md-4
+          h3
+            i.fa.fa-bolt.fa-lg.yellow
+            | &nbsp;&nbsp;Lightning fast
+          p
+            | #{application} is optimized to ensure fast loading time. Google page speed index of 93/100 on a nodejitsu micro drone ($9/month).
+        .col-md-4
+          h3
+            i.fa.fa-tablet.fa-lg.fuchsia
+            | &nbsp;&nbsp;On every device
+          p
+            | #{application} is built to look great on every device. Fully responsive for mobile devices to ensure the best user experience.
+      .row
+        .col-md-4.col-md-offset-4
+          //- http://github.hubspot.com/odometer/
+          .github-count
+            span.odometer-label
+              a.white(href='http://github.com/dstroot/skeleton', rel='external')
+                i.fa.fa-github
+                | &nbsp;GitHub ★ :
+            .odometer.bg-purple 0
+
+//- Page-specific stuff
+block scripts
+  //- Async load odometer styles
+  script.
+    var cb = function() {
+      var l = document.createElement('link'); l.rel = 'stylesheet';
+      l.href = 'lib/odometer/themes/odometer-theme-minimal.css';
+      var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+    };
+    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+        webkitRequestAnimationFrame || msRequestAnimationFrame;
+    if (raf) raf(cb);
+    else window.addEventListener('load', cb);
+
+  //- Tweak the styles a bit...
+  style.
+    .github-count {
+      margin-top:20px;
+      font-size: 20px;
+      text-align: center;
+    }
+    .odometer-label {
+      margin-right: 10px;
+      line-height: 1;
+      vertical-align: middle;
+    }
+    .odometer {
+      padding: 13px 21px 11px;
+      margin: auto;
+      line-height: 1 !important;
+      border-radius: 6px;
+    }
+    .odometer-label a {
+      text-decoration: none;
+    }
+    .odometer-label a:hover {
+      color: #B10DC9;
+    }
+
+  script.
+    $(document).ready(function() {
+      $('body').addClass('bg-brand1');
+
+      //- Get Mailcheck Script
+      $.ajax({
+        type: 'GET',
+        url: 'lib/odometer/odometer.min.js',
+        dataType: 'script',
+        cache: true
+      }).done(function() {
+          $(function(){
+            var starsOdometer = new Odometer({ el: $('.odometer')[0], theme: 'minimal', value: '0' });
+            starsOdometer.render()
+
+            var update = function() {
+              $.ajax('https://api.github.com/repos/dstroot/skeleton?access_token=1003ff07ff454596250e0bfa6940027a77a94866', {
+                cache: true,
+                success: function(data) {
+                  if (data.stargazers_count) {
+                    starsOdometer.update(data.stargazers_count);
+                  }
+                },
+                complete: function(xhr) {
+                  // Turn off rate limiting since we are using a token
+                  //remaining = xhr.getResponseHeader('X-RateLimit-Remaining');
+                  //setTimeout(update, 1000 * (4 + Math.pow(1.1, (60 - remaining))));
+                  setTimeout(update, 10000);
+                },
+                error: function(err) {
+                  console.log(err);
+                }
+              });
+            };
+
+            setTimeout(update, 1000);
+          });
+      });
+    });

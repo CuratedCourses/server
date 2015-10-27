@@ -1,0 +1,24 @@
+extends ../layouts/error
+
+
+block head
+  title #{application} &middot; 403
+
+block content
+
+  .mini-tron
+    .container
+      h1 403 Forbidden!
+      p
+        | You tried to reach:&nbsp;
+        span.lime #{url}
+      p
+        | Error:&nbsp;
+        span.lime #{error.message}
+
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        br
+        br
+        img.img-responsive.center-block(src='/img/403.gif')

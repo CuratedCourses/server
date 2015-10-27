@@ -1,0 +1,50 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; GitHub
+
+block content
+  .container
+    .page-header
+      h2
+        i.fa.fa-github
+        | &nbsp;GitHub API
+
+    .btn-group.btn-group-justified.hidden-xs
+      a.btn.btn-primary(href='http://developer.github.com/guides/getting-started/', rel='external')
+        i.fa.fa-check-square-o
+        | &nbsp;Getting Started
+      a.btn.btn-primary(href='https://apigee.com/console/github', rel='external')
+        i.fa.fa-laptop
+        | &nbsp;API Console
+      a.btn.btn-primary(href='http://developer.github.com/v3/', rel='external')
+        i.fa.fa-file-text-o
+        | &nbsp;Documentation
+
+    br
+
+    .panel.panel-primary
+      .panel-heading
+        h3.panel-title Repository Information
+      .panel-body
+        .row
+          .col-xs-4
+            img.img-rounded.img-responsive(src='https://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png')
+          .col-xs-8
+            h4
+              a(href='#{repo.html_url}') #{repo.name}
+            ul.list-inline
+              li
+                i.fa.fa-eye-slash
+                | &nbsp;Subscribers: #{repo.subscribers_count}
+              li
+                i.fa.fa-star
+                | &nbsp;Starred: #{repo.stargazers_count}
+              li
+                i.fa.fa-code-fork
+                | &nbsp;Forks: #{repo.forks_count}
+              li
+                i.fa.fa-code
+                | &nbsp;#{repo.language}
+            strong DESCRIPTION
+            p= repo.description

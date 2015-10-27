@@ -1,0 +1,203 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Sign Up
+  style.
+    .meter {
+      width: 300px;
+      height: 50px;
+      //- border: 1px solid #666;
+      position: relative;
+    }
+    .meter > .bar {
+      position: absolute;
+      top: 75%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: linear-gradient(to left, #A3FF5C 0%, #EF1F3B 5%);
+    }
+
+block content
+  .container
+    .row
+      .col-sm-6.col-sm-offset-3
+        br
+        br
+        form(action='/signup', method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          legend Sign Up
+          .form-group
+            label.sr-only(for='name') Name:
+            input.form-control(type='text', name='name', id='name', placeholder='Your Name', autofocus=true, required)
+          .form-group
+            label.sr-only(for='email') Email:
+            input.form-control(type='email', name='email', id='email', placeholder='Use a real email address to see the welcome email', required)
+            #hint
+          .form-group
+            label.sr-only(for='password') Password:
+          
+            //- Set the autocomplete attribute of any password fields in any form to "off".
+            //- You can keep other aspects of the form autocompletable, but force the user
+            //- to retype his/her own password, helping ensure they are who they say they are.
+          
+            input.form-control(type='password', name='password', id='password', placeholder='Password', autocomplete='off', required, pattern='^[^\S]{4,}', title='At least 4 characters!')
+            .progress
+              .progress-bar(role='progressbar')
+            .difficulty
+          .form-group
+            label.sr-only(for='confirmPassword') Confirm Password:
+            input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', autocomplete='off', required, pattern='^[^\S]{4,}', title='At least 4 characters!')
+          .form-group
+            button.btn.btn-success(type='submit')
+              i.fa.fa-check
+              | &nbsp;Sign Up
+            | &nbsp;
+            a.btn.btn-link(href='/login') Already have an account?
+        br
+        p.text-muted <em>I accept #{application}'s
+          a(href='/terms')  Terms of Use
+          |  and
+          a(href='/privacy')  Privacy Policy.</em>
+
+  //- HTML 5 Form Notes
+  //- ===========================================
+  //- 1) Always add labels!
+  //-    Screen readers will have trouble with your forms if you don't include a label for every input.
+  //-    NOTE: you can hide the labels using the .sr-only class.
+  //- 2) Use proper HTML5 input types (email, password, date, url, etc.)  This adds some HTML5 validation as
+  //-    well as the correct keyboard on mobile devices.
+  //- 3) When using the pattern attribute, the ^ and $ for the start and end of the regular expression
+  //-    are implied and don't need to be included.
+  //- 4) You can help the user by including a title attribute that tells them the format you require.
+
+
+block scripts
+  script.
+    $(document).ready(function() {
+      //- Get Mailcheck Script
+      $.ajax({
+        type: 'GET',
+        url: '/lib/mailcheck/src/mailcheck.min.js',
+        dataType: 'script',
+        cache: true
+      }).done(function(script, textStatus) {
+        // initiate mailcheck
+        $('#email').on('blur', function() {
+          $(this).mailcheck({
+            //- domains: domains,                       // optional
+            //- topLevelDomains: topLevelDomains,       // optional
+            //- distanceFunction: superStringDistance,  // optional
+            suggested: function(element, suggestion) {
+              if (!$('#hint').html()) {
+                  // First error - fill in/show entire hint element
+                  suggestion = '<em>Did you mean <span class="suggestion">' +
+                      '<span class="address">' + suggestion.address + '</span>' +
+                      '@<a href="#" id="suggestion"><strong>' + suggestion.domain +
+                      '</strong></a></span>?</em>';
+                  $('#hint').html(suggestion).fadeIn(200);
+                  // Use suggestion
+                  $( '#suggestion' ).click(function () {
+                    // On click, fill in the field with the suggestion and remove the hint
+                    $('#email').val($('.suggestion').text());
+                    $('#hint').fadeOut(150, function() {
+                      $(this).empty();
+                    });
+                    //go to next field
+                    $('input[name=password]').focus().keyup();
+                    //- return false;
+                  });
+              } else {
+                  // Subsequent errors
+                  $('.address').html(suggestion.address);
+                  $('.domain').html(suggestion.domain);
+              }
+            },
+            empty: function(element) {
+              // callback code
+            }
+          });
+        });
+      })
+      .fail(function(jqxhr, settings, exception) {
+          console.log('Mailcheck load failed.');
+      });
+
+      // Hide progress bar until we need it
+      $('.progress').hide();
+      
+      $.ajax({
+        type: 'GET',
+        url: '/lib/zxcvbn/dist/zxcvbn.js',
+        dataType: 'script',
+        cache: true
+      }).done(function(script, textStatus) {
+      
+        //- https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/
+        //- https://github.com/dropbox/zxcvbn
+        //
+        // This is better than "complexify"
+      
+        $('#password').bind('keyup focus', evaluateSecurity);
+        
+        function evaluateSecurity() {
+        
+          var password = $('#password').val();
+          var name = $('#name').val();
+          var email = $('#email').val();
+          
+          if (password) {
+            // magic happens
+            result = zxcvbn(password, user_inputs=[name, email]);
+          
+            // Show the bar
+            $('.progress').fadeIn(200);
+            // and difficulty
+            $('.difficulty').fadeIn(200).html('Time for a desktop PC to crack your password: <strong>' + result.crack_times_display. offline_slow_hashing_1e4_per_second + '</strong>');
+
+            // Change progress bar colors
+            if ( result.score <= 2 ) {
+              $('.progress-bar').css({'width': (result.score * 25) + '%'}).removeClass('progress-bar-success').addClass('progress-bar-danger');
+            } else {
+              $('.progress-bar').css({'width': (result.score * 25) + '%'}).removeClass('progress-bar-danger').addClass('progress-bar-success');
+            }
+            
+            // Label progress bar
+            switch (result.score)
+            {
+              case 4:
+                $('.progress-bar').html('Excellent Complexity!');
+                break;
+              case 3:
+                $('.progress-bar').html('Strong Complexity!');
+                break;
+              case 2:
+                $('.progress-bar').html('Good Complexity');
+                break;
+              case 1:
+                $('.progress-bar').html('Weak Complexity');
+                break;
+              case 0:
+                $('.progress-bar').html('');
+                break;
+              default:
+                $('.progress-bar').html('');
+                break;
+            }
+
+          } else {
+            $('.progress').fadeOut(150);
+            $('.difficulty').fadeOut(150);
+          }
+          
+        }
+        // Hide, our work is done ;)
+        $('#password').on('blur', function() {
+          $('.progress').fadeOut(150);
+          $('.difficulty').fadeOut(150);
+        });
+      })
+      .fail(function(jqxhr, settings, exception) {
+        console.log('zxcvbn load failed.');
+      });
+    });

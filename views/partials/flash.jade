@@ -1,0 +1,37 @@
+#flash
+  if messages.error
+    .alert.alert-danger.alert-dismissable
+      button.close(type='button', data-dismiss='alert', aria-hidden='true')
+        i.fa.fa-times-circle-o
+      for error in messages.error
+        p.flashmsg
+          strong
+            i.fa.fa-lg.fa-exclamation-triangle
+          | &nbsp;&nbsp;#{error.msg}
+  if messages.warning
+    .alert.alert-warning.alert-dismissable
+      button.close(type='button', data-dismiss='alert', aria-hidden='true')
+        i.fa.fa-times-circle-o
+      for warning in messages.warning
+        p.flashmsg
+          strong
+            i.fa.fa-lg.fa-exclamation-triangle
+          | &nbsp;&nbsp;#{warning.msg}
+  if messages.info
+    .alert.alert-info.alert-dismissable
+      button.close(type='button', data-dismiss='alert', aria-hidden='true')
+        i.fa.fa-times-circle-o
+      for info in messages.info
+        p.flashmsg
+          strong
+            i.fa.fa-lg.fa-info-circle
+          | &nbsp;&nbsp;#{info.msg}
+  if messages.success
+    .alert.alert-success.alert-dismissable
+      button.close(type='button', data-dismiss='alert', aria-hidden='true')
+        i.fa.fa-times-circle-o
+      for success in messages.success
+        p.flashmsg
+          strong
+            i.fa.fa-lg.fa-check-circle
+          | &nbsp;&nbsp;#{success.msg}

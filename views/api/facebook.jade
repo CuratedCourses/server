@@ -1,0 +1,36 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Facebook
+
+block content
+  .container
+    .page-header
+      h2
+        i.fa.fa-facebook-square(style='color: #335397')
+        | &nbsp;Facebook API
+
+    .btn-group.btn-group-justified.hidden-xs
+      a.btn.btn-primary(href='https://developers.facebook.com/docs/graph-api/quickstart/', rel='external')
+        i.fa.fa-check-square-o
+        | &nbsp;Quickstart
+      a.btn.btn-primary(href='https://developers.facebook.com/tools/explorer', rel='external')
+        i.fa.fa-facebook
+        | &nbsp;Graph API Explorer
+      a.btn.btn-primary(href='https://developers.facebook.com/docs/graph-api/reference/', rel='external')
+        i.fa.fa-code-fork
+        | &nbsp;API Reference
+
+    h2 My Info
+    img.thumbnail(src='https://graph.facebook.com/#{me.id}/picture?type=large', width='90', height='90')
+    h4= me.name
+    h5 First Name: #{me.first_name}
+    h5 Last Name: #{me.last_name}
+    h5 Gender: #{me.gender}
+    h5 Link: #{me.link}
+    h5 Email: #{me.email}
+    h5 Locale: #{me.locale}
+    h5 Timezone: #{me.timezone}
+        
+    h2 Friends
+    h5 Count: #{friends.summary.total_count}

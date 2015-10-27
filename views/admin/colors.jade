@@ -1,0 +1,81 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Colors
+
+block styles
+  link(rel='stylesheet', href='/css/page-colors.min.css')
+
+block content
+  //- brand colors
+  .jumbotron.bg-brand1
+    .row
+      .col-sm-3.bg-brand2 &nbsp;
+      .col-sm-3.bg-brand3 &nbsp;
+      .col-sm-3.bg-brand4 &nbsp;
+      .col-sm-3.bg-brand5 &nbsp;
+    //- gray scale
+    .row
+      .col-sm-1.bg-white &nbsp;
+      .col-sm-2.bg-gray-lighter &nbsp;
+      .col-sm-2.bg-gray-light &nbsp;
+      .col-sm-2.bg-gray &nbsp;
+      .col-sm-2.bg-gray-dark &nbsp;
+      .col-sm-2.bg-gray-darker &nbsp;
+      .col-sm-1.bg-black &nbsp;
+  hr
+  h1 Brand Colors
+  hr
+  .bg-brand1.pnl.white
+    h2 BLUE
+  .bg-brand2.pnl
+    h2 AQUA
+  .bg-brand3.pnl
+    h2 SALMON
+  .bg-brand4.pnl.white
+    h2 ORANGE
+  .bg-brand5.pnl.white
+    h2 RED
+  .bg-white.pnl
+    h2 WHITE
+  .bg-gray-lighter.pnl
+    h2 GRAY-LIGHTER
+  .bg-gray-light.pnl
+    h2 GRAY-LIGHT
+  .bg-gray.pnl.white
+    h2 GRAY
+  .bg-gray-dark.pnl.white
+    h2 GRAY-DARK
+  .bg-gray-darker.pnl.white
+    h2 GRAY-DARKER
+  .bg-black.pnl.white
+    h2 BLACK
+  hr
+  h1 Other Colors
+  hr
+  .bg-navy.pnl.white
+    h2 NAVY
+  .bg-blue.pnl
+    h2 BLUE
+  .bg-aqua.pnl
+    h2 AQUA
+  .bg-teal.pnl
+    h2 TEAL
+  .bg-olive.pnl
+    h2 OLIVE
+  .bg-green.pnl
+    h2 GREEN
+  .bg-lime.pnl
+    h2 LIME
+  .bg-yellow.pnl
+    h2 YELLOW
+  .bg-orange.white.pnl
+    h2 ORANGE
+  .bg-red.white.pnl
+    h2 RED
+  .bg-maroon.white.pnl
+    h2 MAROON
+  .bg-fuchsia.white.pnl
+    h2 FUCHSIA
+  .bg-purple.white.pnl
+    h2 PURPLE

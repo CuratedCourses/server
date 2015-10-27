@@ -1,0 +1,25 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Enhanced Security
+
+block content
+  .container
+    .row
+      .col-sm-8.col-sm-offset-2
+        .page-header
+          h2
+            i.fa.fa-qrcode
+            | &nbsp;Let's get this party started!
+        p.text-muted (You did install an app first, right?)
+        p.lead Scan this QR Code:
+          img.center-block(src='#{qrImage}')
+        br
+        p.lead Or enter this key manually: &nbsp;&nbsp;<b>#{key}</b>
+        a.btn.btn-success(href='/verify-totp-first')
+          i.fa.fa-check
+          | &nbsp;I Am Ready To Go!
+        | &nbsp;
+        a.btn.btn-danger(href='/disable-enhanced-security')
+          i.fa.fa-times
+          | &nbsp;Cancel Enhanced Security
