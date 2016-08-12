@@ -1,11 +1,10 @@
 {
-  "private": true,
-  "version": "1.0.0-65",
-  "name": "Skeleton",
-  "company": "Skeleton, Inc.",
-  "subdomain": "skeleton-app",
-  "description": "A friendly node and express framework",
-  "author": "Dan Stroot",
+  "version": "0.0.1",
+  "name": "CuratedCourses",
+  "subdomain": "CuratedCourses",    
+  "company": "American Institute of Mathematics",
+  "description": "Finding online math curricular resources that are readily available, field-tested in a variety of settings, and known to be high quality is a challenge. This exploration project will (1) provide materials such as textbook content, videos, interactive applets, and instructor guides; (2) identify optimal methods for building comprehensive, quality-controlled, and curated libraries of freely reusable instructional materials for college-level mathematics courses; and (3) investigate the impact of such a library on faculty adoption of evidence-based teaching practices.",
+  "author": "Jim Fowler",
   "keywords": [
     "skeleton",
     "node",
@@ -15,25 +14,20 @@
     "fontawesome",
     "framework"
   ],
-  "homepage": "http://skeleton-app.jit.su",
+  "homepage": "https://curatedcourses.org/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dstroot/skeleton.git"
+    "url": "https://github.com/CuratedCourses/server.git"
   },
-  "bugs": "https://github.com/dstroot/skeleton/issues",
-  "contributors": "https://github.com/dstroot/skeleton/graphs/contributors",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.github.com/dstroot/skeleton/master/LICENSE"
-    }
-  ],
+  "bugs": "https://github.com/CuratedCourses/server/issues",
+  "contributors": "https://github.com/CuratedCourses/server/graphs/contributors",
+  "license": "GPLv3",
   "scripts": {
     "start": "node app.js",
     "test": "mocha"
   },
   "engines": {
-    "node": "4.x.x"
+    "node": "6.x.x"
   },
   "dependencies": {
     "async": "^1.4.2",
@@ -92,8 +86,8 @@
     "gulp-concat": "^2.6.0",
     "gulp-csscomb": "^3.0.6",
     "gulp-csslint": "^0.2.0",
-    "gulp-csso": "^1.0.1",
-    "gulp-header": "^1.7.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-header": "^1.8.3",
     "gulp-imagemin": "^2.3.0",
     "gulp-jscs": "^3.0.1",
     "gulp-jshint": "^1.11.2",

@@ -25,7 +25,7 @@ var banner = [
   ' * <%= pkg.name %> - <%= pkg.description %>',
   ' * @version v<%= pkg.version %>',
   ' * @link <%= pkg.homepage %>',
-  ' * @license <%= pkg.licenses[0].type %>',
+  ' * @license <%= pkg.license %>',
   ' */',
   ''
 ].join('\n');
@@ -106,7 +106,7 @@ gulp.task('styles', function () {
     .pipe($.csslint('.csslintrc'))          // Lint CSS
     .pipe($.csslint.reporter())             // Report issues
     .pipe($.rename({ suffix: '.min' }))     // Add .min suffix
-    .pipe($.csso())                         // Minify CSS
+    .pipe($.cssnano())                      // Minify CSS
     .pipe($.header(banner, { pkg : pkg }))  // Add banner
     .pipe($.size({ title: 'CSS:' }))        // What size are we at?
     .pipe(gulp.dest('./public/css'))        // Save minified CSS
