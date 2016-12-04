@@ -3,10 +3,15 @@ footer.footer.bg-black
     p
       | Copyright © #{moment().format('YYYY')}&nbsp;
       img.hidden-xs(src='/favicon.png', width='50px')
-      | &nbsp;#{application}, all rights reserved. |&nbsp;
+      | &nbsp;#{application}.  Licensed under <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL 3.0</a>. |&nbsp;
       a(href='/terms') Terms of Use&nbsp;
       | |&nbsp;
       a(href='/privacy') Privacy Policy
+    p
+      | CuratedCourses is based upon work supported by the National Science Foundation under <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1505246">NSF DUE-1505246</a>
+    p
+      | Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+
 
 //- Load jQuery, food for thought:
 //- https://palant.de/2014/06/30/please-don-t-use-externally-hosted-javascript-libraries

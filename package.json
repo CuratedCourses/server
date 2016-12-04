@@ -21,7 +21,7 @@
   },
   "bugs": "https://github.com/CuratedCourses/server/issues",
   "contributors": "https://github.com/CuratedCourses/server/graphs/contributors",
-  "license": "GPLv3",
+  "license": "AGPL-3.0",
   "scripts": {
     "start": "node app.js",
     "test": "mocha"
