@@ -39,16 +39,6 @@ block content
             label.sr-only(for='website') Website
             input.form-control(type='url', name='website', id='website', placeholder='http://yoursite.here', value='#{user.profile.website}')
           .form-group
-            label.sr-only(for='gender') Gender
-            .radio
-              label
-                input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
-                | Male
-            .radio
-              label
-                input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
-                | Female
-          .form-group
             button.btn.btn.btn-primary(type='submit')
               i.fa.fa-check
               | &nbsp;Update Profile
