@@ -224,7 +224,7 @@ gulp.task('nodemon', ['build'], function (cb) {
  * Default Task
  */
 
-gulp.task('default', [], function () {
+gulp.task('default', ['nodemon'], function () {
   gulp.watch(paths.less, ['styles']);
   gulp.watch(paths.js, ['scripts']);
   gulp.watch(paths.lint, ['lint', 'jscs']);
