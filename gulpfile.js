@@ -14,6 +14,7 @@ var gulp          = require('gulp');
 var pngquant      = require('imagemin-pngquant');
 var terminus      = require('terminus');
 var runSequence   = require('run-sequence');
+var config        = require('./config/config.js');
 
 /**
  * Banner
@@ -220,19 +221,10 @@ gulp.task('nodemon', ['build'], function (cb) {
 });
 
 /**
- * Open the browser
- */
-
-gulp.task('open', ['nodemon'], function () {
-  gulp.src('')
-  .pipe($.open({ app: 'google chrome', uri: 'http://localhost:3000' }));
-});
-
-/**
  * Default Task
  */
 
-gulp.task('default', ['open'], function () {
+gulp.task('default', [], function () {
   gulp.watch(paths.less, ['styles']);
   gulp.watch(paths.js, ['scripts']);
   gulp.watch(paths.lint, ['lint', 'jscs']);
