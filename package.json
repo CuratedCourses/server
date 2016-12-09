@@ -1,7 +1,7 @@
 {
   "version": "0.0.1",
-  "name": "CuratedCourses",
-  "subdomain": "CuratedCourses",    
+  "name": "curatedcourses",
+  "subdomain": "curatedcourses",    
   "company": "American Institute of Mathematics",
   "description": "Finding online math curricular resources that are readily available, field-tested in a variety of settings, and known to be high quality is a challenge. This exploration project will (1) provide materials such as textbook content, videos, interactive applets, and instructor guides; (2) identify optimal methods for building comprehensive, quality-controlled, and curated libraries of freely reusable instructional materials for college-level mathematics courses; and (3) investigate the impact of such a library on faculty adoption of evidence-based teaching practices.",
   "author": "Jim Fowler",
