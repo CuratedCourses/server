@@ -51,16 +51,13 @@ head
   //- Fonts
   link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,500,700')
 
-  //- favicon.ico and apple-touch-icon(s)
-
-  //- Place favicon.ico and apple-touch-icon(s) in the root directory (public/)
-  //- In app.js make sure app.use(express.favicon(__dirname + '/public/favicon.ico')); is correct.
-
-  //- Here are the names and sizes needed:  (http://mathiasbynens.be/notes/touch-icons)
-  //-   - apple-touch-icon-152x152-precomposed.png
-  //-   - apple-touch-icon-120x120-precomposed.png
-  //-   - apple-touch-icon-76x76-precomposed.png
-  //-   - apple-touch-icon-60x60-precomposed.png
+  link(rel="apple-touch-icon",sizes="57x57",href="/favicon/favicon-57.png")
+  link(rel="apple-touch-icon",sizes="72x72",href="/favicon/favicon-72.png")
+  link(rel="apple-touch-icon",sizes="114x114",href="/favicon/favicon-114.png")
+  link(rel="apple-touch-icon",sizes="120x120",href="/favicon/favicon-120.png")
+  link(rel="apple-touch-icon",sizes="144x144",href="/favicon/favicon-144.png")
+  link(rel="apple-touch-icon",sizes="152x152",href="/favicon/favicon-152.png")
+  link(rel='shortcut icon',href='/favicon/favicon.ico',type='image/x-icon')
 
   //- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
   <!--[if lt IE 9]>
