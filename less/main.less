@@ -282,7 +282,13 @@ h1, h2 {
   margin: -15px 15px -15px 0;
 }
 .navbar-brand {
-  background-image: url(/favicon.png);
+/* Legacy IE does not support rgba values.  By defining a rgba
+ * background color together with the SVG background image for all
+ * modern browsers, legacy IE will ignore the SVG and use the first
+ * background definition containing the fallback PNG /
+  background: url(/favicon/favicon.png) no-repeat 0px 0px;
+  background: rgba(0,0,0,0) url(/favicon/favicon.svg) no-repeat 0px 0px;
+
   background-repeat: no-repeat;
   background-size: 40px;
   background-position: left center;
