@@ -1,0 +1,28 @@
+extends ../layouts/layout
+
+block head
+  title Meet the Team
+
+block styles
+
+block content
+  .mini-tron
+    .container
+      h1 Meet the team
+      p
+        | Great courses are often a collaboration, and #{application} is a collaboration, too
+  .container        
+    .row
+      .col-md-2
+      for person in team
+        .col-md-2
+          .thumbnail
+            img(src="/photographs/#{person.photograph}")
+            div.caption
+              h3
+                if person.homepage
+                  a(href=person.homepage) #{person.name}
+                else
+                  | #{person.name}
+              h4
+                a(href=person.institutionUrl) #{person.institution}

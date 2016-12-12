@@ -135,7 +135,7 @@ app.set('port', config.port);
 // Favicon - This middleware will come very early in your stack
 // (maybe even first) to avoid processing any other middleware
 // if we already know the request is for favicon.ico
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/favicon/favicon.ico'));
 
 // Report CSP violations (*ABOVE* CSURF in the middleware stack)
 // Browsers will post violations to this route

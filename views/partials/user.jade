@@ -1,0 +1,54 @@
+if user
+  //- Right side
+  ul.nav.navbar-nav.navbar-right
+    //- Visible to Admin users only!
+    if user.type == 'admin'
+      li.dropdown(class=url=='/administration'?'active':undefined)
+        a.dropdown-toggle(href='#', data-toggle='dropdown')
+          i.fa.fa-fw.fa-cogs
+          | &nbsp;Admin&nbsp;
+          b.caret
+        ul.dropdown-menu
+          li
+            a(href='/dashboard')
+              i.fa.fa-fw.fa-laptop
+              | &nbsp;Dashboard
+          li
+            a(href='/accounts')
+              i.fa.fa-fw.fa-users
+              | &nbsp;Accounts
+          li
+            a(href='/colors')
+              i.fa.fa-fw.fa-cog
+              | &nbsp;Color Scheme
+
+    //- User account
+    li.dropdown(class=url=='/account'?'active':undefined)
+      a.dropdown-toggle(href='#', data-toggle='dropdown')
+        if user.profile.picture
+          img.profile-image(src='#{user.profile.picture}')
+        else
+          img.profile-image(src='#{user.gravatar(60)}')
+        | #{user.profile.name || user.email || user.id}&nbsp;
+        b.caret
+      ul.dropdown-menu
+        li
+          a(href='/account')
+            i.fa.fa-fw.fa-user
+            | &nbsp;My Account
+        li
+          a(href='/contact')
+            i.fa.fa-fw.fa-envelope-o
+            | &nbsp;Contact Us
+        li.divider
+        li
+          a(href='/logout')
+            i.fa.fa-fw.fa-sign-out
+            | &nbsp;Logout 
+else
+  //- No user/not logged in
+  ul.nav.navbar-nav.navbar-right
+    li(class=url=='/login'?'active':undefined)
+      a(href='/login')
+        i.fa.fa-sign-in.fa-fw
+        | &nbsp;Sign In

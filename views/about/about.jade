@@ -1,0 +1,18 @@
+extends ../layouts/layout
+
+block head
+  title About #{application}
+
+block styles
+
+block content
+  .mini-tron
+    .container
+      h1 About #{application}
+      p
+        | Finding great resources is a first step to great student experiences
+
+  .container
+    .row
+      .col-sm-8
+        include:markdown about.md

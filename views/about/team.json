@@ -1,0 +1,32 @@
+[
+    {
+	"name": "Petra Bonfert-Taylor",
+	"homepage": "http://sites.dartmouth.edu/pbonfert/",
+	"institution": "Dartmouth University",
+        "institutionUrl": "http://engineering.dartmouth.edu/",
+	"photograph": "bonfert-taylor.jpg",
+	"email": "petra.b.taylor@dartmouth.edu"
+    },
+    {
+	"name": "Sarah Eichhorn",
+	"institution": "University of California, Irvine",
+        "institutionUrl": "http://unex.uci.edu/",		
+	"photograph": "eichhorn.jpg",			
+	"email": "s.eichhorn@uci.edu"
+    },	    
+    {
+	"name": "David Farmer",
+	"institution": "American Institute of Mathematics",
+        "institutionUrl": "http://aimath.org/",
+	"photograph": "farmer.jpg",
+	"email": "farmer@aimath.org"
+    },
+    {
+	"name": "Jim Fowler",
+	"homepage": "http://kisonecat.com/",		
+	"institution": "The Ohio State University",
+        "institutionUrl": "http://math.osu.edu/",		
+	"photograph": "fowler.jpg",	
+	"email": "fowler@math.osu.edu"
+    }
+]
