@@ -281,11 +281,13 @@ h1, h2 {
   height: 30px;
   margin: -15px 15px -15px 0;
 }
-.navbar-brand {
+
 /* Legacy IE does not support rgba values.  By defining a rgba
  * background color together with the SVG background image for all
  * modern browsers, legacy IE will ignore the SVG and use the first
- * background definition containing the fallback PNG /
+ * background definition containing the fallback PNG */
+
+.navbar-brand {
   background: url(/favicon/favicon.png) no-repeat 0px 0px;
   background: rgba(0,0,0,0) url(/favicon/favicon.svg) no-repeat 0px 0px;
 
@@ -449,6 +451,11 @@ h1, h2 {
 
 .mini-tron .container {
   position: relative;
+}
+
+/* Add extra space below body and above the sticky footer */
+body > .container {
+  padding-bottom: 60px;
 }
 
 @media (min-width: 768px) {
