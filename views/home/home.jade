@@ -1,7 +1,7 @@
 extends ../layouts/layout
 
 block head
-  title #{application} &middot; Welcome!
+  title #{application}
 
 block styles
   link(rel='stylesheet', href='/lib/animate.css/animate.css')
@@ -9,134 +9,71 @@ block styles
 block content
   .jumbotron.white
     .container
-      h1 CuratedCourses
       .row
-        .col-md-7.col-md-push-5
-          img.center-block.img-responsive.animated.bounceInLeft(alt='Skeleton App', src='img/Octocat.png', width='400px')
-        .col-md-4.col-md-offset-1.col-md-pull-7
-          ul.fa-ul.visible-md.visible-lg
-            li
-              i.fa.fa-li.fa-users
-              | Such Community!
-            li
-              i.fa.fa-li.fa-magic
-              | Much magic!
-            li
-              i.fa.fa-li.fa-cogs
-              | Statistics!  Gears!
-            li
-              i.fa.fa-li.fa-magic
-              | More magic!
-
-          br
-          a.btn.btn-white(href='/login', role='button') Sign in Now!
-      .row.hidden-xs
+        .col-md-7
+          div.embed-responsive.embed-responsive-16by9
+            iframe.embed-responsive-item(src="https://www.youtube.com/embed/hMOlNwzqBIk")
+        .col-md-5
+          h3 What is #{application}?
+          p Finding online education resources may not be difficult, but finding great resources known to be high-quality is a challenge.
+          p CuratedCourses is here to help.
+          div.btn-group.pull-right
+            a.btn.btn-white(href='/about', role='button')
+              | Learn More&nbsp;
+              i.fa.fa-chevron-right
+      hr.separator
+      .row.hidden-xs.hidden-sm
         .col-md-12
-          h2 Why choose #{application}?
-      .row.hidden-xs
+          h2 #{application} is&hellip;
+      .row.hidden-xs.hidden-sm
         .col-md-4
-          h3
-            i.fa.fa-group.fa-lg.green
-            | &nbsp;&nbsp;Built for you
-          p
-            | #{application} Is built with standard components such as Bootstrap and FontAwesome and is easy to customize.
+          h2.text-center
+            i.fa.fa-group.fa-lg.teal
+          h3.text-center
+            | Collaborative
+          hr.separator
+          if user
+            p
+              | Everyone can contribute to the #{application} catalog of great resources.
+          else
+            p
+              | Everyone can contribute.  Log in to propose an addition or edit to our collaborative catalog of great resources.
         .col-md-4
-          h3
-            i.fa.fa-bolt.fa-lg.yellow
-            | &nbsp;&nbsp;Lightning fast
+          h2.text-center
+            i.fa.fa-book.fa-lg.teal
+          h3.text-center                        
+            | Aligned
+          hr.separator
           p
-            | #{application} is optimized to ensure fast loading time. Google page speed index of 93/100 on a nodejitsu micro drone ($9/month).
-        .col-md-4
-          h3
-            i.fa.fa-tablet.fa-lg.fuchsia
-            | &nbsp;&nbsp;On every device
+            | The catalog of #{application} resources is aligned to popular textbooks, making it easy to integrate high-quality resources into your classroom.
+        .col-md-4            
+          h2.text-center                   
+            i.fa.fa-thumbs-o-up.fa-lg.teal
+          h3.text-center                               
+            | Reviewed
+          hr.separator
           p
-            | #{application} is built to look great on every device. Fully responsive for mobile devices to ensure the best user experience.
+            | The posted content is carefully curated by experts.  Search the repository to find content you can use today.
       .row
-        .col-md-4.col-md-offset-4
-          //- http://github.hubspot.com/odometer/
-          .github-count
-            span.odometer-label
-              a.white(href='http://github.com/CuratedCourses/server', rel='external')
-                i.fa.fa-github
-                | &nbsp;GitHub ★ :
-            .odometer.bg-purple 0
-
-//- Page-specific stuff
-block scripts
-  //- Async load odometer styles
-  script.
-    var cb = function() {
-      var l = document.createElement('link'); l.rel = 'stylesheet';
-      l.href = 'lib/odometer/themes/odometer-theme-minimal.css';
-      var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
-    };
-    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-        webkitRequestAnimationFrame || msRequestAnimationFrame;
-    if (raf) raf(cb);
-    else window.addEventListener('load', cb);
-
-  //- Tweak the styles a bit...
-  style.
-    .github-count {
-      margin-top:20px;
-      font-size: 20px;
-      text-align: center;
-    }
-    .odometer-label {
-      margin-right: 10px;
-      line-height: 1;
-      vertical-align: middle;
-    }
-    .odometer {
-      padding: 13px 21px 11px;
-      margin: auto;
-      line-height: 1 !important;
-      border-radius: 6px;
-    }
-    .odometer-label a {
-      text-decoration: none;
-    }
-    .odometer-label a:hover {
-      color: #B10DC9;
-    }
-
+        .col-md-4
+          if user
+            a.btn.btn-small.btn-default(href='/assets/new',role='button')
+              i.fa.fa-plus
+              | &nbsp;Add Resource
+          else
+            a.btn.btn-small.btn-default(href='/login',role='button')
+              i.fa.fa-sign-in
+              | &nbsp;Log In             
+        .col-md-4                
+          a.btn.btn-small.btn-default(href='/textbooks/',role='button')
+            i.fa.fa-eye
+            | &nbsp;View Textbooks
+        .col-md-4                
+          a.btn.btn-small.btn-default(href='/assets/search',role='button')
+            i.fa.fa-search
+            | &nbsp;Search Content
+      
   script.
     $(document).ready(function() {
       $('body').addClass('bg-brand1');
-
-      //- Get Mailcheck Script
-      $.ajax({
-        type: 'GET',
-        url: 'lib/odometer/odometer.min.js',
-        dataType: 'script',
-        cache: true
-      }).done(function() {
-          $(function(){
-            var starsOdometer = new Odometer({ el: $('.odometer')[0], theme: 'minimal', value: '0' });
-            starsOdometer.render()
-
-            var update = function() {
-              $.ajax('https://api.github.com/repos/CuratedCourses/server?access_token=1003ff07ff454596250e0bfa6940027a77a94866', {
-                cache: true,
-                success: function(data) {
-                  if (data.stargazers_count) {
-                    starsOdometer.update(data.stargazers_count);
-                  }
-                },
-                complete: function(xhr) {
-                  // Turn off rate limiting since we are using a token
-                  //remaining = xhr.getResponseHeader('X-RateLimit-Remaining');
-                  //setTimeout(update, 1000 * (4 + Math.pow(1.1, (60 - remaining))));
-                  setTimeout(update, 10000);
-                },
-                error: function(err) {
-                  console.log(err);
-                }
-              });
-            };
-
-            setTimeout(update, 1000);
-          });
-      });
     });

@@ -12,6 +12,7 @@ var favicon           = require('serve-favicon');           // https://github.co
 var session           = require('express-session');         // https://github.com/expressjs/session
 var compress          = require('compression');             // https://github.com/expressjs/compression
 var bodyParser        = require('body-parser');             // https://github.com/expressjs/body-parser
+var multipartParser   = require('multer')();
 var errorHandler      = require('errorhandler');            // https://github.com/expressjs/errorhandler
 var methodOverride    = require('method-override');         // https://github.com/expressjs/method-override
 
@@ -181,6 +182,10 @@ app.use(express.static(__dirname + '/public', { maxAge: week }));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// BADBAD: this is probably somewhat dangerous, but I have it here
+// because the CSRF tokens need to be processed
+app.use(multipartParser.any());
+
 // Easy form validation!
 // This line must be immediately after bodyParser!
 app.use(expressValidator());
@@ -327,8 +332,10 @@ app.use(helmet.contentSecurityPolicy({
     "'none'"
   ],
   frameSrc: [   // origins that can be embedded as frames
-    'http://checkout.stripe.com',
-    'https://checkout.stripe.com',
+      'http://checkout.stripe.com',
+      'http://www.youtube.com',
+      'https://checkout.stripe.com',
+      'https://www.youtube.com',      
   ],
   sandbox: [
     'allow-same-origin',
