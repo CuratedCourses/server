@@ -1,0 +1,27 @@
+extends ../layouts/layout
+
+block head
+  title Making Videos &middot; #{application}
+
+block styles
+
+block content
+  .mini-tron
+    .container
+      h1 Making Videos
+      p
+        | Some tutorials suggesting various techniques for making high-quality educational videos
+  .container
+    p If you can not find an already existing resource, then it may be time to make your own.  But how to get started?  Below are some tutorials outlining various techniques for creating videos.
+    for video in videos
+      .col-xs-6
+        div.thumbnail
+          div.embed-responsive.embed-responsive-16by9
+            iframe.embed-responsive-item(src=video.url)
+          div.caption
+            h3 #{video.technique}
+            h4.text-muted
+              a(href=video.instructorUrl) #{video.instructor}
+              br
+              small.text-muted
+                | #{video.title} at #{video.institution}

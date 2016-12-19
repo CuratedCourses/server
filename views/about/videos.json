@@ -1,0 +1,42 @@
+[
+    {
+	"url": "https://www.youtube.com/embed/NRpAilSSiL0",
+	"instructor": "Shaunt Kouyoumdjian",
+	"title": "Media Services Manager",
+	"institution": "University of California, Irvine",
+	"technique": "Green Screen"
+    },
+    {
+	"url": "https://www.youtube.com/embed/Z2AtYlvUSC0",
+	"instructor": "Jim Fowler",
+	"instructorUrl": "http://kisonecat.com/",
+	"title": "Assistant Professor",
+	"institution": "The Ohio State University",
+	"technique": "Paper and Pen"
+    },
+    {
+	"url": "https://www.youtube.com/embed/MsK8MlapUdQ",
+	"instructor": "Joy Zhou",
+	"instructorUrl": "http://yingzhou.weebly.com/",
+	"title": "Assistant Professor",
+	"institution": "Lafayette College",
+	"technique": "Microsoft Surface Tablet"
+    },    
+    {
+	"url": "https://www.youtube.com/embed/C1qaRgoDRtw",
+	"instructor": "Petra Bonfert-Taylor",
+	"instructorUrl": "http://sites.dartmouth.edu/pbonfert/",
+	"title": "Professor and Instructional Designer",
+	"institution": "Dartmouth College",
+	"technique": "Voiceover Beamer"
+
+    },
+    {
+	"url": "https://www.youtube.com/embed/SyG3AqbJNpY",
+	"instructor": "Tom Roby",
+	"instructorUrl": "http://www.math.uconn.edu/~troby/",
+	"title": "Associate Professor",
+	"institution": "University of Connecticut",
+	"technique": "Lightboard"
+    }
+]
