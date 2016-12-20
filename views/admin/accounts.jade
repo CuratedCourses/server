@@ -27,9 +27,6 @@ block content
             strong Location:
             |  <span id='userInfoLocation'></span>
           p.hidden-xs
-            strong Gender:
-            |  <span id='userInfoGender'></span>
-          p.hidden-xs
             strong Website:
             | &nbsp;
             a(href='', id='userInfoWebsite')
@@ -165,7 +162,6 @@ block scripts
       $('#userInfoName').text(thisUserObject.profile.name);
       $('#userInfoEmail').attr('href', 'mailto:' + thisUserObject.email).text(thisUserObject.email);
       $('#userInfoLocation').text(thisUserObject.profile.location);
-      $('#userInfoGender').text(thisUserObject.profile.gender);
       if (thisUserObject.profile.website) {
         $('#userInfoWebsite').attr('href', thisUserObject.profile.website).text('Website Link');
       }
