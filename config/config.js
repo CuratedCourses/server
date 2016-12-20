@@ -99,11 +99,6 @@ config.smtp                    = {};
 config.smtp.name               = process.env.SMTP_FROM_NAME    || 'support';
 config.smtp.address            = process.env.SMTP_FROM_ADDRESS || 'support@skeleton.com';
 
-// How are we sending it?
-config.gmail                   = {};
-config.gmail.user              = process.env.SMTP_USERNAME || 'you@gmail.com';
-config.gmail.password          = process.env.SMTP_PASSWORD || 'appspecificpassword';
-
 /**
  * Authorization Configuration
  */
