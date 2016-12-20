@@ -128,7 +128,7 @@ module.exports.controller = function (app) {
 	    });
 	} else {
 	    req.flash('error', { msg: 'You must contribute either a URL or choose a file to upload.' } );
-	    res.render('assets/add', { url: req.url });
+	    res.render('assets/new', { url: req.url });
 	}
     });
 
