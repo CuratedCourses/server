@@ -37,9 +37,10 @@ block content
               div.media-left
                 a(href="#")
                   if asset.submitter.profile.picture
-                    img.media-object(src='#{user.profile.picture}',width=64,height=64)
+                    img.media-object(src='#{asset.submitter.profile.picture}',width=64,height=64)
                   else
-                     img.media-object(src='#{user.gravatar(60)}',width=64,height=64)
+                    if asset.submitter.gravatar(60)
+                      img.media-object(src='#{asset.submitter.gravatar(60)}',width=64,height=64)
               div.media-body
                 h4.media-heading
                   | Submitted By #{asset.submitter.profile.name || asset.submitter.email || asset.submitter.id}&nbsp;
