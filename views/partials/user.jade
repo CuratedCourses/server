@@ -36,13 +36,13 @@ if user
         b.caret
       ul.dropdown-menu
         li
+          a(href='/users/' + user._id + '/assets')
+            i.fa.fa-fw.fa-tasks
+            | &nbsp;My Contributions
+        li
           a(href='/account')
             i.fa.fa-fw.fa-user
             | &nbsp;My Account
-        li
-          a(href='/contact')
-            i.fa.fa-fw.fa-envelope-o
-            | &nbsp;Contact Us
         li.divider
         li
           a(href='/logout')
