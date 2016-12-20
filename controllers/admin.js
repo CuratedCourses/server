@@ -72,10 +72,4 @@ module.exports.controller = function (app) {
    * Render Dashboard Page
    */
 
-  app.get('/colors', passportConf.isAuthenticated, passportConf.isAdministrator, function (req, res) {
-    res.render('admin/colors', {
-      url: '/administration'  // to set navbar active state
-    });
-  });
-
 };
