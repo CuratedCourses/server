@@ -315,7 +315,9 @@ app.use(helmet.contentSecurityPolicy({
     'http://chart.googleapis.com',
     'https://chart.googleapis.com',
     'http://www.google-analytics.com',
-    'https://www.google-analytics.com'
+    'https://www.google-analytics.com',
+    'http://images.amazon.com/',
+    'https://images.amazon.com/',      
   ],
   mediaSrc: [
     "'self'"
@@ -447,7 +449,7 @@ app.use(function (err, req, res, next) {
 if (app.get('env') === 'production') {
   app.use(function (err, req, res, next) {
     res.status(err.status || 500);
-    debug('Error: ' + (err.status || 500).toString().red.bold + ' ' + err);
+    debug('Error: ' + (err.status || 500).toString() + ' ' + err);
     res.render('error/500', {
       error: {}  // don't leak information
     });
@@ -458,7 +460,7 @@ if (app.get('env') === 'production') {
 if (app.get('env') === 'development') {
   app.use(function (err, req, res, next) {
     res.status(err.status || 500);
-    debug('Error: ' + (err.status || 500).toString().red.bold + ' ' + err);
+    debug('Error: ' + (err.status || 500).toString() + ' ' + err);
     res.render('error/500', {
       error: err
     });
@@ -481,34 +483,34 @@ if (app.get('env') === 'development') {
  */
 
 db.on('error', function () {
-  debug('MongoDB Connection Error. Please make sure MongoDB is running.'.red.bold);
+  debug('MongoDB Connection Error. Please make sure MongoDB is running.');
   process.exit(0);
 });
 
 db.on('open', function () {
-  debug('Mongodb ' + 'connected!'.green.bold);
+  debug('Mongodb ' + 'connected!'.green);
 
   // "server.listen" for socket.io
   server.listen(app.get('port'), function () {
 
     // Test for correct node version as spec'ed in package.info
     if (!semver.satisfies(process.versions.node, config.engine)) {
-      debug('Error: unsupported version of Node or io.js!'.red.bold);
-      debug(config.name.red.bold + ' needs Node or io.js version '.red.bold + config.engine.red.bold);
+      debug('Error: unsupported version of Node or io.js!'.red);
+      debug(config.name.red + ' needs Node or io.js version '.red + config.engine.red);
       process.exit(0);
     }
 
     // Log how we are running
-    debug('listening on port ' + app.get('port').toString().green.bold);
-    debug('listening in ' + app.settings.env.green.bold + ' mode.');
-    debug('Ctrl+C'.green.bold + ' to shut down. ;)');
+    debug('listening on port ' + app.get('port').toString().green);
+    debug('listening in ' + app.settings.env.green + ' mode.');
+    debug('Ctrl+C'.green + ' to shut down. ;)');
 
     // Exit cleanly on Ctrl+C
     process.on('SIGINT', function () {
       io.close();  // close socket.io
       console.log('\n');
-      debug('has ' + 'shutdown'.green.bold);
-      debug('was running for ' + Math.round(process.uptime()).toString().green.bold + ' seconds.');
+      debug('has ' + 'shutdown'.green);
+      debug('was running for ' + Math.round(process.uptime()).toString().green + ' seconds.');
       process.exit(0);
     });
   });

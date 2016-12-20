@@ -1,5 +1,5 @@
 ul.nav.navbar-nav
-  li.dropdown(class=(url.match(/^\/about/))?'active':undefined)
+  li.dropdown(class=(url && url.match(/^\/about/))?'active':undefined)
     a.dropdown-toggle(href='#', data-toggle='dropdown')
       i.fa.fa-fw.fa-info-circle
       | &nbsp;About&nbsp;
@@ -10,75 +10,18 @@ ul.nav.navbar-nav
           i.fa.fa-fw.fa-building-o
           | &nbsp;About #{application}
       li
+        a(href='/about/making-videos')
+          i.fa.fa-fw.fa-video-camera
+          | &nbsp;Help making videos      
+      li
         a(href='/about/team')
           i.fa.fa-fw.fa-users
           | &nbsp;About the team
-    
-  li.dropdown(class=url=='/apiopen'?'active':undefined)
-    a.dropdown-toggle(href='#', data-toggle='dropdown')
-      i.fa.fa-fw.fa-laptop
-      | &nbsp;APIs (open)&nbsp;
-      b.caret
-    ul.dropdown-menu
-      li
-        a(href='/api/lastfm')
-          i.fa.fa-fw.fa-laptop
-          | &nbsp;Last.fm
-      li
-        a(href='/api/nyt')
-          i.fa.fa-fw.fa-laptop
-          | &nbsp;New York Times
-      li
-        a(href='/api/twilio')
-          i.fa.fa-fw.fa-laptop
-          | &nbsp;Twilio
-      li
-        a(href='/api/scraping')
-          i.fa.fa-fw.fa-laptop
-          | &nbsp;Hacker News
-      li
-        a(href='/api/socrata')
-          i.fa.fa-fw.fa-laptop
-          | &nbsp;Open Data
-      li
-        a(href='/api/creditcard')
-          i.fa.fa-fw.fa-laptop
-          | &nbsp;Credit Card Form
-      li
-        a(href='/api/react')
-          i.fa.fa-fw.fa-laptop
-          | &nbsp;React Markdown Editor
-  li.dropdown(class=url=='/apilocked'?'active':undefined)
-    a.dropdown-toggle(href='#', data-toggle='dropdown')
-      i.fa.fa-fw.fa-lock
-      | &nbsp;APIs (auth req'd) &nbsp;
-      b.caret
-    ul.dropdown-menu
-      li
-        a(href='/api/facebook')
-          i.fa.fa-fw.fa-lock
-          | &nbsp;Facebook
-      li
-        a(href='/api/foursquare')
-          i.fa.fa-fw.fa-lock
-          | &nbsp;Foursquare
-      li
-        a(href='/api/github')
-          i.fa.fa-fw.fa-lock
-          | &nbsp;GitHub
-      li
-        a(href='/api/paypal')
-          i.fa.fa-fw.fa-lock
-          | &nbsp;PayPal
-      li
-        a(href='/api/stripe')
-          i.fa.fa-fw.fa-lock
-          | &nbsp;Stripe
-      li
-        a(href='/api/tumblr')
-          i.fa.fa-fw.fa-lock
-          | &nbsp;Tumblr
-      li
-        a(href='/api/twitter')
-          i.fa.fa-fw.fa-lock
-          | &nbsp;Twitter
+  li(class=(url && url.match(/^\/textbooks\//))?'active':undefined)
+    a(href='/textbooks/')
+      i.fa.fa-book.fa-fw
+      | &nbsp;Textbooks
+  li(class=(url && url.match(/^\/assets\//))?'active':undefined)
+    a(href='/assets/')
+      i.fa.fa-file-o.fa-fw
+      | &nbsp;Resources

@@ -27,6 +27,7 @@
   #IMPORTS
 \*------------------------------------*/
 
+
 /**
  * First, import base frameworks and fonts:
  *
@@ -37,11 +38,33 @@
 
 @import "bootstrap.less";
 @import "../public/lib/bootstrap-social/bootstrap-social.less";
-@import "../public/lib/font-awesome/less/font-awesome.less";
-@fa-font-path: "../lib/font-awesome/fonts";
+
+@import "../public/lib/font-awesome/less/variables.less";
+@fa-font-path: "/lib/font-awesome/fonts";
+@import "../public/lib/font-awesome/less/mixins.less";
+@import "../public/lib/font-awesome/less/path.less";
+@import "../public/lib/font-awesome/less/core.less";
+@import "../public/lib/font-awesome/less/larger.less";
+@import "../public/lib/font-awesome/less/fixed-width.less";
+@import "../public/lib/font-awesome/less/list.less";
+@import "../public/lib/font-awesome/less/bordered-pulled.less";
+@import "../public/lib/font-awesome/less/animated.less";
+@import "../public/lib/font-awesome/less/rotated-flipped.less";
+@import "../public/lib/font-awesome/less/stacked.less";
+@import "../public/lib/font-awesome/less/icons.less";
 
 
+@import '../public/lib/bootstrap-select/less/bootstrap-select.less';
 
+@import "../public/lib/eonasdan-bootstrap-datetimepicker/src/less/_bootstrap-datetimepicker.less";
+
+/* To handle rebasing the URLs, I include most of the variables.less file here */
+@flag-icon-css-path: "../lib/flag-icon-css/flags";
+@flag-icon-rect-path: "/4x3";
+@flag-icon-square-path: "/1x1";
+@import '../public/lib/flag-icon-css/less/flag-icon-base.less';
+@import '../public/lib/flag-icon-css/less/flag-icon-list.less';
+@import '../public/lib/flag-icon-css/less/flag-icon-more.less';
 
 
 /*------------------------------------*\
@@ -517,6 +540,7 @@ a.noDecoration:hover {
   /* Sticky footer styles below */
   position: absolute;
   bottom: 0;
+  padding-top: 15px;
   height: 240px;
   width: 100%;
   /* Sticky footer styles end */

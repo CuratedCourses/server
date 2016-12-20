@@ -1,5 +1,7 @@
 doctype html
 html(lang="en")
+  if !scripts
+    - var scripts = [];
   include ../partials/head
   body
     include ../partials/navigation

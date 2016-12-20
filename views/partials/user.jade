@@ -23,6 +23,13 @@ if user
               | &nbsp;Color Scheme
 
     //- User account
+    li
+      a(href='/assets/new')
+        i.fa.fa-plus.fa-fw
+        | &nbsp;Add Content
+    li
+      include search
+    
     li.dropdown(class=url=='/account'?'active':undefined)
       a.dropdown-toggle(href='#', data-toggle='dropdown')
         if user.profile.picture
@@ -48,6 +55,8 @@ if user
 else
   //- No user/not logged in
   ul.nav.navbar-nav.navbar-right
+    li
+      include search  
     li(class=url=='/login'?'active':undefined)
       a(href='/login')
         i.fa.fa-sign-in.fa-fw

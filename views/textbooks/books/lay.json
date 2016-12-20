@@ -1,0 +1,785 @@
+{
+  "_id": "lay",
+  "free": false,
+  "libre": false,
+  "title": "Linear Algebra and Its Applications",
+  "edition": "5th edition",
+  "authors": [
+    "David C. Lay",
+    "Steven R. Lay",
+    "Judi J. McDonald"
+  ],
+  "coverUrl": "http://images.amazon.com/images/P/032198238X.01_LZZZZZZZ_.jpg",
+  "contentUrl": "https://www.amazon.com/Linear-Algebra-Its-Applications-5th/dp/032198238X",
+  "sections": [
+    {
+      "number": "1",
+      "title": "Linear Equations in Linear Algebra",
+      "sections": [
+        {
+          "number": "1.1",
+          "title": "Systems of Linear Equations",
+          "tags": [
+            "math.la.d.lineqn",
+            "math.la.d.lineqn.coeff",
+            "math.la.d.linsys",
+            "math.la.d.linsys.soln",
+            "math.la.d.linsys.soln_set",
+            "math.la.d.linsys.equiv",
+            "math.la.t.linsys.zoi",
+            "math.la.d.linsys.consistent",
+            "math.la.d.linsys.inconsistent",
+            "math.la.d.mat",
+            "math.la.d.mat.coeff",
+            "math.la.d.mat.augmented",
+            "math.la.d.mat.size",
+            "math.la.d.mat.m_by_n",
+            "math.la.d.mat.row_op",
+            "math.la.d.mat.row_equiv",
+            "math.la.t.mat.row_equiv.linsys"
+          ]
+        },
+        {
+          "number": "1.2",
+          "title": "Row Reduction and Echelon Forms",
+          "tags": [
+            "math.la.d.mat.row.leading",
+            "math.la.d.mat.row_echelon_form",
+            "math.la.d.mat.rref",
+            "math.la.d.mat.echelon",
+            "math.la.d.mat.reduced_echelon",
+            "math.la.d.mat.row_reduce",
+            "math.la.t.mat.rref.exists_and_is_unique",
+            "math.la.d.mat.echelon_of",
+            "math.la.d.mat.rref_of",
+            "math.la.d.mat.pivot_position",
+            "math.la.d.mat.pivot_col",
+            "math.la.d.mat.pivot",
+            "math.la.d.insys.variable.basic",
+            "math.la.d.insys.variable.free",
+            "math.la.t.rref.consistent"
+          ]
+        },
+        {
+          "number": "1.3",
+          "title": "Vector Equations",
+          "tags": [
+            "math.la.d.vec.col.coord",
+            "math.la.d.vec.coord",
+            "math.la.d.vec.equal.coord",
+            "math.la.d.vec.sum.coord",
+            "math.la.d.vec.scalar.mult.coord",
+            "math.la.d.scalar",
+            "math.la.t.vec.sum.geometric.RnCn",
+            "math.la.t.vec.axioms.rncn",
+            "math.la.d.vec.lincomb.coord",
+            "math.la.d.vec.lincomb.weight.coord",
+            "math.la.t.linsys.vec",
+            "math.la.d.vec.span.coord",
+            "math.la.c.vec.span.geometric.RnCn"
+          ]
+        },
+        {
+          "number": "1.4",
+          "title": "The Matrix Equation Ax = b",
+          "tags": [
+            "math.la.d.mat.vec.prod",
+            "math.la.d.mat.eqn",
+            "math.la.t.mat.eqn.linsys",
+            "math.la.t.mat.eqn.lincomb",
+            "math.la.t.equiv.mat.eqn",
+            "math.la.t.equiv.col.span",
+            "math.la.t.equiv.row.pivot",
+            "math.la.d.mat.vec.prod.coord",
+            "math.la.t.mat.vec.prod.assoc",
+            "math.la.t.mat.scalar.prod.commut"
+          ]
+        },
+        {
+          "number": "1.5",
+          "title": "Solution Sets of Linear Systems",
+          "tags": [
+            "math.la.d.linsys.homog",
+            "math.la.d.linsys.homog.trivial",
+            "math.la.d.linsys.homog.nontrivial",
+            "math.la.t.linsys.homog.nontrivial",
+            "math.la.c.linsys.soln_set.vec",
+            "math.la.t.nonhomog.particular_plus_homog"
+          ]
+        },
+        {
+          "number": "1.6",
+          "title": "Applications of Linear Systems"
+        },
+        {
+          "number": "1.7",
+          "title": "Linear Independence",
+          "tags": [
+            "math.la.d.vec.linindep.coord",
+            "math.la.d.vec.lindep.relation",
+            "math.la.t.equiv.mat.eqn.homog",
+            "math.la.t.equiv.col.linindep",
+            "math.la.t.vec.lindep.two",
+            "math.la.t.vec.lindep.coord",
+            "math.la.t.vec.lindep.more.RnCn",
+            "math.la.p.vec.lindep.more.RnCn",
+            "math.la.t.vec.lindep.zero",
+            "math.la.p.vec.lindep.zero",
+            "math.la.p.vec.lindep.coord"
+          ]
+        },
+        {
+          "number": "1.8",
+          "title": "Introduction to Linear Transformations",
+          "tags": [
+            "math.functions.d.transformation",
+            "math.functions.d.transformation.domain",
+            "math.functions.d.transformation.codomain",
+            "math.functions.d.transformation.image",
+            "math.functions.d.transformation.range",
+            "math.la.c.transformation.matrix",
+            "math.la.d.lintrans.coord",
+            "math.la.t.mat.vec.mult.lintrans",
+            "math.la.t.lintrans.z",
+            "math.la.t.lintrans.lincomb"
+          ]
+        },
+        {
+          "number": "1.9",
+          "title": "The Matrix of a Linear Transformation",
+          "tags": [
+            "math.la.t.lintrans.mat.basis.standard.coord",
+            "math.la.d.lintrans.mat.basis.standard.coord",
+            "math.la.t.mat.rotation",
+            "math.la.c.lintrans.geometric.r2",
+            "math.la.math.functions.d.mapping.onto",
+            "math.la.math.functions.d.mapping.onetoone",
+            "math.la.t.lintrans.onetoone.ker",
+            "math.la.t.lintrans.onto.span",
+            "math.la.t.lintrans.onetoone.linindep"
+          ]
+        },
+        {
+          "number": "1.10",
+          "title": "Linear Models in Business, Science, and Engineering"
+        },
+        {
+          "number": "",
+          "title": "Supplementary Exercises"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "Matrix Algebra",
+      "sections": [
+        {
+          "number": "2.1",
+          "title": "Matrix Operations",
+          "tags": [
+            "math.la.d.mat.thediagonal",
+            "math.la.d.mat.diagonal",
+            "math.la.d.mat.identity",
+            "math.la.d.mat.zero",
+            "math.la.d.mat.equal",
+            "math.la.d.mat.sum",
+            "math.la.d.mat.scalar.mult",
+            "math.la.t.mat.add.commut_assoc",
+            "math.la.t.mat.scalar.mult.commut_assoc",
+            "math.la.d.mat.mult.col",
+            "math.la.d.mat.mult.coord",
+            "math.la.t.mat.mult.assoc",
+            "math.la.t.mat.mult.distributive",
+            "math.la.t.mat.mult.identity",
+            "math.la.c.mat.mult.commut",
+            "math.la.c.mat.mult.cancellation",
+            "math.la.c.mat.mult.zero_divisor",
+            "math.la.d.mat.transpose",
+            "math.la.t.mat.transpose.involution",
+            "math.la.t.mat.mult.transpose"
+          ]
+        },
+        {
+          "number": "2.2",
+          "title": "The Inverse of a Matrix",
+          "tags": [
+            "math.la.d.mat.inv",
+            "math.la.d.mat.singular.inv",
+            "math.la.t.mat.inv.2by2",
+            "math.la.t.mat.det.2x2",
+            "math.la.t.equiv.inverse",
+            "math.la.t.mat.inv.involution",
+            "math.la.t.mat.inv.shoesandsocks",
+            "math.la.t.mat.inv.transpose",
+            "math.la.d.mat.elementary",
+            "math.la.d.mat.mult.elementary",
+            "math.la.d.mat.elementary.inv",
+            "math.la.t.equiv.identity",
+            "math.la.t.mat.inv.augmented"
+          ]
+        },
+        {
+          "number": "2.3",
+          "title": "Characterizations of Invertible Matrices",
+          "tags": [
+            "math.la.t.equiv.lintrans.onetoone",
+            "math.la.t.equiv.lintrans.onto",
+            "math.la.t.equiv.inv.left",
+            "math.la.t.equiv.inv.right",
+            "math.la.t.equiv.transpose.inv",
+            "math.la.t.mat.inv.unique",
+            "math.la.d.lintrans.invertible.coord",
+            "math.la.t.equiv.lintrans.inv",
+            "math.la.c.mat.illconditioned",
+            "math.la.c.mat.conditionnumber",
+            "math.la.d.mat.triangular.upper.exer",
+            "math.la.d.mat.triangular.lower.exer"
+          ]
+        },
+        {
+          "number": "2.4",
+          "title": "Partitioned Matrices",
+          "tags": [
+            "math.la.d.mat.[block|partitioned]",
+            "math.la.c.mat.mult.[block|partitioned]",
+            "math.la.t.mat.mult.row.col",
+            "math.la.d.mat.block_diagonal"
+          ]
+        },
+        {
+          "number": "2.5",
+          "title": "Matrix Factorizations",
+          "tags": [
+            "math.la.d.mat.lu",
+            "math.la.t.mat.lu",
+            "math.la.d.mat.lu.reduced.exer",
+            "math.la.d.mat.rank_factorization.exer",
+            "math.la.d.mat.qr.exer",
+            "math.la.d.mat.svd.exer",
+            "math.la.d.mat.band.exer"
+          ]
+        },
+        {
+          "number": "2.6",
+          "title": "The Leontief Input-Output Model"
+        },
+        {
+          "number": "2.7",
+          "title": "Applications to Computer Graphics"
+        },
+        {
+          "number": "2.8",
+          "title": "Subspaces of Rn",
+          "tags": [
+            "math.la.d.vsp.subspace.coord",
+            "math.la.d.vec.span.subspace.coord",
+            "math.la.d.mat.col_space",
+            "math.la.t.mat.col_space.rncn",
+            "math.la.d.mat.null_space.right",
+            "math.la.t.mat.null_space.rncn",
+            "math.la.d.vsp.basis.coord",
+            "math.la.d.vsp.basis.standard.rncn",
+            "math.la.t.mat.col_space.pivot"
+          ]
+        },
+        {
+          "number": "2.9",
+          "title": "Dimension and Rank",
+          "tags": [
+            "math.la.d.vsp.basis.relative.coord",
+            "math.la.d.vsp.dim.coord",
+            "math.la.d.mat.rank",
+            "math.la.t.mat.ranknullity",
+            "math.la.t.vsp.dim.span.coord",
+            "math.la.t.vsp.dim.linindep.coord",
+            "math.la.t.equiv.col.dim",
+            "math.la.t.equiv.rank",
+            "math.la.t.equiv.nullspace",
+            "math.la.t.equiv.nullity"
+          ]
+        },
+        {
+          "number": "",
+          "title": "Supplementary Exercises"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "Determinants",
+      "sections": [
+        {
+          "number": "3.1",
+          "title": "Introduction to Determinants",
+          "tags": [
+            "math.la.t.mat.det.3x3",
+            "math.la.d.mat.det.cofactor",
+            "math.la.t.mat.det.cofactor",
+            "math.la.t.mat.det.trianglar"
+          ]
+        },
+        {
+          "number": "3.2",
+          "title": "Properties of Determinants",
+          "tags": [
+            "math.la.t.mat.det.elementaryoperations",
+            "math.la.t.mat.det.echelon",
+            "math.la.t.equiv.det",
+            "math.la.t.mat.det.transpose",
+            "math.la.t.mat.det.product",
+            "math.la.t.mat.elementary.det"
+          ]
+        },
+        {
+          "number": "3.3",
+          "title": "Cramer's Rule, Volume, and Linear Transformations",
+          "tags": [
+            "math.la.t.cramer",
+            "math.la.d.mat.[adjugate|classicaladjoint]",
+            "math.la.t.mat.inv.cofactor",
+            "math.la.t.mat.det.col.[area|volume]",
+            "math.la.t.lintrans.det.volume",
+            "math.la.d.mat.vandermonde.exer"
+          ]
+        },
+        {
+          "number": "",
+          "title": "Supplementary Exercises"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "Vector Spaces",
+      "sections": [
+        {
+          "number": "4.1",
+          "title": "Vector Spaces and Subspaces",
+          "tags": [
+            "math.la.d.vec.arb",
+            "math.la.d.vec.add.arb",
+            "math.la.d.vec.scalar.mult.arb",
+            "math.la.d.vsp.axioms.arb",
+            "math.la.d.vsp.vector.negative",
+            "math.la.t.vsp.scalar.mult.z",
+            "math.la.t.vsp.vector.mult.z",
+            "math.la.t.vsp.vector.negative",
+            "math.la.math.functions.d.polynomial.degree",
+            "math.la.math.functions.d.polynomial.z",
+            "math.la.e.vsp.polynomial.leq_n",
+            "math.la.e.vsp.function",
+            "math.la.d.vsp.subspace.arb",
+            "math.la.d.vsp.subspace.z",
+            "math.la.e.vsp.polynomial",
+            "math.la.d.vec.lincomb.arb",
+            "math.la.d.vec.span.arb",
+            "math.la.t.vsp.span.arb",
+            "math.la.d.vec.span.subspace.arb",
+            "math.la.d.vsp.span.set.arb",
+            "math.la.d.vsp.subspace.intersection.arb.exer",
+            "math.la.t.vsp.subspace.intersection.arb.exer",
+            "math.la.d.vsp.subspace.sum.arb.exer",
+            "math.la.t.vsp.subspace.sum.arb.exer"
+          ]
+        },
+        {
+          "number": "4.2",
+          "title": "Null Spaces, Column Spaces, and Linear Transformations",
+          "tags": [
+            "math.la.d.mat.null_space.right.rep",
+            "math.la.t.mat.null_space.rncn.rep",
+            "math.la.d.mat.col_space.rep",
+            "math.la.t.mat.col_space.rncn.rep",
+            "math.la.d.lintrans.arb"
+          ]
+        },
+        {
+          "number": "4.3",
+          "title": "Linearly Independent Sets; Bases",
+          "tags": [
+            "math.la.d.vec.linindep.arb",
+            "math.la.d.vec.lindep.relation.rep",
+            "math.la.t.vec.lindep.arb",
+            "math.la.d.vsp.basis.arb",
+            "math.la.d.vsp.basis.standard.rncn.rep",
+            "math.la.d.vsp.basis.standard.leq_n",
+            "math.la.t.vsp.span.lindep",
+            "math.la.t.vsp.span.basis",
+            "math.la.t.mat.col_space.pivot.rep"
+          ]
+        },
+        {
+          "number": "4.4",
+          "title": "Coordinate Systems",
+          "tags": [
+            "math.la.t.vsp.basis.coord.unique",
+            "math.la.d.vsp.basis.relative.arb",
+            "math.la.d.vsp.basis.coord.[vector|mapping].arb",
+            "math.la.d.vsp.basis.coord.change.rncn",
+            "math.la.t.vsp.basis.coord.mapping.arb",
+            "math.la.d.vsp.isomorphism"
+          ]
+        },
+        {
+          "number": "4.5",
+          "title": "The Dimension of a Vector Space",
+          "tags": [
+            "math.la.t.vsp.dim.more.lindep.arb",
+            "math.la.t.vsp.dim.arb",
+            "math.la.d.vsp.dim.arb",
+            "math.la.d.vsp.dim.finite_infinite.arb",
+            "math.la.t.vsp.linindep.basis.arb",
+            "math.la.t.vsp.subspace.dim.arb",
+            "math.la.t.vsp.dim.linindep.arb",
+            "math.la.t.vsp.dim.span.arb"
+          ]
+        },
+        {
+          "number": "4.6",
+          "title": "Rank",
+          "tags": [
+            "math.la.d.mat.row_space",
+            "math.la.d.mat.row_space.row_equiv",
+            "math.la.d.mat.rank.rep",
+            "math.la.d.mat.nullity",
+            "math.la.t.mat.row_space.col_space",
+            "math.la.t.mat.ranknullity.rep"
+          ]
+        },
+        {
+          "number": "4.7",
+          "title": "Change of Basis",
+          "tags": [
+            "math.la.d.vsp.change_of_basis.arb",
+            "math.la.t.vsp.change_of_basis.arb"
+          ]
+        },
+        {
+          "number": "4.8",
+          "title": "Applications to Difference Equations"
+        },
+        {
+          "number": "4.9",
+          "title": "Applications to Markov Chains"
+        },
+        {
+          "number": "",
+          "title": "Supplementary Exercises"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Eigenvalues and Eigenvectors",
+      "sections": [
+        {
+          "number": "5.1",
+          "title": "Eigenvectors and Eigenvalues",
+          "tags": [
+            "math.la.d.mat.eigvec",
+            "math.la.d.mat.eig",
+            "math.la.d.mat.eigsp",
+            "math.la.t.mat.eig.triangular",
+            "math.la.t.mat.eigvec.linindep"
+          ]
+        },
+        {
+          "number": "5.2",
+          "title": "The Characteristic Equation",
+          "tags": [
+            "math.la.d.mat.det.echelon",
+            "math.la.t.equiv.det.rep",
+            "math.la.t.equiv.eig",
+            "math.la.t.mat.det.product.rep",
+            "math.la.d.mat.charpoly.eqn",
+            "math.la.t.mat.charpoly.eqn.eig",
+            "math.la.d.mat.charpoly",
+            "math.la.d.mat.eig.multiplicity",
+            "math.la.d.mat.similar",
+            "math.la.d.mat.similar.transform",
+            "math.la.t.mat.similar.eig"
+          ]
+        },
+        {
+          "number": "5.3",
+          "title": "Diagonalization",
+          "tags": [
+            "math.la.d.mat.diagonalizable",
+            "math.la.t.mat.diagonalizable",
+            "math.la.t.mat.diagonalized_by",
+            "math.la.t.mat.diagonalizable.distinct",
+            "math.la.t.mat.eig.multiplicity.eigenspace",
+            "math.la.t.mat.diagonalizable.eigenspace",
+            "math.la.t.mat.diagonalizable.charpoly",
+            "math.la.t.mat.diagonalizable.basis"
+          ]
+        },
+        {
+          "number": "5.4",
+          "title": "Eigenvectors and Linear Transformations",
+          "tags": [
+            "math.la.d.lintrans.mat.repn.arb",
+            "math.la.d.lintrans.mat.repn.self.arb",
+            "math.la.UNKNOWN"
+          ]
+        },
+        {
+          "number": "5.5",
+          "title": "Complex Eigenvalues",
+          "tags": [
+            "math.la.d.vec.[real|imaginary].cn",
+            "math.la.t.mat.real.eig.cn",
+            "math.la.t.mat.real.diagonalize.complex.2x2"
+          ]
+        },
+        {
+          "number": "5.6",
+          "title": "Discrete Dynamical Systems"
+        },
+        {
+          "number": "5.7",
+          "title": "Applications to Differential Equations"
+        },
+        {
+          "number": "5.8",
+          "title": "Iterative Estimates for Eigenvalues"
+        },
+        {
+          "number": "",
+          "title": "Supplementary Exercises"
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "Orthogonality and Least Squares",
+      "sections": [
+        {
+          "number": "6.1",
+          "title": "Inner Product, Length, and Orthogonality",
+          "tags": [
+            "math.la.d.innerproduct.real.coord",
+            "math.la.t.innerproduct.commutative.coord",
+            "math.la.t.innerproduct.distributive.coord",
+            "math.la.t.innerproduct.commutative.scalar.real.coord",
+            "math.la.t.innerproduct.self.nonnegative.coord",
+            "math.la.t.innerproduct.self.z.coord",
+            "math.la.d.vec.[norm|length].coord",
+            "math.la.d.vec.unit.coord",
+            "math.la.d.distance.coord",
+            "math.la.d.vec.orthogonal",
+            "math.la.t.vec.orthogonal",
+            "math.la.d.vec.subspace.orthogonal",
+            "math.la.d.subspace.orthogonal_complement",
+            "math.la.t.subspace.orthogonal_complement.basis",
+            "math.la.t.subspace.orthogonal_complement",
+            "math.la.t.mat.row.null.orthogonal_complement"
+          ]
+        },
+        {
+          "number": "6.2",
+          "title": "Orthogonal Sets",
+          "tags": [
+            "math.la.d.vec.orthogonal_set",
+            "math.la.t.vec.orthogonal_set.linindep",
+            "math.la.d.subspace.basis.orthogonal",
+            "math.la.t.subspace.basis.orthogonal",
+            "math.la.d.vec.projection",
+            "math.la.t.vec.projection",
+            "math.la.d.vec.orthonormal_set",
+            "math.la.d.subspace.basis.orthonormal",
+            "math.la.t.mat.col.orthonormal.inv.rn",
+            "math.la.t.mat.col.orthonormal.norm.rn",
+            "math.la.t.mat.col.orthonormal.dot.rn",
+            "math.la.d.mat.orthogonal"
+          ]
+        },
+        {
+          "number": "6.3",
+          "title": "Orthogonal Projections",
+          "tags": [
+            "math.la.t.vec.projection.subspace",
+            "math.la.d.vec.projection.subspace",
+            "math.la.t.vec.projection.element",
+            "math.la.t.vec.projection.closest",
+            "math.la.t.subspace.basis.orthonormal"
+          ]
+        },
+        {
+          "number": "6.4",
+          "title": "The Gram-Schmidt Process",
+          "tags": [
+            "math.la.d.gramschmidt",
+            "math.la.t.gramschmidt",
+            "math.la.d.mat.qr",
+            "math.la.t.mat.qr"
+          ]
+        },
+        {
+          "number": "6.5",
+          "title": "Least-Squares Problems",
+          "tags": [
+            "math.la.d.linsys.leastsquares",
+            "math.la.t.linsys.leastsquares",
+            "math.la.t.linsys.leastsquares.unique",
+            "math.la.d.linsys.leastsquares.error",
+            "math.la.t.linsys.leastsquares.qr"
+          ]
+        },
+        {
+          "number": "6.6",
+          "title": "Applications to Linear Models",
+          "tags": [
+            "math.la.d.leastsquares.line",
+            "math.la.t.leastsquares.line"
+          ]
+        },
+        {
+          "number": "6.7",
+          "title": "Inner Product Spaces",
+          "tags": [
+            "math.la.d.vec.innerproduct.arb",
+            "math.la.d.vsp.innerproduct.arb",
+            "math.la.d.vec.[length|norm].arb",
+            "math.la.d.vec.distance.arb",
+            "math.la.d.vec.orthogonal.arb",
+            "math.la.d.gramschmidt.arb",
+            "math.la.t.vec.cauchyschwarz.arb",
+            "math.la.t.vec.triangle.arb"
+          ]
+        },
+        {
+          "number": "6.8",
+          "title": "Applications of Inner Product Spaces"
+        },
+        {
+          "number": "",
+          "title": "Supplementary Exercises"
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "Symmetric Matrices and Quadratic Forms",
+      "sections": [
+        {
+          "number": "7.1",
+          "title": "Diagonalization of Symmetric Matrices",
+          "tags": [
+            "math.la.d.mat.symmetric",
+            "math.la.t.mat.symmetric.eig.orthogonal",
+            "math.la.d.mat.diagonalizable.orthogonally",
+            "math.la.t.mat.diagonalizable.orthogonally",
+            "math.la.t.mat.symmetric.spectral",
+            "math.la.t.mat.symmetric.spectraldecomposition"
+          ]
+        },
+        {
+          "number": "7.2",
+          "title": "Quadratic Forms",
+          "tags": [
+            "math.la.X"
+          ]
+        },
+        {
+          "number": "7.3",
+          "title": "Constrained Optimization"
+        },
+        {
+          "number": "7.4",
+          "title": "The Singular Value Decomposition"
+        },
+        {
+          "number": "7.5",
+          "title": "Applications to Image Processing and Statistics"
+        },
+        {
+          "number": "",
+          "title": "Supplementary Exercises"
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "title": "The Geometry of Vector Spaces",
+      "sections": [
+        {
+          "number": "8.1",
+          "title": "Affine Combinations"
+        },
+        {
+          "number": "8.2",
+          "title": "Affine Independence"
+        },
+        {
+          "number": "8.3",
+          "title": "Convex Combinations"
+        },
+        {
+          "number": "8.4",
+          "title": "Hyperplanes"
+        },
+        {
+          "number": "8.5",
+          "title": "Polytopes"
+        },
+        {
+          "number": "8.6",
+          "title": "Curves and Surfaces"
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "title": "Optimization (Online Only)",
+      "sections": [
+        {
+          "number": "9.1",
+          "title": "Matrix Games"
+        },
+        {
+          "number": "9.2",
+          "title": "Linear Programming&mdash;Geometric Method"
+        },
+        {
+          "number": "9.3",
+          "title": "Linear Programming&mdash;Simplex Method"
+        },
+        {
+          "number": "9.4",
+          "title": "Duality"
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "title": "Finite-State Markov Chains (Online Only)",
+      "sections": [
+        {
+          "number": "10.1",
+          "title": "Introduction and Examples"
+        },
+        {
+          "number": "10.2",
+          "title": "The Steady-State Vector and Google's PageRank"
+        },
+        {
+          "number": "10.3",
+          "title": "Finite-State Markov Chains"
+        },
+        {
+          "number": "10.4",
+          "title": "Classification of States and Periodicity"
+        },
+        {
+          "number": "10.5",
+          "title": "The Fundamental Matrix"
+        },
+        {
+          "number": "10.6",
+          "title": "Markov Chains and Baseball Statistics"
+        }
+      ]
+    }
+  ]
+}

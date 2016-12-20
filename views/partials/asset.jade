@@ -1,0 +1,94 @@
+.row
+  div.btn-group.pull-right
+    if asset.externalUrl  
+      a.btn.btn-primary(href=asset.externalUrl)
+        i.fa.fa-external-link
+        | &nbsp;Go to resource
+    a.btn.btn-info(href="/assets/" + asset._id)
+        i.fa.fa-eye    
+        | &nbsp;See More
+    a.btn.btn-warning(href="/assets/" + asset._id + "/edit")
+        i.fa.fa-pencil    
+        | &nbsp;Edit      
+
+  h1 #{asset.title}
+    if asset.draft
+      | &nbsp;
+      small
+        span.label.label-default Draft
+.row      
+  p #{asset.description}
+.row
+  .col-md-6
+    ul.list-group
+      for tagId in asset.tags
+        if tags
+          - var tag = tags.filter( function(t) { return t._id == tagId; } )[0];
+          if !tag
+           li.list-group-item
+              include tag
+          else
+            li.list-group-item
+              h5
+                span.text-muted.label.label-danger #{tagId}
+        else
+          - var tag = { _id: tagId }
+          include tag
+  .col-md-6
+    dl.dl-horizontal
+      if asset.license
+        dt License
+        dd #{asset.license}
+      if asset.createdOn
+        dt Created On
+        dd #{moment(asset.createdOn).format('MMMM Do, YYYY')}
+          small.text-muted &nbsp;#{moment(asset.createdOn).fromNow()}
+      if asset.type
+        dt Type
+        dd
+          if asset.type === "video"
+            i.fa.fa-video-camera.fa-fw
+          if asset.type === "applet"
+            i.fa.fa-gamepad.fa-fw
+          if asset.type === "sagecell"
+            i.fa.fa-cloud.fa-fw          
+          if asset.type === "formativequiz"
+            i.fa.fa-question-circle-o.fa-fw
+          if asset.type === "summativequiz"
+            i.fa.fa-question-circle.fa-fw
+          if asset.type === "handout"
+            i.fa.fa-file-o.fa-fw           
+          if asset.type === "problem"      
+            i.fa.fa-question.fa-fw
+          | &nbsp;#{asset.humanReadableType()}
+      if asset.pedagogicalTimeframe
+        dt Timeframe
+        dd
+          if asset.pedagogicalTimeframe === "preclass"
+            i.fa.fa-backward.fa-fw
+          if asset.pedagogicalTimeframe === "inclass"
+            i.fa.fa-pause.fa-fw
+          if asset.pedagogicalTimeframe === "postclass"
+            i.fa.fa-forward.fa-fw       
+          if asset.pedagogicalTimeframe === "review"
+            i.fa.fa-repeat.fa-fw
+          | &nbsp;#{asset.humanReadablePedagogicalTimeframe()}
+      if asset.pedagogicalPerspective
+        dt Perspective        
+        dd
+          if asset.pedagogicalPerspective === "introduction"
+            i.fa.fa-hourglass-start.fa-fw          
+          if asset.pedagogicalPerspective === "example"
+            i.fa.fa-puzzle-piece.fa-fw                          
+          if asset.pedagogicalPerspective === "application"
+            i.fa.fa-gears.fa-fw
+          if asset.pedagogicalPerspective === "proof"
+            i.fa.fa-square-o.fa-fw     
+          | &nbsp;#{asset.humanReadablePedagogicalPerspective()}
+      if asset.language
+        dt Language
+          for language in languages
+            if language.code == asset.language
+              dd
+                span(class="flag-icon flag-icon-" + language.flag.toLowerCase())
+                span &nbsp;#{language.nativeName}  

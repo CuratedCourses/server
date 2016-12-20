@@ -49,3 +49,18 @@ script.
       });
     });
   });
+if scripts
+  - console.log("scripts =",scripts);
+  for script in scripts
+    script.
+      $(document).ready(function() {
+        $.ajax({
+          type: 'GET',
+          url: '/js/#{script}.js',
+          dataType: 'script',
+          cache: true
+        }).done(function () {
+          window.addEventListener('load', function() {
+        }, false);
+        });
+        });

@@ -37,32 +37,41 @@ var banner = [
 
 var paths = {
   clean: [
-    'public/js/**/*.js',
+    // 'public/js/**/*.js',
     'public/js/**/*.map',
     'public/js/**/*.min.js',
     'public/css/**/*.css',
     'public/css/**/*.min.css',
-    '!public/js/main.js',            // ! not
+    // ! not...
+    '!public/js/main.js',
+    '!public/js/datepicker.js',
   ],
   js: [
+    'public/lib/moment/min/moment.min.js',
+    'public/lib/validator-js/validator.min.js',
     // ============= Bootstrap  ================
     // Enable/disable as needed but only turn on
     // .js that is needed on *every* page. No bloat!
     // =========================================
     'public/lib/bootstrap/js/transition.js',
     'public/lib/bootstrap/js/alert.js',
-    // 'public/lib/bootstrap/js/button.js',
-    // 'public/lib/bootstrap/js/carousel.js',
+    'public/lib/bootstrap/js/button.js',
+    'public/lib/bootstrap/js/carousel.js',
     'public/lib/bootstrap/js/collapse.js',
     'public/lib/bootstrap/js/dropdown.js',
-    // 'public/lib/bootstrap/js/modal.js',
-    // 'public/lib/bootstrap/js/tooltip.js',
-    // 'public/lib/bootstrap/js/popover.js',
-    // 'public/lib/bootstrap/js/scrollspy.js',
-    // 'public/lib/bootstrap/js/tab.js',
-    // 'public/lib/bootstrap/js/affix.js'
+    'public/lib/bootstrap-select/js/bootstrap-select.js',
+    'public/lib/bootstrap-treeview/dist/bootstrap-treeview.min.js',
+    'public/lib/bootstrap-html5sortable/jquery.sortable.min.js',
+    'public/lib/bootstrap/js/modal.js',
+    'public/lib/bootstrap/js/tooltip.js',
+    'public/lib/bootstrap/js/popover.js',
+    'public/lib/bootstrap/js/scrollspy.js',
+    'public/lib/bootstrap/js/tab.js',
+    'public/lib/bootstrap/js/affix.js',
     // =========================================
     'public/lib/fastclick/lib/fastclick.js',
+    'public/lib/bootstrap3-typeahead/bootstreap3-typeahead.min.js',
+    'public/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
     'public/js/main.js'
   ],
   lint: [
@@ -75,12 +84,11 @@ var paths = {
     'gulpfile.js'
   ],
   less: [
-    'less/main.less',
-    'less/page-api.less',
-    'less/page-colors.less',
-    'less/page-dashboard.less',
-    'less/page-privacy.less',
-    'less/page-react.less'
+      'less/main.less',
+      'less/page-colors.less',
+      'less/page-dashboard.less',
+      'less/page-privacy.less',
+      'less/page-react.less',
   ]
 };
 
@@ -98,7 +106,8 @@ gulp.task('clean', function () {
 
 gulp.task('styles', function () {
   return gulp.src(paths.less)               // Read in Less files
-    .pipe($.less({ strictMath: true }))     // Compile Less files
+	.pipe($.less({ strictMath: true,
+		       relativeUrls: true }))     // Compile Less files
     .pipe($.autoprefixer({                  // Autoprefix for target browsers
       browsers: ['last 2 versions'],
       cascade: true

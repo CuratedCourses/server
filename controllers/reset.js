@@ -212,7 +212,7 @@ module.exports.controller = function (app) {
             } else {
               req.flash('success', { msg: 'Your password has been changed!' });
               debug('Message response: ' + info.response);
-              res.redirect('/api');
+              res.redirect('/');
             }
           });
 

@@ -1,0 +1,38 @@
+extends ../layouts/layout
+
+block head
+  title Textbooks &middot; #{application}
+
+block content
+
+  .mini-tron
+    .container
+      h1 Textbooks
+  .container
+    p Right now, the <a href="/about/team">team</a> is focusing on linear algebra.
+    p We are working on getting more books entered into our database.  If you would like to help, please <a href="/contact">contact us</a>.
+    for textbook in textbooks
+      hr.separator
+      .row
+        .col-md-3
+          a(href="/textbooks/" + textbook._id)
+            img.img-thumbnail.img-fluid(src=textbook.coverUrl)
+        .col-md-9
+          if textbook.contentUrl
+            if textbook.free
+              a.btn.btn-warning(href=textbook.contentUrl).pull-right            
+                i.fa.fa-download
+                | &nbsp;Download              
+            else            
+              a.btn.btn-danger(href=textbook.contentUrl).pull-right
+                  i.fa.fa-dollar
+                  | &nbsp;Purchase
+          h1
+            a(href="/textbooks/" + textbook._id)
+              | #{textbook.title}
+          - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
+          h4 by #{toSentence(textbook.authors)}
+          a.btn.btn-primary.btn-lg(href="/textbooks/" + textbook._id)
+            i.fa.fa-list-ol
+            | &nbsp;View Table of Contents&hellip;                  
+

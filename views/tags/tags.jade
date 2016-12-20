@@ -1,0 +1,16 @@
+extends ../layouts/layout
+
+block head
+  title #{tagName}
+
+block styles
+
+block content
+  .mini-tron
+    .container
+      h1 #{tagPrefix}&hellip;
+  .container        
+    .row
+      for tag in tags
+        .col-md-12
+          include ../partials/tag

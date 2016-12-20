@@ -1,0 +1,46 @@
+extends ../layouts/layout
+
+block head
+  title #{textbook.title} &middot; Textbooks &middot; #{application}
+
+block content
+
+  .mini-tron
+    .container
+      h1 #{textbook.title}
+      - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
+      h4 by #{toSentence(textbook.authors)}
+  .container
+    - var i = 1;
+    for section in textbook.sections
+      hr.separator
+      .row
+        .col-md-12
+          h1
+            small.text-muted #{section.number}
+            | &nbsp;#{section.title}
+            button.btn.btn-default(type="button",data-toggle="collapse",data-target="#section-" + i) +
+      div.collapse(id="section-" + i)
+        - i = i + 1;
+        for subsection in section.sections
+          .row
+            .col-md-12
+              h3
+                if subsection.number != ""
+                  small.text-muted #{subsection.number}
+                  | &nbsp;
+                | #{subsection.title}
+                if subsection.tags
+                  button.btn.btn-default.btn-sm(type="button",data-toggle="collapse",data-target="#section-" + i) +
+          .row
+            .col-md-12
+              if subsection.tags
+                div.collapse(id="section-" + i)
+                  - i = i + 1;
+                    for tagId in subsection.tags
+                      - var tag = tags.filter( function(tag) { return tag._id == tagId } )[0];
+                      if tag
+                        include ../partials/tag
+                      else
+                        h5
+                          span.label.label-danger #{tagId}

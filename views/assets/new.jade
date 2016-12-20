@@ -1,0 +1,45 @@
+extends ../layouts/layout
+
+block head
+  title Add Content &middot; #{application}
+
+block content
+
+  .mini-tron
+    .container
+      h1 Add Content
+      p
+        | Submit high-quality content for broader dissemination
+
+  .container
+    p To submit a new resource for inclusion in the #{application} catalog, you may <strong>either</strong> provide a URL pointing to an already existing resource <em>or</em> upload a file for #{application} to host.
+    hr.separator
+    .row
+      .col-md-6
+        form(role="form",method="POST")
+          input(type='hidden', name='_csrf', value=_csrf)
+          div.form-group
+            label(for="assetUrl") Contribute a URL
+            p.form-text.text-muted Is the resource already available on the internet?
+            p.form-text.text-muted If so, please provide a URL.
+            - scripts.push('validate-url');
+            input.form-control(type="url", name="assetUrl", id="assetUrl", placeholder="http://.../", autofocus=true)
+          button.btn.btn-primary.pull-right(type="submit")
+            span.fa.fa-link
+            | &nbsp;Add URL          
+      .col-md-6
+        form(role="form",method="POST",enctype="multipart/form-data")
+          input(type='hidden', name='_csrf', value=_csrf)          
+          div.form-group
+            label(for="title") Contribute a file
+            p.form-text.text-muted Is the resource not already available elsewhere on the internet?
+            p.form-text.text-muted If so, we are happy to host the file on your behalf.
+            label.btn.btn-default.btn-file
+              span.fa.fa-file-o
+              | &nbsp;Choose file&hellip;
+              input(type="file",name="assetFile",style="display: none;")
+            button.btn.btn-primary(type="submit")
+              span.fa.fa-upload
+              | &nbsp;Upload                         
+
+

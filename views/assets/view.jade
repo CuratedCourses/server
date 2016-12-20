@@ -1,0 +1,98 @@
+extends ../layouts/layout
+
+block head
+  title #{asset.title} &middot; #{application}
+
+block content
+
+  .mini-tron
+    .container
+      h1 #{asset.title}
+      p
+        | #{asset.description}
+
+  .container
+    .row
+      .col-md-12
+        div.btn-toolbar
+          div.btn-group
+            a.btn.btn-danger(href="/assets/" + asset._id + "/edit")
+              span.fa.fa-edit
+              | &nbsp;Edit
+          div.btn-group              
+            a.btn.btn-danger(href="/assets/" + asset._id + "/new")
+              span.fa.fa-exchange
+              | &nbsp;Propose Changes
+      
+    if asset.draft || (!(asset.published))
+      .row
+        div.alert.alert-warning(role="alert")
+          if asset.draft
+            | This is a <strong>draft</strong> of a resource.&nbsp;
+          if (!(asset.published))
+            | This resource has <strong>not</strong> yet been published.&nbsp;
+    .row
+       .col-md-12
+            div.media
+              div.media-left
+                a(href="#")
+                  if asset.submitter.profile.picture
+                    img.media-object(src='#{user.profile.picture}',width=64,height=64)
+                  else
+                     img.media-object(src='#{user.gravatar(60)}',width=64,height=64)
+              div.media-body
+                h4.media-heading
+                  | Submitted By #{asset.submitter.profile.name || asset.submitter.email || asset.submitter.id}&nbsp;
+    hr.separator          
+    div.row
+      div.col-md-4
+        h4 Type
+        p.text-muted What sort of resource is this?
+        p #{asset.humanReadableType()}
+      hr.separator.hidden-lg.hidden-md
+      div.col-md-4
+        h4 Pedgogical Timeframe
+        p.text-muted When might the resource be most useful to learners?
+        p #{asset.humanReadablePedagogicalTimeframe()}
+      hr.separator.hidden-lg.hidden-md
+      div.col-md-4
+        h4 Pedgogical Perspective
+        p.text-muted What perspective does the resource provide to the content?
+        p #{asset.humanReadablePedagogicalPerspective()}
+    hr.separator
+    div.row
+      div.col-xs-3
+        h4 Language
+        p
+          for language in languages
+            if language.code == asset.language
+              span(class="flag-icon flag-icon-" + language.flag.toLowerCase())
+              span &nbsp;#{language.nativeName}
+    hr.separator
+    div.row                
+      div.col-md-12
+        h4 License
+        p.text-muted Under what license is the resource being distributed?
+        p #{asset.license}
+    hr.separator
+    div.row
+      div.col-sm-6
+        h4 Created On
+        p.text-muted On what date was the resource created?
+        p #{asset.createdOn}
+    div.row
+      div.col-md-12
+        h4 Accessibility
+        p.text-muted What are the most serious accessibility challenges the resource presents?  For example, do videos include subtitles?  Must a learner be able to distinguish between certain colors to make sense of images?
+        p #{asset.accessibility}
+    div.row
+      div.col-md-12
+        h4 Additional prerequisites
+        p.text-muted Are there additional skills that a learner require to fully engage with the resource?
+        p #{asset.additionalPrerequisites}
+    hr.separator        
+    div.row
+      div.col-md-12    
+        h4 Repository URL
+        p.text-muted Where can an instructor find the original source code of the resource?  For a voiceover video, this might be a link to the slides shown.  For a handout it may be a link to the original source file.  A GitHub repository link is especially desirable.
+        p #{asset.repositoryUrl}

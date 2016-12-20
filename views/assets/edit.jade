@@ -1,0 +1,233 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Add Content
+
+block content
+
+  .mini-tron
+    .container
+      h1 Add Content
+      p
+        | Share a URL pointing to high-quality mathematics content
+
+  .container
+    form(role="form",method="POST")
+      input(type='hidden', name='_csrf', value=_csrf)
+      .row
+        .col-md-12
+          div.form-group
+            label(for="title") URL
+            p.form-text.text-muted Where can learners find the resource on the internet?
+            input.form-control(type="url",placeholder=asset.externalUrl, readonly)                   
+      .row
+        .col-md-12            
+          div.form-group
+            label(for="title") Title
+            input.form-control#title(type="text",name="title",placeholder="Title of the resource",value=asset.title, required)
+      .row
+        .col-md-12                        
+          div.form-group
+            label(for="description") Description
+            textarea.form-control#description(rows=3,name="description",placeholder="This is a short description of the resource, written for instructors.") #{asset.description}
+          hr.separator
+      .row
+        .col-md-12
+          div.form-group               
+            label(for="submitter") Submitted By
+            p.form-text.text-muted Who originally shared this resource with the CuratedCourses website?
+            div.media
+              div.media-left
+                a(href="#")
+                  if user.profile.picture
+                    img.media-object(src='#{user.profile.picture}',width=64,height=64)
+                  else
+                     img.media-object(src='#{user.gravatar(60)}',width=64,height=64)
+              div.media-body
+                h4.media-heading
+                  | #{user.profile.name || user.email || user.id}&nbsp;                
+      hr.separator          
+      div.row
+        input(type='hidden', name='tags', value=asset.tags)
+        .col-md-6
+            h3 Selected Tags
+            ul.list-group#taglist
+            span.help-block#taglist-drag-help Drag the tags so that the <strong>primary</strong> tag is first.
+            span.help-block#taglist-select-help Select relevant tags from the list to the right.
+        .col-md-6
+          h3 Tags from Textbook
+          - scripts.push('tag-selector');
+          div#tree
+      hr.separator
+      div.row
+        div.col-md-4
+          div.form-group
+            label(for="type") Type
+            p.form-text.text-muted What is the resource?                
+            div.radio
+              label
+                input(type="radio",name="type",value="video",checked=(asset.type==="video"))
+                | Video&nbsp;
+                i.fa.fa-video-camera
+            div.radio
+              label
+                input(type="radio",name="type",value="applet",checked=(asset.type==="applet"))
+                | Applet&nbsp;
+                i.fa.fa-gamepad
+            div.radio
+              label
+                input(type="radio",name="type",value="sagecell",checked=(asset.type==="sagecell"))
+                | SageMath Cell&nbsp;
+                i.fa.fa-cloud
+            div.radio
+              label
+                input(type="radio",name="type",value="formativequiz",checked=(asset.type==="formativequiz"))
+                | Formative Quiz&nbsp;
+                i.fa.fa-question-circle-o
+            div.radio
+              label
+                input(type="radio",name="type",value="summativequiz",checked=(asset.type==="summativequiz"))
+                | Summative Quiz&nbsp;
+                i.fa.fa-question-circle
+            div.radio
+              label
+                input(type="radio",name="type",value="problem",checked=(asset.type==="problem"))
+                | Problem&nbsp;
+                i.fa.fa-question
+            div.radio
+              label
+                input(type="radio",name="type",value="handout",checked=(asset.type==="handout"))
+                | Handout&nbsp;
+                i.fa.fa-file-o
+        hr.separator.hidden-lg.hidden-md
+        div.col-md-4
+          div.form-group
+            label(for="pedagogicalTimeframe") Pedagogical Timeframe
+            p.form-text.text-muted When might the resource be most useful to learners?
+            div.radio
+              label
+                input(type="radio",name="pedagogicalTimeframe",value="preclass",checked=(asset.pedagogicalTimeframe==="preclass"))
+                | Pre-class&nbsp;
+                i.fa.fa-backward
+            div.radio
+              label
+                input(type="radio",name="pedagogicalTimeframe",value="inclass",checked=(asset.pedagogicalTimeframe==="inclass"))
+                | In-class&nbsp;
+                i.fa.fa-pause
+            div.radio
+              label
+                input(type="radio",name="pedagogicalTimeframe",value="postclass",checked=(asset.pedagogicalTimeframe==="postclass"))
+                | Post-class&nbsp;
+                i.fa.fa-forward
+            div.radio
+              label
+                input(type="radio",name="pedagogicalTimeframe",value="review",checked=(asset.pedagogicalTimeframe==="review"))
+                | Review&nbsp;
+                i.fa.fa-repeat
+            div.radio
+              label.text-muted
+                input(type="radio",name="pedagogicalTimeframe",value="",checked=(asset.pedagogicalTimeframe===""))
+                | Uncertain
+        hr.separator.hidden-lg.hidden-md
+        div.col-md-4
+          div.form-group
+            label(for="pedagogicalPerspective") Pedagogical Perspective
+            p.form-text.text-muted What perspective does the resource provide to the content?
+            div.radio
+              label
+                input(type="radio",name="pedagogicalPerspective",value="introduction",checked=(asset.pedagogicalPerspective==="introduction"))
+                | Introduction&nbsp;
+                i.fa.fa-hourglass-start
+            div.radio
+              label
+                input(type="radio",name="pedagogicalPerspective",value="example",checked=(asset.pedagogicalPerspective==="example"))
+                | Example&nbsp;
+                i.fa.fa-puzzle-piece                
+            div.radio
+              label
+                input(type="radio",name="pedagogicalPerspective",value="application",checked=(asset.pedagogicalPerspective==="application"))
+                | Application&nbsp;
+                i.fa.fa-gears                
+            div.radio
+              label
+                input(type="radio",name="pedagogicalPerspective",value="proof",checked=(asset.pedagogicalPerspective==="proof"))
+                | Proof&nbsp;
+                i.fa.fa-square-o
+            div.radio
+              label.text-muted
+                input(type="radio",name="pedagogicalPerspective",value="",checked=(asset.pedagogicalPerspective===""))
+                | Uncertain
+      hr.separator
+      div.row
+        div.col-xs-3
+          label(for="language") Language
+          div.form-group.dropdown
+            select.selectpicker.form-control(name="language")
+              for language in languages
+                option(data-content='<span class="flag-icon flag-icon-' + (language.flag.toLowerCase()) + '"></span> ' + language.nativeName,selected=(asset.language == (language.code))) #{language.code}
+      hr.separator
+      div.row                
+        div.col-md-12
+          label(for="language") License
+          p.form-text.text-muted Under what license is the resource being distributed?
+          div.input-group
+            - scripts.push('license-help');
+            input.form-control#license(name="license",type="text",value=asset.license,placeholder="SPDX license expression")
+            div.input-group-btn
+              button.btn.btn-default.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                span.caret
+              ul.dropdown-menu.dropdown-menu-right
+                li
+                  a(onclick="$('#license').val('CC-BY-SA-4.0');$('#license').change();") Creative Commons BY-SA                  
+                li
+                  a(onclick="$('#license').val('CC-BY-NC-SA-4.0');$('#license').change();") Creative Commons BY-NC-SA
+                li
+                  a(onclick="$('#license').val('Unlicense');$('#license').change();") Public Domain
+                li
+                  a(onclick="$('#license').val('GFDL-1.3');$('#license').change();") GNU Free Documentation License
+                li
+                  a(onclick="$('#license').val('GPL-3.0');$('#license').change();") GNU General Public License
+          span.help-block
+            a#licenseDescription(href="#")
+      hr.separator
+      div.row
+        div.col-sm-6
+          div.form-group
+          - console.log('datepicker!');
+          - scripts.push('datepicker');
+            label(for="createdOn") Created On
+            p.form-text.text-muted On what date was the resource created?  If you are unsure, leave this blank.
+            div.input-group.date.datepicker
+              input.form-control#createdOn(type='text',name="createdOn",placeholder="MM/DD/YYYY",value=moment(asset.createdOn).format('MM/DD/YYYY'))
+              span.input-group-addon
+                span.fa.fa-calendar
+      hr.separator                        
+      div.row
+        div.col-sm-12      
+          div.form-group
+            label(for="description") Accessibility
+            p.form-text.text-muted What are the most serious accessibility challenges the resource presents?  For example, do videos include subtitles?  Must a learner be able to distinguish between certain colors to make sense of images?
+            textarea.form-control#description(name="accessibility",rows=3,placeholder="There are the following accessibility concerns with the resource") #{asset.accessibility}
+      hr.separator                    
+      div.row
+        div.col-sm-12
+          div.form-group
+            label(for="description") Additional prerequisites
+            p.form-text.text-muted Are there additional skills that a learner require to fully engage with the resource?
+            textarea.form-control#description(name="additionalPrerequisites",rows=3,placeholder="") #{asset.additionalPrerequisites}
+      hr.separator        
+      .row
+        .col-md-12
+          div.form-group
+            label(for="repository") Repository URL
+            p.form-text.text-muted Where can an instructor find the original source code of the resource?  For a voiceover video, this might be a link to the slides shown.  For a handout it may be a link to the original source file.  A GitHub repository link is especially desirable.
+            input.form-control(type="url", name="repository", id="repository", placeholder="http://.../",value=asset.repository)
+      hr.separator
+
+      if asset.draft
+        button.btn.btn-default(type="submit",name="action",value="save") Save draft
+      else
+        button.btn.btn-default(type="submit",name="action",value="save") Update Asset
+
+      if !(asset.published)
+        button.btn.btn-primary(type="submit",name="action",value="publish") Submit for review
