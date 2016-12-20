@@ -117,14 +117,15 @@ if (app.get('env') === 'production') {
   //
   // NOTE: Use `enforce.HTTPS(true)` if you are behind a proxy or load
   // balancer that terminates SSL for you (e.g. Heroku, Nodejitsu).
-  app.use(enforce.HTTPS(true));
+  // but we are behind nginx, so nginx is handling this for us.   
+  // app.use(enforce.HTTPS(true));
   // This tells browsers, "hey, only use HTTPS for the next period of time".
   // This will set the Strict Transport Security header, telling browsers to
   // visit by HTTPS for the next ninety days:
   // TODO: should we actually have this *and* app.use(enforce.HTTPS(true)); above?
   //       this seems more flexible rather than a hard redirect.
-  var ninetyDaysInMilliseconds = 7776000000;
-  app.use(helmet.hsts({ maxAge: ninetyDaysInMilliseconds }));
+  // var ninetyDaysInMilliseconds = 7776000000;
+  // app.use(helmet.hsts({ maxAge: ninetyDaysInMilliseconds }));
   // Turn on HTTPS/SSL cookies
   config.session.proxy = true;
   config.session.cookie.secure = true;
