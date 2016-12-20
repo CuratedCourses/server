@@ -5,7 +5,7 @@ if user
     if user.type == 'admin'
       li.dropdown(class=url=='/administration'?'active':undefined)
         a.dropdown-toggle(href='#', data-toggle='dropdown')
-          i.fa.fa-fw.fa-cogs
+          i.fa.fa-fw.fa-bolt
           | &nbsp;Admin&nbsp;
           b.caret
         ul.dropdown-menu
@@ -17,10 +17,6 @@ if user
             a(href='/accounts')
               i.fa.fa-fw.fa-users
               | &nbsp;Accounts
-          li
-            a(href='/colors')
-              i.fa.fa-fw.fa-cog
-              | &nbsp;Color Scheme
 
     //- User account
     li
