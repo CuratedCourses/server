@@ -146,13 +146,15 @@ gulp.task('scripts', function () {
 gulp.task('images', function () {
   return gulp.src('images/**/*')            // Read images
     .pipe($.changed('./public/img'))        // Only process new/changed
-    .pipe($.imagemin({                      // Compress images
+    /* BADBAD: this is breaking in deployment
+    .pipe($.imagemin({
       progressive: true,
       optimizationLevel: 3,
       interlaced: true,
       svgoPlugins: [{ removeViewBox: false }],
       use: [pngquant()]
     }))
+    */
     .pipe(gulp.dest('./public/img'));       // Write processed images
 });
 
