@@ -18,7 +18,7 @@ block content
         .col-md-12
           h1
             small.text-muted #{section.number}
-            | &nbsp;#{section.title}
+            | &nbsp;#{section.title}&nbsp;
             button.btn.btn-default(type="button",data-toggle="collapse",data-target="#section-" + i) +
       div.collapse(id="section-" + i)
         - i = i + 1;
@@ -29,7 +29,7 @@ block content
                 if subsection.number != ""
                   small.text-muted #{subsection.number}
                   | &nbsp;
-                | #{subsection.title}
+                | #{subsection.title}&nbsp;
                 if subsection.tags
                   button.btn.btn-default.btn-sm(type="button",data-toggle="collapse",data-target="#section-" + i) +
           .row
