@@ -48,6 +48,7 @@ config.ga             = process.env.GA   || 'google analytics key';
 config.logging        = process.env.LOGGING || false;
 
 // Papertrail configuration
+config.papertrail = {};
 config.papertrail.host = process.env.PAPERTRAIL_HOST || 'logs5.papertrailapp.com';
 config.papertrail.port = process.env.PAPERTRAIL_PORT || 'your port number';
 
