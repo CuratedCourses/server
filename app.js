@@ -347,10 +347,8 @@ app.use(helmet.contentSecurityPolicy({
   ],
   connectSrc: [ // limit the origins (via XHR, WebSockets, and EventSource)
     "'self'",
-    'ws://localhost:5000',
-    'ws://localhost:3000',
-    'ws://127.0.0.1:35729/livereload',
-    'wss://skeleton-app.jit.su',
+    'ws://localhost:8000',      
+    'wss://curatedcourses.org/',      
     'https://api.github.com'
   ],
   objectSrc: [  // allows control over Flash and other plugins
