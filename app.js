@@ -129,6 +129,10 @@ if (app.get('env') === 'production') {
   // Turn on HTTPS/SSL cookies
   config.session.proxy = true;
   config.session.cookie.secure = true;
+
+  // BADBAD: this should NOT be in production, but I don't have the
+  // cache control set up correctly yet.
+  app.use(helmet.nocache());    
 }
 
 // Port to listen on.
@@ -176,6 +180,8 @@ var hour = (minute * 60); //   3600000
 var day  = (hour * 24);   //  86400000
 var week = (day * 7);     // 604800000
 
+// There is a maxAge on these static files, but in production, these
+// files will be served directly by nginx with a "location" stanza.
 app.use(express.static(__dirname + '/public', { maxAge: week }));
 
 // Body parsing middleware supporting
@@ -184,7 +190,8 @@ app.use(express.static(__dirname + '/public', { maxAge: week }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // BADBAD: this is probably somewhat dangerous, but I have it here
-// because the CSRF tokens need to be processed
+// because the CSRF tokens need to be processed, and sometimes those
+// CSRF tokens are being sent in a form encoded as multipart data.
 app.use(multipartParser.any());
 
 // Easy form validation!
