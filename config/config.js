@@ -47,12 +47,9 @@ config.ga             = process.env.GA   || 'google analytics key';
 
 config.logging        = process.env.LOGGING || false;
 
-// Loggly configuration
-config.loggly         = {};
-config.loggly.token   = process.env.LOGGLY_TOKEN || 'Your Token';
-config.loggly.subdomain = 'skeleton';
-config.loggly.tags    = ['Nodejitsu'];
-config.loggly.json    = true;
+// Papertrail configuration
+config.papertrail.host = process.env.PAPERTRAIL_HOST || 'logs5.papertrailapp.com';
+config.papertrail.port = process.env.PAPERTRAIL_PORT || 'your port number';
 
 /**
  * Database Configuration
@@ -96,8 +93,8 @@ config.loginAttempts.expires   = '20m';
 
 // Who are we sending email as?
 config.smtp                    = {};
-config.smtp.name               = process.env.SMTP_FROM_NAME    || 'support';
-config.smtp.address            = process.env.SMTP_FROM_ADDRESS || 'support@skeleton.com';
+config.smtp.name               = process.env.SMTP_FROM_NAME    || 'CuratedCourses Team';
+config.smtp.address            = process.env.SMTP_FROM_ADDRESS || 'team@curatedcourses.org';
 
 /**
  * Authorization Configuration

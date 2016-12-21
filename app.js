@@ -22,7 +22,11 @@ var path              = require('path');                    // http://nodejs.org
 var debug             = require('debug')('skeleton');       // https://github.com/visionmedia/debug
 var flash             = require('express-flash');           // https://npmjs.org/package/express-flash
 var config            = require('./config/config');         // Get configuration file
-var logger            = require('express-loggly');          // https://github.com/dstroot/express-loggly
+
+var expressWinston    = require('express-winston');
+var winston           = require('winston');
+var winstonPapertrail = require('winston-papertrail').Papertrail;
+
 var helmet            = require('helmet');                  // https://github.com/evilpacket/helmet
 var semver            = require('semver');                  // https://npmjs.org/package/semver
 var enforce           = require('express-sslify');          // https://github.com/florianheinemann/express-sslify
@@ -235,12 +239,23 @@ var logFile = fs.createWriteStream('./myLogFile.log', { flags: 'a' });
 app.use(morgan('combined', { stream: logFile }));
 */
 
-// Log requests to Loggly in production
+// Log requests to Papertrail in production
 // Needs to be below session and bodyParser in the stack
 if (app.get('env') === 'production' && config.logging) {
-  app.use(logger({
-    loggly: config.loggly
-  }));
+    app.use(expressWinston.logger({
+	transports: [
+	    new winston.transports.Papertrail({
+		host: config.papertrail.host,
+		port: config.papertrail.port
+	    }),
+            new winston.transports.Console({
+		json: true,
+		colorize: true
+            })	    
+	],
+	expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
+	colorize: true, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
+    }));
 }
 
 // Security Settings
@@ -389,6 +404,21 @@ fs.readdirSync('./controllers').forEach(function (file) {
 /**
  * Error Handling
  */
+
+if (app.get('env') === 'production' && config.logging) {
+    app.use(expressWinston.errorLogger({
+	transports: [
+	    new winston.transports.Papertrail({
+		host: config.papertrail.host,
+		port: config.papertrail.port
+	    }),    	    
+            new winston.transports.Console({
+		json: true,
+		colorize: true
+            })
+	]
+    }));
+}
 
 // If nothing responded above we will assume a 404
 // (since no routes responded or static assets found)
