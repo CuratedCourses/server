@@ -40,12 +40,19 @@ Thumbs.db
 ###################
 .bower-cache/
 .bower-registry/
-#public/lib/
+public/lib/
 
 # Compiled assets
 ###################
-public/css/styles.css
-builtAssets/
+public/css/*.min.css
+public/js/*.min.js
+public/js/CuratedCourses.js
+public/favicon/*.png
+public/favicon/*.pdf
+public/favicon/*.svg
+public/favicon/*.ico
+public/favicon/*.log
+public/favicon/*.aux
 
 # Configuration
 ##################
