@@ -88,58 +88,79 @@ module.exports.controller = function (app) {
     });
     
     app.post('/assets/new', passportConf.isAuthenticated, function (req, res) {
-	var asset = {};
-
-	req.body.assetUrl = normalizeUrl( req.body.assetUrl );
-	
-	// If the user contributed a file...
-	if ((req.files) && (req.files.length == 1)) {
-	    console.log( req.files );
-	    
-	    // Create a content-based URL for the file
-	    var file = req.files[0];
-	    console.log( file );
-	    var address = CAFSFile.addressForContent( file.buffer, file.mimetype );
-
-	    asset.url = LOCAL_URL_PREFIX + address;
-	    asset.title = file.originalname;
-	    // BADBAD: could also guess the type here
-	    
-	} else if (validUrl.isUri(req.body.assetUrl)) {
-	    // BADBAD: a user could submit TWO drafts for the same URL and we don't handle this case
-	    async.waterfall([
-		function(callback) {
-		    WebCache.findRecentOrDownload( req.body.assetUrl, callback );
-		},
-		function(body, callback) {
-		    Asset.draftAssetFromHTML(req.user, req.body.assetUrl, body, callback );
-		},
-		function(asset, callback) {
-		    asset.save(function(err) {
-			callback(err, asset);
-		    });
-		}
-	    ], function(err, asset) {
-		if (err) {
-		    req.flash('error', { msg: err } );
-		    res.redirect('back');
-		} else {
-		    res.redirect('/assets/' + asset._id + '/edit');
-		}
-	    });
-	} else {
-	    req.flash('error', { msg: 'You must contribute either a URL or choose a file to upload.' } );
-	    res.render('assets/new', { url: req.url });
+	if (req.body.assetUrl) {
+	    req.body.assetUrl = normalizeUrl( req.body.assetUrl );
 	}
+	
+	async.waterfall([
+	    function(callback) {
+		if ((req.files) && (req.files.length == 1)) {
+		    var file = req.files[0];
+		    
+		    var address = CAFSFile.addressForContent( file.buffer, file.mimetype );
+		    
+		    Asset.draftAssetFromBuffer(req.user, LOCAL_URL_PREFIX + address, file.buffer, file.mimetype,
+					       function(err, asset) {
+						   asset.title = file.originalname;
+						   
+						   callback(err, asset);
+					       });
+		    
+		} else if (validUrl.isUri(req.body.assetUrl)) {
+		    // BADBAD: a user could submit TWO drafts for the same URL and we don't handle this case	
+		    async.waterfall([		    
+			function(callback) {
+			    WebCache.findRecentOrDownload( req.body.assetUrl, callback );
+			},
+			function(body, callback) {
+			    Asset.draftAssetFromHTML(req.user, req.body.assetUrl, body, callback );
+			}
+		    ], callback);
+		} else {
+		    callback( 'You must contribute either a URL or choose a file to upload.' );
+		}
+	    },
+	    function(asset, callback) {
+		asset.save(function(err) {
+		    callback(err, asset);
+		});
+	    }
+	], function(err, asset) {
+	    if (err) {
+		req.flash('error', { msg: err } );
+		res.redirect('back');
+	    } else {
+		res.redirect('/assets/' + asset._id + '/edit');
+	    }
+	});
     });
 
+    /**
+     * GET /assets/queue
+     * View assets in need of moderation
+     */
+    
+    // Invite the user to edit the resource if they are the submitter
+    // and it doesn't have any approvals; proposed edit.
+    app.get('/assets/queue',  passportConf.isAuthenticated, passportConf.isAdministrator, function (req, res) {
+	Asset.find( {draft: false}, null, {sort: {submittedAt: 1}}, function(err,assets) {
+	    res.render('assets/list', {
+		url: req.url,
+		languages: languages,
+		assets: assets
+	    });
+	});
+    });
+    
     /**
      * GET /assets/:id
      * View an asset
      */
     
     app.get('/assets/:id', function (req, res) {
-	Asset.findOne( {_id: req.params.id} ).populate( 'submitter' ).exec( function(err,asset) {
+	Asset.findOne( {_id: req.params.id} )
+	    .populate( 'submitter' )
+	    .populate( 'approvals.user' ).exec( function(err,asset) {
 	    if (err) {
 		req.flash('error', { msg: err });
 		res.redirect('back');
@@ -161,12 +182,29 @@ module.exports.controller = function (app) {
     // Invite the user to edit the resource if they are the submitter
     // and it doesn't have any approvals; proposed edit.
     app.get('/assets/', function (req, res) {
-	Asset.find( {}, function(err,assets) {
+	Asset.find( { published: true, draft: false }, function(err,assets) {
 	    res.render('assets/list', {
 		url: req.url,
 		languages: languages,
 		assets: assets
 	    });
+	});
+    });
+
+    app.get('/users/:id/assets', function (req, res) {
+	console.log( req.params.id );
+	Asset.find( { submitter: req.params.id }, function(err,assets) {
+	    if (assets.length > 0) {
+		res.render('assets/list', {
+		    url: req.url,
+		    languages: languages,
+		    assets: assets
+		});
+	    } else {
+		res.render('assets/please-contribute', {
+		    url: req.url
+		});
+	    }
 	});
     });
     
@@ -203,21 +241,23 @@ module.exports.controller = function (app) {
 		      'language',
 		      'license',
 		      'accessibility',
-		      'additionalPrerequisites',
-		      'repository'
+		      'additionalPrerequisites'
 		     ];
 	
 	fields.forEach( function(field) {
 	    // All fields get trimmed
-	    asset[field] = req.body[field].trim();
+	    if (req.body[field]) {
+		asset[field] = req.body[field].trim();
+	    }
 	});
 	
 	asset.createdOn = moment(req.body.createdOn, 'MM/DD/YYYY');
 	
-	// Should validate this
+	// BADBAD: should validate this
 	asset.tags = req.body.tags.split(',');
     }
-    
+
+    // BADBAD: need to test permission for doing this...    
     app.put('/assets/:id', passportConf.isAuthenticated, function (req, res) {
 	Asset.findOne( {_id: req.params.id}, function(err,asset) {
 	    if (err) {
@@ -235,7 +275,8 @@ module.exports.controller = function (app) {
 	    }
 	});
     });
-    
+
+    // BADBAD: need to test permission for doing this...
     app.post('/assets/:id', passportConf.isAuthenticated, function (req, res) {
 	Asset.findOne( {_id: req.params.id}, function(err,asset) {
 	    if (err) {
@@ -244,20 +285,57 @@ module.exports.controller = function (app) {
 	    } else {
 		copyFormIntoAsset( req, asset );
 
+		if (req.body.action==="publish")
+		    asset.draft = false;
+		
 		asset.save( function(err) {
 		    if (err) {
 			req.flash('error', { msg: err });
 		    }
 
 		    // should redirect to view or something if we action=published!
-		    res.render('assets/edit', {
-			url: req.url,
-			asset: asset,
-			languages: languages		    
-		    });
+		    res.redirect( '/assets/' + asset._id );
 		});
 	    }
 	});
-    });    
+    });
 
+    /**
+     * POST /assets/:id/approvals
+     * Add an approval or a comment to a resource
+     */
+    
+    app.post('/assets/:id/approvals', passportConf.isAuthenticated, passportConf.isAdministrator,
+	     function (req, res) {
+		 Asset.findOne( {_id: req.params.id}, function(err,asset) {
+		     if (err) {
+			 req.flash('error', { msg: err });
+			 res.redirect('back');
+		     } else {
+			 var approval = { remarks: req.body.remarks,
+					  user: req.user._id,
+					  date: new Date(),
+					  upvote: (req.body.action == "approve") };
+
+			 asset.approvals.push( approval );
+
+			 if ((approval.upvote) && (asset.submitter.equals(req.user._id))) {
+			     req.flash('error', { msg: "You are not allowed to approve your own resource." });
+			     res.redirect( '/assets/' + asset._id );
+			 } else {
+			     if (approval.upvote)
+				 asset.published = true;
+			 
+			     asset.save( function(err) {
+				 if (err) {
+				     req.flash('error', { msg: err });
+				 }
+				 
+				 // should redirect to view or something if we action=published!
+				 res.redirect( '/assets/' + asset._id );
+			     });
+			 }
+		     }
+		 });
+	     });
 };

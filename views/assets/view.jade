@@ -30,7 +30,7 @@ block content
           if asset.draft
             | This is a <strong>draft</strong> of a resource.&nbsp;
           if (!(asset.published))
-            | This resource has <strong>not</strong> yet been published.&nbsp;
+            | This resource has <strong>not</strong> yet been published.&nbsp;  It is awaiting moderation.
     .row
        .col-md-12
             div.media
@@ -91,9 +91,59 @@ block content
         h4 Additional prerequisites
         p.text-muted Are there additional skills that a learner require to fully engage with the resource?
         p #{asset.additionalPrerequisites}
-    hr.separator        
-    div.row
-      div.col-md-12    
-        h4 Repository URL
-        p.text-muted Where can an instructor find the original source code of the resource?  For a voiceover video, this might be a link to the slides shown.  For a handout it may be a link to the original source file.  A GitHub repository link is especially desirable.
-        p #{asset.repositoryUrl}
+
+    hr.separator
+    if (!(asset.draft))
+      h2 Approvals
+      for approval in asset.approvals
+        div.media
+          div.media-left
+            a(href="#")
+              if approval.user.profile && approval.user.profile.picture
+                img.media-object(src='#{approval.user.profile.picture}',width=64,height=64)
+              else
+                if approval.user.gravatar
+                  img.media-object(src='#{approval.user.gravatar(60)}',width=64,height=64)
+          div.media-body
+            h4.media-heading
+              if approval.user.profile && approval.user.profile.name
+                | #{approval.user.profile.name}&nbsp;
+              else
+                if approval.user.email
+                  | #{approval.user.email}&nbsp;
+                else
+                  if approval.user
+                    | #{approval.user}&nbsp;
+                  else
+                    | User&nbsp;
+              if approval.upvote
+                span.label.label-success
+                  i.fa.fa-check
+                  | &nbsp;Approved!                    
+            p #{approval.remarks}
+      if user.type == 'admin'
+        if asset.submitter._id.equals(user._id)
+          p
+            div.alert.alert-warning
+              | You are not permitted to approve a resource that you submitted.
+        else
+          form(role="form",method="POST",action='/assets/' + asset._id + '/approvals')
+            input(type='hidden', name='_csrf', value=_csrf)
+            div.media
+              div.media-left
+                a(href="#")
+                  if user.profile.picture
+                    img.media-object(src='#{user.profile.picture}',width=64,height=64)
+                  else
+                    img.media-object(src='#{user.gravatar(60)}',width=64,height=64)
+              div.media-body
+                div.form-group          
+                  textarea.form-control#remarks(name="remarks",rows=3,placeholder="")
+                div.form-group.pull-right
+                  div.btn-group
+                  button.btn.btn-danger#comment(type="submit",name="action",value="comment")
+                    i.fa.fa-comment-o.fa-fw
+                    | &nbsp;Comment without endorsing              
+                  button.btn.btn-success#approve(type="submit",name="action",value="approve")
+                    i.fa.fa-check.fa-fw
+                    | &nbsp;Approve!

@@ -9,8 +9,8 @@
         | &nbsp;See More
     a.btn.btn-warning(href="/assets/" + asset._id + "/edit")
         i.fa.fa-pencil    
-        | &nbsp;Edit      
-
+        | &nbsp;Edit
+        
   h1 #{asset.title}
     if asset.draft
       | &nbsp;
@@ -92,3 +92,11 @@
               dd
                 span(class="flag-icon flag-icon-" + language.flag.toLowerCase())
                 span &nbsp;#{language.nativeName}  
+if !(asset.published) && (user.type === 'admin') && (!(asset.submitter.equals(user._id)))
+  p.text-muted.pull-left This resource is not yet published.  As a moderator, you can click&nbsp;
+  form(role="form",method="POST",action='/assets/' + asset._id + '/approvals')
+    button.btn.btn-success.btn-xs(type="submit",name="action",value="approve")
+      i.fa.fa-check
+      | &nbsp;Approve!
+    input(type='hidden', name='_csrf', value=_csrf)
+    input(type='hidden', name='remarks', value="")

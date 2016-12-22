@@ -9,10 +9,10 @@ block content
     .container
       h1 Add Content
       p
-        | Share a URL pointing to high-quality mathematics content
+        | Describe high-quality mathematics content to help others find it
 
   .container
-    form(role="form",method="POST")
+    form(role="form",method="POST",action='/assets/' + asset._id)
       input(type='hidden', name='_csrf', value=_csrf)
       .row
         .col-md-12
@@ -193,7 +193,6 @@ block content
       div.row
         div.col-sm-6
           div.form-group
-          - console.log('datepicker!');
           - scripts.push('datepicker');
             label(for="createdOn") Created On
             p.form-text.text-muted On what date was the resource created?  If you are unsure, leave this blank.
@@ -215,19 +214,31 @@ block content
             label(for="description") Additional prerequisites
             p.form-text.text-muted Are there additional skills that a learner require to fully engage with the resource?
             textarea.form-control#description(name="additionalPrerequisites",rows=3,placeholder="") #{asset.additionalPrerequisites}
-      hr.separator        
-      .row
-        .col-md-12
-          div.form-group
-            label(for="repository") Repository URL
-            p.form-text.text-muted Where can an instructor find the original source code of the resource?  For a voiceover video, this might be a link to the slides shown.  For a handout it may be a link to the original source file.  A GitHub repository link is especially desirable.
-            input.form-control(type="url", name="repository", id="repository", placeholder="http://.../",value=asset.repository)
       hr.separator
 
-      if asset.draft
-        button.btn.btn-default(type="submit",name="action",value="save") Save draft
-      else
-        button.btn.btn-default(type="submit",name="action",value="save") Update Asset
-
       if !(asset.published)
-        button.btn.btn-primary(type="submit",name="action",value="publish") Submit for review
+        button.btn.btn-primary(type="submit",name="action",value="publish")
+          i.fa.fa-envelope-o.fa-fw
+          | &nbsp;Submit for review
+
+      - scripts.push('save-in-place');
+      if asset.draft
+        button.btn.btn-default#save-button
+          //i.fa.fa-spinner.fa-pulse.fa-fw
+          i.fa.fa-save.fa-fw
+          span#unsaved
+            | &nbsp;Save draft
+          span.hidden#saving
+            | &nbsp;Saving&hellip;
+          span.hidden#saved
+            | &nbsp;Saved!
+      else
+        button.btn.btn-default#save-button
+          //i.fa.fa-spinner.fa-pulse.fa-fw
+          i.fa.fa-save.fa-fw
+          span#unsaved
+            | &nbsp;Update Asset
+          span.hidden#saving
+            | &nbsp;Updating&hellip;
+          span.hidden#saved
+            | &nbsp;Updated!

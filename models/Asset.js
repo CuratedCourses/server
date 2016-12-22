@@ -34,11 +34,6 @@ var assetSchema = new mongoose.Schema({
     externalUrl: { type: String, index: true },
     contentHash: { index: true, type: Schema.Types.ObjectId, ref: 'CAFSFile' },
 
-    // Sometimes, like for videos, there might be original "source"
-    // assets; "repository" might be a reference to a github
-    // repository, but it could also be a link to source code
-    repository: { type: String },
-
     // an externally hosted thumbnail image
     urlThumbnail: { type: String },
     // a 64x64 .png formatted thumbnail image
@@ -87,7 +82,8 @@ var assetSchema = new mongoose.Schema({
     approvals: [ {
 	user: { type: Schema.Types.ObjectId, ref: 'User' },
 	date: { type: Date },
-	remarks: { type: String },
+	upvote: { type: Boolean },
+	remarks: { type: String }
     } ]
 
 });
@@ -268,4 +264,46 @@ module.exports.draftAssetFromHTML = function(user, url, document, callback) {
 	}
     ], callback);
 
+};
+
+module.exports.draftAssetFromBuffer = function(user, url, buffer, mimetype, callback) {
+    var asset = new Asset();
+
+    asset.draft = true;
+    asset.published = false;
+
+    asset.externalUrl = url;
+    
+    asset.submitter = user._id;
+
+    asset.accessibility = "";
+    asset.language = 'en';        
+    asset.pedagogicalTimeframe = "";
+    asset.pedagogicalPerspective = "";
+    asset.additionalPrerequisites = "";    
+
+    asset.submittedAt = new Date();
+    
+    // A file is, most generically, a handout
+    asset.type = "handout";
+
+    Asset.findOne( { externalUrl: asset.externalUrl,
+		     draft: false,
+		     published: true }, function(err,previousAsset) {
+			 if (err || (previousAsset === null)) {
+			     callback(null, asset);
+			 } else {
+			     // Create a draft edit to this asset
+			     var newAsset = new Asset(previousAsset);
+			     newAsset._id = mongoose.Types.ObjectId();
+			     newAsset.replaces = previousAsset._id;
+			     newAsset.submitter = user._id;
+			     newAsset.draft = true;
+			     newAsset.published = false;
+			     newAsset.approvals = [];
+			     newAsset.submittedAt = new Date();
+			     
+			     callback(null, newAsset);
+			 }
+		     });
 };
