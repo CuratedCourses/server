@@ -321,6 +321,7 @@ app.use(helmet.contentSecurityPolicy({
     'http://img2-ak.lst.fm',
     'https://gravatar.com',
     'https://avatars.githubusercontent.com',
+    'https://*.googleusercontent.com',
     'http://pbs.twimg.com',
     'https://pbs.twimg.com',
     'http://*.4sqi.net',
