@@ -8,14 +8,13 @@ var LOCAL_URL_PREFIX = 'https://curatedcourses.org/files/';
 
 var _             = require('lodash');
 var debug         = require('debug')('skeleton');       // https://github.com/visionmedia/debug
-var utils         = require('../config/utils');
-var config        = require('../config/config');
 var cheerio       = require('cheerio');         // https://github.com/cheeriojs/cheerio
 var request       = require('request');
 var async         = require('async');
 var moment        = require('moment');
 
 var validUrl = require('valid-url');
+var normalizeUrl = require('normalize-url');
 
 var Asset           = require('../models/Asset.js');
 var WebCache        = require('../models/WebCache.js');
@@ -90,6 +89,8 @@ module.exports.controller = function (app) {
     
     app.post('/assets/new', passportConf.isAuthenticated, function (req, res) {
 	var asset = {};
+
+	req.body.assetUrl = normalizeUrl( req.body.assetUrl );
 	
 	// If the user contributed a file...
 	if ((req.files) && (req.files.length == 1)) {
@@ -191,34 +192,57 @@ module.exports.controller = function (app) {
 	});
     });    
 
-    app.post('/assets/:id/edit', passportConf.isAuthenticated, function (req, res) {
+    /****************************************************************/
+
+    function copyFormIntoAsset( req, asset ) {
+	var fields = ['title',
+		      'description',
+		      'type',
+		      'pedagogicalTimeframe',
+		      'pedagogicalPerspective',
+		      'language',
+		      'license',
+		      'accessibility',
+		      'additionalPrerequisites',
+		      'repository'
+		     ];
+	
+	fields.forEach( function(field) {
+	    // All fields get trimmed
+	    asset[field] = req.body[field].trim();
+	});
+	
+	asset.createdOn = moment(req.body.createdOn, 'MM/DD/YYYY');
+	
+	// Should validate this
+	asset.tags = req.body.tags.split(',');
+    }
+    
+    app.put('/assets/:id', passportConf.isAuthenticated, function (req, res) {
+	Asset.findOne( {_id: req.params.id}, function(err,asset) {
+	    if (err) {
+		res.json({err:err});
+	    } else {
+		copyFormIntoAsset( req, asset );
+		
+		asset.save( function(err) {
+		    if (err) {
+			res.json({err:err});			
+		    } else {
+			res.json(asset);
+		    }
+		});
+	    }
+	});
+    });
+    
+    app.post('/assets/:id', passportConf.isAuthenticated, function (req, res) {
 	Asset.findOne( {_id: req.params.id}, function(err,asset) {
 	    if (err) {
 		req.flash('error', { msg: err });
 		res.redirect('back');
 	    } else {
-
-		var fields = ['title',
-			      'description',
-			      'type',
-			      'pedagogicalTimeframe',
-			      'pedagogicalPerspective',
-			      'language',
-			      'license',
-			      'accessibility',
-			      'additionalPrerequisites',
-			      'repository'
-			     ];
-		
-		fields.forEach( function(field) {
-		    // All fields get trimmed
-		    asset[field] = req.body[field].trim();
-		});
-
-		asset.createdOn = moment(req.body.createdOn, 'MM/DD/YYYY');
-
-		// Should validate this
-		asset.tags = req.body.tags.split(',');
+		copyFormIntoAsset( req, asset );
 
 		asset.save( function(err) {
 		    if (err) {
