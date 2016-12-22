@@ -7,6 +7,7 @@
 var debug         = require('debug')('skeleton');       // https://github.com/visionmedia/debug
 var config        = require('../config/config');
 var nodemailer    = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 /**
  * Contact Form Controller
@@ -47,13 +48,7 @@ module.exports.controller = function (app) {
     }
 
     // Create reusable transporter object using SMTP transport
-    var transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: config.gmail.user,
-        pass: config.gmail.password
-      }
-    });
+    var transporter = nodemailer.createTransport(smtpTransport());      
 
     // Create email
     var mailOptions = {
