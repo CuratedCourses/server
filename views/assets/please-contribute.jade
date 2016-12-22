@@ -1,0 +1,20 @@
+extends ../layouts/layout
+
+block head
+  title Resources &middot; #{application}
+
+block content
+
+  .mini-tron
+    .container
+      h1 Resources
+  .container
+    h1 Help out now!
+    p.pull-right
+      a.btn-lg.btn.btn-primary(href="/assets/new")
+        i.fa.fa-plus.fa-fw
+        | &nbsp;Add Content    
+    p You have not yet contributed any resources to the #{application} catalog.
+    p Get started by&nbsp;
+      a(href="/assets/new") contributing a resource
+      | &nbsp;right now!
