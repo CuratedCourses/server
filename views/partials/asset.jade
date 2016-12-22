@@ -100,3 +100,5 @@ if !(asset.published) && (user.type === 'admin') && (!(asset.submitter.equals(us
       | &nbsp;Approve!
     input(type='hidden', name='_csrf', value=_csrf)
     input(type='hidden', name='remarks', value="")
+if !(asset.published) && (user.type === 'admin') && (asset.submitter.equals(user._id))
+  p.text-muted.pull-left This resource is not yet published.  But as the submitter of the resource, you are not permitted to approve the resource.  You'll have to find another moderator who is willing to approve it.
