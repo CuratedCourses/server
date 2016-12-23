@@ -132,7 +132,8 @@ if (app.get('env') === 'production') {
   // app.use(helmet.hsts({ maxAge: ninetyDaysInMilliseconds }));
   // Turn on HTTPS/SSL cookies
   config.session.proxy = true;
-  config.session.cookie.secure = true;
+  // I don't really have https    
+  config.session.cookie.secure = false;
 
   // BADBAD: this should NOT be in production, but I don't have the
   // cache control set up correctly yet.
