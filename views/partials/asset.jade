@@ -1,9 +1,14 @@
 .row
   div.btn-group.pull-right
-    if asset.externalUrl  
-      a.btn.btn-primary(href=asset.externalUrl)
+    if asset.contentHash
+      a.btn.btn-primary(href="/files/" + asset.contentHash)
         i.fa.fa-external-link
-        | &nbsp;Go to resource
+        | &nbsp;Go to file
+    else
+      if asset.externalUrl
+        a.btn.btn-primary(href=asset.externalUrl)
+          i.fa.fa-external-link
+          | &nbsp;Go to resource
     a.btn.btn-info(href="/assets/" + asset._id)
         i.fa.fa-eye    
         | &nbsp;See More
@@ -11,15 +16,28 @@
         i.fa.fa-pencil    
         | &nbsp;Edit
         
-  h1 #{asset.title}
+  h1
+    a(href="/assets/#{asset._id}") #{asset.title}
     if asset.draft
       | &nbsp;
       small
-        span.label.label-default Draft
+        span.label.label-danger Draft
+    else if !(asset.published)
+      | &nbsp;
+      small
+        span.label.label-warning Awaiting Moderation
+        
 .row      
   p #{asset.description}
 .row
-  .col-md-6
+  .col-md-2
+    if(asset.urlThumbnail)
+      a.thumbnail(href="/assets/#{asset._id}")
+        img.embed-responsive-item(src=asset.urlThumbnail)
+    else if(asset.pngThumbnail)
+      a.thumbnail(href="/assets/#{asset._id}")
+        img.embed-responsive-item(src="/assets/#{asset._id}.png")
+  .col-md-5
     ul.list-group
       for tagId in asset.tags
         if tags
@@ -34,7 +52,7 @@
         else
           - var tag = { _id: tagId }
           include tag
-  .col-md-6
+  .col-md-5
     dl.dl-horizontal
       if asset.license
         dt License
@@ -43,6 +61,10 @@
         dt Created On
         dd #{moment(asset.createdOn).format('MMMM Do, YYYY')}
           small.text-muted &nbsp;#{moment(asset.createdOn).fromNow()}
+      if asset.submittedAt
+        dt Submitted At
+        dd #{moment(asset.submittedAt).format('MMMM Do, YYYY')}
+          small.text-muted &nbsp;#{moment(asset.submittedAt).fromNow()}          
       if asset.type
         dt Type
         dd

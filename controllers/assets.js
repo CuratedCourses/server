@@ -18,7 +18,6 @@ var normalizeUrl = require('normalize-url');
 
 var Asset           = require('../models/Asset.js');
 var WebCache        = require('../models/WebCache.js');
-var CAFSFile        = require('../models/CAFSFile.js');
 
 var passportConf  = require('../config/passport');
 
@@ -97,9 +96,7 @@ module.exports.controller = function (app) {
 		if ((req.files) && (req.files.length == 1)) {
 		    var file = req.files[0];
 		    
-		    var address = CAFSFile.addressForContent( file.buffer, file.mimetype );
-		    
-		    Asset.draftAssetFromBuffer(req.user, LOCAL_URL_PREFIX + address, file.buffer, file.mimetype,
+		    Asset.draftAssetFromBuffer(req.user, file.buffer, file.mimetype,
 					       function(err, asset) {
 						   asset.title = file.originalname;
 						   
@@ -110,10 +107,24 @@ module.exports.controller = function (app) {
 		    // BADBAD: a user could submit TWO drafts for the same URL and we don't handle this case	
 		    async.waterfall([		    
 			function(callback) {
-			    WebCache.findRecentOrDownload( req.body.assetUrl, callback );
+			    WebCache.findRecentOrDownload( req.body.assetUrl, function(err, body, screenshot) {
+				if (err) {
+				    callback(err);
+				} else {
+				    callback( null, { body: body, screenshot: screenshot } );
+				}
+			    });
 			},
-			function(body, callback) {
-			    Asset.draftAssetFromHTML(req.user, req.body.assetUrl, body, callback );
+			function(result, callback) {
+			    Asset.draftAssetFromHTML(req.user, req.body.assetUrl, result.body,
+						     function(err, asset) {
+							 if (err) {
+							     callback(err);
+							 } else {
+							     asset.pngThumbnail = result.screenshot;
+							     callback( null, asset );
+							 }
+						     });
 			}
 		    ], callback);
 		} else {
@@ -127,7 +138,7 @@ module.exports.controller = function (app) {
 	    }
 	], function(err, asset) {
 	    if (err) {
-		req.flash('error', { msg: err } );
+		req.flash('error', { msg: err.toString() } );
 		res.redirect('back');
 	    } else {
 		res.redirect('/assets/' + asset._id + '/edit');
@@ -149,6 +160,30 @@ module.exports.controller = function (app) {
 		languages: languages,
 		assets: assets
 	    });
+	});
+    });
+
+    /**
+     * GET /assets/:id.png
+     * Get a thumbnail for an asset
+     */
+    
+    app.get('/assets/:id.png', function (req, res) {
+	Asset.findOne( {_id: req.params.id} ).exec( function(err,asset) {
+	    if ((err) || (asset.pngThumbnail.length == 0)) {
+		var imgdata = new Buffer([
+		    0x47,0x49, 0x46,0x38, 0x39,0x61, 0x01,0x00, 0x01,0x00, 0x80,0x00, 0x00,0xFF, 0xFF,0xFF,
+		    0x00,0x00, 0x00,0x21, 0xf9,0x04, 0x04,0x00, 0x00,0x00, 0x00,0x2c, 0x00,0x00, 0x00,0x00,
+		    0x01,0x00, 0x01,0x00, 0x00,0x02, 0x02,0x44, 0x01,0x00, 0x3b
+		]);
+		res.writeHead(200,
+			      {'Content-Type': 'image/gif', 
+			       'Content-Length': imgdata.length});
+		res.end(imgdata);
+	    } else {
+		res.writeHead(200, {'Content-Type': 'image/png' });
+		res.end(asset.pngThumbnail, 'binary');
+	    }
 	});
     });
     

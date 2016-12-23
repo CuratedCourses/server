@@ -9,6 +9,8 @@ var async  = require('async');
 var cheerio       = require('cheerio');
 var compactLanguageDetector = require('cld');
 var Schema = mongoose.Schema;
+var url = require('url');
+var CAFSFile        = require('./CAFSFile.js');
 
 /**
  * Define Asset Schema
@@ -32,12 +34,13 @@ var assetSchema = new mongoose.Schema({
     // content like a video, which might have underlying source code,
     // too...  That URL goes in the repository field
     externalUrl: { type: String, index: true },
-    contentHash: { index: true, type: Schema.Types.ObjectId, ref: 'CAFSFile' },
+    contentHash: { index: true, type: String, ref: 'CAFSFile' },
 
     // an externally hosted thumbnail image
     urlThumbnail: { type: String },
-    // a 64x64 .png formatted thumbnail image
+    // a 400x400 .png formatted thumbnail image
     pngThumbnail: { type: Buffer },
+    
     // a .svg formatted thumbnail image
     svgThumbnail: { type: Buffer },    
     // a 64x64 jpeg formatted thumbnail image
@@ -162,13 +165,13 @@ var Asset = mongoose.model('Asset', assetSchema);
 
 module.exports = Asset;
 
-module.exports.draftAssetFromHTML = function(user, url, document, callback) {
+module.exports.draftAssetFromHTML = function(user, externalUrl, document, callback) {
     var asset = new Asset();
 
     asset.draft = true;
     asset.published = false;
 
-    asset.externalUrl = url;
+    asset.externalUrl = externalUrl;
     
     asset.submitter = user._id;
 
@@ -198,7 +201,8 @@ module.exports.draftAssetFromHTML = function(user, url, document, callback) {
     asset.license = $('meta[name="DC.rights"]').attr('content');
     
     // og:image is an image URL which should represent your object
-    // within the graph
+    // within the graph; in particular, this will provide a screenshot
+    // for a youtube video
     var externalThumbnail = $('meta[property="og:image"]').attr('content');
     if (externalThumbnail)
 	asset.urlThumbnail = externalThumbnail;
@@ -219,6 +223,14 @@ module.exports.draftAssetFromHTML = function(user, url, document, callback) {
 
     // A website is, most generically, a handout
     asset.type = "handout";
+
+    // A youtube video should be marked as a video
+    var parsedUrl = url.parse(externalUrl);
+    if (parsedUrl.host == "youtube.com") {
+	if (parsedUrl.query.match(/v=/)) {
+	    asset.type = "video";
+	}
+    }
 
     // BADBAD: fill in...
     //creators: [{ type: Schema.Types.ObjectId, ref: 'User' }],
@@ -266,14 +278,15 @@ module.exports.draftAssetFromHTML = function(user, url, document, callback) {
 
 };
 
-module.exports.draftAssetFromBuffer = function(user, url, buffer, mimetype, callback) {
+module.exports.draftAssetFromBuffer = function(user, buffer, mimetype, callback) {
     var asset = new Asset();
 
     asset.draft = true;
     asset.published = false;
 
-    asset.externalUrl = url;
-    
+    var address = CAFSFile.addressForContent( buffer, mimetype );
+    asset.contentHash = address;
+
     asset.submitter = user._id;
 
     asset.accessibility = "";

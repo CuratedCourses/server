@@ -16,10 +16,16 @@ block content
       input(type='hidden', name='_csrf', value=_csrf)
       .row
         .col-md-12
-          div.form-group
-            label(for="title") URL
-            p.form-text.text-muted Where can learners find the resource on the internet?
-            input.form-control(type="url",placeholder=asset.externalUrl, readonly)                   
+          if asset.externalUrl
+            div.form-group
+              label(for="title") URL
+              p.form-text.text-muted Where can learners find the resource on the internet?
+              input.form-control(type="url",placeholder=asset.externalUrl, readonly)
+          if asset.contentHash
+            div.form-group
+              label(for="title") URL
+              p.form-text.text-muted Where can learners find the resource on the internet?
+              input.form-control(type="url",placeholder="https://curatedcourses.org/files/" + asset.contentHash, readonly)                                 
       .row
         .col-md-12            
           div.form-group

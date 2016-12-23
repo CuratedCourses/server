@@ -279,7 +279,7 @@ app.use(helmet.frameguard('deny'));   // Prevent iframe clickjacking
 app.use(helmet.contentSecurityPolicy({
   defaultSrc: [
     "'self'",
-    'skeleton-app.jit.su'
+    'curatedcourses.org'
   ],
   scriptSrc: [
     "'self'",
@@ -332,6 +332,8 @@ app.use(helmet.contentSecurityPolicy({
     'https://graph.facebook.com',
     'http://*.fbcdn.net',
     'https://*.fbcdn.net',
+    'https://i.ytimg.com',
+    'https://img.youtube.com',            
     'http://fbcdn-profile-a.akamaihd.net',
     'https://fbcdn-profile-a.akamaihd.net',
     'http://github.global.ssl.fastly.net',

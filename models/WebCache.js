@@ -6,6 +6,8 @@
 
 var mongoose  = require('mongoose');
 var request       = require('request');
+var webshot = require('webshot');
+var async = require('async');
 
 /**
  * Define Asset Schema
@@ -15,6 +17,7 @@ var webCacheSchema = new mongoose.Schema({
     url: { type: String, unique: true, index: true },
     accessedOn: { type: Date },
     content: { type: Buffer },
+    screenshot: { type: Buffer }
 });
 
 var WebCache = mongoose.model('WebCache', webCacheSchema);
@@ -22,12 +25,52 @@ var WebCache = mongoose.model('WebCache', webCacheSchema);
 module.exports = WebCache;
 
 module.exports.downloadAndCache = function (url, callback) {
-    request.get({ uri: url, timeout: 5000 }, function (err, response, body) {
-	if (!err && response.statusCode === 200) {
-
+    async.parallel([
+	function(callback) {
+	    request.get({ uri: url, timeout: 5000 }, function (err, response, body) {
+		if (!err && response.statusCode === 200) {
+		    callback( null, body );
+		} else {
+		    if (err) {
+			callback( err );
+		    } else {
+			callback( response.statusCode );			
+		    }
+		}
+	    });
+	},
+	function(callback) {
+	    webshot(url, {//timeout: 5000,
+			  streamType: 'png',
+			  windowSize: { width: 1024
+				      , height: 768 },
+			  shotSize: { width: 'window'
+				    , height: 'window' },
+			  shotOffset: { left: 312
+				      , right: 312
+				      , top: 184
+				      , bottom: 184 }
+			 }, function(err, stream) {
+			     if (err) {
+				 callback(err);
+			     } else {
+				 var bufs = [];
+				 stream.on('data', function(d){ bufs.push(d); });
+				 stream.on('end', function(){
+				     callback( null, Buffer.concat(bufs) );
+				 });
+			     }
+			 });
+	}
+    ], function(err, results) {
+	if (err) {
+	    callback(err);
+	} else {
 	    var cachedContent = { url: url,
 				  accessedOn: new Date(),
-				  content: body };
+				  content: results[0],
+				  screenshot: results[1]
+				};
 	    
 	    WebCache.findOneAndUpdate({url: url},
 				      cachedContent,
@@ -36,17 +79,11 @@ module.exports.downloadAndCache = function (url, callback) {
 					  // It doesn't actually matter if the cache was successful!
 				      });
 	    
-	    callback( null, body );
-	} else {
-	    if (err) {
-		callback( err );
-	    } else { 
-		callback( response.statusCode );
-	    }
+	    callback( null, cachedContent.content, cachedContent.screenshot );
 	}
     });
 };
-
+    
 function daysBetween( date1, date2 ) {
     //Get 1 day in milliseconds
     var one_day=1000*60*60*24;
@@ -68,9 +105,9 @@ module.exports.findRecentOrDownload = function (url, callback) {
 	    module.exports.downloadAndCache( url, callback );  
 	} else {	
 	    if (daysBetween( cachedContent.accessedOn, new Date() ) < 7) {
-		callback( null, cachedContent.content );
+		callback( null, cachedContent.content, cachedContent.screenshot );
 	    } else {
-		module.exports.downloadAndCache( url, callback );  		
+		module.exports.downloadAndCache( url, callback ); 
 	    }
 	}
     });
