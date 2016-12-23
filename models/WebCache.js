@@ -46,10 +46,10 @@ module.exports.downloadAndCache = function (url, callback) {
 				      , height: 768 },
 			  shotSize: { width: 'window'
 				    , height: 'window' },
-			  shotOffset: { left: 312
-				      , right: 312
-				      , top: 184
-				      , bottom: 184 }
+			  shotOffset: { left: 0
+				      , right: 624
+				      , top: 0
+				      , bottom: 368 }
 			 }, function(err, stream) {
 			     if (err) {
 				 callback(err);

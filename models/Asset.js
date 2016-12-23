@@ -226,8 +226,8 @@ module.exports.draftAssetFromHTML = function(user, externalUrl, document, callba
 
     // A youtube video should be marked as a video
     var parsedUrl = url.parse(externalUrl);
-    if (parsedUrl.host == "youtube.com") {
-	if (parsedUrl.query.match(/v=/)) {
+    if ((parsedUrl.host) && (parsedUrl.host == "youtube.com")) {
+	if ((parsedUrl.query) && (parsedUrl.query.match(/v=/))) {
 	    asset.type = "video";
 	}
     }
