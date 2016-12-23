@@ -276,10 +276,11 @@ app.use(helmet.frameguard('deny'));   // Prevent iframe clickjacking
 //   EVEN USE IT AT ALL - I JUST WANTED TO
 //   LEARN HOW IT WORKS. :)
 
+
 app.use(helmet.contentSecurityPolicy({
   defaultSrc: [
-    "'self'",
-    'curatedcourses.org'
+      "'self'",
+      'curatedcourses.org'
   ],
   scriptSrc: [
     "'self'",
@@ -304,7 +305,9 @@ app.use(helmet.contentSecurityPolicy({
     'http://fonts.googleapis.com',
     'https://fonts.googleapis.com',
     'http://checkout.stripe.com',
-    'https://checkout.stripe.com'
+    'https://checkout.stripe.com',
+    'http://*.ytimg.com',
+    'https://*.ytimg.com'      
   ],
   fontSrc: [
     "'self'",
@@ -332,7 +335,9 @@ app.use(helmet.contentSecurityPolicy({
     'https://graph.facebook.com',
     'http://*.fbcdn.net',
     'https://*.fbcdn.net',
-    'https://i.ytimg.com',
+    'http://*.ytimg.com',      
+    'https://*.ytimg.com',
+    'http://img.youtube.com',                  
     'https://img.youtube.com',            
     'http://fbcdn-profile-a.akamaihd.net',
     'https://fbcdn-profile-a.akamaihd.net',
