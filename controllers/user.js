@@ -870,7 +870,9 @@ module.exports.controller = function (app) {
 
           newSocialUser.profile.name      = info.profile._json.name;
           newSocialUser.profile.gender    = info.profile._json.gender;
-          newSocialUser.profile.location  = info.profile._json.location.name;
+          if (info.profile._json.location) {
+              newSocialUser.profile.location  = info.profile._json.location.name;
+	  }
           newSocialUser.profile.website   = info.profile._json.link;
           newSocialUser.profile.picture   = 'https://graph.facebook.com/' + info.profile.id + '/picture?type=large';
 
