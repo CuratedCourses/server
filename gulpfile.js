@@ -205,7 +205,7 @@ gulp.task('nodemon', ['build'], function (cb) {
   $.nodemon({
     script: 'app.js',
     verbose: false,
-    env: { 'NODE_ENV': 'development', 'DEBUG': 'skeleton' },
+    env: { 'NODE_ENV': 'development', 'DEBUG': 'curatedcourses' },
     // nodeArgs: ['--debug']
     ext: 'js',
     ignore: [
@@ -250,7 +250,7 @@ gulp.task('default', ['nodemon'], function () {
 // registering for an API key from the Google Developer Console
 // is recommended.
 
-var site = 'skeleton-app.jit.su';
+var site = 'curatedcourses.org';
 
 gulp.task('mobile', function (cb) {
   // output a formatted report to the terminal
