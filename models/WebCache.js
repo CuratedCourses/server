@@ -41,26 +41,24 @@ module.exports.downloadAndCache = function (url, callback) {
 	},
 	function(callback) {
 	    webshot(url, {//timeout: 5000,
-			  streamType: 'png',
-			  windowSize: { width: 1024
-				      , height: 768 },
-			  shotSize: { width: 'window'
-				    , height: 'window' },
-			  shotOffset: { left: 0
-				      , right: 624
-				      , top: 0
-				      , bottom: 368 }
-			 }, function(err, stream) {
-			     if (err) {
-				 callback(err);
-			     } else {
-				 var bufs = [];
-				 stream.on('data', function(d){ bufs.push(d); });
-				 stream.on('end', function(){
-				     callback( null, Buffer.concat(bufs) );
-				 });
-			     }
-			 });
+		streamType: 'png',
+		windowSize: { width: 1024, height: 768 },
+		shotSize: { width: 'window', height: 'window' },
+		shotOffset: { left: 0,
+			      right: 624,
+			      top: 0,
+			      bottom: 368 }
+	    }, function(err, stream) {
+		if (err) {
+		    callback(err);
+		} else {
+		    var bufs = [];
+		    stream.on('data', function(d){ bufs.push(d); });
+		    stream.on('end', function(){
+			callback( null, Buffer.concat(bufs) );
+		    });
+		}
+	    });
 	}
     ], function(err, results) {
 	if (err) {
