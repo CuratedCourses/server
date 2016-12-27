@@ -91,6 +91,12 @@ var assetSchema = new mongoose.Schema({
 
 });
 
+// Add text index -- with weird mongoose language_override option
+//
+// See: http://stackoverflow.com/questions/39593352/mongodb-only-creates-text-search-index-with-language-override-option
+//
+assetSchema.index({ title: 'text', description: 'text'}, { language_override: 'text' });
+
 assetSchema.methods.isViewableBy = function (user) {
     if (this.published)
 	return true;
@@ -164,6 +170,12 @@ assetSchema.methods.humanReadablePedagogicalPerspective = function () {
 var Asset = mongoose.model('Asset', assetSchema);
 
 module.exports = Asset;
+
+mongoose.set('debug', true);
+
+Asset.ensureIndexes(function (err) {
+    if (err) console.log(err);
+});
 
 module.exports.draftAssetFromHTML = function(user, externalUrl, document, callback) {
     var asset = new Asset();

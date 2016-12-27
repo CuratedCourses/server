@@ -225,13 +225,40 @@ module.exports.controller = function (app) {
     // Invite the user to edit the resource if they are the submitter
     // and it doesn't have any approvals; proposed edit.
     app.get('/assets/', function (req, res) {
-	Asset.find( { published: true, draft: false }, function(err,assets) {
-	    res.render('assets/list', {
-		url: req.url,
-		languages: languages,
-		assets: assets
+	var search = { published: true, draft: false };
+	
+	if (req.query.q) {
+	    search['$text'] = { $search: req.query.q };
+
+	    Asset.find( search, function(err,assets) {
+		if (err) {
+		    console.log(err);
+		    req.flash('error', { msg: err });
+		    res.redirect('back');		
+		} else {
+		    res.render('assets/search', {
+			url: req.url,
+			languages: languages,
+			assets: assets,
+			query: req.query.q
+		    });
+		}
 	    });
-	});
+	} else {
+	    Asset.find( search, function(err,assets) {
+		if (err) {
+		    console.log(err);
+		    req.flash('error', { msg: err });
+		    res.redirect('back');		
+		} else {
+		    res.render('assets/list', {
+			url: req.url,
+			languages: languages,
+			assets: assets
+		    });
+		}
+	    });
+	}
     });
 
     app.get('/users/:id/assets', function (req, res) {

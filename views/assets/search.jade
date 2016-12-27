@@ -1,0 +1,19 @@
+extends ../layouts/layout
+
+block head
+  title Resources &middot; #{application}
+
+block content
+
+  .mini-tron
+    .container
+      h1 Resources
+      h2 &ldquo;#{query}&rdquo;
+  .container
+    if assets && assets.length > 0
+      for asset in assets
+        hr.separator
+        .row
+          include ../partials/asset
+    else
+      h2 No resources found.
