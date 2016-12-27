@@ -208,6 +208,12 @@ module.exports.controller = function (app) {
 		req.flash('error', { msg: err });
 		res.redirect('back');
 	    } else {
+		// Increment the view count
+		asset.viewCount = asset.viewCount + 1;
+		asset.save( function(err) {
+		    console.log( err );
+		});
+		
 		res.render('assets/view', {
 		    url: req.url,
 		    asset: asset,

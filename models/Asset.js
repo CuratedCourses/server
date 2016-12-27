@@ -17,6 +17,8 @@ var CAFSFile        = require('./CAFSFile.js');
  */
 
 var assetSchema = new mongoose.Schema({
+    viewCount: { type: Number, default: 0 },
+    
     submitter: { type: Schema.Types.ObjectId, ref: 'User' },
 
     draft: { type: Boolean },
