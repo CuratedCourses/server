@@ -298,11 +298,19 @@ app.use(helmet.contentSecurityPolicy({
     'http://checkout.stripe.com',
     'https://checkout.stripe.com',
     'http://cdnjs.cloudflare.com',
-    'https://cdnjs.cloudflare.com'
+    'https://cdnjs.cloudflare.com',
+    'http://sagecell.sagemath.org',
+    'https://sagecell.sagemath.org',      
+    'http://cdn.mathjax.org',
+    'https://cdn.mathjax.org',
   ],
   styleSrc: [
     "'self'",
     "'unsafe-inline'",
+    'http://cdn.mathjax.org',
+    'https://cdn.mathjax.org',      
+    'http://sagecell.sagemath.org',
+    'https://sagecell.sagemath.org',      
     'http://fonts.googleapis.com',
     'https://fonts.googleapis.com',
     'http://checkout.stripe.com',
@@ -312,6 +320,10 @@ app.use(helmet.contentSecurityPolicy({
   ],
   fontSrc: [
     "'self'",
+    'http://cdn.mathjax.org',
+    'https://cdn.mathjax.org',      
+    'http://sagecell.sagemath.org',
+    'https://sagecell.sagemath.org',      
     'http://fonts.googleapis.com',
     'https://fonts.googleapis.com',
     'http://fonts.gstatic.com',
@@ -322,6 +334,10 @@ app.use(helmet.contentSecurityPolicy({
   imgSrc: [
     "'self'",
     'data:',
+    'http://cdn.mathjax.org',
+    'https://cdn.mathjax.org',      
+    'http://sagecell.sagemath.org',
+    'https://sagecell.sagemath.org',      
     'http://img2-ak.lst.fm',
     'https://gravatar.com',
     'https://avatars.githubusercontent.com',
@@ -356,6 +372,8 @@ app.use(helmet.contentSecurityPolicy({
   ],
   connectSrc: [ // limit the origins (via XHR, WebSockets, and EventSource)
     "'self'",
+    'http://sagecell.sagemath.org',
+    'https://sagecell.sagemath.org',      
     'ws://localhost:8000',      
     'wss://curatedcourses.org/',      
     'https://api.github.com'

@@ -6,6 +6,7 @@
 
 var mongoose  = require('mongoose');
 var async  = require('async');
+var path  = require('path');
 var cheerio       = require('cheerio');
 var compactLanguageDetector = require('cld');
 var Schema = mongoose.Schema;
@@ -303,7 +304,7 @@ module.exports.draftAssetFromHTML = function(user, externalUrl, document, callba
 
 };
 
-module.exports.draftAssetFromBuffer = function(user, buffer, mimetype, callback) {
+module.exports.draftAssetFromBuffer = function(user, buffer, mimetype, filename, callback) {
     var asset = new Asset();
 
     asset.draft = true;
@@ -312,6 +313,9 @@ module.exports.draftAssetFromBuffer = function(user, buffer, mimetype, callback)
     var address = CAFSFile.addressForContent( buffer, mimetype );
     asset.contentHash = address;
     asset.contentType = mimetype;
+
+    if (filename)
+	asset.title = filename;
 
     asset.submitter = user._id;
 
@@ -325,7 +329,12 @@ module.exports.draftAssetFromBuffer = function(user, buffer, mimetype, callback)
     
     // A file is, most generically, a handout
     asset.type = "handout";
-
+    if ( (path.extname(filename) == '.sage') ||
+	 (path.extname(filename) == '.py') ||
+	 (mimetype.match( /sage/ )) ) {
+	asset.type = "sagecell";
+    }
+	
     Asset.findOne( { externalUrl: asset.externalUrl,
 		     draft: false,
 		     published: true }, function(err,previousAsset) {

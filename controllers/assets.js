@@ -18,6 +18,7 @@ var normalizeUrl = require('normalize-url');
 
 var Asset           = require('../models/Asset.js');
 var WebCache        = require('../models/WebCache.js');
+var CAFSFile        = require('../models/CAFSFile.js');
 
 var passportConf  = require('../config/passport');
 
@@ -103,9 +104,8 @@ module.exports.controller = function (app) {
 		if ((req.files) && (req.files.length == 1)) {
 		    var file = req.files[0];
 		    
-		    Asset.draftAssetFromBuffer(req.user, file.buffer, file.mimetype,
+		    Asset.draftAssetFromBuffer(req.user, file.buffer, file.mimetype, file.originalname,
 					       function(err, asset) {
-						   asset.title = file.originalname;
 						   callback(err, asset);
 					       });
 		    
@@ -211,14 +211,30 @@ module.exports.controller = function (app) {
 		// Increment the view count
 		asset.viewCount = asset.viewCount + 1;
 		asset.save( function(err) {
-		    console.log( err );
 		});
-		
-		res.render('assets/view', {
-		    url: req.url,
-		    asset: asset,
-		    languages: languages		    
-		});
+
+		// Load sage cell content
+		if ((asset.type == "sagecell") && (asset.contentHash)) {
+		    CAFSFile.contentForAddress( asset.contentHash, function(err, file) {
+			if ((err) || (!file)) {
+			    req.flash('error', { msg: err });
+			    res.redirect('back');	    
+			} else {
+			    res.render('assets/view', {
+				url: req.url,
+				asset: asset,
+				sagecell: file.content,
+				languages: languages		   
+			    });
+			}
+		    });
+		} else {
+		    res.render('assets/view', {
+			url: req.url,
+			asset: asset,
+			languages: languages		    
+		    });
+		}
 	    }
 	});
     });
@@ -238,7 +254,6 @@ module.exports.controller = function (app) {
 
 	    Asset.find( search, function(err,assets) {
 		if (err) {
-		    console.log(err);
 		    req.flash('error', { msg: err });
 		    res.redirect('back');		
 		} else {
@@ -253,7 +268,6 @@ module.exports.controller = function (app) {
 	} else {
 	    Asset.find( search, function(err,assets) {
 		if (err) {
-		    console.log(err);
 		    req.flash('error', { msg: err });
 		    res.redirect('back');		
 		} else {
@@ -268,7 +282,6 @@ module.exports.controller = function (app) {
     });
 
     app.get('/users/:id/assets', function (req, res) {
-	console.log( req.params.id );
 	Asset.find( { submitter: req.params.id }, function(err,assets) {
 	    if (assets.length > 0) {
 		res.render('assets/list', {
