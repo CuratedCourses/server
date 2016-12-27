@@ -36,6 +36,9 @@ var assetSchema = new mongoose.Schema({
     externalUrl: { type: String, index: true },
     contentHash: { index: true, type: String, ref: 'CAFSFile' },
 
+    // a mimetype string
+    contentType: { type: String },    
+    
     // an externally hosted thumbnail image
     urlThumbnail: { type: String },
     // a 400x400 .png formatted thumbnail image
@@ -118,6 +121,14 @@ assetSchema.methods.isEditableBy = function (user) {
 	return true;
 
     return false;
+};
+
+assetSchema.methods.url = function () {
+    if (this.externalUrl)
+	return this.externalUrl;
+    if (this.contentHash)
+	return "https://curatedcourses.org/files/" + this.contentHash;
+    return "https://curatedcourses.org/";
 };
 
 assetSchema.methods.humanReadableType = function () {
@@ -298,6 +309,7 @@ module.exports.draftAssetFromBuffer = function(user, buffer, mimetype, callback)
 
     var address = CAFSFile.addressForContent( buffer, mimetype );
     asset.contentHash = address;
+    asset.contentType = mimetype;
 
     asset.submitter = user._id;
 

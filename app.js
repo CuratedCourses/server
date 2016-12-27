@@ -364,9 +364,9 @@ app.use(helmet.contentSecurityPolicy({
     "'none'"
   ],
   frameSrc: [   // origins that can be embedded as frames
-      'http://checkout.stripe.com',
+      'http://docs.google.com',
       'http://www.youtube.com',
-      'https://checkout.stripe.com',
+      'https://docs.google.com',
       'https://www.youtube.com',      
   ],
   sandbox: [

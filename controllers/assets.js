@@ -106,7 +106,6 @@ module.exports.controller = function (app) {
 		    Asset.draftAssetFromBuffer(req.user, file.buffer, file.mimetype,
 					       function(err, asset) {
 						   asset.title = file.originalname;
-						   
 						   callback(err, asset);
 					       });
 		    
@@ -114,21 +113,22 @@ module.exports.controller = function (app) {
 		    // BADBAD: a user could submit TWO drafts for the same URL and we don't handle this case	
 		    async.waterfall([		    
 			function(callback) {
-			    WebCache.findRecentOrDownload( req.body.assetUrl, function(err, body, screenshot) {
+			    WebCache.findRecentOrDownload( req.body.assetUrl, function(err, page) {
 				if (err) {
 				    callback(err);
 				} else {
-				    callback( null, { body: body, screenshot: screenshot } );
+				    callback( null, page );
 				}
 			    });
 			},
 			function(result, callback) {
-			    Asset.draftAssetFromHTML(req.user, req.body.assetUrl, result.body,
+			    Asset.draftAssetFromHTML(req.user, req.body.assetUrl, result.content,
 						     function(err, asset) {
 							 if (err) {
 							     callback(err);
 							 } else {
 							     asset.pngThumbnail = result.screenshot;
+							     asset.contentType = result.contentType;
 							     callback( null, asset );
 							 }
 						     });
@@ -188,7 +188,7 @@ module.exports.controller = function (app) {
 			       'Content-Length': imgdata.length});
 		res.end(imgdata);
 	    } else {
-		res.header('Cache-Control', 'public, max-age=31557600');		
+		res.header('Cache-Control', 'public, max-age=31557600');
 		res.writeHead(200, {'Content-Type': 'image/png' });
 		res.end(asset.pngThumbnail, 'binary');
 	    }

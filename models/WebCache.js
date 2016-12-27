@@ -8,6 +8,7 @@ var mongoose  = require('mongoose');
 var request       = require('request');
 var webshot = require('webshot');
 var async = require('async');
+var _ = require('underscore');
 
 /**
  * Define Asset Schema
@@ -17,6 +18,7 @@ var webCacheSchema = new mongoose.Schema({
     url: { type: String, unique: true, index: true },
     accessedOn: { type: Date },
     content: { type: Buffer },
+    contentType: { type: String },    
     screenshot: { type: Buffer }
 });
 
@@ -29,7 +31,9 @@ module.exports.downloadAndCache = function (url, callback) {
 	function(callback) {
 	    request.get({ uri: url, timeout: 5000 }, function (err, response, body) {
 		if (!err && response.statusCode === 200) {
-		    callback( null, body );
+		    callback( null, { url: url,
+				      content: body,
+				      contentType: response.headers['content-type'] }  );
 		} else {
 		    if (err) {
 			callback( err );
@@ -55,7 +59,7 @@ module.exports.downloadAndCache = function (url, callback) {
 		    var bufs = [];
 		    stream.on('data', function(d){ bufs.push(d); });
 		    stream.on('end', function(){
-			callback( null, Buffer.concat(bufs) );
+			callback( null, { screenshot: Buffer.concat(bufs) } );
 		    });
 		}
 	    });
@@ -64,12 +68,9 @@ module.exports.downloadAndCache = function (url, callback) {
 	if (err) {
 	    callback(err);
 	} else {
-	    var cachedContent = { url: url,
-				  accessedOn: new Date(),
-				  content: results[0],
-				  screenshot: results[1]
-				};
-	    
+	    var cachedContent = { accessedOn: new Date() };
+	    results.forEach( function(result) { _.extend( cachedContent, result ); } );
+	    console.log( cachedContent );
 	    WebCache.findOneAndUpdate({url: url},
 				      cachedContent,
 				      {upsert:true},
@@ -77,7 +78,7 @@ module.exports.downloadAndCache = function (url, callback) {
 					  // It doesn't actually matter if the cache was successful!
 				      });
 	    
-	    callback( null, cachedContent.content, cachedContent.screenshot );
+	    callback( null, cachedContent );
 	}
     });
 };
@@ -103,7 +104,7 @@ module.exports.findRecentOrDownload = function (url, callback) {
 	    module.exports.downloadAndCache( url, callback );  
 	} else {	
 	    if (daysBetween( cachedContent.accessedOn, new Date() ) < 7) {
-		callback( null, cachedContent.content, cachedContent.screenshot );
+		callback( null, cachedContent );
 	    } else {
 		module.exports.downloadAndCache( url, callback ); 
 	    }

@@ -114,6 +114,8 @@
               dd
                 span(class="flag-icon flag-icon-" + language.flag.toLowerCase())
                 span &nbsp;#{language.nativeName}  
+      dt Content Type
+      dd #{asset.contentType}
 if !(asset.published) && (user.type === 'admin') && (!(asset.submitter.equals(user._id)))
   p.text-muted.pull-left This resource is not yet published.  As a moderator, you can click&nbsp;
   form(role="form",method="POST",action='/assets/' + asset._id + '/approvals')

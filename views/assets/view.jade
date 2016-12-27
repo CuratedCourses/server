@@ -12,6 +12,10 @@ block content
         | #{asset.description}
 
   .container
+    if asset.contentType == "application/pdf"
+      .row
+        .col-md-12
+          iframe(src="http://docs.google.com/gview?embedded=true&url=" + asset.url(),style="width:100%; height:500px;",frameborder="0")
     .row
       .col-md-12
         div.btn-toolbar
