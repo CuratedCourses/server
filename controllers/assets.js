@@ -19,6 +19,7 @@ var normalizeUrl = require('normalize-url');
 var Asset           = require('../models/Asset.js');
 var WebCache        = require('../models/WebCache.js');
 var CAFSFile        = require('../models/CAFSFile.js');
+var Tag             = require('../models/Tag.js');
 
 var passportConf  = require('../config/passport');
 
@@ -194,47 +195,58 @@ module.exports.controller = function (app) {
 	    }
 	});
     });
-    
+
     /**
      * GET /assets/:id
      * View an asset
      */
     
     app.get('/assets/:id', function (req, res) {
-	Asset.findOne( {_id: req.params.id} )
-	    .populate( 'submitter' )
-	    .populate( 'approvals.user' ).exec( function(err,asset) {
+	var asset;
+	var tags;
+	
+	async.waterfall([
+	    function(callback) {
+		Asset.findOne( {_id: req.params.id} )
+		    .populate( 'submitter' )
+		    .populate( 'approvals.user' ).exec( callback );
+	    },
+	    function(theAsset, callback) {
+		asset = theAsset;
+		
+		// Increment the view count -- but this can be asynchronous
+		asset.incrementViewCount( req.connection.remoteAddress );
+		asset.save( function(err) { });
+
+		// Find all tags
+		Tag.find( {}, callback );		
+	    },
+	    function(theTags, callback) {
+		tags = theTags;
+
+		// Load sage cell content
+		if ((asset.type == "sagecell") && (asset.contentHash)) {
+		    CAFSFile.contentForAddress( asset.contentHash, callback );
+		} else {
+		    callback(null);
+		}
+	    }
+	], function( err, file ) {
 	    if (err) {
 		req.flash('error', { msg: err });
 		res.redirect('back');
 	    } else {
-		// Increment the view count
-		asset.viewCount = asset.viewCount + 1;
-		asset.save( function(err) {
+		var sagecell = undefined;
+		if (file)
+		    sagecell = file.content;
+		
+		res.render('assets/view', {
+		    url: req.url,
+		    asset: asset,
+		    tags: tags,
+		    sagecell: sagecell,
+		    languages: languages		   
 		});
-
-		// Load sage cell content
-		if ((asset.type == "sagecell") && (asset.contentHash)) {
-		    CAFSFile.contentForAddress( asset.contentHash, function(err, file) {
-			if ((err) || (!file)) {
-			    req.flash('error', { msg: err });
-			    res.redirect('back');	    
-			} else {
-			    res.render('assets/view', {
-				url: req.url,
-				asset: asset,
-				sagecell: file.content,
-				languages: languages		   
-			    });
-			}
-		    });
-		} else {
-		    res.render('assets/view', {
-			url: req.url,
-			asset: asset,
-			languages: languages		    
-		    });
-		}
 	    }
 	});
     });

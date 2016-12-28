@@ -306,6 +306,7 @@ app.use(helmet.contentSecurityPolicy({
   ],
   styleSrc: [
     "'self'",
+    'data:',      
     "'unsafe-inline'",
     'http://cdn.mathjax.org',
     'https://cdn.mathjax.org',      
@@ -374,7 +375,9 @@ app.use(helmet.contentSecurityPolicy({
     "'self'",
     'http://sagecell.sagemath.org',
     'https://sagecell.sagemath.org',      
-    'ws://localhost:8000',      
+    'ws://localhost:8000',
+    'ws://sagecell.sagemath.org',      
+    'wss://sagecell.sagemath.org',
     'wss://curatedcourses.org/',      
     'https://api.github.com'
   ],
@@ -385,7 +388,7 @@ app.use(helmet.contentSecurityPolicy({
       'http://docs.google.com',
       'http://www.youtube.com',
       'https://docs.google.com',
-      'https://www.youtube.com',      
+      'https://www.youtube.com'          
   ],
   sandbox: [
     'allow-same-origin',

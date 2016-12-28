@@ -12,6 +12,7 @@ var compactLanguageDetector = require('cld');
 var Schema = mongoose.Schema;
 var url = require('url');
 var CAFSFile        = require('./CAFSFile.js');
+var BloomFilter = require('bloomfilter').BloomFilter;
 
 /**
  * Define Asset Schema
@@ -19,6 +20,7 @@ var CAFSFile        = require('./CAFSFile.js');
 
 var assetSchema = new mongoose.Schema({
     viewCount: { type: Number, default: 0 },
+    viewers: { type: Array },
     
     submitter: { type: Schema.Types.ObjectId, ref: 'User' },
 
@@ -102,6 +104,26 @@ var assetSchema = new mongoose.Schema({
 // See: http://stackoverflow.com/questions/39593352/mongodb-only-creates-text-search-index-with-language-override-option
 //
 assetSchema.index({ title: 'text', description: 'text'}, { language_override: 'text' });
+
+// Add viewer to the bloom filter viewers; increment viewCount only if viewer probably wasn't already in the viewer list
+assetSchema.methods.incrementViewCount = function (viewer) {
+    var bloom;
+
+    if ((this.viewers) && (this.viewers.length != 0)) {
+	bloom = new BloomFilter(this.viewers, 16);
+    } else {
+	bloom = new BloomFilter(
+	    32 * 256, // number of bits to allocate.
+	    16        // number of hash functions.
+	);
+    }
+    
+    if ( ! (bloom.test( viewer ))) {
+	this.viewCount = this.viewCount + 1;
+	bloom.add( viewer );
+	this.viewers = [].slice.call(bloom.buckets);	
+    }
+};
 
 assetSchema.methods.isViewableBy = function (user) {
     if (this.published)

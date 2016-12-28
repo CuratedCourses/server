@@ -7,7 +7,7 @@
         p.flashmsg
           strong
             i.fa.fa-lg.fa-exclamation-triangle
-          | &nbsp;&nbsp;#{error.msg}
+          | &nbsp;&nbsp;#{JSON.stringify(error.msg)}
   if messages.warning
     .alert.alert-warning.alert-dismissable
       button.close(type='button', data-dismiss='alert', aria-hidden='true')
