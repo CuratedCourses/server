@@ -109,15 +109,9 @@ module.exports.controller = function (app) {
      */
 
     workflow.on('sendAccountEmail', function (user) {
-
+  
       // Create reusable transporter object using SMTP transport
-      var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-          user: config.gmail.user,
-          pass: config.gmail.password
-        }
-      });
+      var transporter = nodemailer.createTransport(smtpTransport());		
 
       // Render HTML to send using .jade mail template (just like rendering a page)
       res.render('mail/accountChange', {
@@ -240,14 +234,8 @@ module.exports.controller = function (app) {
     workflow.on('sendPasswordEmail', function (user) {
 
       // Create reusable transporter object using SMTP transport
-      var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-          user: config.gmail.user,
-          pass: config.gmail.password
-        }
-      });
-
+      var transporter = nodemailer.createTransport(smtpTransport());	
+  
       // Render HTML to send using .jade mail template (just like rendering a page)
       res.render('mail/passwordChange', {
         name:          user.profile.name,
