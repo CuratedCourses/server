@@ -5,9 +5,11 @@
  */
 
 var Tag           = require('../models/Tag');
+var Asset         = require('../models/Asset');
 var debug         = require('debug')('skeleton');  // https://github.com/visionmedia/debug
 var crypto        = require('crypto');
 var config        = require('../config/config');
+var languages = require('./languages.js').languages;
 
 /**
  * Tag Controller
@@ -48,10 +50,21 @@ module.exports.controller = function (app) {
 				url: req.url
 			    });
 			} else {
-			    res.render('tags/tag', {
-				tagName: tagName,
-				tag: tag,
-				url: req.url
+			    Asset.find( { tags: { $elemMatch: { $eq: tag._id } } }, function(err,assets) {
+				if (err) {
+				    req.flash( 'error', { msg: err.message });
+				    assets = [];
+				}
+
+				console.log("Assets = ", assets );
+				
+				res.render('tags/tag', {
+				    tagName: tagName,
+				    tag: tag,
+				    languages: languages,
+				    assets: assets,
+				    url: req.url
+				});
 			    });
 			}
 		    });

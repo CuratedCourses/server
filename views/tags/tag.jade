@@ -11,9 +11,13 @@ block content
       h1 #{tag.description}
       p
         | #{tag._id}
-  .container        
-    .row
-      .col-md-12
-        p BADBAD: relevant resources should appear here
-        // p.text-muted !{tag.copyright.replace(/\(c\)/,'&copy;')}
-        // p.text-muted #{tag.license}
+  .container
+    if false
+      p There are no related resources.
+      // BADBAD: this should actually be /tag/#{tag._id}/assets/new or something similar?
+      p Please help by <a href="/assets/new">adding a related resource</a> to our catalog.
+    else
+      for asset in assets
+        hr.separator
+        .row
+          include ../partials/asset
