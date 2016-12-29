@@ -12,8 +12,10 @@ var cheerio       = require('cheerio');         // https://github.com/cheeriojs/
 var request       = require('request');
 var async         = require('async');
 var moment        = require('moment');
+var languages     = require('./languages.js').languages;
 
 var Tag           = require('../models/Tag.js');
+var Asset         = require('../models/Asset.js');
 
 /**
  * Textbook Controller
@@ -34,8 +36,8 @@ module.exports.controller = function (app) {
 	});
     });
 
-    // BADBAD: this is just a stub until we have more textbooks
     app.get('/textbooks/:id', function (req, res) {
+        // BADBAD: this is just a stub until we have more textbooks
 	var textbook = require('../views/textbooks/books/lay.json');
 	
 	if (req.params.id == "lay") {
@@ -44,18 +46,28 @@ module.exports.controller = function (app) {
 		    req.flash('error', {msg: err});
 		    return res.redirect('/textbooks/');
 		} else {
-		    res.format({
-			html: function(){
-			    res.render('textbooks/view', {
-				url: req.url,
-				textbook: textbook,
-				tags: tags
-			    });			    
-			},
-			
-			json: function(){
-			    res.send(textbook);
+		    // BADBAD: this is NOT the fastest way to show all the assets -- oh well.
+
+		    Asset.find( { published: true, draft: false }, function(err,assets) {
+			if (err) {
+			    assets = [];
 			}
+			
+			res.format({
+			    html: function(){
+				res.render('textbooks/view', {
+				    url: req.url,
+				    textbook: textbook,
+				    assets: assets,
+				    languages: languages,
+				    tags: tags
+				});			    
+			    },
+			    
+			    json: function(){
+				res.send(textbook);
+			    }
+			});
 		    });
 		}
 	    });

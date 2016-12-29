@@ -6,6 +6,10 @@ dl.dl-horizontal
     dt Created On
     dd #{moment(asset.createdOn).format('MMMM Do, YYYY')}
     dd.text-muted #{moment(asset.createdOn).fromNow()}
+  else if asset.submittedAt
+    dt Submitted At
+    dd #{moment(asset.submittedAt).format('MMMM Do, YYYY')}
+    dd.text-muted &nbsp;#{moment(asset.submittedAt).fromNow()}          
   if asset.viewCount != 1
     dt Views
     dd #{asset.viewCount}

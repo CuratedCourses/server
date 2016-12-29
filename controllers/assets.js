@@ -296,8 +296,12 @@ module.exports.controller = function (app) {
 		asset[field] = req.body[field].trim();
 	    }
 	});
-	
-	asset.createdOn = moment(req.body.createdOn, 'MM/DD/YYYY');
+
+	if (req.body.createdOn != '') {
+	    asset.createdOn = moment(req.body.createdOn, 'MM/DD/YYYY');
+	} else  {
+	    asset.createdOn = '';
+	}
 	
 	// BADBAD: should validate this
 	asset.tags = req.body.tags.split(',');

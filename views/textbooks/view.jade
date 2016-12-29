@@ -36,12 +36,22 @@ block content
             .col-md-12
               if subsection.tags
                 div.collapse(id="section-" + i)
+                  - // copy tags
+                  - var remainingTags = subsection.tags.slice(0);
+                  - var subsectionAssets = assets.filter( function(asset) {
+                  -   return asset.tags.some( function(t) { return subsection.tags.some( function(s) { return s == t; } ) } );
+                  - });
+                  for asset in subsectionAssets
+                    - remainingTags = remainingTags.filter( function(t) { return asset.tags.every( function(s) { return s != t; } ) } );
+                    hr.separator
+                    .row
+                      include ../partials/asset
+                  
                   - i = i + 1;
-                    for tagId in subsection.tags
+                    for tagId in remainingTags
                       - var tag = tags.filter( function(tag) { return tag._id == tagId } )[0];
                       if tag
                         include ../partials/tag
                       else
                         h5
                           span.label.label-danger #{tagId}
-                  p BADBAD: display assets related to #{subsection.tags}
