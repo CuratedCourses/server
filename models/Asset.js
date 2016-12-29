@@ -139,11 +139,14 @@ assetSchema.methods.isViewableBy = function (user) {
 };
 
 assetSchema.methods.isEditableBy = function (user) {
+    if (this.draft && (user._id.equals(this.submitter)))
+	return "it is your own draft submission";
+    
+    if (user.type == 'admin')
+	return "you are an administrator";
+
     if (this.published)
 	return false;
-
-    if (this.draft && (user._id == this.submitter))
-	return true;
 
     return false;
 };

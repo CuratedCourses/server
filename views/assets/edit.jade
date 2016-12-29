@@ -36,23 +36,6 @@ block content
           div.form-group
             label(for="description") Description
             textarea.form-control#description(rows=3,name="description",placeholder="This is a short description of the resource, written for instructors.") #{asset.description}
-          hr.separator
-      .row
-        .col-md-12
-          div.form-group               
-            label(for="submitter") Submitted By
-            p.form-text.text-muted Who originally shared this resource with the CuratedCourses website?
-            div.media
-              div.media-left
-                a(href="#")
-                  if user.profile.picture
-                    img.media-object(src='#{user.profile.picture}',width=64,height=64)
-                  else
-                     img.media-object(src='#{user.gravatar(60)}',width=64,height=64)
-              div.media-body
-                h4.media-heading
-                  | #{user.profile.name || user.email || user.id}&nbsp;                
-      hr.separator          
       div.row
         input(type='hidden', name='tags', value=asset.tags)
         .col-md-6

@@ -22,10 +22,11 @@ block content
     .row
       .col-md-12
         div.btn-toolbar.pull-right
-          div.btn-group
-            a.btn.btn-danger(href="/assets/" + asset._id + "/edit")
-              span.fa.fa-edit
-              | &nbsp;Edit
+          if asset.isEditableBy(user)
+            div.btn-group
+              a.btn.btn-danger(href="/assets/" + asset._id + "/edit", data-toggle="tooltip",title="You can edit this because " + asset.isEditableBy(user) + ".", data-placement="top")
+                span.fa.fa-edit
+                | &nbsp;Edit
           div.btn-group.hidden             
             a.btn.btn-danger(href="/assets/" + asset._id + "/new")
               span.fa.fa-exchange

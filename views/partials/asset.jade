@@ -1,20 +1,9 @@
 .row
   div.btn-group.pull-right
-    if asset.contentHash
-      a.btn.btn-primary(href="/files/" + asset.contentHash)
-        i.fa.fa-external-link
-        | &nbsp;Go to file
-    else
-      if asset.externalUrl
-        a.btn.btn-primary(href=asset.externalUrl)
-          i.fa.fa-external-link
-          | &nbsp;Go to resource
-    a.btn.btn-info(href="/assets/" + asset._id)
-        i.fa.fa-eye    
-        | &nbsp;See More
-    a.btn.btn-warning(href="/assets/" + asset._id + "/edit")
-        i.fa.fa-pencil    
-        | &nbsp;Edit
+    if asset.isEditableBy(user)        
+      a.btn.btn-danger(href="/assets/" + asset._id + "/edit", data-toggle="tooltip",title="You can edit this because " + asset.isEditableBy(user) + ".", data-placement="top")
+          i.fa.fa-pencil    
+          | &nbsp;Edit
         
   h1
     a(href="/assets/#{asset._id}") #{asset.title}
@@ -64,4 +53,4 @@ if !(asset.published) && (user.type === 'admin') && (!(asset.submitter.equals(us
     input(type='hidden', name='_csrf', value=_csrf)
     input(type='hidden', name='remarks', value="")
 if !(asset.published) && (user.type === 'admin') && (asset.submitter.equals(user._id))
-  p.text-muted.pull-left This resource is not yet published.  But as the submitter of the resource, you are not permitted to approve the resource.  You'll have to find another moderator who is willing to approve it.
+  p.text-muted.pull-left This resource is not yet published.  However, as the submitter of the resource, you are <strong>not permitted</strong> to approve the resource yourself.  You must find another moderator to approve it.

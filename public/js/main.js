@@ -25,4 +25,6 @@ $(document).ready(function() {
     // To style all <select>s
     $('.selectpicker').selectpicker("show");
 
+    // To add all tooltips
+    $('[data-toggle="tooltip"]').tooltip(); 
 });
