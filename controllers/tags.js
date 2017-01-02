@@ -56,14 +56,24 @@ module.exports.controller = function (app) {
 				    assets = [];
 				}
 
-				console.log("Assets = ", assets );
-				
-				res.render('tags/tag', {
-				    tagName: tagName,
-				    tag: tag,
-				    languages: languages,
-				    assets: assets,
-				    url: req.url
+				res.format({
+				    html: function() {
+					res.render('tags/tag', {
+					    tagName: tagName,
+					    tag: tag,
+					    languages: languages,
+					    assets: assets,
+					    url: req.url
+					});
+				    },
+
+				    json: function() {
+					res.header( 'Access-Control-Allow-Origin', '*' );
+					res.json( {
+					    tag: tag,
+					    assets: assets
+					});
+				    }
 				});
 			    });
 			}

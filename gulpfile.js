@@ -89,6 +89,7 @@ var paths = {
       'less/page-dashboard.less',
       'less/page-privacy.less',
       'less/page-react.less',
+      'less/resources-margin.less'
   ]
 };
 
