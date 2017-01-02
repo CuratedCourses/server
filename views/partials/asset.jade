@@ -1,6 +1,6 @@
 .row
   div.btn-group.pull-right
-    if asset.isEditableBy(user)        
+    if user && asset.isEditableBy(user)        
       a.btn.btn-danger(href="/assets/" + asset._id + "/edit", data-toggle="tooltip",title="You can edit this because " + asset.isEditableBy(user) + ".", data-placement="top")
           i.fa.fa-pencil    
           | &nbsp;Edit
@@ -43,8 +43,8 @@
           include tag
   .col-md-5
     include asset/description
-    
-if !(asset.published) && (user.type === 'admin') && (!(asset.submitter.equals(user._id)))
+        
+if user && !(asset.published) && (user.type === 'admin') && (!(asset.submitter.equals(user._id)))
   p.text-muted.pull-left This resource is not yet published.  As a moderator, you can click&nbsp;
   form(role="form",method="POST",action='/assets/' + asset._id + '/approvals')
     button.btn.btn-success.btn-xs(type="submit",name="action",value="approve")
@@ -52,5 +52,5 @@ if !(asset.published) && (user.type === 'admin') && (!(asset.submitter.equals(us
       | &nbsp;Approve!
     input(type='hidden', name='_csrf', value=_csrf)
     input(type='hidden', name='remarks', value="")
-if !(asset.published) && (user.type === 'admin') && (asset.submitter.equals(user._id))
+if user && !(asset.published) && (user.type === 'admin') && (asset.submitter.equals(user._id))
   p.text-muted.pull-left This resource is not yet published.  However, as the submitter of the resource, you are <strong>not permitted</strong> to approve the resource yourself.  You must find another moderator to approve it.
