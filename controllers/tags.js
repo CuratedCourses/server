@@ -68,6 +68,7 @@ module.exports.controller = function (app) {
 				    },
 
 				    json: function() {
+					// Our advertising code accesses this from many origins, so we need to permit access
 					res.header( 'Access-Control-Allow-Origin', '*' );
 					res.json( {
 					    tag: tag,

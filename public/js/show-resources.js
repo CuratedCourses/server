@@ -30,6 +30,23 @@ function preventVerticalOverlap(marginBlocks) {
     });
 }
 
+// Given an asset (represented from an alement of the assets array
+// from the JSON returned by the tags endpoint), produce $(element)
+// representing it to the learner
+function renderAsset( asset ) {
+    var element = $('<div class="asset"></div>');
+    
+    var title = $('<span class="title"></span>');
+    title.text( asset.title );
+    element.append( title );
+
+    var link = $('<a></a>');
+    link.append( element );
+    link.attr('href', 'https://curatedcourses.org/assets/' + asset._id );
+    
+    return link;
+}
+
 $(function() {
     // All of the following code was written with the assumption that we're displaying marginblocks on an MBX page,
     // but actually we don't need to make that much of an assumption
@@ -87,23 +104,23 @@ $(function() {
 	$(block).data( 'outcomes', outcomes );
 
 	// BADBAD: for the time being, create a placeholder
-	var outcome = $('<span class="curated-courses outcome"></span>');
-	outcome.text( $(this).text() );
-	outcome.css( 'display', 'block' );
-	block.append( outcome );
-	//outcome.css( 'margin-top', '15pt' );
+	var outcome = $('<span class="outcome"></span>');
 
 	var tag = $(this).text();
 
 	var link = $('<a></a>');
 	link.attr( 'href', 'https://curatedcourses.org/' + tag.replace(/\./g,'/') );
-	link.text( 'nicer link' );
-	block.append( link );
+	link.text( tag );
+	outcome.append( link );
+	block.append( outcome );
 	
-	$.getJSON( "//curatedcourses.org/" + tag.replace(/\./g,'/'),
+	$.getJSON( "https://curatedcourses.org/" + tag.replace(/\./g,'/'),
 		   function(data) {
-		       console.log( data );
-		       outcome.text( data );
+		       link.text( data.tag.description );
+
+		       data.assets.forEach( function(asset) {
+			   block.append( renderAsset( asset ) );
+		       });
 		   }).fail(function() {
 		   });
     });
@@ -122,6 +139,8 @@ $(function() {
 	//block.append( link );
 	// This is also a chance to send curatedcourses.org information ABOUT this resource
     });
-    
+
+    // BADBAD: this should be called again once everything has been
+    // received from the getJSON calls above
     preventVerticalOverlap( $('div.curated-courses') );
 });
