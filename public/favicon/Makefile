@@ -1,14 +1,10 @@
-all: favicon.ico favicon.png favicon.svg favicon-152.png favicon-144.png favicon-120.png favicon-114.png favicon-72.png favicon-57.png
+all: favicon.ico favicon.png favicon-152.png favicon-144.png favicon-120.png favicon-114.png favicon-72.png favicon-57.png
 
 clean:
-	rm -f favicon.png favicon.svg
+	rm -f favicon.ico favicon.png favicon-152.png favicon-144.png favicon-120.png favicon-114.png favicon-72.png favicon-57.png
 
-favicon.pdf: favicon.tex
-	pdflatex favicon.tex
-	pdflatex favicon.tex
-
-favicon.svg: favicon.pdf
-	pdf2svg favicon.pdf favicon.svg
+favicon.pdf: favicon.svg
+	inkscape --without-gui --file=favicon.svg --export-pdf=favicon.pdf
 
 favicon.png: favicon.pdf
 	mutool draw -c rgba -w 40 -h 40 -o favicon.png favicon.pdf
