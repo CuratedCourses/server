@@ -22,7 +22,7 @@ block content
     .row
       .col-md-12
         div.btn-toolbar.pull-right
-          if asset.isEditableBy(user)
+          if user && asset.isEditableBy(user)
             div.btn-group
               a.btn.btn-danger(href="/assets/" + asset._id + "/edit", data-toggle="tooltip",title="You can edit this because " + asset.isEditableBy(user) + ".", data-placement="top")
                 span.fa.fa-edit
@@ -134,7 +134,7 @@ block content
                   i.fa.fa-check
                   | &nbsp;Approved!                    
             p #{approval.remarks}
-      if user.type == 'admin'
+      if user && user.type == 'admin'
         if asset.submitter._id.equals(user._id)
           p
             div.alert.alert-warning
