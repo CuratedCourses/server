@@ -33,11 +33,9 @@ var mongoose  = require('mongoose');
 var userSchema = new mongoose.Schema({
 
   email: { type: String, unique: true, index: true },
-  password: { type: String },
-  type: { type: String, default: 'admin' },
-  // EVERYONE'S AN ADMINISTRATOR IN EXAMPLE
-  // DEFAULT TYPE SHOULB BE 'user'!
-  // type: { type: String, default: 'user' },
+    password: { type: String },
+    // admins are type 'admin'
+    type: { type: String, default: 'user' },
 
   facebook: { type: String, unique: true, sparse: true },
   twitter: { type: String, unique: true, sparse: true },
