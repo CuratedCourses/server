@@ -1,5 +1,8 @@
 {
   "title": "Linear Algebra and Its Applications",
+  "_id": "lay",
+  "free": false,
+  "libre": false,
   "edition": "5th edition",
   "authors": [
     "David C. Lay",
