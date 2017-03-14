@@ -16,7 +16,7 @@
         {
           "number": "1.1",
           "title": "Systems of Linear Equations",
-          "outcomes": [
+          "tags": [
             "math.la.d.lineqn",
             "math.la.d.lineqn.coeff",
             "math.la.d.linsys",
@@ -45,7 +45,7 @@
         {
           "number": "1.2",
           "title": "Row Reduction and Echelon Forms",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.row.leading",
             "math.la.d.mat.echelon",
             "math.la.e.mat.echelon",
@@ -71,7 +71,7 @@
         {
           "number": "1.3",
           "title": "Vector Equations",
-          "outcomes": [
+          "tags": [
             "math.la.d.vec.col.coord",
             "math.la.d.vec.coord",
             "math.la.d.vec.equal.coord",
@@ -95,7 +95,7 @@
         {
           "number": "1.4",
           "title": "The Matrix Equation Ax = b",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.vec.prod",
             "math.la.e.mat.vec.prod",
             "math.la.d.mat.eqn",
@@ -115,7 +115,7 @@
         {
           "number": "1.5",
           "title": "Solution Sets of Linear Systems",
-          "outcomes": [
+          "tags": [
             "math.la.d.linsys.homog",
             "math.la.e.linsys.3x3.soln.homog.row_reduce.i",
             "math.la.e.linsys.3x1.soln.homog.row_reduce.i",
@@ -134,7 +134,7 @@
         {
           "number": "1.7",
           "title": "Linear Independence",
-          "outcomes": [
+          "tags": [
             "math.la.d.vec.linindep.coord",
             "math.la.e.vec.linindep.r3",
             "math.la.d.vec.lindep.relation",
@@ -152,7 +152,7 @@
         {
           "number": "1.8",
           "title": "Introduction to Linear Transformations",
-          "outcomes": [
+          "tags": [
             "math.functions.d.transformation",
             "math.functions.d.transformation.domain",
             "math.functions.d.transformation.codomain",
@@ -173,7 +173,7 @@
         {
           "number": "1.9",
           "title": "The Matrix of a Linear Transformation",
-          "outcomes": [
+          "tags": [
             "math.la.t.lintrans.mat.basis.standard.coord",
             "math.la.d.lintrans.mat.basis.standard.coord",
             "math.la.t.mat.rotation",
@@ -206,7 +206,7 @@
         {
           "number": "2.1",
           "title": "Matrix Operations",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.thediagonal",
             "math.la.d.mat.diagonal",
             "math.la.d.mat.identity",
@@ -237,7 +237,7 @@
         {
           "number": "2.2",
           "title": "The Inverse of a Matrix",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.inv",
             "math.la.d.mat.singular",
             "math.la.d.mat.nonsingular.inv",
@@ -258,7 +258,7 @@
         {
           "number": "2.3",
           "title": "Characterizations of Invertible Matrices",
-          "outcomes": [
+          "tags": [
             "math.la.t.equiv.lintrans.onetoone",
             "math.la.t.equiv.lintrans.onto",
             "math.la.t.equiv.inv.left",
@@ -276,7 +276,7 @@
         {
           "number": "2.4",
           "title": "Partitioned Matrices",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.block",
             "math.la.c.mat.mult.block",
             "math.la.t.mat.mult.row.col",
@@ -286,7 +286,7 @@
         {
           "number": "2.5",
           "title": "Matrix Factorizations",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.lu",
             "math.la.t.mat.lu",
             "math.la.d.mat.lu.reduced.exer",
@@ -307,7 +307,7 @@
         {
           "number": "2.8",
           "title": "Subspaces of Rn",
-          "outcomes": [
+          "tags": [
             "math.la.d.vsp.subspace.coord",
             "math.la.d.vec.span.subspace.coord",
             "math.la.d.mat.col_space",
@@ -322,7 +322,7 @@
         {
           "number": "2.9",
           "title": "Dimension and Rank",
-          "outcomes": [
+          "tags": [
             "math.la.d.vsp.basis.relative.coord",
             "math.la.d.vsp.dim.coord",
             "math.la.d.mat.rank",
@@ -348,7 +348,7 @@
         {
           "number": "3.1",
           "title": "Introduction to Determinants",
-          "outcomes": [
+          "tags": [
             "math.la.t.mat.det.3x3",
             "math.la.d.mat.det.cofactor",
             "math.la.t.mat.det.cofactor",
@@ -358,7 +358,7 @@
         {
           "number": "3.2",
           "title": "Properties of Determinants",
-          "outcomes": [
+          "tags": [
             "math.la.t.mat.det.elementaryoperations",
             "math.la.t.mat.det.echelon",
             "math.la.t.equiv.det",
@@ -370,7 +370,7 @@
         {
           "number": "3.3",
           "title": "Cramer's Rule, Volume, and Linear Transformations",
-          "outcomes": [
+          "tags": [
             "math.la.t.cramer",
             "math.la.d.mat.classicaladjoint",
             "math.la.t.mat.inv.cofactor",
@@ -392,7 +392,7 @@
         {
           "number": "4.1",
           "title": "Vector Spaces and Subspaces",
-          "outcomes": [
+          "tags": [
             "math.la.d.vec.arb",
             "math.la.d.vec.add.arb",
             "math.la.d.vec.scalar.mult.arb",
@@ -422,7 +422,7 @@
         {
           "number": "4.2",
           "title": "Null Spaces, Column Spaces, and Linear Transformations",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.null_space.right.rep",
             "math.la.t.mat.null_space.rncn.rep",
             "math.la.d.mat.col_space.rep",
@@ -433,7 +433,7 @@
         {
           "number": "4.3",
           "title": "Linearly Independent Sets; Bases",
-          "outcomes": [
+          "tags": [
             "math.la.d.vec.linindep.arb",
             "math.la.d.vec.lindep.relation.rep",
             "math.la.t.vec.lindep.arb",
@@ -448,7 +448,7 @@
         {
           "number": "4.4",
           "title": "Coordinate Systems",
-          "outcomes": [
+          "tags": [
             "math.la.t.vsp.basis.coord.unique",
             "math.la.d.vsp.basis.relative.arb",
             "math.la.d.vsp.basis.coord.vector.arb",
@@ -460,7 +460,7 @@
         {
           "number": "4.5",
           "title": "The Dimension of a Vector Space",
-          "outcomes": [
+          "tags": [
             "math.la.t.vsp.dim.more.lindep.arb",
             "math.la.t.vsp.dim.arb",
             "math.la.d.vsp.dim.arb",
@@ -474,7 +474,7 @@
         {
           "number": "4.6",
           "title": "Rank",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.row_space",
             "math.la.d.mat.row_space.row_equiv",
             "math.la.d.mat.rank.rep",
@@ -486,7 +486,7 @@
         {
           "number": "4.7",
           "title": "Change of Basis",
-          "outcomes": [
+          "tags": [
             "math.la.d.vsp.change_of_basis.arb",
             "math.la.t.vsp.change_of_basis.arb"
           ]
@@ -512,7 +512,7 @@
         {
           "number": "5.1",
           "title": "Eigenvectors and Eigenvalues",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.eigvec",
             "math.la.d.mat.eig",
             "math.la.d.mat.eigsp",
@@ -523,7 +523,7 @@
         {
           "number": "5.2",
           "title": "The Characteristic Equation",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.det.echelon",
             "math.la.t.equiv.det.rep",
             "math.la.t.equiv.eig",
@@ -540,7 +540,7 @@
         {
           "number": "5.3",
           "title": "Diagonalization",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.diagonalizable",
             "math.la.t.mat.diagonalizable",
             "math.la.t.mat.diagonalized_by",
@@ -554,7 +554,7 @@
         {
           "number": "5.4",
           "title": "Eigenvectors and Linear Transformations",
-          "outcomes": [
+          "tags": [
             "math.la.d.lintrans.mat.repn.arb",
             "math.la.d.lintrans.mat.repn.self.arb",
             "math.la.UNKNOWN"
@@ -563,7 +563,7 @@
         {
           "number": "5.5",
           "title": "Complex Eigenvalues",
-          "outcomes": [
+          "tags": [
             "math.la.d.vec.real.cn",
             "math.la.d.vec.imaginary.cn",
             "math.la.t.mat.real.eig.cn",
@@ -595,7 +595,7 @@
         {
           "number": "6.1",
           "title": "Inner Product, Length, and Orthogonality",
-          "outcomes": [
+          "tags": [
             "math.la.d.innerproduct.real.coord",
             "math.la.t.innerproduct.commutative.coord",
             "math.la.t.innerproduct.distributive.coord",
@@ -617,7 +617,7 @@
         {
           "number": "6.2",
           "title": "Orthogonal Sets",
-          "outcomes": [
+          "tags": [
             "math.la.d.vec.orthogonal_set",
             "math.la.t.vec.orthogonal_set.linindep",
             "math.la.d.subspace.basis.orthogonal",
@@ -635,7 +635,7 @@
         {
           "number": "6.3",
           "title": "Orthogonal Projections",
-          "outcomes": [
+          "tags": [
             "math.la.t.vec.projection.subspace",
             "math.la.d.vec.projection.subspace",
             "math.la.t.vec.projection.element",
@@ -646,7 +646,7 @@
         {
           "number": "6.4",
           "title": "The Gram-Schmidt Process",
-          "outcomes": [
+          "tags": [
             "math.la.d.gramschmidt",
             "math.la.t.gramschmidt",
             "math.la.d.mat.qr",
@@ -656,7 +656,7 @@
         {
           "number": "6.5",
           "title": "Least-Squares Problems",
-          "outcomes": [
+          "tags": [
             "math.la.d.linsys.leastsquares",
             "math.la.t.linsys.leastsquares",
             "math.la.t.linsys.leastsquares.unique",
@@ -667,7 +667,7 @@
         {
           "number": "6.6",
           "title": "Applications to Linear Models",
-          "outcomes": [
+          "tags": [
             "math.la.d.leastsquares.line",
             "math.la.t.leastsquares.line"
           ]
@@ -675,7 +675,7 @@
         {
           "number": "6.7",
           "title": "Inner Product Spaces",
-          "outcomes": [
+          "tags": [
             "math.la.d.vec.innerproduct.arb",
             "math.la.d.vsp.innerproduct.arb",
             "math.la.d.vec.norm.arb",
@@ -703,7 +703,7 @@
         {
           "number": "7.1",
           "title": "Diagonalization of Symmetric Matrices",
-          "outcomes": [
+          "tags": [
             "math.la.d.mat.symmetric",
             "math.la.t.mat.symmetric.eig.orthogonal",
             "math.la.d.mat.diagonalizable.orthogonally",
@@ -715,7 +715,7 @@
         {
           "number": "7.2",
           "title": "Quadratic Forms",
-          "outcomes": [
+          "tags": [
             "math.la.X"
           ]
         },
