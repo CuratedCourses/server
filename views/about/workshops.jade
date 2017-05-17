@@ -1,0 +1,20 @@
+extends ../layouts/layout
+
+block head
+  title About &middot; Workshops for #{application}
+
+block styles
+
+block content
+  .mini-tron
+    .container
+      h1 Workshops
+      p
+        | CuratedCourses is, at its core, a collaborative project
+
+  .container
+    .row
+      .col-md-8
+        include:markdown workshops.md
+      .col-md-4
+        
