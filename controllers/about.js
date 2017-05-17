@@ -29,6 +29,13 @@ module.exports.controller = function (app) {
     });
   });
 
+
+  app.get('/about/workshops', function (req, res) {
+    res.render('about/workshops', {
+	url: req.url
+    });
+  });    
+    
   app.get('/about/making-videos', function (req, res) {
     res.render('about/making-videos', {
 	url: req.url,
