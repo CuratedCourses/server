@@ -107,7 +107,7 @@ module.exports.controller = function (app) {
     // Invite the user to edit the resource if they are the submitter
     // and it doesn't have any approvals; proposed edit.
     app.get('/assets/queue',  passportConf.isAuthenticated, passportConf.isAdministrator, function (req, res) {
-	Asset.find( {draft: false}, null, {sort: {submittedAt: 1}}, function(err,assets) {
+	Asset.find( {draft: false, published: false}, null, {sort: {submittedAt: 1}}, function(err,assets) {
 	    res.render('assets/list', {
 		url: req.url,
 		languages: languages,
