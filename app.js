@@ -211,6 +211,7 @@ app.use(methodOverride());
 // NOTE: cookie-parser not needed with express-session > v1.5
 app.use(session(config.session));
 
+
 /*
 Thoughts on logging:
 
@@ -561,11 +562,12 @@ db.on('open', function () {
 
     // Test for correct node version as spec'ed in package.info
     if (!semver.satisfies(process.versions.node, config.engine)) {
+      console.log("Unsupported version of Node or io.js!  Check your package.json file for an engine");
       debug('Error: unsupported version of Node or io.js!'.red);
       debug(config.name.red + ' needs Node or io.js version '.red + config.engine.red);
       process.exit(0);
     }
-
+      
     // Log how we are running
     debug('listening on port ' + app.get('port').toString().green);
     debug('listening in ' + app.settings.env.green + ' mode.');
