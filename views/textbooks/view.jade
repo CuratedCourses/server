@@ -3,45 +3,26 @@ extends ../layouts/layout
 block head
   title #{textbook.title} &middot; Textbooks &middot; #{application}
 
-block content
-
-  .mini-tron
-    .container
-      h1 #{textbook.title}
-      - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
-      h4 by #{toSentence(textbook.authors)}
-  .container
-    - var i = 1;
-    for section in textbook.sections
-      hr.separator
-      .row
-        .col-md-12
-          h1
-            small.text-muted #{section.number}
-            | &nbsp;#{section.title}&nbsp;
-            button.btn.btn-default(type="button",data-toggle="collapse",data-target="#section-" + i) +
-      div.collapse(id="section-" + i)
-        - i = i + 1;
-        for subsection in section.sections
+mixin textbookSection(section,depth)
           .row
             .col-md-12
-              h3
-                if subsection.number != ""
-                  small.text-muted #{subsection.number}
+              #{['h2','h3','h4'][depth]}
+                if section.number != ""
+                  small.text-muted #{section.number}
                   | &nbsp;
-                | #{subsection.title}&nbsp;
-                if subsection.tags
-                  button.btn.btn-default.btn-sm(type="button",data-toggle="collapse",data-target="#section-" + i) +
+                | #{section.title}&nbsp;
+                if section.tags || section.sections
+                  button.btn.btn-default.btn-sm(type="button",data-toggle="collapse",data-target="#section-" + depth + "-" + i) +
           .row
             .col-md-12
-              if subsection.tags
-                div.collapse(id="section-" + i)
+              div.collapse(id="section-" + depth + "-" + i)
+                if section.tags
                   - // copy tags
-                  - var remainingTags = subsection.tags.slice(0);
-                  - var subsectionAssets = assets.filter( function(asset) {
-                  -   return asset.tags.some( function(t) { return subsection.tags.some( function(s) { return s == t; } ) } );
+                  - var remainingTags = section.tags.slice(0);
+                  - var sectionAssets = assets.filter( function(asset) {
+                  -   return asset.tags.some( function(t) { return section.tags.some( function(s) { return s == t; } ) } );
                   - });
-                  for asset in subsectionAssets
+                  for asset in sectionAssets
                     - remainingTags = remainingTags.filter( function(t) { return asset.tags.every( function(s) { return s != t; } ) } );
                     hr.separator
                     .row
@@ -55,3 +36,22 @@ block content
                       else
                         h5
                           span.label.label-danger #{tagId}
+                if section.sections
+                  for subsection in section.sections                
+                    +textbookSection(subsection,depth+1)
+
+
+  
+block content
+
+  .mini-tron
+    .container
+      h1 #{textbook.title}
+      - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
+      h4 by #{toSentence(textbook.authors)}
+  .container
+    - var i = 1;
+    for section in textbook.sections
+      hr.separator
+      +textbookSection(section,0)
+        

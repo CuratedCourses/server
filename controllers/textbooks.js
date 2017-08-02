@@ -29,7 +29,9 @@ module.exports.controller = function (app) {
      */
     
     app.get('/textbooks/', function (req, res) {
-	var textbooks = [require('../views/textbooks/books/lay.json')];
+	var textbooks = [require('../views/textbooks/books/lay.json'),
+			 require('../views/textbooks/books/hefferon.json')
+			];
 	res.render('textbooks/list', {
 	    url: req.url,
 	    textbooks: textbooks
@@ -38,43 +40,51 @@ module.exports.controller = function (app) {
 
     app.get('/textbooks/:id', function (req, res) {
         // BADBAD: this is just a stub until we have more textbooks
-	var textbook = require('../views/textbooks/books/lay.json');
-	
-	if (req.params.id == "lay") {
-	    Tag.find({}, function(err, tags) {
-		if (err) {
-		    req.flash('error', {msg: err});
-		    return res.redirect('/textbooks/');
-		} else {
-		    // BADBAD: this is NOT the fastest way to show all the assets -- oh well.
+	var textbook = undefined;
 
-		    Asset.find( { published: true, draft: false }, function(err,assets) {
-			if (err) {
-			    assets = [];
-			}
-			
-			res.format({
-			    html: function(){
-				res.render('textbooks/view', {
-				    url: req.url,
-				    textbook: textbook,
-				    assets: assets,
-				    languages: languages,
-				    tags: tags
-				});			    
-			    },
-			    
-			    json: function(){
-				res.send(textbook);
-			    }
-			});
-		    });
-		}
-	    });
-	} else {
+	if (req.params.id == "lay") {
+	    textbook = require('../views/textbooks/books/lay.json');
+	}
+
+	if (req.params.id == "hefferon") {
+	    textbook = require('../views/textbooks/books/hefferon.json');
+	}	
+
+	if (textbook === undefined) {
             req.flash('error', {msg: "Could not find textbook " + req.params.id});
             return res.redirect('/textbooks/');
 	}
+	
+	Tag.find({}, function(err, tags) {
+	    if (err) {
+		req.flash('error', {msg: err});
+		return res.redirect('/textbooks/');
+	    } else {
+		// BADBAD: this is NOT the fastest way to show all the assets -- oh well.
+
+		Asset.find( { published: true, draft: false }, function(err,assets) {
+		    if (err) {
+			assets = [];
+		    }
+		    
+		    res.format({
+			html: function(){
+			    res.render('textbooks/view', {
+				url: req.url,
+				textbook: textbook,
+				assets: assets,
+				languages: languages,
+				tags: tags
+			    });			    
+			},
+			
+			json: function(){
+			    res.send(textbook);
+			}
+		    });
+		});
+	    }
+	});
     });
 
 };

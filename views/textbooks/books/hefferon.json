@@ -1,0 +1,695 @@
+{
+  "title": "Linear Algebra",
+  "_id": "hefferon",
+  "free": true,
+  "libre": true,
+  "edition": "3rd edition",
+  "authors": [
+    "Jim Hefferon"
+  ],
+  "coverUrl": "http://images.amazon.com/images/P/1944325034.01_LZZZZZZZ_.jpg",    
+  "contentUrl": "http://joshua.smcvt.edu/linearalgebra/book.pdf",
+  "purchaseUrl": "https://www.amazon.com/Linear-Algebra-Jim-Hefferon/dp/1944325034",
+  "sections": [
+    {
+      "number": "1",
+      "title": " LinearSystems",
+      "sections": [
+        {
+          "number": "I",
+          "title": "Solving Linear Systems",
+          "sections": [
+            {
+              "number": "I.1",
+              "title": "Gauss's Method",
+              "tags": [
+                "math.la.d.lineqn.coeff",
+                "math.la.d.lineqn",
+                "math.la.d.lineqn.soln",
+                "math.la.d.linsys",
+                "math.la.d.linsys.soln",
+                "math.la.d.linsys.soln_set",
+                "math.la.c.linsys.gauss",
+                "math.la.t.linsys.op",
+                "math.la.d.linsys.op",
+                "math.la.d.linsys.variable.dependent",
+                "math.la.d.linsys.echelon",
+                "math.la.d.linsys.inconsistent"
+              ]
+            },
+            {
+              "number": "I.2",
+              "title": "Describing the Solution Set",
+              "tags": [
+                "math.la.d.linsys.variable.independent",
+                "math.la.c.linsys.soln_set.parameter",
+                "math.la.d.mat",
+                "math.la.d.mat.entry",
+                "math.la.d.mat.m_by_n",
+                "math.la.d.mat.m_by_n.set",
+                "math.la.d.mat.row.leading",
+                "math.la.d.mat.echelon",
+                "math.la.d.linsys.mat.repn",
+                "math.la.d.vec.coord",
+                "math.la.d.vec.col.coord",
+                "math.la.d.vec.component.coord",
+                "math.la.d.vec.z.coord",
+                "math.la.d.vec.solution",
+                "math.la.d.vec.sum.coord",
+                "math.la.d.vec.scalar.mult.coord",
+                "math.la.e.linsys.3x3.soln.row_reduce.i"
+              ]
+            },
+            {
+              "number": "I.3",
+              "title": "General = Particular + Homogeneous",
+              "tags": [
+                "math.la.t.linsys.nonhomog.particular_plus_homog",
+                "math.la.d.linsys.homog",
+                "math.la.d.linsys.homog.consistent",
+                "math.la.t.linsys.homog.nontrivial",
+                "math.la.t.linsys.zoi",
+                "math.la.d.mat.nonsingular.z",
+                "math.la.d.mat.singular",
+                "math.la.c.linsys.2x2.geometric"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "II",
+          "title": "Linear Geometry",
+          "sections": [
+            {
+              "number": "II.1",
+              "title": "VectorsinSpace",
+              "tags": [
+                "math.la.e.vec.sum.geometric.r2",
+                "math.la.c.lineqn.3.geometric"
+              ]
+            },
+            {
+              "number": "II.2",
+              "title": "Length and Angle Measures",
+              "tags": [
+                "math.la.d.vec.norm.coord",
+                "math.la.d.innerproduct.real.coord",
+                "math.la.t.vec.triangle.coord",
+                "math.la.t.vec.cauchyschwartz.coord",
+                "math.la.d.vec.angle.coord",
+                "math.la.d.vec.orthogonal.coord",
+                "math.la.d.vec.parallel.coord"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "III",
+          "title": "Reduced Echelon Form",
+          "sections": [
+            {
+              "number": "III.1",
+              "title": "Gauss-Jordan Reduction",
+              "tags": [
+                "math.la.c.mat.gaussjordan",
+                "math.la.d.mat.rref",
+                "math.la.t.linsys.op",
+                "math.la.t.mat.row_equiv",
+                "math.la.d.mat.row_equiv"
+              ]
+            },
+            {
+              "number": "III.2",
+              "title": "The Linear Combination Lemma",
+              "tags": [
+                "math.la.t.mat.rref.exists",
+                "math.la.t.mat.rref.unique",
+                "math.la.t.linsys.echelon.free"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "VectorSpaces",
+      "sections": [
+        {
+          "number": "I",
+          "title": "DefinitionofVectorSpace",
+          "sections": [
+            {
+              "number": "I.1",
+              "title": "Definition and Examples",
+              "tags": [
+                "math.la.d.vec.arb",
+                "math.la.d.scalar.arb",
+                "math.la.d.vsp.axioms.arb",
+                "math.la.d.vsp.z",
+                "math.la.e.vsp.rn",
+                "math.la.e.vsp.polynomial.leq_n",
+                "math.la.e.vsp.mat.m_by_n",
+                "math.la.e.vsp.function",
+                "math.la.e.vsp.polynomial",
+                "math.la.e.vsp.de.homog",
+                "math.la.e.vsp.linsys.homog",
+                "math.la.t.vsp.scalar.mult.z",
+                "math.la.t.vsp.vector.mult.z",
+                "math.la.t.vsp.vector.negative"
+              ]
+            },
+            {
+              "number": "I.2",
+              "title": "Subspaces and Spanning Sets",
+              "tags": [
+                "math.la.d.vsp.subspace.arb",
+                "math.la.d.vsp.subspace.z",
+                "math.la.t.vsp.subspace.lincomb.arb",
+                "math.la.d.vec.span.arb",
+                "math.la.t.vec.span.subspace.arb",
+                "math.la.d.vsp.span.set.arb"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "II",
+          "title": "Linear Independence",
+          "sections": [
+            {
+              "number": "II.1",
+              "title": "Definition and Examples",
+              "tags": [
+                "math.la.t.vsp.span.lindep",
+                "math.la.d.vec.lindep.arb",
+                "math.la.t.vec.linindep.arb",
+                "math.la.t.vsp.span.basis",
+                "math.la.t.vsp.linindep.subset"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "III",
+          "title": "Basisand Dimension",
+          "sections": [
+            {
+              "number": "III.1",
+              "title": "Basis",
+              "tags": [
+                "math.la.d.vsp.basis.arb",
+                "math.la.d.vsp.basis.standard.rncn",
+                "math.la.d.vsp.basis.standard.leq_n",
+                "math.la.t.vsp.basis.coord.unique",
+                "math.la.t.vsp.basis.span.unique",
+                "math.la.d.vsp.basis.coord.vector.arb"
+              ]
+            },
+            {
+              "number": "III.2",
+              "title": "Dimension",
+              "tags": [
+                "math.la.d.vsp.dim.finite_infinite.arb",
+                "math.la.d.vsp.basis.exchange.arb",
+                "math.la.t.vsp.dim.arb",
+                "math.la.d.vsp.dim.arb",
+                "math.la.t.vsp.dim.more.lindep.arb",
+                "math.la.t.vsp.linindep.basis.arb",
+                "math.la.t.vsp.span.basis.rep",
+                "math.la.t.vsp.dim.span.linindep.arb"
+              ]
+            },
+            {
+              "number": "III.3",
+              "title": "Vector Spaces and Linear Systems",
+              "tags": [
+                "math.la.d.mat.row_space",
+                "math.la.d.mat.row_space.row_equiv",
+                "math.la.d.mat.echelon.linindep",
+                "math.la.d.mat.col_space",
+                "math.la.d.mat.rank.column",
+                "math.la.d.mat.transpose",
+                "math.la.t.mat.row_space.col_space",
+                "math.la.d.mat.rank",
+                "math.la.t.mat.ranknullity",
+                "math.la.t.equiv.rank",
+                "math.la.t.equiv.row.linindep",
+                "math.la.t.equiv.col.linindep",
+                "math.la.t.equiv.mat.eqn.unique",
+                "math.la.t.equiv.mat.eqn"
+              ]
+            },
+            {
+              "number": "III.4",
+              "title": "Combining Subspaces",
+              "tags": [
+                "math.la.d.vsp.subspace.sum.arb",
+                "math.la.t.vsp.subspace.independent.lincomb",
+                "math.la.t.vsp.subspace.independent.basis",
+                "math.la.d.vsp.subspace.independent.arb",
+                "math.la.d.vsp.subspace.sum.direct.arb",
+                "math.la.t.vsp.subspace.sum.direct.dim",
+                "math.la.d.vsp.subspace.complement.arb",
+                "math.la.t.vsp.subspace.complement.arb"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": " Maps Between Spaces",
+      "sections": [
+        {
+          "number": "I",
+          "title": "Isomorphisms",
+          "sections": [
+            {
+              "number": "I.1",
+              "title": "Definition and Examples",
+              "tags": [
+                "math.la.d.vsp.isomorphism",
+                "math.la.d.vsp.automorphism",
+                "math.la.t.lintrans.z"
+              ]
+            },
+            {
+              "number": "I.2",
+              "title": "Dimension Characterizes Isomorphism",
+              "tags": [
+                "math.la.t.vsp.isomorphism.inv",
+                "math.la.t.vsp.isomorphism.equiv",
+                "math.la.t.vsp.isomorphic.dim",
+                "math.la.t.vsp.dim.isomorphic",
+                "math.la.t.vsp.isomorphic.rncn"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "II",
+          "title": "Homomorphisms",
+          "sections": [
+            {
+              "number": "II.1",
+              "title": "Definition",
+              "tags": [
+                "math.la.d.lintrans.arb",
+                "math.la.t.lintrans.z",
+                "math.la.t.lintrans.lincomb",
+                "math.la.t.lintrans.basis",
+                "math.la.d.lintrans.basis.extension",
+                "math.la.t.lintrans.vsp"
+              ]
+            },
+            {
+              "number": "II.2",
+              "title": "Rangespace and Nullspace",
+              "tags": [
+                "math.la.t.lintrans.range.vsp",
+                "math.la.d.lintrans.rank",
+                "math.la.t.lintrans.inv.vsp",
+                "math.la.t.lintrans.kernel.arb",
+                "math.la.d.lintrans.kernel.arb",
+                "math.la.d.lintrans.nullity",
+                "math.la.t.lintrans.ranknullity",
+                "math.la.t.lintrans.lindep",
+                "math.la.t.lintrans.equiv.inv",
+                "math.la.t.lintrans.equiv.nullspace",
+                "math.la.t.lintrans.equiv.nullity",
+                "math.la.t.lintrans.equiv.rank",
+                "math.la.t.lintrans.equiv.basis"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "III",
+          "title": "Computing Linear Maps",
+          "sections": [
+            {
+              "number": "III.1",
+              "title": "Representing Linear Maps with Matrices",
+              "tags": [
+                "math.la.d.lintrans.mat.repn.arb",
+                "math.la.d.mat.vec.prod.coord",
+                "math.la.d.mat.vec.prod"
+              ]
+            },
+            {
+              "number": "III.2",
+              "title": "Any Matrix Represents a Linear Map",
+              "tags": [
+                "math.la.c.transformation.matrix",
+                "math.la.t.mat.lintrans.rank",
+                "math.la.t.lintrans.equiv.rank.col",
+                "math.la.t.lintrans.onto.rank",
+                "math.la.d.lintrans.nonsingular",
+                "math.la.t.equiv.lintrans.isommorphism"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "IV",
+          "title": "Matrix Operations",
+          "sections": [
+            {
+              "number": "IV.1",
+              "title": "Sums and Scalar Products",
+              "tags": [
+                "math.la.d.mat.scalar.mult",
+                "math.la.d.mat.sum",
+                "math.la.t.lintrans.mat_repn.scalar",
+                "math.la.t.lintrans.mat_repn.sum",
+                "math.la.d.mat.zero"
+              ]
+            },
+            {
+              "number": "IV.2",
+              "title": "Matrix Multiplication",
+              "tags": [
+                "math.la.d.lintrans.composition.arb",
+                "math.la.d.mat.mult.coord",
+                "math.la.t.lintrans.mat_repn.composition",
+                "math.la.t.mat.mult.assoc",
+                "math.la.t.mat.mult.distributive"
+              ]
+            },
+            {
+              "number": "IV.3",
+              "title": "Mechanics of Matrix Multiplication",
+              "tags": [
+                "math.la.d.mat.unit",
+                "math.la.d.mat.mult.col",
+                "math.la.d.mat.thediagonal",
+                "math.la.d.mat.identity",
+                "math.la.d.mat.diagonal",
+                "math.la.d.mat.permutation",
+                "math.la.d.mat.elementary",
+                "math.la.d.mat.mult.elementary",
+                "math.la.d.mat.trace",
+                "math.la.d.mat.triangular.upper",
+                "math.la.d.mat.markov"
+              ]
+            },
+            {
+              "number": "IV.4",
+              "title": "Inverses",
+              "tags": [
+                "math.la.d.mat.inv.left",
+                "math.la.d.mat.inv.right",
+                "math.la.d.mat.invertible",
+                "math.la.d.mat.inv",
+                "math.la.t.mat.inv.leftright",
+                "math.la.t.equiv.inv",
+                "math.la.t.mat.inv.shoesandsocks",
+                "math.la.t.mat.inv.augmented",
+                "math.la.t.mat.inv.2x2"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "V",
+          "title": "Change of Basis",
+          "sections": [
+            {
+              "number": "V.1",
+              "title": "Changing Representations of Vectors",
+              "tags": [
+                "math.la.d.vsp.change_of_basis.arb",
+                "math.la.t.vsp.change_of_basis",
+                "math.la.t.equiv.change_of_basis",
+                "math.la.t.equiv.identitymap"
+              ]
+            },
+            {
+              "number": "V.2",
+              "title": "Changing Map Representations",
+              "tags": [
+                "math.la.d.mat.equiv",
+                "math.la.t.mat.equiv",
+                "math.la.t.mat.equiv.diag",
+                "math.la.t.mat.equiv.rank"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "VI",
+          "title": "Projection",
+          "sections": [
+            {
+              "number": "VI.1",
+              "title": "OrthogonalProjectionIntoaLine",
+              "tags": [
+                "math.la.d.vec.projection",
+                "math.la.t.vec.projection"
+              ]
+            },
+            {
+              "number": "VI.2",
+              "title": "Gram-Schmidt Orthogonalization",
+              "tags": [
+                "math.la.d.vec.orthogonal_set",
+                "math.la.t.vec.orthogonal_set.linindep",
+                "math.la.d.subspace.basis.orthogonal",
+                "math.la.d.gramschmidt",
+                "math.la.t.gramschmidt",
+                "math.la.d.subspace.basis.orthonormal"
+              ]
+            },
+            {
+              "number": "VI.3",
+              "title": "Projection Into a Subspace",
+              "tags": [
+                "math.la.d.vec.projection_arbitrary.subspace",
+                "math.la.d.vec.projection.subspace",
+                "math.la.d.subspace.orthogonal_complement",
+                "math.la.t.subspace.orthogonal_complement",
+                "math.la.t.subspace.orthogonal_complement.sum",
+                "math.la.t.subspace.basis.orthonormal"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": " Determinants",
+      "sections": [
+        {
+          "number": "I",
+          "title": "Definition",
+          "sections": [
+            {
+              "number": "I.1",
+              "title": "Exploration",
+              "tags": [
+                "math.la.t.mat.det.2x2",
+                "math.la.t.mat.det.3x3"
+              ]
+            },
+            {
+              "number": "I.2",
+              "title": "Properties of Determinants",
+              "tags": [
+                "math.la.d.mat.det.elementaryoperations",
+                "math.la.t.mat.row.equal",
+                "math.la.t.mat.row.z",
+                "math.la.t.equiv.det",
+                "math.la.t.mat.det.trianglar",
+                "math.la.t.mat.det.unique"
+              ]
+            },
+            {
+              "number": "I.3",
+              "title": "The Permutation Expansion",
+              "tags": [
+                "math.la.d.multilinear",
+                "math.la.t.det.multilinear",
+                "math.la.d.mat.det.permutation",
+                "math.la.t.mat.det.transpose",
+                "math.la.t.mat.det.exists"
+              ]
+            },
+            {
+              "number": "I.4",
+              "title": "Determinants Exist",
+              "tags": [
+
+              ]
+            }
+          ]
+        },
+        {
+          "number": "II",
+          "title": "Geometry of Determinants",
+          "sections": [
+            {
+              "number": "II.1",
+              "title": "Determinants as Size Functions",
+              "tags": [
+                "math.la.t.mat.det.col.volume",
+                "math.la.t.lintrans.det.volume",
+                "math.la.t.mat.det.product",
+                "math.la.t.mat.det.inv"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "III",
+          "title": "Laplace's Formula",
+          "sections": [
+            {
+              "number": "III.1",
+              "title": "Laplace's Expansion",
+              "tags": [
+                "math.la.d.mat.cofactor",
+                "math.la.d.mat.det.cofactor",
+                "math.la.d.mat.classicaladjoint",
+                "math.la.t.mat.inv.cofactors"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": " Similarity",
+      "sections": [
+        {
+          "number": "I",
+          "title": "Complex Vector Spaces",
+          "sections": [
+            {
+              "number": "I.1",
+              "title": "Polynomial Factoring and Complex Numbers",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "I.2",
+              "title": "Complex Representations",
+              "tags": [
+
+              ]
+            }
+          ]
+        },
+        {
+          "number": "II",
+          "title": "Similarity",
+          "sections": [
+            {
+              "number": "II.1",
+              "title": "Definition and Examples",
+              "tags": [
+                "math.la.d.mat.similar"
+              ]
+            },
+            {
+              "number": "II.2",
+              "title": "Diagonalizability",
+              "tags": [
+                "math.la.d.lintrans.diagonalizable",
+                "math.la.d.mat.diagonalizable",
+                "math.la.t.lintrans.diagonalizable.basis"
+              ]
+            },
+            {
+              "number": "II.3",
+              "title": "Eigenvalues and Eigenvectors",
+              "tags": [
+                "math.la.d.lintrans.eig",
+                "math.la.d.lintrans.eigvec",
+                "math.la.d.mat.eig",
+                "math.la.d.mat.eigvec",
+                "math.la.d.mat.charpoly",
+                "math.la.d.mat.charpoly.eqn",
+                "math.la.d.lintrans.charpoly",
+                "math.la.t.lintrans.eig.exists",
+                "math.la.d.lintrans.eigsp",
+                "math.la.d.mat.eigsp",
+                "math.la.d.lintrans.eigsp.subspace",
+                "math.la.d.mat.eig.multiplicity.algebraic",
+                "math.la.d.mat.eig.multiplicity.geometric",
+                "math.la.t.mat.eigvec.linindep",
+                "math.la.t.mat.diagonalizable"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "III",
+          "title": "Nilpotence",
+          "sections": [
+            {
+              "number": "III.1",
+              "title": "Self-Composition",
+              "tags": [
+                "math.la.t.lintrans.power.range",
+                "math.la.t.lintrans.power.kernel",
+                "math.la.d.lintrans.range.generalized.arb",
+                "math.la.d.lintrans.kernel.generalized.arb"
+              ]
+            },
+            {
+              "number": "III.2",
+              "title": "Strings",
+              "tags": [
+                "math.la.d.lintrans.range.generalized.injective",
+                "math.la.d.lintrans.generalized.sum",
+                "math.la.d.lintrans.nilpotent",
+                "math.la.d.mat.nilpotent",
+                "math.la.d.nilpotent.index",
+                "math.la.t.mat.nilpotent.zo"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "IV",
+          "title": "Jordan Form",
+          "sections": [
+            {
+              "number": "IV.1",
+              "title": "Polynomials of Maps and Matrices",
+              "tags": [
+                "math.la.d.lintrans.polynomial.apply",
+                "math.la.d.mat.polynomial.apply",
+                "math.la.d.lintrans.minpoly",
+                "math.la.d.mat.minpoly",
+                "math.la.d.mat.minpoly.exists",
+                "math.la.d.lintrans.minpoly.exists",
+                "math.la.d.lintrans.cayleyhamilton",
+                "math.la.d.mat.cayleyhamilton",
+                "math.la.t.mat.charpoly.z"
+              ]
+            },
+            {
+              "number": "IV.2",
+              "title": "Jordan Canonical Form",
+              "tags": [
+                "math.la.t.mat.nilpotent.eig",
+                "math.la.d.lintrans.invariantsubspace",
+                "math.la.d.lintrans.invariantsubspace.block",
+                "math.la.t.mat.det.block",
+                "math.la.d.mat.jordan",
+                "math.la.t.mat.jordan",
+                "math.la.t.mat.jordan.sum"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
