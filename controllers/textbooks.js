@@ -29,8 +29,8 @@ module.exports.controller = function (app) {
      */
     
     app.get('/textbooks/', function (req, res) {
-	var textbooks = [require('../views/textbooks/books/lay.json'),
-			 require('../views/textbooks/books/hefferon.json')
+	var textbooks = [require('../views/textbooks/books/hefferon.json'),
+			 require('../views/textbooks/books/lay.json')
 			];
 	res.render('textbooks/list', {
 	    url: req.url,
