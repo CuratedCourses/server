@@ -13,7 +13,7 @@
   "sections": [
     {
       "number": "1",
-      "title": " LinearSystems",
+      "title": " Linear Systems",
       "sections": [
         {
           "number": "I",
@@ -82,7 +82,7 @@
           "sections": [
             {
               "number": "II.1",
-              "title": "VectorsinSpace",
+              "title": "Vectors in Space",
               "tags": [
                 "math.la.e.vec.sum.geometric.r2",
                 "math.la.c.lineqn.3.geometric"
@@ -133,11 +133,11 @@
     },
     {
       "number": "2",
-      "title": "VectorSpaces",
+      "title": "Vector Spaces",
       "sections": [
         {
           "number": "I",
-          "title": "DefinitionofVectorSpace",
+          "title": "Definition of Vector Space",
           "sections": [
             {
               "number": "I.1",
@@ -192,7 +192,7 @@
         },
         {
           "number": "III",
-          "title": "Basisand Dimension",
+          "title": "Basis and Dimension",
           "sections": [
             {
               "number": "III.1",
@@ -444,7 +444,7 @@
           "sections": [
             {
               "number": "VI.1",
-              "title": "OrthogonalProjectionIntoaLine",
+              "title": "Orthogonal Projection Into a Line",
               "tags": [
                 "math.la.d.vec.projection",
                 "math.la.t.vec.projection"
