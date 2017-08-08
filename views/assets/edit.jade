@@ -178,6 +178,8 @@ block content
                   a(onclick="$('#license').val('GPL-3.0');$('#license').change();") GNU General Public License
           span.help-block
             a#licenseDescription(href="#")
+          p.help-block
+            | You may want to <a href="https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses">compare various the free and open licenses</a>.
       hr.separator
       div.row
         div.col-sm-6
@@ -194,7 +196,7 @@ block content
         div.col-sm-12      
           div.form-group
             label(for="description") Accessibility
-            p.form-text.text-muted What are the most serious accessibility challenges the resource presents?  For example, do videos include subtitles?  Must a learner be able to distinguish between certain colors to make sense of images?
+            p.form-text.text-muted What are the most serious accessibility challenges the resource presents?  For example, do videos include subtitles?  Must a learner be able to distinguish between certain colors to make sense of images?  You may want to consult <a href="http://webaim.org/resources/">some resources about accessibility</a>.
             textarea.form-control#description(name="accessibility",rows=3,placeholder="") #{asset.accessibility}
       hr.separator                    
       div.row
