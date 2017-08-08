@@ -228,7 +228,7 @@ module.exports.controller = function (app) {
 		    req.flash('error', { msg: err });
 		    res.redirect('back');		
 		} else {
-		    res.render('assets/list', {
+		    res.render('assets/list-thumbnails', {
 			url: req.url,
 			languages: languages,
 			assets: assets

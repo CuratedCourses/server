@@ -1,0 +1,15 @@
+extends ../layouts/layout
+
+block head
+  title Resources &middot; #{application}
+
+block content
+
+  .mini-tron
+    .container
+      h1 Resources
+  .container
+    for asset in assets
+      .col-sm-4.col-md-3
+        .thumbnail
+          include ../partials/asset-thumbnail

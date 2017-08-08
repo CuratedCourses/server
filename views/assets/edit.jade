@@ -44,10 +44,11 @@ block content
             span.help-block#taglist-drag-help Drag the tags so that the <strong>primary</strong> tag is first.
             span.help-block#taglist-select-help Select relevant tags from the list to the right.
         .col-md-6
-          div.pull-right.btn-toolbar(role="toolbar")            
-            div
-               input.form-control(id="tag-search",type="search",placeholder="Filter...")          
-          h3 Tags<span class="from-textbook"> from Textbook</span>
+          h3 
+            div.pull-right.btn-toolbar(role="toolbar")            
+              div
+                 input.form-control(id="tag-search",type="search",placeholder="Filter...")          
+            | Tags<span class="from-textbook"> from Textbook</span>
           - scripts.push('tag-selector');
           div#tree.from-textbook
           div#filtered-tags.from-tagsearch
