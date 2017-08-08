@@ -41,6 +41,82 @@ $(function() {
 	}
 	
 	$('#taglist').bind('sortupdate', function(e, ui) { saveTags(); updateHelp(); } );
+
+	/****************************************************************/
+	/* Filtering */
+	
+	var searchbox = $('#tag-search');
+	
+	function updateSearch() {
+	    var search = searchbox.val();
+	    console.log(search);
+
+	    if (search.match(/[A-z0-9]/)) {
+		$('#filtered-tags').empty();
+
+		var regexps = search.toLowerCase().split(" ").map( function(w) { return new RegExp(w); } );
+
+		var nodes = [];
+		
+		tags.forEach( function(t) {
+		    if (t._id.match(/CCSS/)) return;
+
+		    var text = t.description + '&nbsp;<small><span class="label label-default">' + t._id + '</span></small>';
+		    for ( let re of regexps ) {
+			if (!(re.test(text.toLowerCase())))
+			    return;
+		    }
+		    
+		    var state = undefined;
+		    if (selections[t._id])
+			state = {selected: true};
+		    nodes.push( { text: text, tag: t, state: state } );
+		});
+		
+		$('#filtered-tags').treeview({data: nodes,
+					      levels: 0,
+					      multiSelect: true});
+
+		$('#filtered-tags').on('nodeSelected', function(event, node) {
+		    if ($('#taglist li[data-tag="' + node.tag._id + '"').length == 0) {
+			
+			if (selections[node.tag._id])
+			    selections[node.tag._id]++;
+			else
+			    selections[node.tag._id] = 1;
+			
+			var item = $('<li data-tag="' + node.tag._id + '" class="list-group-item">' + node.text + "</li>");
+			$('#taglist').append( item );
+			$('#taglist').sortable({placeholderClass: 'list-group-item'});
+			saveTags();
+			updateHelp();
+		    }
+		});
+		
+		$('#filtered-tags').on('nodeUnselected', function(event, node) {
+		    selections[node.tag._id]--;
+		    if (selections[node.tag._id] <= 0) {
+			$('#taglist li[data-tag="' + node.tag._id + '"').remove();
+			saveTags();
+			updateHelp();		    
+		    }
+		});	    
+		
+		
+		$('.from-textbook').hide();
+		$('.from-tagsearch').show();		
+	    } else {
+		$('.from-textbook').show();
+		$('.from-tagsearch').hide();
+	    }
+	}
+	updateSearch();
+	searchbox.change(updateSearch);
+	searchbox.on('keyup',updateSearch);	
+
+	
+	/****************************************************************/
+	/* Textbook view */
 	
 	$.getJSON("/textbooks/lay", function( data ) {
 	    textbook = data;
