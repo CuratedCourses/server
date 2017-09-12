@@ -33,6 +33,8 @@ dl.dl-horizontal
         i.fa.fa-file-o.fa-fw           
       if asset.type === "problem"      
         i.fa.fa-question.fa-fw
+      if asset.type === "textbook"
+        i.fa.fa-book.fa-fw                   
       | &nbsp;#{asset.humanReadableType()}
   if asset.pedagogicalTimeframe
     dt Timeframe

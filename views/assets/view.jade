@@ -15,7 +15,8 @@ block content
           span.label.label-warning Awaiting Moderation
       h1 #{asset.title}
           
-      p #{asset.url()}
+      p
+        a(href=asset.url()) #{asset.url()}
      
   .container
 
@@ -95,16 +96,18 @@ block content
       div.media
         div.media-left
           a(href="#")
-            if asset.submitter.profile.picture
-              img.media-object(src='#{asset.submitter.profile.picture}',width=64,height=64)
-            else
-              if asset.submitter.gravatar(60)
-                img.media-object(src='#{asset.submitter.gravatar(60)}',width=64,height=64)
+            if asset.submitter
+              if asset.submitter.profile.picture
+                img.media-object(src='#{asset.submitter.profile.picture}',width=64,height=64)
+              else
+                if asset.submitter.gravatar(60)
+                  img.media-object(src='#{asset.submitter.gravatar(60)}',width=64,height=64)
         div.media-body
           h5.pull-right #{moment(asset.submittedAt).format('MMMM Do, YYYY')}
             small.text-muted &nbsp;#{moment(asset.submittedAt).fromNow()}                  
-          h4.media-heading
-            | Submitted by #{asset.submitter.profile.name || asset.submitter.email || asset.submitter.id}&nbsp;
+          if asset.submitter
+            h4.media-heading
+              | Submitted by #{asset.submitter.profile.name || asset.submitter.email || asset.submitter.id}&nbsp;
           
       for approval in asset.approvals
         div.media
