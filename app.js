@@ -367,7 +367,11 @@ app.use(helmet.contentSecurityPolicy({
     'http://www.google-analytics.com',
     'https://www.google-analytics.com',
     'http://images.amazon.com/',
-    'https://images.amazon.com/',      
+    'https://images.amazon.com/',
+    'http://linear.ups.edu/',
+    'https://linear.ups.edu/',
+    'http://linear.pugetsound.edu/',
+    'https://linear.pugetsound.edu/',            
   ],
   mediaSrc: [
     "'self'"
@@ -389,7 +393,9 @@ app.use(helmet.contentSecurityPolicy({
       'http://docs.google.com',
       'http://www.youtube.com',
       'https://docs.google.com',
-      'https://www.youtube.com'          
+      'https://www.youtube.com',
+      'http://linear.ups.edu/',
+      'https://linear.ups.edu/',            
   ],
   sandbox: [
     'allow-same-origin',
