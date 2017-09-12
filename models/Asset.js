@@ -174,6 +174,8 @@ assetSchema.methods.humanReadableType = function () {
 	return "Problem";
     else if (this.type === "handout")
 	return "Handout";
+    else if (this.type === "textbook")
+	return "Textbook";    
     return "Unknown";
 };
 
