@@ -14,12 +14,12 @@ mixin presentation(title,thumbnail,pptx,pdf)
         a(href="/presentations/" + (pptx || pdf)) #{title}
       if pptx
         p
-          a.btn.btn-primary
+          a.btn.btn-primary(href="/presentations/" + pptx)
             i.fa.fa-file-powerpoint-o
             | &nbsp;Download .pptx
       if pdf
         p            
-          a.btn.btn-primary
+          a.btn.btn-primary(href="/presentations/" + pdf)
             i.fa.fa-file-pdf-o
             | &nbsp;Download .pdf
       
