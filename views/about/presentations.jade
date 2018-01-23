@@ -1,0 +1,47 @@
+extends ../layouts/layout
+
+block head
+  title About &middot; Presentations about CuratedCourses
+
+block styles
+
+mixin presentation(title,thumbnail,pptx,pdf)
+  .thumbnail
+    a(href="/presentations/" + (pptx || pdf))
+      img(src="/presentations/" + thumbnail)
+    .caption
+      h3 
+        a(href="/presentations/" + (pptx || pdf)) #{title}
+      if pptx
+        p
+          a.btn.btn-primary
+            i.fa.fa-file-powerpoint-o
+            | &nbsp;Download .pptx
+      if pdf
+        p            
+          a.btn.btn-primary
+            i.fa.fa-file-pdf-o
+            | &nbsp;Download .pdf
+      
+block content
+  .mini-tron
+    .container
+      h1 Presentations
+      p
+        | Download slides from presentations about CuratedCourses
+
+  .container
+    .row
+      .col-md-8
+        include:markdown presentations.md
+      .col-md-4
+    .row
+      .col-md-3
+        +presentation("Designing Engaging In-Class Activities","engaging-in-class-activities.jpg","engaging-in-class-activities.pptx","engaging-in-class-activities.pdf")
+      .col-md-3
+        +presentation("Basics of the Flipped Classroom","flipped-101.jpg","flipped-101.pptx")
+      .col-md-3
+        +presentation("Writing Effective Pre-Class Knowledge Checks","preclass-checks.jpg","preclass-checks.pptx")      
+      .col-md-3
+        +presentation("What is an Open Educational Resource?","what-is-oer.png",null,"what-is-oer.pdf")
+        

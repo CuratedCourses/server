@@ -35,6 +35,12 @@ module.exports.controller = function (app) {
 	url: req.url
     });
   });    
+
+  app.get('/about/presentations', function (req, res) {
+    res.render('about/presentations', {
+	url: req.url
+    });
+  });    
     
   app.get('/about/making-videos', function (req, res) {
     res.render('about/making-videos', {
