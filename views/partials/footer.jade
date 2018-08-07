@@ -14,26 +14,6 @@ footer.footer.bg-black
 
 //- Load jQuery, food for thought:
 //- https://palant.de/2014/06/30/please-don-t-use-externally-hosted-javascript-libraries
-script.
-  $(document).ready(function() {
-    //- Async load socket.io
-    $.ajax({
-      type: 'GET',
-      url: '//cdn.socket.io/socket.io-1.2.1.js',
-      dataType: 'script',
-      cache: true
-    }).done(function () {
-      $(function(){
-        var socket = io(window.location.hostname);
-        socket.on('connect', function () {
-          socket.emit('pageview', window.location.href);
-        });
-        window.onhashchange = function () {
-          socket.emit('pageview', window.location.href);
-        };
-      });
-    });
-  });
 if scripts
   for script in scripts
     script.

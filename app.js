@@ -41,7 +41,6 @@ var expressValidator  = require('express-validator');       // https://npmjs.org
 
 var app    = module.exports = express();  // export app for testing ;)
 var server = require('http').Server(app);
-var io     = require('socket.io')(server);
 
 /**
  * Configure Mongo Database
@@ -95,10 +94,11 @@ if (app.get('env') === 'development') {
   app.locals.compileDebug = true;
   // Turn on console logging in development
   app.use(morgan('dev'));
+
   // Turn off caching in development
   // This sets the Cache-Control HTTP header to no-store, no-cache,
   // which tells browsers not to cache anything.
-  app.use(helmet.nocache());
+  app.use(helmet.noCache());
 }
 
 if (app.get('env') === 'production') {
@@ -137,7 +137,7 @@ if (app.get('env') === 'production') {
 
   // BADBAD: this should NOT be in production, but I don't have the
   // cache control set up correctly yet.
-  app.use(helmet.nocache());    
+  app.use(helmet.noCache());    
 }
 
 // Port to listen on.
@@ -263,8 +263,8 @@ if (app.get('env') === 'production' && config.logging) {
 // Security Settings
 app.disable('x-powered-by');          // Don't advertise our server type
 app.use(csrf());                      // Prevent Cross-Site Request Forgery
-app.use(helmet.ienoopen());           // X-Download-Options for IE8+
-app.use(helmet.nosniff());            // Sets X-Content-Type-Options to nosniff
+app.use(helmet.ieNoOpen());           // X-Download-Options for IE8+
+app.use(helmet.noSniff());            // Sets X-Content-Type-Options to nosniff
 app.use(helmet.xssFilter());          // sets the X-XSS-Protection header
 app.use(helmet.frameguard('deny'));   // Prevent iframe clickjacking
 
@@ -279,7 +279,7 @@ app.use(helmet.frameguard('deny'));   // Prevent iframe clickjacking
 //   LEARN HOW IT WORKS. :)
 
 
-app.use(helmet.contentSecurityPolicy({
+app.use(helmet.contentSecurityPolicy({ directives: {
   defaultSrc: [
       "'self'",
       'curatedcourses.org'
@@ -294,8 +294,6 @@ app.use(helmet.contentSecurityPolicy({
     'https://www.google-analytics.com',
     'http://oss.maxcdn.com',
     'https://oss.maxcdn.com',
-    'http://cdn.socket.io',
-    'https://cdn.socket.io',
     'http://checkout.stripe.com',
     'https://checkout.stripe.com',
     'http://cdnjs.cloudflare.com',
@@ -397,6 +395,7 @@ app.use(helmet.contentSecurityPolicy({
       'http://linear.ups.edu/',
       'https://linear.ups.edu/',            
   ],
+},
   sandbox: [
     'allow-same-origin',
     'allow-forms',
@@ -581,7 +580,6 @@ db.on('open', function () {
 
     // Exit cleanly on Ctrl+C
     process.on('SIGINT', function () {
-      io.close();  // close socket.io
       console.log('\n');
       debug('has ' + 'shutdown'.green);
       debug('was running for ' + Math.round(process.uptime()).toString().green + ' seconds.');
@@ -590,34 +588,3 @@ db.on('open', function () {
   });
 });
 
-/**
- * Emit Pageviews on Socket.io for Dashboard
- *
- *   Web Page (Client) --->> ( `pageview` messages ) --->> Server
- *   Web Page (Client) <<--- (`dashUpdate` messages) <<--- Server
- */
-
-var connectedCount = 0;
-
-io.on('connection', function (socket) {
-  connectedCount += 1;
-  // Listen for pageview messages from clients
-  socket.on('pageview', function (message) {
-    var ip = socket.handshake.headers['x-forwarded-for'] || socket.client.conn.remoteAddress || socket.handshake.address;
-    var url = message;
-    // Broadcast dashboard update (to all clients in default namespace)
-    io.emit('dashUpdate', {
-      connections: connectedCount,
-      ip: ip,
-      url: url,
-      timestamp: new Date()
-    });
-  });
-  // Update dashboard connections on disconnect events
-  socket.on('disconnect', function () {
-    connectedCount -= 1;
-    io.emit('dashUpdate', {
-      connections: connectedCount
-    });
-  });
-});

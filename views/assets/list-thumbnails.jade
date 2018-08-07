@@ -8,7 +8,11 @@ block content
   .mini-tron
     .container
       h1 Resources
+      h2 all available resources      
   .container
+    p There are multiple methods to view the resources in #{application}.
+    p You can <a href="/textbooks">view resources through a textbook's table of contents</a> or <a href="/textbooks/lay">view resources by topic</a> or <a href="/math/la">view a list of all topics</a>.
+    hr
     for asset in assets
       .col-sm-4.col-md-3
         .thumbnail

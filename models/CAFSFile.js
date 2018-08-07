@@ -14,8 +14,8 @@ var DIGEST_ALGORITHM = 'sha1';
 
 var cafsFileSchema = new mongoose.Schema({
 
-    // The _id is a DIGEST_ALGORITHM hash
-    _id: { type: String, unique: true },
+    // BADBAD: The _id is a DIGEST_ALGORITHM hash
+    _id: { type: String },
 
     // The content cannot be too large -- maybe 4 MB
     content: { type: Buffer },
