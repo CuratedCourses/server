@@ -41,7 +41,6 @@ var expressValidator  = require('express-validator');       // https://npmjs.org
 
 var app    = module.exports = express();  // export app for testing ;)
 var server = require('http').Server(app);
-var io     = require('socket.io')(server);
 
 /**
  * Configure Mongo Database
@@ -295,8 +294,6 @@ app.use(helmet.contentSecurityPolicy({ directives: {
     'https://www.google-analytics.com',
     'http://oss.maxcdn.com',
     'https://oss.maxcdn.com',
-    'http://cdn.socket.io',
-    'https://cdn.socket.io',
     'http://checkout.stripe.com',
     'https://checkout.stripe.com',
     'http://cdnjs.cloudflare.com',
@@ -583,7 +580,6 @@ db.on('open', function () {
 
     // Exit cleanly on Ctrl+C
     process.on('SIGINT', function () {
-      io.close();  // close socket.io
       console.log('\n');
       debug('has ' + 'shutdown'.green);
       debug('was running for ' + Math.round(process.uptime()).toString().green + ' seconds.');
@@ -592,34 +588,3 @@ db.on('open', function () {
   });
 });
 
-/**
- * Emit Pageviews on Socket.io for Dashboard
- *
- *   Web Page (Client) --->> ( `pageview` messages ) --->> Server
- *   Web Page (Client) <<--- (`dashUpdate` messages) <<--- Server
- */
-
-var connectedCount = 0;
-
-io.on('connection', function (socket) {
-  connectedCount += 1;
-  // Listen for pageview messages from clients
-  socket.on('pageview', function (message) {
-    var ip = socket.handshake.headers['x-forwarded-for'] || socket.client.conn.remoteAddress || socket.handshake.address;
-    var url = message;
-    // Broadcast dashboard update (to all clients in default namespace)
-    io.emit('dashUpdate', {
-      connections: connectedCount,
-      ip: ip,
-      url: url,
-      timestamp: new Date()
-    });
-  });
-  // Update dashboard connections on disconnect events
-  socket.on('disconnect', function () {
-    connectedCount -= 1;
-    io.emit('dashUpdate', {
-      connections: connectedCount
-    });
-  });
-});
