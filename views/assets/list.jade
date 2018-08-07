@@ -7,9 +7,15 @@ block content
 
   .mini-tron
     .container
-      h1 Resources
+      h1 Resources      
   .container
-    for asset in assets
-      hr.separator
-      .row
-        include ../partials/asset
+    .row
+      .col-md-3
+        include ./filter-panel.jade      
+      .col-md-9        
+        for asset in assets
+          hr.separator
+          .row
+            include ../partials/asset
+
+      

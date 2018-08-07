@@ -228,6 +228,7 @@ module.exports.controller = function (app) {
 		    req.flash('error', { msg: err });
 		    res.redirect('back');		
 		} else {
+		    // BADBAD: or list-thumbnails
 		    res.render('assets/list-thumbnails', {
 			url: req.url,
 			languages: languages,

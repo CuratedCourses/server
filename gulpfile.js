@@ -70,8 +70,9 @@ var paths = {
     'public/lib/bootstrap/js/affix.js',
     // =========================================
     'public/lib/fastclick/lib/fastclick.js',
-    'public/lib/bootstrap3-typeahead/bootstreap3-typeahead.min.js',
+    'public/lib/bootstrap3-typeahead/bootstrap3-typeahead.min.js',
     'public/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+    'public/js/filter.js',
     'public/js/main.js'
   ],
   lint: [
@@ -114,8 +115,6 @@ gulp.task('styles', function () {
       cascade: true
     }))
     .pipe($.csscomb())                      // Coding style formatter for CSS
-    .pipe($.csslint('.csslintrc'))          // Lint CSS
-    .pipe($.csslint.reporter())             // Report issues
     .pipe($.rename({ suffix: '.min' }))     // Add .min suffix
     .pipe($.cssnano())                      // Minify CSS
     .pipe($.header(banner, { pkg : pkg }))  // Add banner
@@ -133,7 +132,7 @@ gulp.task('scripts', function () {
     .pipe($.concat(pkg.name + '.js'))       // Concatenate .js files
     .pipe(gulp.dest('./public/js'))         // Save main.js here
     .pipe($.rename({ suffix: '.min' }))     // Add .min suffix
-    .pipe($.uglify({ outSourceMap: true })) // Minify the .js
+    .pipe($.uglify()) // Minify the .js
     .pipe($.header(banner, { pkg : pkg }))  // Add banner
     .pipe($.size({ title: 'JS:' }))         // What size are we at?
     .pipe(gulp.dest('./public/js'))         // Save minified .js
@@ -160,16 +159,6 @@ gulp.task('images', function () {
 });
 
 /**
- * JSHint Files
- */
-
-gulp.task('lint', function () {
-  return gulp.src(paths.lint)               // Read .js files
-    .pipe($.jshint())                       // lint .js files
-    .pipe($.jshint.reporter('jshint-stylish'));
-});
-
-/**
  * JSCS Files
  */
 
@@ -188,19 +177,19 @@ gulp.task('jscs', function () {
  *   - Build all the things...
  */
 
-gulp.task('build', function (cb) {
-  runSequence(
-    'clean',                                // first clean
-    ['lint', 'jscs'],                       // then lint and jscs in parallel
-    ['styles', 'scripts', 'images'],        // etc.
-    cb);
-});
+gulp.task('build', 
+	  gulp.series(
+	      'clean',                                // first clean
+	      gulp.series(['jscs']),                       // then lint and jscs in parallel
+	      gulp.series(['styles', 'scripts', 'images']),        // etc.
+	  )
+	 );
 
 /**
  * Nodemon Task
  */
 
-gulp.task('nodemon', ['build'], function (cb) {
+gulp.task('nodemon', gulp.series(['build'], function (cb) {
   $.livereload.listen();
   var called = false;
   $.nodemon({
@@ -230,18 +219,18 @@ gulp.task('nodemon', ['build'], function (cb) {
       $.livereload.changed('/');
     }, 3000);  // wait for restart
   });
-});
+}));
 
 /**
  * Default Task
  */
 
-gulp.task('default', ['nodemon'], function () {
-  gulp.watch(paths.less, ['styles']);
-  gulp.watch(paths.js, ['scripts']);
-  gulp.watch(paths.lint, ['lint', 'jscs']);
-  gulp.watch('views/**/*.jade').on('change', $.livereload.changed);
-});
+gulp.task('default', gulp.series(['nodemon'], function () {
+    gulp.watch(paths.less, gulp.series('styles'));
+    gulp.watch(paths.js, gulp.series('scripts'));
+    gulp.watch(paths.lint, gulp.series('jscs'));
+    gulp.watch('views/**/*.jade').on('change', $.livereload.changed);
+}));
 
 /**
  * Run PageSpeed Insights
@@ -262,13 +251,13 @@ gulp.task('mobile', function (cb) {
   }, cb);
 });
 
-gulp.task('desktop', ['mobile'], function (cb) {
+gulp.task('desktop', gulp.series(['mobile'], function (cb) {
   // output a formatted report to the terminal
   psi.output(site, {
     strategy: 'desktop',
     locale: 'en_US',
     threshold: 80
   }, cb);
-});
+}));
 
-gulp.task('pagespeed', ['desktop']);
+gulp.task('pagespeed', gulp.series(['desktop']));

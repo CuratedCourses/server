@@ -11,9 +11,9 @@ block content
       h2 &ldquo;#{query}&rdquo;
   .container
     if assets && assets.length > 0
+      include ./filter-panel.jade      
       for asset in assets
-        hr.separator
-        .row
-          include ../partials/asset
+        include ../partials/asset
     else
       h2 No resources found.
+      
