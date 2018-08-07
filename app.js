@@ -243,6 +243,8 @@ app.use(morgan('combined', { stream: logFile }));
 
 // Log requests to Papertrail in production
 // Needs to be below session and bodyParser in the stack
+if (false) {
+    console.log("no logging for now");
 if (app.get('env') === 'production' && config.logging) {
     app.use(expressWinston.logger({
 	transports: [
@@ -258,6 +260,7 @@ if (app.get('env') === 'production' && config.logging) {
 	expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
 	colorize: true, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
     }));
+}
 }
 
 // Security Settings
