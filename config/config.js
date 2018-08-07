@@ -148,7 +148,7 @@ config.stripe.key              = process.env.STRIPE_KEY || 'Your Key';
 
 // Twilio
 config.twilio                  = {};
-config.twilio.sid              = process.env.TWILIO_SID   || 'Your SID';
+config.twilio.sid              = process.env.TWILIO_SID   || 'AC Your SID';
 config.twilio.token            = process.env.TWILIO_TOKEN || 'Your Token';
 config.twilio.phone            = process.env.TWILIO_PHONE || 'Your Phone';
 

@@ -14,7 +14,7 @@ var path              = require('path');
 var process           = require('process');
 var config            = require('../config/config');
 var mongoose          = require('mongoose');
-var colors            = require('colors');
+//var colors            = require('colors');
 var async             = require('async');
 var spawn             = require('child_process').spawn;
 var recursive         = require('recursive-readdir');
@@ -60,6 +60,7 @@ function processStandards( pathname, callback ) {
 			if (err)
 			    callback(err);
 			else {
+			    console.log(filename);
 			    var standard = JSON.parse(data);
 
 			    if (standard.id != filenameId)
@@ -77,13 +78,13 @@ function processStandards( pathname, callback ) {
 
 ////////////////////////////////////////////////////////////////
 db.on('error', function () {
-  console.log('MongoDB Connection Error. Please make sure MongoDB is running.'.red.bold);
+  console.log('MongoDB Connection Error. Please make sure MongoDB is running.');
   process.exit(0);
 });
 
 ////////////////////////////////////////////////////////////////
 db.on('open', function () {
-    console.log('Mongodb ' + 'connected!'.green.bold);
+    console.log('Mongodb ' + 'connected!');
 
     var tmp = require('tmp');
 
@@ -95,10 +96,10 @@ db.on('open', function () {
 		
 		git.on('close', (code) => {
 		    if (code != 0) {
-			throw ('git repository ' + 'could not be cloned'.red.bold);
+			throw ('git repository ' + 'could not be cloned');
 		    }
 
-		    console.log('git repository ' + 'cloned!'.green.bold);
+		    console.log('git repository ' + 'cloned!');
 
 		    pathname = path.join( pathname, 'standards' );
 		    
