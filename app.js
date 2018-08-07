@@ -243,10 +243,8 @@ app.use(morgan('combined', { stream: logFile }));
 
 // Log requests to Papertrail in production
 // Needs to be below session and bodyParser in the stack
-if (false) {
-    console.log("no logging for now");
 if (app.get('env') === 'production' && config.logging) {
-    app.use(expressWinston.logger({
+    let expressWinstonOptions = {
 	transports: [
 	    new winston.transports.Papertrail({
 		host: config.papertrail.host,
@@ -259,8 +257,12 @@ if (app.get('env') === 'production' && config.logging) {
 	],
 	expressFormat: true, // Use the default Express/morgan request formatting. Enabling this will override any msg if true. Will only output colors with colorize set to true
 	colorize: true, // Color the text and status code, using the Express/morgan color palette (text: gray, status: default green, 3XX cyan, 4XX yellow, 5XX red).
-    }));
-}
+    };
+
+    // HACK: Remove when `express-winston` fixes this
+    // HACK: See https://github.com/bithavoc/express-winston/issues/163
+    expressWinstonOptions.winstonInstance = winston.createLogger({});
+    app.use(expressWinston.logger(expressWinstonOptions));
 }
 
 // Security Settings
@@ -442,11 +444,9 @@ fs.readdirSync('./controllers').forEach(function (file) {
  * Error Handling
  */
 
-if (false) {
-    console.log("disable logging");
     
 if (app.get('env') === 'production' && config.logging) {
-    app.use(expressWinston.errorLogger({
+    var expressWinstonOptions = {
 	transports: [
 	    new winston.transports.Papertrail({
 		host: config.papertrail.host,
@@ -457,9 +457,14 @@ if (app.get('env') === 'production' && config.logging) {
 		colorize: true
             })
 	]
-    }));
+    };
+    
+    // HACK: Remove when `express-winston` fixes this
+    // HACK: See https://github.com/bithavoc/express-winston/issues/163
+    expressWinstonOptions.winstonInstance = winston.createLogger({});
+    app.use(expressWinston.errorLogger(expressWinstonOptions));
 }
-}
+
 
 // If nothing responded above we will assume a 404
 // (since no routes responded or static assets found)
