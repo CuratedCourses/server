@@ -2,7 +2,7 @@ The CuratedCourses project seeks to develop a new model for the creation, manage
 
 Workshops
 
-	August 8-12, 2016, in San Jose
+  August 8-12, 2016, in San Jose
   
   May 22-26, 2017, in Tacoma
   
