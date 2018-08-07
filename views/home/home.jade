@@ -18,7 +18,7 @@ block content
           p Finding online education resources may not be difficult, but finding great resources known to be high-quality is a challenge.
           p CuratedCourses is here to help.
           div.btn-group.pull-right
-            a.btn.btn-white(href='/about', role='button')
+            a.btn.btn-primary(href='/about', role='button')
               | Learn More&nbsp;
               i.fa.fa-chevron-right
       hr.separator
@@ -57,19 +57,19 @@ block content
       .row
         .col-md-4
           if user
-            a.btn.btn-small.btn-default(href='/assets/new',role='button')
+            a.btn.btn-small.btn-primary(href='/assets/new',role='button')
               i.fa.fa-plus
               | &nbsp;Add Resource
           else
-            a.btn.btn-small.btn-default(href='/login',role='button')
+            a.btn.btn-small.btn-primary(href='/login',role='button')
               i.fa.fa-sign-in
               | &nbsp;Log In             
         .col-md-4                
-          a.btn.btn-small.btn-default(href='/textbooks/',role='button')
+          a.btn.btn-small.btn-primary(href='/textbooks/',role='button')
             i.fa.fa-eye
             | &nbsp;View Textbooks
         .col-md-4                
-          a.btn.btn-small.btn-default(href='/assets/',role='button')
+          a.btn.btn-small.btn-primary(href='/assets/',role='button')
             i.fa.fa-search
             | &nbsp;Explore Content
       
