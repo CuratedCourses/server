@@ -11,7 +11,11 @@ var mongoose  = require('mongoose');
  */
 
 var tagSchema = new mongoose.Schema({
-    _id: { type: String, unique: true },
+    //BADBAD: Cannot specify a custom index on `_id` for model name
+    //"Tag", MongoDB does not allow overwriting the default `_id`
+    //index. See http://bit.ly/mongodb-id-index
+
+    //_id: { type: String, unique: true },
 
     description: { type: String },
     
