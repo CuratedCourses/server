@@ -138,7 +138,7 @@ if (app.get('env') === 'production') {
 
   // BADBAD: this should NOT be in production, but I don't have the
   // cache control set up correctly yet.
-  app.use(helmet.nocache());    
+  app.use(helmet.noCache());    
 }
 
 // Port to listen on.
