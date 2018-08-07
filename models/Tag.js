@@ -15,7 +15,7 @@ var tagSchema = new mongoose.Schema({
     //"Tag", MongoDB does not allow overwriting the default `_id`
     //index. See http://bit.ly/mongodb-id-index
 
-    //_id: { type: String, unique: true },
+    _id: { type: String },
 
     description: { type: String },
     
