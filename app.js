@@ -442,6 +442,9 @@ fs.readdirSync('./controllers').forEach(function (file) {
  * Error Handling
  */
 
+if (false) {
+    console.log("disable logging");
+    
 if (app.get('env') === 'production' && config.logging) {
     app.use(expressWinston.errorLogger({
 	transports: [
@@ -455,6 +458,7 @@ if (app.get('env') === 'production' && config.logging) {
             })
 	]
     }));
+}
 }
 
 // If nothing responded above we will assume a 404
