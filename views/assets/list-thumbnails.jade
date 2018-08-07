@@ -10,8 +10,13 @@ block content
       h1 Resources
       h2 all available resources      
   .container
-    p There are multiple methods to view the resources in #{application}.
-    p You can <a href="/textbooks">view resources through a textbook's table of contents</a> or <a href="/textbooks/lay">view resources by topic</a> or <a href="/math/la">view a list of all topics</a>.
+    hr
+    a.btn.btn-small.btn-primary(href='/textbooks/',role='button')
+            &nbsp;By Textbooks
+    a.btn.btn-small.btn-primary(href='/textbooks/lay',role='button')
+            &nbsp;By Topics
+    a.btn.btn-small.btn-primary(href='/math/la',role='button')
+            &nbsp;Browse        
     hr
     for asset in assets
       .col-sm-4.col-md-3

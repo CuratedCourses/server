@@ -13,10 +13,7 @@ block content
       else if (!(asset.published))
         div.pull-right
           span.label.label-warning Awaiting Moderation
-      h1 #{asset.title}
-          
-      p
-        a(href=asset.url()) #{asset.url()}
+      h1 a(href=asset.url()) #{asset.title} 
      
   .container
 
