@@ -1,13 +1,19 @@
 The CuratedCourses project seeks to develop a new model for the creation, management, review and dissemination of open educational resources. Three workshops and two mini-courses have been held.
 
 Workshops
+
 	August 8-12, 2016, in San Jose
+  
   May 22-26, 2017, in Tacoma
+  
   June 7-10, 2017, in Columbus
+  
   August 5-10, 2018, in Austin
 
 Mini-courses at the Joint Mathematics Meetings
+
   January 4 & 6, 2017, in Atlanta
+  
   January 10 & 12, 2018, in San Diego
   
 Summary of workshop and mini-course activities
