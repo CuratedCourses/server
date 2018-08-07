@@ -1,3 +1,20 @@
+The CuratedCourses project seeks to develop a new model for the creation, management, review and dissemination of open educational resources. Three workshops and two mini-courses have been held.
+
+Workshops
+	August 8-12, 2016, in San Jose
+  June 7-10, 2017, in Columbus
+  August 5-10, 2018, in Austin
+
+Mini-courses at the Joint Mathematics Meetings
+  January 4 & 6, 2017, in Atlanta
+  January 10 & 12, 2018, in San Diego
+  
+Summary of workshop activities
+
+  Developed and curated a comprehensive set of OER materials for linear algebra including videos, worksheets, pre-class activities, in-class activities, quiz questions, how-to-make videos guide. These materials are for linear algebra courses ranging from applied non-majors courses to courses for math majors. We created a system to identify hundreds of individual tags for topics
+  
+  
+=============================  
 We invite you to participate in the workshop "Curated courses in
 linear algebra," to be held June 7-10 at The Ohio State University in
 Columbus, Ohio.
