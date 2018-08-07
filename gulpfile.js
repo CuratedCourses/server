@@ -181,7 +181,7 @@ gulp.task('build',
 	  gulp.series(
 	      'clean',                                // first clean
 	      gulp.series(['jscs']),                       // then lint and jscs in parallel
-	      gulp.series(['styles', 'scripts', 'images']),        // etc.
+	      gulp.series(['styles', 'scripts', 'images'])        // etc.
 	  )
 	 );
 
