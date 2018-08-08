@@ -41,20 +41,54 @@
 @import "bootstrap.less";
 @import "../public/lib/bootstrap-social/bootstrap-social.less";
 
-@import "../public/lib/font-awesome/less/variables.less";
-@fa-font-path: "/lib/font-awesome/fonts";
-@import "../public/lib/font-awesome/less/mixins.less";
-@import "../public/lib/font-awesome/less/path.less";
-@import "../public/lib/font-awesome/less/core.less";
-@import "../public/lib/font-awesome/less/larger.less";
-@import "../public/lib/font-awesome/less/fixed-width.less";
-@import "../public/lib/font-awesome/less/list.less";
-@import "../public/lib/font-awesome/less/bordered-pulled.less";
-@import "../public/lib/font-awesome/less/animated.less";
-@import "../public/lib/font-awesome/less/rotated-flipped.less";
-@import "../public/lib/font-awesome/less/stacked.less";
-@import "../public/lib/font-awesome/less/icons.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_variables.less";
+@fa-font-path: "/lib/font-awesome/web-fonts-with-css/webfonts";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_mixins.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_core.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_larger.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_fixed-width.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_list.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_bordered-pulled.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_animated.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_rotated-flipped.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_stacked.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_icons.less";
+@import "../public/lib/font-awesome/web-fonts-with-css/less/_screen-reader.less";
 
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  src: url('@{fa-font-path}/fa-solid-900.eot');
+  src: url('@{fa-font-path}/fa-solid-900.eot?#iefix') format('embedded-opentype'),
+    url('@{fa-font-path}/fa-solid-900.woff2') format('woff2'),
+    url('@{fa-font-path}/fa-solid-900.woff') format('woff'),
+    url('@{fa-font-path}/fa-solid-900.ttf') format('truetype'),
+    url('@{fa-font-path}/fa-solid-900.svg#fontawesome') format('svg');
+}
+
+.fa,
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 400;
+  src: url('@{fa-font-path}/fa-regular-400.eot');
+  src: url('@{fa-font-path}/fa-regular-400.eot?#iefix') format('embedded-opentype'),
+    url('@{fa-font-path}/fa-regular-400.woff2') format('woff2'),
+    url('@{fa-font-path}/fa-regular-400.woff') format('woff'),
+    url('@{fa-font-path}/fa-regular-400.ttf') format('truetype'),
+    url('@{fa-font-path}/fa-regular-400.svg#fontawesome') format('svg');
+}
+
+.far {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400;
+}
 
 @import '../public/lib/bootstrap-select/less/bootstrap-select.less';
 

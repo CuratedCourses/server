@@ -22,7 +22,43 @@ module.exports.controller = function (app) {
    */
 
   app.get('/guides/instructor-guide', function (req, res) {
-    res.render('guides//instructor-guide', {
+    res.render('guides/instructor-guide', {
+	url: req.url,
+    });
+  });
+  /**
+   * GET /guides/student-guide
+   */
+
+  app.get('/guides/student-guide', function (req, res) {
+    res.render('guides/student-guide', {
+	url: req.url,
+    });
+  });
+  /**
+   * GET /guides/peer-review
+   */
+
+  app.get('/guides/peer-review', function (req, res) {
+    res.render('guides/peer-review', {
+	url: req.url,
+    });
+  });
+  /**
+   * GET /guides/worksheet-howto
+   */
+
+  app.get('/guides/worksheet-howto', function (req, res) {
+    res.render('guides/worksheet-howto', {
+	url: req.url,
+    });
+  });
+  /**
+   * GET /guides/flipclass-howto
+   */
+
+  app.get('/guides/flipclass-howto', function (req, res) {
+    res.render('guides/flipclass-howto', {
 	url: req.url,
     });
   });

@@ -7,7 +7,7 @@ ul.nav.navbar-nav
     ul.dropdown-menu
       li
         a(href='/about')
-          i.fa.fa-fw.fa-building-o
+          i.fa.fa-fw.fa-building
           | &nbsp;About #{application}
       li
         a(href='/about/workshops')
@@ -24,27 +24,39 @@ ul.nav.navbar-nav
       li.divider          
       li
         a(href='/contact')
-          i.fa.fa-fw.fa-envelope-o
+          i.fa.fa-fw.fa-envelope
           | &nbsp;Contact Us          
-      li(class=(url && url.match(/^\/assets\//))?'active':undefined)
-        a(href='/assets/')
-          i.fa.fa-tasks.fa-fw
-          | &nbsp;Resources
-      li.dropdown(class=(url && url.match(/^\/guide/))?'active':undefined)
-        a.dropdown-toggle(href='#', data-toggle='dropdown')
-          i.fa.fa-fw.fa-info-circle
-          | &nbsp;Guides
-          b.caret
-        ul.dropdown-menu
-          li
-            a(href='/about/making-videos')
-              i.fa.fa-fw.fa-video-camera
-              | &nbsp;How to make videos  
-          li
-            a(href='guide/instructor-guide')
-              <i class="fas fa-chalkboard-teacher"></i>
-                | &nbsp; Instructor guide 
-      li(class=(url && url.match(/^\/meta\//))?'active':undefined)
-        a(href='/meta/')
-          i.fa.fa-tasks.fa-fw
-          | &nbsp;Meta
+  li(class=(url && url.match(/^\/assets\//))?'active':undefined)
+    a(href='/assets/')
+      i.fa.fa-tasks.fa-fw
+      | &nbsp;Resources
+  li.dropdown(class=(url && url.match(/^\/guide/))?'active':undefined)
+    a.dropdown-toggle(href='#', data-toggle='dropdown')
+      i.fa.fa-fw.fa-info-circle
+      | &nbsp;Guides
+      b.caret
+    ul.dropdown-menu
+      li
+        a(href='/about/making-videos')
+          i.fa.fa-fw.fa-video
+          | &nbsp;How to make videos
+      li
+        a(href='guide/instructor-guide')
+          i.fa.fa-chalkboard-teacher
+          | &nbsp;Instructor guide
+      li
+        a(href='guides/student-guide')
+          i.fab.fa-leanpub
+          | &nbsp; Student guide 
+      li
+        a(href='guides/peer-review')
+          i.fas.fa-check-square
+          | &nbsp; Peer review 
+      li
+        a(href='guides/worksheet-howto')
+          i.fas.fa-edit
+          | &nbsp; Worksheet how-to 
+      li
+        a(href='guides/flipclass-howto')
+          i.fas.fa-school
+          | &nbsp; Flip class how-to 
