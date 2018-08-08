@@ -18,7 +18,6 @@ block content
     a.btn.btn-small.btn-primary(href='/math/la',role='button')
             &nbsp;Browse        
     hr
+    include ./filter-panel.jade
     for asset in assets
-      .col-sm-4.col-md-3
-        .thumbnail
-          include ../partials/asset-thumbnail
+      include ../partials/asset

@@ -10,12 +10,6 @@ block content
       h1 Resources      
   .container
     .row
-      .col-md-3
-        include ./filter-panel.jade      
-      .col-md-9        
-        for asset in assets
-          hr.separator
-          .row
-            include ../partials/asset
-
-      
+      include ./filter-panel.jade            
+      for asset in assets
+        include ../partials/asset

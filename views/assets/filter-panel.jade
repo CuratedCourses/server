@@ -47,10 +47,6 @@ div.float-left.btn-toolbar(role="toolbar")
         | Timeframe&nbsp;
         span.caret
       ul.dropdown-menu(aria-labelledby="pedagogical-timeframeDropdown")
-        li
-          a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="video")        
-            i.fa.fa-video-camera
-            | &nbsp;Video
         li 
           a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="preclass")
             i.fa.fa-backward
@@ -67,6 +63,28 @@ div.float-left.btn-toolbar(role="toolbar")
           a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="review")
             i.fa.fa-repeat
             | &nbsp;Review            
+  div.btn-group(role="group")            
+    div.btn-group
+      button.btn.btn-xs.btn-secondary.dropdown-toggle(type="button",id="pedagogical-perspectiveDropdown",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false")
+        | Perspective&nbsp;
+        span.caret
+      ul.dropdown-menu(aria-labelledby="pedagogical-perspectiveDropdown")
+        li 
+          a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="introduction")
+            i.fa.fa-hourglass-start
+            | &nbsp;Introduction
+        li 
+          a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="example")
+            i.fa.fa-puzzle-piece
+            | &nbsp;Example
+        li 
+          a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="application")
+            i.fa.fa-gears
+            | &nbsp;Application
+        li 
+          a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="proof")
+            i.fa.fa-square-o
+            | &nbsp;Proof          
   div.btn-group
     div#filters
   div.btn-group

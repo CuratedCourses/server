@@ -1,4 +1,4 @@
-div.row(class="asset",data-title=asset.title, data-type=asset.type, data-pedagogical-timeframe=asset.pedagogicalTimeframe)
+div.row(class="asset",data-title=asset.title, data-type=asset.type, data-pedagogical-timeframe=asset.pedagogicalTimeframe, data-pedagogical-perspective=asset.pedagogicalPerspective)
   .row
     div.btn-group.pull-right
       if user && asset.isEditableBy(user)        

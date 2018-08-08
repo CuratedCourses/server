@@ -1,52 +1,55 @@
-div.btn-group.pull-right
-  if user && asset.isEditableBy(user)        
-    a.btn.btn-danger(href="/assets/" + asset._id + "/edit", data-toggle="tooltip",title="You can edit this because " + asset.isEditableBy(user) + ".", data-placement="top")
-        i.fa.fa-pencil    
-        | &nbsp;Edit
-        
-h3
-  a(href="/assets/#{asset._id}") #{asset.title}
-  if asset.draft
-    | &nbsp;
-    small
-      span.label.label-danger Draft
-  else if !(asset.published)
-    | &nbsp;
-    small
-      span.label.label-warning Awaiting Moderation
+div.row(class="asset",data-title=asset.title, data-type=asset.type, data-pedagogical-timeframe=asset.pedagogicalTimeframe)
+  .col-sm-4.col-md-3
+    .thumbnail
+      div.btn-group.pull-right
+        if user && asset.isEditableBy(user)        
+          a.btn.btn-danger(href="/assets/" + asset._id + "/edit", data-toggle="tooltip",title="You can edit this because " + asset.isEditableBy(user) + ".", data-placement="top")
+              i.fa.fa-pencil    
+              | &nbsp;Edit
 
-if(asset.urlThumbnail)
-  a.thumbnail(href="/assets/#{asset._id}")
-    img.embed-responsive-item(src=asset.urlThumbnail)
-else if(asset.pngThumbnail)
-  a.thumbnail(href="/assets/#{asset._id}")
-    img.embed-responsive-item(src="/assets/#{asset._id}.png")
-      
-p #{asset.description}
+      h3
+        a(href="/assets/#{asset._id}") #{asset.title}
+        if asset.draft
+          | &nbsp;
+          small
+            span.label.label-danger Draft
+        else if !(asset.published)
+          | &nbsp;
+          small
+            span.label.label-warning Awaiting Moderation
 
-ul.list-group
-  for tagId in asset.tags
-    if tags
-      - var tag = tags.filter( function(t) { return t._id == tagId; } )[0];
-      if tag
-        li.list-group-item
-          include tag
-      else
-        li.list-group-item
-          h5
-            span.text-muted.label.label-danger #{tagId}
-    else
-      - var tag = { _id: tagId }
-      include tag
-        
-if user && !(asset.published) && (user.type === 'admin') && (!(asset.submitter.equals(user._id)))
-  p.text-muted.pull-left This resource is not yet published.  As a moderator, you can click&nbsp;
-  form(role="form",method="POST",action='/assets/' + asset._id + '/approvals')
-    button.btn.btn-success.btn-xs(type="submit",name="action",value="approve")
-      i.fa.fa-check
-      | &nbsp;Approve!
-    input(type='hidden', name='_csrf', value=_csrf)
-    input(type='hidden', name='remarks', value="")
+      if(asset.urlThumbnail)
+        a.thumbnail(href="/assets/#{asset._id}")
+          img.embed-responsive-item(src=asset.urlThumbnail)
+      else if(asset.pngThumbnail)
+        a.thumbnail(href="/assets/#{asset._id}")
+          img.embed-responsive-item(src="/assets/#{asset._id}.png")
 
-if user && !(asset.published) && (user.type === 'admin') && (asset.submitter.equals(user._id))
-  p.text-muted.pull-left This resource is not yet published.  However, as the submitter of the resource, you are <strong>not permitted</strong> to approve the resource yourself.  You must find another moderator to approve it.
+      p #{asset.description}
+
+      ul.list-group
+        for tagId in asset.tags
+          if tags
+            - var tag = tags.filter( function(t) { return t._id == tagId; } )[0];
+            if tag
+              li.list-group-item
+                include tag
+            else
+              li.list-group-item
+                h5
+                  span.text-muted.label.label-danger #{tagId}
+          else
+            - var tag = { _id: tagId }
+            include tag
+
+      if user && !(asset.published) && (user.type === 'admin') && (!(asset.submitter.equals(user._id)))
+        p.text-muted.pull-left This resource is not yet published.  As a moderator, you can click&nbsp;
+        form(role="form",method="POST",action='/assets/' + asset._id + '/approvals')
+          button.btn.btn-success.btn-xs(type="submit",name="action",value="approve")
+            i.fa.fa-check
+            | &nbsp;Approve!
+          input(type='hidden', name='_csrf', value=_csrf)
+          input(type='hidden', name='remarks', value="")
+
+      if user && !(asset.published) && (user.type === 'admin') && (asset.submitter.equals(user._id))
+        p.text-muted.pull-left This resource is not yet published.  However, as the submitter of the resource, you are <strong>not permitted</strong> to approve the resource yourself.  You must find another moderator to approve it.
