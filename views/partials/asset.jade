@@ -21,12 +21,15 @@ div.row(class="asset",data-title=asset.title, data-type=asset.type, data-pedagog
     p #{asset.description}
   .row
     .col-md-2
-      if(asset.urlThumbnail)
-        a.thumbnail(href="/assets/#{asset._id}")
-          img.embed-responsive-item(src=asset.urlThumbnail)
-      else if(asset.pngThumbnail)
-        a.thumbnail(href="/assets/#{asset._id}")
-          img.embed-responsive-item(src="/assets/#{asset._id}.png")
+      if (asset.contentType.match( "application/pdf" ))
+        iframe.embed-responsive-item(src="https://docs.google.com/gview?embedded=true&url=" + asset.url(),frameborder="0")
+      else
+        if(asset.urlThumbnail)
+          a.thumbnail(href="/assets/#{asset._id}")
+            img.embed-responsive-item(src=asset.urlThumbnail)
+        else if(asset.pngThumbnail)
+          a.thumbnail(href="/assets/#{asset._id}")
+            img.embed-responsive-item(src="/assets/#{asset._id}.png")
     .col-md-5
       ul.list-group
         for tagId in asset.tags
