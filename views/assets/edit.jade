@@ -216,7 +216,7 @@ block content
         button.btn.btn-primary(type="submit",name="action",value="publish")
           i.fa.fa-envelope-o.fa-fw
           | &nbsp;Submit for review
-
+          
       - scripts.push('save-in-place');
       if asset.draft
         button.btn.btn-default#save-button
@@ -238,3 +238,12 @@ block content
             | &nbsp;Updating&hellip;
           span.hidden#saved
             | &nbsp;Updated!
+  .container
+    form(role="form",method="POST",action='/assets/' + asset._id)
+      input(type='hidden', name='_csrf', value=_csrf)            
+      if (asset.published)          
+        form(role="form",method="POST",action='/assets/' + asset._id + '/approvals')
+          input(type='hidden', name='_csrf', value=_csrf)
+          button.btn.btn-danger#retract-publication(type="submit",name="action",value="retract")
+            i.fa.fa-undo
+            | &nbsp;Retract Publication
