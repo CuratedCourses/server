@@ -20,11 +20,11 @@
     "spdx-license-list": "^2.1.0",
     "bootstrap3-typeahead": "git://github.com/bassjobsen/Bootstrap-3-Typeahead.git#master",
     "validator-js": "^6.2.0",
-    "font-awesome": "^4.7.0",
+    "font-awesome": "^5.2.0",
     "bootstrap-treeview": "^1.2.0",
     "bootstrap-html5sortable": "^1.0.0"
   },
   "resolutions": {
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^5.2.0"
   }
 }
