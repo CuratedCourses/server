@@ -26,21 +26,25 @@ ul.nav.navbar-nav
         a(href='/contact')
           i.fa.fa-fw.fa-envelope-o
           | &nbsp;Contact Us          
-  li(class=(url && url.match(/^\/assets\//))?'active':undefined)
-    a(href='/assets/')
-      i.fa.fa-tasks.fa-fw
-      | &nbsp;Resources
-  li.dropdown(class=(url && url.match(/^\/guide/))?'active':undefined)
-    a.dropdown-toggle(href='#', data-toggle='dropdown')
-      i.fa.fa-fw.fa-info-circle
-      | &nbsp;Guides
-      b.caret
-    ul.dropdown-menu
-      li
-        a(href='/about/making-videos')
-          i.fa.fa-fw.fa-video-camera
-          | &nbsp;How to make videos  
-      li
-	a(href='guide/instructor-guide')
-	  <i class="fas fa-chalkboard-teacher"></i>
-          | &nbsp; Instructor guide 
+      li(class=(url && url.match(/^\/assets\//))?'active':undefined)
+        a(href='/assets/')
+          i.fa.fa-tasks.fa-fw
+          | &nbsp;Resources
+      li.dropdown(class=(url && url.match(/^\/guide/))?'active':undefined)
+        a.dropdown-toggle(href='#', data-toggle='dropdown')
+          i.fa.fa-fw.fa-info-circle
+          | &nbsp;Guides
+          b.caret
+        ul.dropdown-menu
+          li
+            a(href='/about/making-videos')
+              i.fa.fa-fw.fa-video-camera
+              | &nbsp;How to make videos  
+          li
+            a(href='guide/instructor-guide')
+              <i class="fas fa-chalkboard-teacher"></i>
+                | &nbsp; Instructor guide 
+      li(class=(url && url.match(/^\/meta\//))?'active':undefined)
+        a(href='/meta/')
+          i.fa.fa-tasks.fa-fw
+          | &nbsp;Meta
