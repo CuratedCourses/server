@@ -1,4 +1,4 @@
-The [Joint Mathematics Meetings](https://jointmathematicsmeetings/)
+The [Joint Mathematics Meetings](https://jointmathematicsmeetings.org/)
 are in January, and the CuratedCourses team runs minicourses on the
 topic of flipping your course with open educational material.
 
