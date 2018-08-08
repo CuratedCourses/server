@@ -94,6 +94,7 @@ var assetSchema = new mongoose.Schema({
 	user: { type: Schema.Types.ObjectId, ref: 'User' },
 	date: { type: Date },
 	upvote: { type: Boolean },
+	downvote: { type: Boolean },	
 	remarks: { type: String }
     } ]
 
