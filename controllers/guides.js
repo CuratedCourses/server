@@ -13,7 +13,8 @@ module.exports.controller = function (app) {
 
   app.get('/guides/making-videos', function (req, res) {
     res.render('guides/making-videos', {
-      url: req.url
+	url: req.url,
+	videos: require('../views/guides/videos.json')	
     });
   });
 
