@@ -366,7 +366,8 @@ module.exports.controller = function (app) {
 			 var approval = { remarks: req.body.remarks,
 					  user: req.user._id,
 					  date: new Date(),
-					  upvote: (req.body.action == "approve") };
+					  upvote: (req.body.action == "approve"),
+					  downvote: (req.body.action == "retract") };
 
 			 asset.approvals.push( approval );
 
@@ -376,6 +377,9 @@ module.exports.controller = function (app) {
 			 } else {
 			     if (approval.upvote)
 				 asset.published = true;
+
+			     if (approval.downvote)
+				 asset.published = false;
 			 
 			     asset.save( function(err) {
 				 if (err) {

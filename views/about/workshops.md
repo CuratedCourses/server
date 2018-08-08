@@ -1,4 +1,4 @@
-The CuratedCourses project seeks to develop a new model for the creation, management, review and dissemination of open educational resources. Three workshops and two mini-courses have been held.
+The CuratedCourses project seeks to develop a new model for the creation, management, review and dissemination of open educational resources. Four workshops and two mini-courses have been held.
 
 Workshops
 
@@ -8,13 +8,17 @@ Workshops
   
   June 7-10, 2017, in Columbus
   
-  August 5-10, 2018, in Austin
+  August 6-10, 2018, in Austin
+
+  No further workshops are currently scheduled. [Contact us](https://curatedcourses.org/contact) regarding further interest. 
 
 Mini-courses at the Joint Mathematics Meetings
 
   January 4 & 6, 2017, in Atlanta
   
   January 10 & 12, 2018, in San Diego
+
+<!-- Add links to mini-course stuff -->
   
 Summary of workshop and mini-course activities
 

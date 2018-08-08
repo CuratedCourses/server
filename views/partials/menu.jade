@@ -14,10 +14,6 @@ ul.nav.navbar-nav
           i.fa.fa-fw.fa-share-alt
           | &nbsp;Workshops
       li
-        a(href='/about/making-videos')
-          i.fa.fa-fw.fa-video-camera
-          | &nbsp;Help making videos      
-      li
         a(href='/about/presentations')
           i.fa.fa-fw.fa-tv
           | &nbsp;Presentations
@@ -34,3 +30,17 @@ ul.nav.navbar-nav
     a(href='/assets/')
       i.fa.fa-tasks.fa-fw
       | &nbsp;Resources
+  li.dropdown(class=(url && url.match(/^\/guide/))?'active':undefined)
+    a.dropdown-toggle(href='#', data-toggle='dropdown')
+      i.fa.fa-fw.fa-info-circle
+      | &nbsp;Guides
+      b.caret
+    ul.dropdown-menu
+      li
+        a(href='/about/making-videos')
+          i.fa.fa-fw.fa-video-camera
+          | &nbsp;How to make videos
+      li
+        a(href='guide/instructor-guide')
+          i.fa.fa-chalkboard-teacher
+          | &nbsp;Instructor guide
