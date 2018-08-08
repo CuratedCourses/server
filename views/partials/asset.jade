@@ -3,7 +3,7 @@ div.row(class="asset",data-title=asset.title, data-type=asset.type, data-pedagog
     div.btn-group.pull-right
       if user && asset.isEditableBy(user)        
         a.btn.btn-danger(href="/assets/" + asset._id + "/edit", data-toggle="tooltip",title="You can edit this because " + asset.isEditableBy(user) + ".", data-placement="top")
-            i.fa.fa-pencil    
+            i.fa.fa-edit
             | &nbsp;Edit
 
     h1
