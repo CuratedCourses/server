@@ -25,7 +25,6 @@ var config            = require('./config/config');         // Get configuration
 
 var expressWinston    = require('express-winston');
 var winston           = require('winston');
-var winstonPapertrail = require('winston-papertrail').Papertrail;
 
 var helmet            = require('helmet');                  // https://github.com/evilpacket/helmet
 var semver            = require('semver');                  // https://npmjs.org/package/semver
@@ -246,10 +245,6 @@ app.use(morgan('combined', { stream: logFile }));
 if (app.get('env') === 'production' && config.logging) {
     let expressWinstonOptions = {
 	transports: [
-	    new winston.transports.Papertrail({
-		host: config.papertrail.host,
-		port: config.papertrail.port
-	    }),
             new winston.transports.Console({
 		json: true,
 		colorize: true
@@ -448,10 +443,6 @@ fs.readdirSync('./controllers').forEach(function (file) {
 if (app.get('env') === 'production' && config.logging) {
     var expressWinstonOptions = {
 	transports: [
-	    new winston.transports.Papertrail({
-		host: config.papertrail.host,
-		port: config.papertrail.port
-	    }),    	    
             new winston.transports.Console({
 		json: true,
 		colorize: true
