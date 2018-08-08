@@ -22,7 +22,7 @@ module.exports.controller = function (app) {
    */
 
   app.get('/guides/instructor-guide', function (req, res) {
-    res.render('guides//instructor-guide', {
+    res.render('guides/instructor-guide', {
 	url: req.url,
     });
   });
