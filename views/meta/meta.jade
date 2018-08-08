@@ -1,0 +1,20 @@
+extends ../layouts/layout
+
+block head
+  title Linear Algebra Topics Graph &middot; #{application}
+
+block styles
+
+block content
+  .mini-tron
+    .container
+      h1 Linear Algebra Topics Graph 
+      h2 for 
+        a(href="https://linear.ups.edu/fcla") 
+        | &nbsp; A First Course in Linear Algebra 
+        by Rob Beezer.
+      p
+        | Compiled by David Farmer. 
+
+      include ./FCLA-topic-graph.htm 
+      
