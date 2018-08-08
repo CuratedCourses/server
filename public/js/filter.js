@@ -1,5 +1,7 @@
 $(function() {
 
+    $('#clear-filter').hide();
+    
     applyFilters();
     
     $('#clear-filter').click( function() {

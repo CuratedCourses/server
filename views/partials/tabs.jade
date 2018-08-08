@@ -1,0 +1,10 @@
+.row
+  ul.nav.nav-tabs
+    li(role="presentation",class=(url && url.match(/^\/assets/))?'active':undefined)
+      a(href="/assets/") Browse
+    li(role="presentation",class=(url && url.match(/^\/textbooks/))?'active':undefined)
+      a(href="/textbooks/") By Textbooks     
+    li(role="presentation",class=(url && url.match(/^\/math\/la/))?'active':undefined)
+      a(href="/math/la") By Topics
+.row
+  | &nbsp;     
