@@ -1,1 +1,1 @@
-Presentations (ppt slides) on the CuratedCourses project are available here. 
+Presentations (pptx slides) on the Curated Courses project are available here. 
