@@ -17,4 +17,4 @@ else if(asset.pngThumbnail)
     img.embed-responsive-item(src="/assets/#{asset._id}.png")
 else
   div.embed-responsive.embed-responsive-16by9                
-    iframe.embed-responsive-item(src=asset.url(),frameborder="0")
+    iframe.embed-responsive-item(src=asset.url().replace(/^http:/,'https:'),frameborder="0")
