@@ -23,10 +23,6 @@ block content
               a.btn.btn-warning(href=textbook.contentUrl).pull-right            
                 i.fa.fa-download
                 | &nbsp;Download              
-            else            
-              a.btn.btn-danger(href=textbook.contentUrl).pull-right
-                  i.fa.fa-dollar
-                  | &nbsp;Purchase
           h1
             a(href="/textbooks/" + textbook._id)
               | #{textbook.title}
