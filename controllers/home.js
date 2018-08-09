@@ -17,7 +17,10 @@ module.exports.controller = function (app) {
 	    if (url.length >= 2)
 		url = url[1];
 	    else
-		url = "MOlNwzqBIk"
+		url = "MOlNwzqBIk";
+
+	    // Okay, okay, use the original video
+	    url = "MOlNwzqBIk";	    
 	    
 	    res.render('home/home', {
 		url: req.url,

@@ -42,8 +42,12 @@ module.exports.controller = function (app) {
 	    Tag.find( {_id: new RegExp('^' + RegExp.quote(tagName + '.')) }, function(err,tags) {
 		if ((err) || (tags.length == 0)) {
 		    Tag.findOne( {_id: tagName}, function(err,tag) {
-			if (err) {
-			    req.flash( 'error', { msg: err.message });
+			if ((err) || (!tag)) {
+			    if (err)
+				req.flash( 'error', { msg: err.message });
+			    else
+				req.flash( 'error', { msg: "missing tag" });
+			    
 			    res.render('tags/tags', {
 				tagPrefix: tagName,
 				tags: [],
