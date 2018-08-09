@@ -20,7 +20,7 @@ block content
             div.form-group
               label(for="title") URL
               p.form-text.text-muted Where can learners find the resource on the internet?
-              input.form-control(type="url",placeholder=asset.externalUrl, readonly)
+              input.form-control(type="url",name="externalUrl",value=asset.externalUrl)
           if asset.contentHash
             div.form-group
               label(for="title") URL
@@ -238,12 +238,3 @@ block content
             | &nbsp;Updating&hellip;
           span.hidden#saved
             | &nbsp;Updated!
-  .container
-    form(role="form",method="POST",action='/assets/' + asset._id)
-      input(type='hidden', name='_csrf', value=_csrf)            
-      if (asset.published)          
-        form(role="form",method="POST",action='/assets/' + asset._id + '/approvals')
-          input(type='hidden', name='_csrf', value=_csrf)
-          button.btn.btn-danger#retract-publication(type="submit",name="action",value="retract")
-            i.fa.fa-undo
-            | &nbsp;Retract Publication
