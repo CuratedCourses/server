@@ -295,7 +295,6 @@ module.exports.draftAssetFromHTML = function(user, externalUrl, document, callba
 
     async.waterfall([
 	// Identify the primary language of the document
-	/*
 	function(callback) {
 	    compactLanguageDetector.detect(document, {isHTML: true}, function(err, result) {
 		if (!err) {
@@ -306,7 +305,7 @@ module.exports.draftAssetFromHTML = function(user, externalUrl, document, callba
 		}
 		callback(null);
 	    });
-	},*/
+	},
 	function(callback) {
 	    // If there's already a published asset for this URL...
 	    Asset.findOne( { externalUrl: asset.externalUrl,
