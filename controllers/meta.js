@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Module Dependences
+ * Module Dependencies
  */
 
 var _ = require('lodash');
@@ -66,5 +66,5 @@ module.exports.controller = function (app) {
           // tags: tags
         });
 
-      };
+      });
     }
