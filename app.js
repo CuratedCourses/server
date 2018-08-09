@@ -529,7 +529,7 @@ if (app.get('env') === 'production') {
     res.status(err.status || 500);
     debug('Error: ' + (err.status || 500).toString() + ' ' + err);
     res.render('error/500', {
-      error: {}  // don't leak information
+      error: err
     });
   });
 }
