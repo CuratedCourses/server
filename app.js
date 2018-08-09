@@ -371,7 +371,8 @@ app.use(helmet.contentSecurityPolicy({ directives: {
     'http://linear.pugetsound.edu/',
     'https://linear.pugetsound.edu/',
     'http://www.overleaf.com/',
-    'https://www.overleaf.com/',      
+    'https://www.overleaf.com/',
+    'https://*.githubusercontent.com/',
   ],
   mediaSrc: [
     "'self'"

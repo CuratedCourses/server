@@ -1,0 +1,34 @@
+extends ../layouts/layout
+
+block head
+  title Meta Analysis &middot; #{application}
+
+block content
+
+  .mini-tron
+    .container
+      h1 Meta Analysis
+  .container
+    include ../partials/tabs  
+    p The CuratedCourses taxonomy can exploited to study the structure of different resources and compare the structure of different resources. David Farmer has compiled the examples below.
+    for article in meta
+      hr.separator
+      .row
+        .col-md-3
+          a(href="/meta/" + article._id)
+            img.img-thumbnail.img-fluid(src=article.coverUrl)
+        .col-md-9
+          if article.contentUrl
+            if textbook.free
+              a.btn.btn-warning(href=textbook.contentUrl).pull-right            
+                i.fa.fa-download
+                | &nbsp;Download              
+          h1
+            a(href="/meta/" + textbook._id)
+              | #{textbook.title}
+          - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
+          h4 by #{toSentence(textbook.authors)}
+          a.btn.btn-primary.btn-lg(href="/meta/" + textbook._id)
+            i.fa.fa-list-ol
+            | &nbsp;View Table of Contents&hellip;                  
+
