@@ -21,15 +21,12 @@ div.row(class="asset",data-title=asset.title, data-type=asset.type, data-pedagog
     p #{asset.description}
   .row
     .col-md-2
-       if asset.externalUrl && asset.externalUrl.match( /^https?:\/\/www.youtube.com\/watch\?v=/ )
-         a.thumbnail
-           iframe.embed-responsive-item(src="https://www.youtube.com/embed/" + asset.externalUrl.split("v=")[1])
+       if(asset.urlThumbnail)
+            a.thumbnail(href="/assets/#{asset._id}")
+              img.embed-responsive-item(src=asset.urlThumbnail)
        else if (asset.contentType.match( "application/pdf" ))
           a.thumbnail
             iframe.embed-responsive-item(src="https://docs.google.com/gview?embedded=true&url=" + asset.url(),frameborder="0")
-       else if(asset.urlThumbnail)
-            a.thumbnail(href="/assets/#{asset._id}")
-              img.embed-responsive-item(src=asset.urlThumbnail)
        else if(asset.pngThumbnail)
             a.thumbnail(href="/assets/#{asset._id}")
               img.embed-responsive-item(src="/assets/#{asset._id}.png")
