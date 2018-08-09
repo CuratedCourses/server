@@ -1,4 +1,4 @@
-use strict';
+'use strict';
 
 /**
  * Module Dependences
@@ -83,7 +83,6 @@ module.exports.controller = function (app) {
 			    res.send(article);
 			}
 		    });
-		});
 	    }
 	});
     });
