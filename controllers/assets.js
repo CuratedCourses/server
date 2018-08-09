@@ -31,6 +31,18 @@ var languages = require('./languages.js').languages;
 
 module.exports.controller = function (app) {
 
+  /**
+   * GET /bundles
+   * Show some bundled content
+   */
+
+  app.get('/bundles', function (req, res) {
+    res.render('assets/bundles', {
+      url: req.url
+    });
+  });
+    
+    
     /**
      * GET /assets/new
      * Invite a user to contribute a URL to an asset

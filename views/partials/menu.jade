@@ -7,7 +7,7 @@ ul.nav.navbar-nav
     ul.dropdown-menu
       li
         a(href='/about')
-          i.fa.fa-fw.fa-building-o
+          i.fa.fa-fw.fa-building
           | &nbsp;About #{application}
       li
         a(href='/about/workshops')
@@ -24,7 +24,7 @@ ul.nav.navbar-nav
       li.divider          
       li
         a(href='/contact')
-          i.fa.fa-fw.fa-envelope-o
+          i.fa.fa-fw.fa-envelope
           | &nbsp;Contact Us          
   li(class=(url && url.match(/^\/assets\//))?'active':undefined)
     a(href='/assets/')
@@ -32,15 +32,31 @@ ul.nav.navbar-nav
       | &nbsp;Resources
   li.dropdown(class=(url && url.match(/^\/guide/))?'active':undefined)
     a.dropdown-toggle(href='#', data-toggle='dropdown')
-      i.fa.fa-fw.fa-info-circle
+      i.fas.fa-book
       | &nbsp;Guides
       b.caret
     ul.dropdown-menu
       li
-        a(href='/about/making-videos')
-          i.fa.fa-fw.fa-video-camera
+        a(href='/guides/making-videos')
+          i.fa.fa-fw.fa-video
           | &nbsp;How to make videos
       li
-        a(href='guide/instructor-guide')
+        a(href='/guides/instructor-guide')
           i.fa.fa-chalkboard-teacher
           | &nbsp;Instructor guide
+      li
+        a(href='/guides/student-guide')
+          i.fa.fa-book-open
+          | &nbsp; Student guide 
+      li
+        a(href='/guides/peer-review')
+          i.fas.fa-check-square
+          | &nbsp; Peer review 
+      li
+        a(href='/guides/worksheet-howto')
+          i.fas.fa-edit
+          | &nbsp; Worksheet how-to 
+      li
+        a(href='/guides/flipclass-howto')
+          i.fas.fa-school
+          | &nbsp; Flip class how-to 

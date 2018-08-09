@@ -20,17 +20,17 @@ dl.dl-horizontal
     dt Type
     dd
       if asset.type === "video"
-        i.fa.fa-video-camera.fa-fw
+        i.fa.fa-video.fa-fw
       if asset.type === "applet"
         i.fa.fa-gamepad.fa-fw
       if asset.type === "sagecell"
         i.fa.fa-cloud.fa-fw          
       if asset.type === "formativequiz"
-        i.fa.fa-question-circle-o.fa-fw
+        i.far.fa-question-circle.fa-fw
       if asset.type === "summativequiz"
         i.fa.fa-question-circle.fa-fw
       if asset.type === "handout"
-        i.fa.fa-file-o.fa-fw           
+        i.fa.fa-file.fa-fw           
       if asset.type === "problem"      
         i.fa.fa-question.fa-fw
       if asset.type === "textbook"
@@ -46,7 +46,7 @@ dl.dl-horizontal
       if asset.pedagogicalTimeframe === "postclass"
         i.fa.fa-forward.fa-fw       
       if asset.pedagogicalTimeframe === "review"
-        i.fa.fa-repeat.fa-fw
+        i.fa.fa-redo.fa-fw
       | &nbsp;#{asset.humanReadablePedagogicalTimeframe()}
   if asset.pedagogicalPerspective
     dt Perspective        
@@ -56,9 +56,9 @@ dl.dl-horizontal
       if asset.pedagogicalPerspective === "example"
         i.fa.fa-puzzle-piece.fa-fw                          
       if asset.pedagogicalPerspective === "application"
-        i.fa.fa-gears.fa-fw
+        i.fa.fa-cogs.fa-fw
       if asset.pedagogicalPerspective === "proof"
-        i.fa.fa-square-o.fa-fw     
+        i.far.fa-square.fa-fw     
       | &nbsp;#{asset.humanReadablePedagogicalPerspective()}
   if asset.language
     dt Language

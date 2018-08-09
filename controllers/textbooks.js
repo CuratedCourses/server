@@ -29,7 +29,8 @@ module.exports.controller = function (app) {
      */
     
     app.get('/textbooks/', function (req, res) {
-	var textbooks = [require('../views/textbooks/books/hefferon.json'),
+	var textbooks = [require('../views/textbooks/books/beezer.json'),
+			 require('../views/textbooks/books/hefferon.json'),
 			 require('../views/textbooks/books/lay.json')
 			];
 	res.render('textbooks/list', {
@@ -48,7 +49,11 @@ module.exports.controller = function (app) {
 
 	if (req.params.id == "hefferon") {
 	    textbook = require('../views/textbooks/books/hefferon.json');
-	}	
+	}
+
+	if (req.params.id == "beezer") {
+	    textbook = require('../views/textbooks/books/beezer.json');
+	}		
 
 	if (textbook === undefined) {
             req.flash('error', {msg: "Could not find textbook " + req.params.id});

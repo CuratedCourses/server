@@ -1,0 +1,21 @@
+extends ../layouts/layout
+
+block head
+  title Bundles &middot; #{application}
+
+block styles
+
+block content
+  .mini-tron
+    .container
+      h1 Bundles
+      p
+        | CuratedCourses provides IMSCC bundles
+
+  .container
+    include ../partials/tabs  
+    .row
+      .col-md-8
+        include:markdown bundles.md
+      .col-md-4
+        

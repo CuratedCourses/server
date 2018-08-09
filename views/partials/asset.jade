@@ -3,7 +3,7 @@ div.row(class="asset",data-title=asset.title, data-type=asset.type, data-pedagog
     div.btn-group.pull-right
       if user && asset.isEditableBy(user)        
         a.btn.btn-danger(href="/assets/" + asset._id + "/edit", data-toggle="tooltip",title="You can edit this because " + asset.isEditableBy(user) + ".", data-placement="top")
-            i.fa.fa-pencil    
+            i.fa.fa-edit
             | &nbsp;Edit
 
     h1
@@ -21,12 +21,15 @@ div.row(class="asset",data-title=asset.title, data-type=asset.type, data-pedagog
     p #{asset.description}
   .row
     .col-md-2
-      if(asset.urlThumbnail)
-        a.thumbnail(href="/assets/#{asset._id}")
-          img.embed-responsive-item(src=asset.urlThumbnail)
-      else if(asset.pngThumbnail)
-        a.thumbnail(href="/assets/#{asset._id}")
-          img.embed-responsive-item(src="/assets/#{asset._id}.png")
+       if(asset.urlThumbnail)
+            a.thumbnail(href="/assets/#{asset._id}")
+              img.embed-responsive-item(src=asset.urlThumbnail)
+       else if (asset.contentType.match( "application/pdf" ))
+          a.thumbnail
+            iframe.embed-responsive-item(src="https://docs.google.com/gview?embedded=true&url=" + asset.url(),frameborder="0")
+       else if(asset.pngThumbnail)
+            a.thumbnail(href="/assets/#{asset._id}")
+              img.embed-responsive-item(src="/assets/#{asset._id}.png")
     .col-md-5
       ul.list-group
         for tagId in asset.tags
