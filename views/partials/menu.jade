@@ -26,10 +26,6 @@ ul.nav.navbar-nav
         a(href='/contact')
           i.fa.fa-fw.fa-envelope
           | &nbsp;Contact Us          
-  li(class=(url && url.match(/^\/assets\//))?'active':undefined)
-    a(href='/assets/')
-      i.fa.fa-paperclip.fa-fw
-      | &nbsp;Resources
   li.dropdown(class=(url && url.match(/^\/guide/))?'active':undefined)
     a.dropdown-toggle(href='#', data-toggle='dropdown')
       i.fas.fa-book
@@ -64,3 +60,7 @@ ul.nav.navbar-nav
         a(href='/guides/flipclass-howto')
           i.fas.fa-school
           | &nbsp; Flip class how-to 
+  li(class=(url && (url.match(/^\/assets\//) || url.match(/^\/textbooks\//) || url.match(/^\/bundles/) || url.match(/^\/math/) ))?'active':undefined)
+    a(href='/assets/')
+      i.fa.fa-paperclip.fa-fw
+      | &nbsp;Resources
