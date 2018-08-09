@@ -163,8 +163,7 @@ module.exports.controller = function (app) {
           req.logIn(user, function (err) {
             if (err) {
               req.flash('error', { msg: err.message });
-		//return res.redirect('back');
-		return;
+		return res.redirect('back');
             }
 
             // Send user on their merry way
