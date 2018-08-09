@@ -1,0 +1,1414 @@
+{
+  "title": "A First Cousre in Linear Algebra",
+  "_id": "beezer",
+  "free": true,
+  "libre": true,
+  "edition": "3rd edition",
+  "authors": [
+    "Rob Beezer"
+  ],
+  "coverUrl": "http://linear.ups.edu/graphics/cover-350x700.png",
+  "contentUrl": "http://linear.ups.edu",
+  "purchaseUrl": "https://www.amazon.com/A-First-Course-Linear-Algebra/dp/0984417559",
+  "sections": [
+    {
+      "number": "1",
+      "title": "Systems of Linear Equations",
+      "sections": [
+        {
+          "number": "WILA",
+          "title": "What is Linear Algebra",
+          "sections": [
+            {
+              "number": "LA",
+              "title": "Linear + Algebra",
+              "tags": [
+                "math.la.d.lineqn"
+              ]
+            },
+            {
+              "number": "AA",
+              "title": "An Application",
+              "tags": [
+
+              ]
+            }
+          ]
+        },
+        {
+          "number": "SSLE",
+          "title": "Solving Systems of Linear Equations",
+          "sections": [
+            {
+              "number": "SLE",
+              "title": "Systems of Linear Equations",
+              "tags": [
+                "math.la.d.linsys",
+                "math.la.d.linsys.soln",
+                "math.la.d.linsys.soln_set"
+              ]
+            },
+            {
+              "number": "PSS",
+              "title": "Possibilities for Solution Sets",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "ESEO",
+              "title": "Equivalent Systems and Equation Operations",
+              "tags": [
+                "math.la.d.linsys.equiv",
+                "math.la.d.linsys.op",
+                "math.la.t.linsys.op"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "RREF",
+          "title": "Reduced Row-Echelon Form",
+          "sections": [
+            {
+              "number": "MVNSE",
+              "title": "Matrix and Vector Notation for Systems of Equations",
+              "tags": [
+                "math.la.d.mat, math.la.d.mat.m_by_n, math.la.c.mat.entry",
+                "math.la.d.vec.col.coord, math.la.d.vec.size.coord, math.la.d.vec.coord, math.la.d.vec.component.coord",
+                "math.la.d.vec.z.coord",
+                "math.la.d.mat.coeff",
+                "math.la.d.mat.constant",
+                "math.la.d.vec.solution",
+                "math.la.d.linsys.mat.repn",
+                "math.la.d.mat.augmented"
+              ]
+            },
+            {
+              "number": "RO",
+              "title": "Row Operations",
+              "tags": [
+                "math.la.d.mat.row_op",
+                "math.la.d.mat.row_op .d.mat.row_equiv",
+                "math.la.t.mat.row_equiv.linsys"
+              ]
+            },
+            {
+              "number": "RREF",
+              "title": "Reduced Row-Echelon Form",
+              "tags": [
+                "math.la.d.mat.rref, math.la.d.mat.pivot_col, math.la.d.mat.row.leading",
+                "math.la.t.mat.rref.exists",
+                "math.la.t.mat.rref.unique"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "TSS",
+          "title": "Types of Solution Sets",
+          "sections": [
+            {
+              "number": "CS",
+              "title": "Consistent Systems",
+              "tags": [
+                "math.la.d.linsys.consistent, math.la.d.linsys.inconsistent",
+                "math.la.d.linsys.variable.dependent, math.la.d.linsys.variable.independent",
+                "math.la.t.rref.consistent",
+                "math.la.t.rref.pivot"
+              ]
+            },
+            {
+              "number": "FV",
+              "title": "Free Variables",
+              "tags": [
+                "math.la.t.rref.pivot.free",
+                "math.la.t.linsys.zoi",
+                "math.la.t.linsys.consistent.i"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "HSE",
+          "title": "Homogeneous Systems of Equations",
+          "sections": [
+            {
+              "number": "SHS",
+              "title": "Solutions of Homogeneous Systems",
+              "tags": [
+                "math.la.d.linsys.homog",
+                "math.la.d.linsys.homog.consistent",
+                "math.la.d.linsys.homog.trivial",
+                "math.la.t.linsys.homog.i"
+              ]
+            },
+            {
+              "number": "NSM",
+              "title": "Null Space of a Matrix",
+              "tags": [
+                "math.la.d.mat.null_space.right"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "NM",
+          "title": "Nonsingular Matrices",
+          "sections": [
+            {
+              "number": "NM",
+              "title": "Nonsingular Matrices",
+              "tags": [
+                "math.la.d.mat.square",
+                "math.la.d.mat.nonsingular.z, math.la.d.mat.singular",
+                "math.la.d.mat.identity",
+                "math.la.t.equiv.identity"
+              ]
+            },
+            {
+              "number": "NSNM",
+              "title": "Null Space of a Nonsingular Matrix",
+              "tags": [
+                "math.la.t.equiv.nullspace",
+                "math.la.t.equiv.mat.eqn.unique",
+                "math.la.t.equiv.identity.rep, math.la.t.equiv.nullspace.rep, math.la.t.equiv.mat.eqn.unique.rep"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "Vectors",
+      "sections": [
+        {
+          "number": "VO",
+          "title": "Vector Operations",
+          "sections": [
+            {
+              "number": "CV",
+              "title": "Column Vectors",
+              "tags": [
+                "math.la.d.vec.rncn",
+                "math.la.d.vec.equal.coord",
+                "math.la.d.vec.sum.coord",
+                "math.la.d.vec.scalar.mult.coord"
+              ]
+            },
+            {
+              "number": "VSP",
+              "title": "Vector Space Properties",
+              "tags": [
+                "math.la.t.vec.sum.coord"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "LC",
+          "title": "Linear Combinations",
+          "sections": [
+            {
+              "number": "LC",
+              "title": "Linear Combinations",
+              "tags": [
+                "math.la.d.vec.lincomb.coord",
+                "math.la.t.mat.eqn.lincomb"
+              ]
+            },
+            {
+              "number": "VFSS",
+              "title": "Vector Form of Solution Sets",
+              "tags": [
+                "math.la.t.linsys.soln.vector"
+              ]
+            },
+            {
+              "number": "PSHS",
+              "title": "Particular Solutions, Homogeneous Solutions",
+              "tags": [
+                "math.la.t.linsys.nonhomog.particular_plus_homog"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "SS",
+          "title": "Spanning Sets",
+          "sections": [
+            {
+              "number": "SSV",
+              "title": "Span of a Set of Vectors",
+              "tags": [
+                "math.la.d.vec.span.coord"
+              ]
+            },
+            {
+              "number": "SSV",
+              "title": "Span of a Set of Vectors",
+              "tags": [
+                "math.la.d.vec.span.coord"
+              ]
+            },
+            {
+              "number": "SSNS",
+              "title": "Spanning Sets of Null Spaces",
+              "tags": [
+                "math.la.t.mat.null_space.rref.span"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "LI",
+          "title": "Linear Independence",
+          "sections": [
+            {
+              "number": "LISV",
+              "title": "Linearly Independent Sets of Vectors",
+              "tags": [
+                "math.la.d.vec.lindep.relation, math.la.d.vec.lindep.relation.trivial",
+                "math.la.d.vec.linindep.coord",
+                "math.la.t.vec.linindep.homog",
+                "math.la.t.vec.linindep.pivot",
+                "math.la.t.vec.lindep.more.rncn"
+              ]
+            },
+            {
+              "number": "LINM",
+              "title": "Linear Independence and Nonsingular Matrices",
+              "tags": [
+                "math.la.t.equiv.col.linindep",
+                "math.la.t.equiv.col.linindep.rep"
+              ]
+            },
+            {
+              "number": "NSSLI",
+              "title": "Null Spaces, Spans, Linear Independence",
+              "tags": [
+                "math.la.t.mat.null_space.rref.basis"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "LDS",
+          "title": "Linear Dependence and Spans",
+          "sections": [
+            {
+              "number": "LDSS",
+              "title": "Linearly Dependent Sets and Spans",
+              "tags": [
+                "math.la.t.vec.lindep.coord"
+              ]
+            },
+            {
+              "number": "COV",
+              "title": "Casting Out Vectors",
+              "tags": [
+                "math.la.t.vsp.span.basis.rref, math.la.t.vsp.span.basis"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "O",
+          "title": "Orthogonality",
+          "sections": [
+            {
+              "number": "CAV",
+              "title": "Complex Arithmetic and Vectors",
+              "tags": [
+                "math.la.d.vec.conjugate.cn",
+                "math.la.t.vec.sum.conjugate.cn",
+                "math.la.t.vec.scalar.mult.conjugate.cn"
+              ]
+            },
+            {
+              "number": "IP",
+              "title": "Inner products",
+              "tags": [
+                "math.la.d.innerproduct.cn",
+                "math.la.t.innerproduct.distributive.rncn",
+                "math.la.t.innerproduct.commutative.scalar.cn",
+                "math.la.t.innerproduct.commutative.cn"
+              ]
+            },
+            {
+              "number": "N",
+              "title": "Norm",
+              "tags": [
+                "math.la.d.vec.norm.coord",
+                "math.la.t.vec.innerproduct.norm",
+                "math.la.t.innerproduct.self.positive.coord, math.la.t.innerproduct.self.z.coord"
+              ]
+            },
+            {
+              "number": "OV",
+              "title": "Orthogonal Vectors",
+              "tags": [
+                "math.la.d.vec.orthogonal.coord",
+                "math.la.d.vec.orthogonal_set",
+                "math.la.d.vsp.basis.standard.rncn, math.la.d.vec.unit.coord",
+                "math.la.t.vec.orthogonal_set.linindep"
+              ]
+            },
+            {
+              "number": "GSP",
+              "title": "Gram-Schmidt Procedure",
+              "tags": [
+                "math.la.d.gramschmidt, math.la.t.gramschmidt",
+                "math.la.d.vec.orthonormal_set"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "Matrices",
+      "sections": [
+        {
+          "number": "MO",
+          "title": "Matrix Operations",
+          "sections": [
+            {
+              "number": "MEASM",
+              "title": "Matrix Equality, Addition, Scalar Multiplication",
+              "tags": [
+                "math.la.d.mat.m_by_n.set",
+                "math.la.d.mat.equal",
+                "math.la.d.mat.sum",
+                "math.la.d.mat.scalar.mult"
+              ]
+            },
+            {
+              "number": "VSP",
+              "title": "Vector Space Properties",
+              "tags": [
+                "math.la.e.vsp.mat.m_by_n",
+                "math.la.d.mat.z"
+              ]
+            },
+            {
+              "number": "TSM",
+              "title": "Transposes and Symmetric Matrices",
+              "tags": [
+                "math.la.d.mat.transpose",
+                "math.la.d.mat.thediagonal",
+                "math.la.d.mat.symmetric",
+                "math.la.t.mat.symmetric.square",
+                "math.la.t.mat.sum.transpose",
+                "math.la.t.mat.scalar.transpose",
+                "math.la.t.mat.transpose.involution"
+              ]
+            },
+            {
+              "number": "MCC",
+              "title": "Matrices and Complex Conjugation",
+              "tags": [
+                "math.la.d.mat.conjugate",
+                "math.la.t.matsum.conjugate",
+                "math.la.t.mat.scalar.conjugate",
+                "math.la.t.mat.conjugate.involution",
+                "math.la.t.mat.transpose.conjugate"
+              ]
+            },
+            {
+              "number": "AM",
+              "title": "Adjoint of a Matrix",
+              "tags": [
+                "math.la.d.mat.adjoint",
+                "math.la.t.mat.sum.adjoint",
+                "math.la.t.mat.scalar.adjoint",
+                "math.la.t.mat.adjoint.involution",
+                "math.la.d.mat.skewsymmetric"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "MM",
+          "title": "Matrix Multiplication",
+          "sections": [
+            {
+              "number": "MVP",
+              "title": "Matrix-Vector Product",
+              "tags": [
+                "math.la.d.mat.vec.prod",
+                "math.la.t.mat.eqn.linsys",
+                "math.la.t.mat.vec.prod.unique"
+              ]
+            },
+            {
+              "number": "MM",
+              "title": "Matrix Multiplication",
+              "tags": [
+                "math.la.c.mat.mult",
+                "math.la.d.mat.mult.col"
+              ]
+            },
+            {
+              "number": "MMEE",
+              "title": "Matrix Multiplication, Entry-by-Entry",
+              "tags": [
+                "math.la.t.mat.mult.coord"
+              ]
+            },
+            {
+              "number": "PMM",
+              "title": "Properties of Matrix Multiplication",
+              "tags": [
+                "math.la.t.mat.mult.z",
+                "math.la.t.mat.mult.identity",
+                "math.la.t.mat.mult.distributive",
+                "math.la.t.mat.scalar.prod.commut",
+                "math.la.t.mat.mult.assoc",
+                "math.la.t.innerproduct.mat.cn",
+                "math.la.t.mat.mult.conjugate",
+                "math.la.t.mat.mult.transpose",
+                "math.la.t.mat.mult.adjoint"
+              ]
+            },
+            {
+              "number": "HM",
+              "title": "Hermitian Matrices",
+              "tags": [
+                "math.la.t.innerproduct.adjoint.cn",
+                "math.la.d.mat.hermitian",
+                "math.la.d.mat.hermitian.innerproduct.cn"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "MISLE",
+          "title": "Matrix Inverses and Systems of Linear Equations",
+          "sections": [
+            {
+              "number": "SI",
+              "title": "Solutions and Inverses",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "IM",
+              "title": "Inverse of a Matrix",
+              "tags": [
+                "math.la.d.mat.inv, math.la.d.mat.invertible"
+              ]
+            },
+            {
+              "number": "CIM",
+              "title": "Computing the Inverse of a Matrix",
+              "tags": [
+                "math.la.t.mat.inv.2x2",
+                "math.la.t.mat.inv.augmented"
+              ]
+            },
+            {
+              "number": "PMI",
+              "title": "Properties of Matrix Inverses",
+              "tags": [
+                "math.la.t.mat.inv.shoesandsocks",
+                "math.la.t.mat.inv.involution",
+                "math.la.t.mat.inv.transpose",
+                "math.la.t.mat.inv.scalar"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "MINM",
+          "title": "Matrix Inverses and Nonsingular Matrices",
+          "sections": [
+            {
+              "number": "NMI",
+              "title": "Nonsingular Matrices are Invertible",
+              "tags": [
+                "math.la.t.mat.prod.nonsingular",
+                "math.la.t.mat.inv.oneside",
+                "math.la.t.equiv.inv",
+                "math.la.t.eqn.mat.inv"
+              ]
+            },
+            {
+              "number": "UM",
+              "title": "Unitary Matrices",
+              "tags": [
+                "math.la.d.mat.unitary",
+                "math.la.t.mat.unitary.inv",
+                "math.la.t.mat.unitary.col.orthogonal",
+                "math.la.t.mat.unitary.innerproduct"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "CRS",
+          "title": "Column and Row Spaces",
+          "sections": [
+            {
+              "number": "CSSE",
+              "title": "Column Spaces and Systems of Equations",
+              "tags": [
+                "math.la.d.mat.col_space",
+                "math.la.t.mat.eqn.lincomb"
+              ]
+            },
+            {
+              "number": "CSSOC",
+              "title": "Column Space Spanned by Original Columns",
+              "tags": [
+                "math.la.t.mat.col_space.pivot"
+              ]
+            },
+            {
+              "number": "CSNM",
+              "title": "Column Space of a Nonsingular Matrix",
+              "tags": [
+                "math.la.t.equiv.col.span"
+              ]
+            },
+            {
+              "number": "RSM",
+              "title": "Row Space of a Matrix",
+              "tags": [
+                "math.la.d.mat.row_space",
+                "math.la.d.mat.row_space.row_equiv",
+                "math.la.t.mat.row_space.pivot"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "FS",
+          "title": "Four Subsets",
+          "sections": [
+            {
+              "number": "LNS",
+              "title": "Left Null Space",
+              "tags": [
+                "math.la.d.mat.null_space.left"
+              ]
+            },
+            {
+              "number": "CCS",
+              "title": "Computing Column Spaces",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "EEF",
+              "title": "Extended Echelon Form",
+              "tags": [
+                "math.la.d.mat.erref.of",
+                "math.la.t.mat.erref.of"
+              ]
+            },
+            {
+              "number": "FS",
+              "title": "Four Subsets",
+              "tags": [
+                "math.la.t.mat.erref.spaces",
+                "math.la.c.mat.col_space.row_reduce"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "Vector Spaces",
+      "sections": [
+        {
+          "number": "VS",
+          "title": "Vector Spaces",
+          "sections": [
+            {
+              "number": "VS",
+              "title": "Vector Spaces",
+              "tags": [
+                "math.la.d.vec.add.arb, math.la.d.vec.scalar.mult.arb, math.la.d.vsp.axioms.arb, math.la.d.vec.arb",
+                "math.la.e.vsp.cn",
+                "math.la.e.vsp.mat.m_by_n",
+                "math.la.e.vsp.polynomial.leq_n",
+                "math.la.e.vsp.sequence",
+                "math.la.e.vsp.function",
+                "math.la.e.vsp.z",
+                "math.la.e.vsp.crazy"
+              ]
+            },
+            {
+              "number": "VSP",
+              "title": "Vector Space Properties",
+              "tags": [
+                "math.la.t.vsp.z.unique",
+                "math.la.d.vsp.vector.negative.unique",
+                "math.la.t.vsp.scalar.mult.z",
+                "math.la.t.vsp.vector.mult.z",
+                "math.la.t.vsp.vector.negative",
+                "math.la.t.vsp.mult.z"
+              ]
+            },
+            {
+              "number": "RD",
+              "title": "Recycling Definitions",
+              "tags": [
+
+              ]
+            }
+          ]
+        },
+        {
+          "number": "S",
+          "title": "Subspaces",
+          "sections": [
+            {
+              "number": "S",
+              "title": "Subspaces",
+              "tags": [
+                "math.la.d.vsp.subspace.arb"
+              ]
+            },
+            {
+              "number": "TS",
+              "title": "Testing Subspaces",
+              "tags": [
+                "math.la.t.vsp.subspace.lincomb.arb",
+                "math.la.d.vsp.subspace.z.arb",
+                "math.la.t.mat.null_space.rncn"
+              ]
+            },
+            {
+              "number": "TSS",
+              "title": "The Span of a Set",
+              "tags": [
+                "math.la.d.vec.lincomb.arb",
+                "math.la.d.vec.span.arb",
+                "math.la.t.vec.span.subspace.arb"
+              ]
+            },
+            {
+              "number": "SC",
+              "title": "Subspace Constructions",
+              "tags": [
+                "math.la.e.vsp.row",
+                "math.la.e.vsp.col",
+                "math.la.t.mat.null_space.left.rncn"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "LISS",
+          "title": "Linear Independence and Spanning Sets",
+          "sections": [
+            {
+              "number": "LI",
+              "title": "Linear Independence",
+              "tags": [
+                "math.la.d.vec.lindep.relation.rep, math.la.d.vec.lindep.relation.trvial.rep",
+                "math.la.d.vec.linindep.arb"
+              ]
+            },
+            {
+              "number": "SS",
+              "title": "Spanning Sets",
+              "tags": [
+                "math.la.d.vsp.span.set.arb"
+              ]
+            },
+            {
+              "number": "VR",
+              "title": "Vector Representation",
+              "tags": [
+                "math.la.t.vsp.basis.coord.unique"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "B",
+          "title": "Bases",
+          "sections": [
+            {
+              "number": "B",
+              "title": "Bases",
+              "tags": [
+                "math.la.d.vsp.basis.arb",
+                "math.la.t.vsp.basis.standard.rncn",
+                "math.la.d.vsp.basis.standard.leq_n",
+                "math.la.d.vsp.basis.standard.m_by_n"
+              ]
+            },
+            {
+              "number": "BSCV",
+              "title": "Bases for Spans of Column Vectors",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "BNM",
+              "title": "Bases and Nonsingular Matrices",
+              "tags": [
+                "math.la.t.equiv.col.basis"
+              ]
+            },
+            {
+              "number": "OBC",
+              "title": "Orthonormal Bases and Coordinates",
+              "tags": [
+                "math.la.t.subspace.basis.orthogonal",
+                "math.la.t.mat.unitary.basis.orthogonal"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "D",
+          "title": "Dimension",
+          "sections": [
+            {
+              "number": "D",
+              "title": "Dimension",
+              "tags": [
+                "math.la.d.vsp.dim.arb, math.la.d.vsp.dim.finite_infinite.arb",
+                "math.la.t.vsp.dim.more.lindep.arb",
+                "math.la.t.vsp.dim.arb"
+              ]
+            },
+            {
+              "number": "DVS",
+              "title": "Dimension of Vector Spaces",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "RNM",
+              "title": "Rank and Nullity of a Matrix",
+              "tags": [
+                "math.la.d.mat.nullity",
+                "math.la.d.mat.rank",
+                "math.la.t.mat.rank.pivot",
+                "math.la.t.mat.ranknullity"
+              ]
+            },
+            {
+              "number": "RNNM",
+              "title": "Rank and Nullity of a Nonsingular Matrix",
+              "tags": [
+                "math.la.t.equiv.rank, math.la.t.equiv.nullity"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "PD",
+          "title": "Properties of Dimension",
+          "sections": [
+            {
+              "number": "GT",
+              "title": "Goldilocks' Theorem",
+              "tags": [
+                "math.la.t.vsp.linindep.extend",
+                "math.la.t.vsp.dim.more.lindep.arb, math.la.t.vsp.dim.less.span.arb, math.la.t.vsp.dim.span.linindep.arb",
+                "math.la.t.vsp.subspace.dim.arb",
+                "math.la.t.vsp.subspace.dim.equal"
+              ]
+            },
+            {
+              "number": "RT",
+              "title": "Ranks and Transposes",
+              "tags": [
+                "math.la.t.mat.row_space.col_space"
+              ]
+            },
+            {
+              "number": "DFS",
+              "title": "Dimension of Four Subspaces",
+              "tags": [
+                "math.la.t.mat.erref.dimension"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Determinants",
+      "sections": [
+        {
+          "number": "DM",
+          "title": "Determinant of a Matrix",
+          "sections": [
+            {
+              "number": "EM",
+              "title": "Elementary Matrices",
+              "tags": [
+                "math.la.d.mat.elementary",
+                "math.la.t.mat.mult.elementary",
+                "math.la.d.mat.elementary.inv",
+                "math.la.d.mat.elementary.prod"
+              ]
+            },
+            {
+              "number": "DD",
+              "title": "Definition of the Determinant",
+              "tags": [
+                "math.la.c.mat.det",
+                "math.la.d.mat.cofactor",
+                "math.la.d.mat.det.cofactor",
+                "math.la.t.mat.det.2x2"
+              ]
+            },
+            {
+              "number": "CD",
+              "title": "Computing Determinants",
+              "tags": [
+                "math.la.t.mat.det.cofactor.row",
+                "math.la.t.mat.det.transpose",
+                "math.la.t.mat.det.cofactor.col"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "PDM",
+          "title": "Properties of Determinants of Matrices",
+          "sections": [
+            {
+              "number": "DRO",
+              "title": "Determinants and Row Operations",
+              "tags": [
+                "math.la.t.mat.row.z",
+                "math.la.t.mat.det.switch",
+                "math.la.t.mat.det.scalar",
+                "math.la.t.mat.row.equal",
+                "math.la.t.mat.det.add_mult"
+              ]
+            },
+            {
+              "number": "DROEM",
+              "title": "Determinants, Row Operations, Elementary Matrices",
+              "tags": [
+                "math.la.t.mat.elementary.det"
+              ]
+            },
+            {
+              "number": "DNMMM",
+              "title": "Determinants, Nonsingular Matrices, Matrix Multiplication",
+              "tags": [
+                "math.la.t.equiv.det",
+                "math.la.t.mat.det.product"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "Eigenvalues",
+      "sections": [
+        {
+          "number": "EE",
+          "title": "Eigenvalues and Eigenvectors",
+          "sections": [
+            {
+              "number": "EEM",
+              "title": "Eigenvalues and Eigenvectors of a Matrix",
+              "tags": [
+                "math.la.d.mat.eigvec, math.la.d.mat.eig"
+              ]
+            },
+            {
+              "number": "PM",
+              "title": "Polynomials and Matrices",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "EEE",
+              "title": "Existence of Eigenvalues and Eigenvectors",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "CEE",
+              "title": "Computing Eigenvalues and Eigenvectors",
+              "tags": [
+                "math.la.d.mat.charpoly",
+                "math.la.t.mat.charpoly.eig",
+                "math.la.d.mat.eigsp",
+                "math.la.t.mat.eigsp.subsp",
+                "math.la.t.mat.eigsp.nullspace"
+              ]
+            },
+            {
+              "number": "ECEE",
+              "title": "Examples of Computing Eigenvalues and Eigenvectors",
+              "tags": [
+                "math.la.d.mat.eig.multiplicity.algebraic",
+                "math.la.d.mat.eig.multiplicity.geometric"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "PEE",
+          "title": "Properties of Eigenvalues and Eigenvectors",
+          "sections": [
+            {
+              "number": "BPE",
+              "title": "Basic Properties of Eigenvalues",
+              "tags": [
+                "math.la.t.mat.eigvec.linindep",
+                "math.la.t.equiv.eig",
+                "math.la.t.mat.eig.scalar",
+                "math.la.t.mat.eig.power",
+                "math.la.t.mat.eig.polynomial",
+                "math.la.t.mat.eig.inv",
+                "math.la.t.mat.eig.transpose",
+                "math.la.t.mat.real.eig.cn"
+              ]
+            },
+            {
+              "number": "ME",
+              "title": "Multiplicities of Eigenvalues",
+              "tags": [
+                "math.la.d.mat.eig.number",
+                "math.la.t.mat.eig.multiplicity.eigenspace"
+              ]
+            },
+            {
+              "number": "EHM",
+              "title": "Eigenvalues of Hermitian Matrices",
+              "tags": [
+                "math.la.t.mat.hermitian.eig.real",
+                "math.la.t.mat.hermitian.eigvec.orthogonal"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "SD",
+          "title": "Similarity and Diagonalization",
+          "sections": [
+            {
+              "number": "SM",
+              "title": "Similar Matrices",
+              "tags": [
+                "math.la.d.mat.similar"
+              ]
+            },
+            {
+              "number": "PSM",
+              "title": "Properties of Similar Matrices",
+              "tags": [
+                "math.la.t.mat.similar.equiv",
+                "math.la.t.mat.similar.eig"
+              ]
+            },
+            {
+              "number": "D",
+              "title": "Diagonalization",
+              "tags": [
+                "math.la.d.mat.diagonal",
+                "math.la.d.mat.diagonalizable, math.la.d.mat.diagonalization",
+                "math.la.t.mat.diagonalizable",
+                "math.la.t.mat.diagonalizable.charpoly",
+                "math.la.t.mat.diagonalizable.distinct"
+              ]
+            },
+            {
+              "number": "FS",
+              "title": "Fibonacci Sequences",
+              "tags": [
+
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "Linear Transformations",
+      "sections": [
+        {
+          "number": "LT",
+          "title": "Linear Transformations",
+          "sections": [
+            {
+              "number": "LT",
+              "title": "Linear Transformations",
+              "tags": [
+                "math.la.d.lintrans.arb",
+                "math.la.t.lintrans.z"
+              ]
+            },
+            {
+              "number": "LTC",
+              "title": "Linear Transformation Cartoons",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "MLT",
+              "title": "Matrices and Linear Transformations",
+              "tags": [
+                "math.la.c.transformation.matrix",
+                "math.la.t.lintrans.mat.basis.standard.coord"
+              ]
+            },
+            {
+              "number": "LTLC",
+              "title": "Linear Transformations and Linear Combinations",
+              "tags": [
+                "math.la.t.lintrans.lincomb",
+                "math.la.t.lintrans.basis"
+              ]
+            },
+            {
+              "number": "PI",
+              "title": "Pre-Images",
+              "tags": [
+                "math.la.d.lintrans.preimage.arb"
+              ]
+            },
+            {
+              "number": "NLTFO",
+              "title": "New Linear Transformations From Old",
+              "tags": [
+                "math.la.d.lintrans.sum.arb",
+                "math.la.t.lintrans.sum.arb",
+                "math.la.d.lintrans.scalar.arb",
+                "math.la.t.lintrans.scalar.arb",
+                "math.la.t.lintrans.vsp",
+                "math.la.d.lintrans.composition.arb",
+                "math.la.t.lintrans.composition.arb"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "ILT",
+          "title": "Injective Linear Transformations",
+          "sections": [
+            {
+              "number": "ILT",
+              "title": "Injective Linear Transformations",
+              "tags": [
+                "math.la.d.lintrans.injective.arb"
+              ]
+            },
+            {
+              "number": "EILT",
+              "title": "Examples of Injective Linear Transformations",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "KLT",
+              "title": "Kernel of a Linear Transformation",
+              "tags": [
+                "math.la.d.lintrans.kernel.arb",
+                "math.la.t.lintrans.kernel.arb",
+                "math.la.t.lintrans.preimage.translation.arb",
+                "math.la.t.lintrans.equiv.kernel"
+              ]
+            },
+            {
+              "number": "ILTLI",
+              "title": "Injective Linear Transformations and Linear Independence",
+              "tags": [
+                "math.la.t.lintrans.injective.linindep",
+                "math.la.t.lintrans.equiv.basis"
+              ]
+            },
+            {
+              "number": "ILTD",
+              "title": "Injective Linear Transformations and Dimension",
+              "tags": [
+                "math.la.t.lintrans.injective.dim"
+              ]
+            },
+            {
+              "number": "CILT",
+              "title": "Composition of Injective Linear Transformations",
+              "tags": [
+                "math.la.t.lintrans.composition.injective.arb"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "SLT",
+          "title": "Surjective Linear Transformations",
+          "sections": [
+            {
+              "number": "SLT",
+              "title": "Surjective Linear Transformations",
+              "tags": [
+                "math.la.d.lintrans.surjective.arb"
+              ]
+            },
+            {
+              "number": "ESLT",
+              "title": "Examples of Surjective Linear Transformations",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "RLT",
+              "title": "Range of a Linear Transformation",
+              "tags": [
+                "math.la.d.lintrans.range.arb",
+                "math.la.t.lintrans.range.subsp.arb"
+              ]
+            },
+            {
+              "number": "SSSLT",
+              "title": "Spanning Sets and Surjective Linear Transformations",
+              "tags": [
+                "math.la.t.lintrans.range.span.arb",
+                "math.la.t.lintrans.basis.span.surjective.arb"
+              ]
+            },
+            {
+              "number": "SLTD",
+              "title": "Surjective Linear Transformations and Dimension",
+              "tags": [
+                "math.la.t.lintrans.surjective.dim"
+              ]
+            },
+            {
+              "number": "CSLT",
+              "title": "Composition of Surjective Linear Transformations`",
+              "tags": [
+                "math.la.t.lintrans.composition.surjective.arb"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "IVLT",
+          "title": "Invertible Linear Transformations",
+          "sections": [
+            {
+              "number": "IVLT",
+              "title": "Invertible Linear Transformations",
+              "tags": [
+                "math.la.d.lintrans.identity",
+                "math.la.d.lintrans.invertible.arb, math.la.d.lintrans.inv.arb",
+                "math.la.t.lintrans.inv.arb",
+                "math.la.t.lintrans.inv.involution.arb"
+              ]
+            },
+            {
+              "number": "IV",
+              "title": "Invertibility",
+              "tags": [
+                "math.la.t.lintrans.invertible.arb",
+                "math.la.t.lintrans.composition.invertible.arb",
+                "math.la.t.lintrans.inv.shoesandsocks"
+              ]
+            },
+            {
+              "number": "SI",
+              "title": "Structure and Isomorphism",
+              "tags": [
+                "math.la.d.vsp.isomorphism",
+                "math.la.t.vsp.isomorphic.dim"
+              ]
+            },
+            {
+              "number": "RNLT",
+              "title": "Rank and Nullity of a Linear Transformation",
+              "tags": [
+                "math.la.d.lintrans.rank",
+                "math.la.d.lintrans.nullity",
+                "math.la.t.lintrans.surjective.rank",
+                "math.la.t.lintrans.equiv.nullity",
+                "math.la.t.lintrans.ranknullity"
+              ]
+            },
+            {
+              "number": "SLELT",
+              "title": "Systems of Linear Equations and Linear Transformations",
+              "tags": [
+
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "title": "Representations",
+      "sections": [
+        {
+          "number": "VR",
+          "title": "Vector Representations",
+          "sections": [
+            {
+              "number": "VR",
+              "title": "Vector Representations",
+              "tags": [
+                "math.la.d.vsp.basis.coord.vector.arb",
+                "math.la.t.vsp.basis.coord.lin.arb",
+                "math.la.t.vsp.basis.coord.injective.arb",
+                "math.la.t.vsp.basis.coord.surjective.arb"
+              ]
+            },
+            {
+              "number": "CVS",
+              "title": "Characterization of Vector Spaces",
+              "tags": [
+                "math.la.t.vsp.isomorphic.rncn",
+                "math.la.t.vsp.isomorphic.dim, math.la.t.vsp.dim.isomorphic"
+              ]
+            },
+            {
+              "number": "CP",
+              "title": "Coordinatization Principle",
+              "tags": [
+                "math.la.t.vsp.linindep.coord"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "MR",
+          "title": "Matrix Representations",
+          "sections": [
+            {
+              "number": "MR",
+              "title": "Matrix Representations",
+              "tags": [
+                "math.la.d.lintrans.mat.repn.arb",
+                "math.la.t.lintrans.mat.repn.arb"
+              ]
+            },
+            {
+              "number": "NRFO",
+              "title": "New Representations from Old",
+              "tags": [
+                "math.la.t.lintrans.mat_repn.sum",
+                "math.la.t.lintrans.mat_repn.scalar",
+                "math.la.t.lintrans.mat_repn.composition"
+              ]
+            },
+            {
+              "number": "PMR",
+              "title": "Properties of Matrix Representations",
+              "tags": [
+
+              ]
+            },
+            {
+              "number": "IVLT",
+              "title": "Invertible Linear Transformations",
+              "tags": [
+                "math.la.t.lintrans.mat_repn.inv",
+                "math.la.t.equiv.lintrans.inv"
+              ]
+            }
+          ]
+        },
+        {
+          "number": "CB",
+          "title": "Change of Basis",
+          "sections": [
+            {
+              "number": "EELT",
+              "title": "Eigenvalues and Eigenvectors of Linear Transformations",
+              "tags": [
+                "math.la.d.lintrans.eig, math.la.d.lintrans.eigvec"
+              ]
+            },
+            {
+              "number": "CBM",
+              "title": "Change-of-Basis Matrix",
+              "tags": [
+                "math.la.d.vsp.change_of_basis.arb",
+                "math.la.t.vsp.change_of_basis",
+                "math.la.t.vsp.change_of_basis.inv"
+              ]
+            },
+            {
+              "number": "MRS",
+              "title": "Matrix Representations and Similarity",
+              "tags": [
+                "math.la.t.vsp.change_of_basis.conjugate",
+                "math.la.t.lintrans.mat_repn.eig"
+              ]
+            },
+            {
+              "number": "CELT",
+              "title": "Computing Eigenvectors of Linear Transformations",
+              "tags": [
+
+              ]
+            }
+          ]
+        },
+        {
+          "number": "OD",
+          "title": "Orthonormal Diagonalization",
+          "sections": [
+            {
+              "number": "TM",
+              "title": "Triangular Matrices",
+              "tags": [
+                "math.la.d.mat.triangular.upper",
+                "math.la.d.mat.triangular.upper",
+                "math.la.t.mat.triangular.prod",
+                "math.la.t.mat.triangular.inv"
+              ]
+            },
+            {
+              "number": "UTMR",
+              "title": "Upper Triangular Matrix Representation",
+              "tags": [
+                "math.la.t.lintrans.mat_repn.triangular",
+                "math.la.t.mat.triangular.unitary"
+              ]
+            },
+            {
+              "number": "NM",
+              "title": "Normal Matrices",
+              "tags": [
+                "math.la.d.mat.normal"
+              ]
+            },
+            {
+              "number": "OD",
+              "title": "Orthonormal Diagonalization",
+              "tags": [
+                "math.la.t.mat.normal.diagonalize",
+                "math.la.t.mat.normal.eigenval"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
