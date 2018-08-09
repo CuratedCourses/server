@@ -1,0 +1,17 @@
+extends ../layouts/layout
+
+block head
+  title #{article.title} &middot; Meta Analysis &middot; #{application}
+
+
+  
+block content
+
+  .mini-tron
+    .container
+      h1 #{article.title}
+      - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
+      h4 by #{toSentence(article.authors)}
+  .container
+    include #{article.contentUrl}    
+        
