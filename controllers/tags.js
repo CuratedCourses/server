@@ -43,7 +43,11 @@ module.exports.controller = function (app) {
 		if ((err) || (tags.length == 0)) {
 		    Tag.findOne( {_id: tagName}, function(err,tag) {
 			if ((err) || (!tag)) {
-			    req.flash( 'error', { msg: err.message });
+			    if (err)
+				req.flash( 'error', { msg: err.message });
+			    else
+				req.flash( 'error', { msg: "missing tag" });
+			    
 			    res.render('tags/tags', {
 				tagPrefix: tagName,
 				tags: [],
