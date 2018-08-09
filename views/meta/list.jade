@@ -9,13 +9,13 @@ block content
     .container
       h1 Meta Analysis
   .container
-    include ../partials/tabs  
+    //- include ../partials/tabs  
     p The CuratedCourses taxonomy can exploited to study the structure of different resources and compare the structure of different resources. David Farmer has compiled the examples below.
     for article in meta
       hr.separator
       .row
         .col-md-3
-          a(href="/meta/" + article._id)
+          a(href=article.originalURL)
             img.img-thumbnail.img-fluid(src=article.coverUrl)
         .col-md-9
           h1

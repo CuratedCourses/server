@@ -13,5 +13,5 @@ block content
       - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
       h4 by #{toSentence(article.authors)}
   .container
-    include #{article.contentUrl}    
-        
+    //- include #{article.contentUrl}    
+    include compare-books.htm
