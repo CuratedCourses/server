@@ -36,6 +36,16 @@ module.exports.controller = function (app) {
 	url: req.url,
     });
   });
+  
+  /**
+   * GET /guides/learning-outcomes
+   */
+
+  app.get('/guides/learning-outcomes', function (req, res) {
+    res.render('guides/learning-outcomes', {
+	url: req.url,
+    });
+  });
   /**
    * GET /guides/peer-review
    */
