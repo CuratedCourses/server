@@ -30,6 +30,11 @@ div.row(class="asset",data-title=asset.title, data-type=asset.type, data-pedagog
        else if(asset.pngThumbnail)
             a.thumbnail(href="/assets/#{asset._id}")
               img.embed-responsive-item(src="/assets/#{asset._id}.png")
+       else if (asset.type === "sagecell")
+         a.thumbnail(href="/assets/#{asset._id}")
+           div.embed-responsive-item
+             h3.text-center                   
+               i.fas.fa-cloud.fa-lg
     .col-md-5
       ul.list-group
         for tagId in asset.tags
