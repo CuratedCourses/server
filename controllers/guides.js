@@ -36,13 +36,23 @@ module.exports.controller = function (app) {
 	url: req.url,
     });
   });
+  
+  /**
+   * GET /guides/learning-outcomes
+   */
+
+  app.get('/guides/learning-outcomes', function (req, res) {
+    res.render('guides/learning-outcomes', {
+      url: req.url,
+    });
+  });
   /**
    * GET /guides/peer-review
    */
 
   app.get('/guides/peer-review', function (req, res) {
     res.render('guides/peer-review', {
-	url: req.url,
+      url: req.url,
     });
   });
   /**
@@ -51,7 +61,7 @@ module.exports.controller = function (app) {
 
   app.get('/guides/worksheet-howto', function (req, res) {
     res.render('guides/worksheet-howto', {
-	url: req.url,
+      url: req.url,
     });
   });
   /**
@@ -60,7 +70,7 @@ module.exports.controller = function (app) {
 
   app.get('/guides/flipclass-howto', function (req, res) {
     res.render('guides/flipclass-howto', {
-	url: req.url,
+      url: req.url,
     });
   });
 };
