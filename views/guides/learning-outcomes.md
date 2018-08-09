@@ -213,8 +213,11 @@
 * Understand how to determine the angle between vectors and the orthogonality of vectors.
 
 * Norms
+
 * Orthogonality
+
 * Orthogonal bases
+
 * Gram-Schmidt orthogonalization
 
 * Discuss orthogonal and orthonormal bases

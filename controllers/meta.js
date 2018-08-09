@@ -65,6 +65,6 @@ module.exports.controller = function (app) {
           // languages: languages,
           // tags: tags
         });
+    });
+};
 
-      });
-    }
