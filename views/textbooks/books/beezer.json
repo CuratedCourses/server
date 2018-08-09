@@ -74,8 +74,13 @@
               "number": "MVNSE",
               "title": "Matrix and Vector Notation for Systems of Equations",
               "tags": [
-                "math.la.d.mat, math.la.d.mat.m_by_n, math.la.c.mat.entry",
-                "math.la.d.vec.col.coord, math.la.d.vec.size.coord, math.la.d.vec.coord, math.la.d.vec.component.coord",
+                "math.la.d.mat",
+                "math.la.d.mat.m_by_n",
+                "math.la.c.mat.entry",
+                "math.la.d.vec.col.coord",
+                "math.la.d.vec.size.coord",
+                "math.la.d.vec.coord",
+                "math.la.d.vec.component.coord",
                 "math.la.d.vec.z.coord",
                 "math.la.d.mat.coeff",
                 "math.la.d.mat.constant",
@@ -97,7 +102,9 @@
               "number": "RREF",
               "title": "Reduced Row-Echelon Form",
               "tags": [
-                "math.la.d.mat.rref, math.la.d.mat.pivot_col, math.la.d.mat.row.leading",
+                "math.la.d.mat.rref",
+                "math.la.d.mat.pivot_col",
+                "math.la.d.mat.row.leading",
                 "math.la.t.mat.rref.exists",
                 "math.la.t.mat.rref.unique"
               ]
@@ -112,8 +119,10 @@
               "number": "CS",
               "title": "Consistent Systems",
               "tags": [
-                "math.la.d.linsys.consistent, math.la.d.linsys.inconsistent",
-                "math.la.d.linsys.variable.dependent, math.la.d.linsys.variable.independent",
+                "math.la.d.linsys.consistent",
+                "math.la.d.linsys.inconsistent",
+                "math.la.d.linsys.variable.dependent",
+                "math.la.d.linsys.variable.independent",
                 "math.la.t.rref.consistent",
                 "math.la.t.rref.pivot"
               ]
@@ -161,7 +170,8 @@
               "title": "Nonsingular Matrices",
               "tags": [
                 "math.la.d.mat.square",
-                "math.la.d.mat.nonsingular.z, math.la.d.mat.singular",
+                "math.la.d.mat.nonsingular.z",
+                "math.la.d.mat.singular",
                 "math.la.d.mat.identity",
                 "math.la.t.equiv.identity"
               ]
@@ -172,7 +182,9 @@
               "tags": [
                 "math.la.t.equiv.nullspace",
                 "math.la.t.equiv.mat.eqn.unique",
-                "math.la.t.equiv.identity.rep, math.la.t.equiv.nullspace.rep, math.la.t.equiv.mat.eqn.unique.rep"
+                "math.la.t.equiv.identity.rep",
+                "math.la.t.equiv.nullspace.rep",
+                "math.la.t.equiv.mat.eqn.unique.rep"
               ]
             }
           ]
@@ -269,7 +281,8 @@
               "number": "LISV",
               "title": "Linearly Independent Sets of Vectors",
               "tags": [
-                "math.la.d.vec.lindep.relation, math.la.d.vec.lindep.relation.trivial",
+                "math.la.d.vec.lindep.relation",
+                "math.la.d.vec.lindep.relation.trivial",
                 "math.la.d.vec.linindep.coord",
                 "math.la.t.vec.linindep.homog",
                 "math.la.t.vec.linindep.pivot",
@@ -308,7 +321,8 @@
               "number": "COV",
               "title": "Casting Out Vectors",
               "tags": [
-                "math.la.t.vsp.span.basis.rref, math.la.t.vsp.span.basis"
+                "math.la.t.vsp.span.basis.rref",
+                "math.la.t.vsp.span.basis"
               ]
             }
           ]
@@ -342,7 +356,8 @@
               "tags": [
                 "math.la.d.vec.norm.coord",
                 "math.la.t.vec.innerproduct.norm",
-                "math.la.t.innerproduct.self.positive.coord, math.la.t.innerproduct.self.z.coord"
+                "math.la.t.innerproduct.self.positive.coord",
+                "math.la.t.innerproduct.self.z.coord"
               ]
             },
             {
@@ -351,7 +366,8 @@
               "tags": [
                 "math.la.d.vec.orthogonal.coord",
                 "math.la.d.vec.orthogonal_set",
-                "math.la.d.vsp.basis.standard.rncn, math.la.d.vec.unit.coord",
+                "math.la.d.vsp.basis.standard.rncn",
+                "math.la.d.vec.unit.coord",
                 "math.la.t.vec.orthogonal_set.linindep"
               ]
             },
@@ -359,7 +375,8 @@
               "number": "GSP",
               "title": "Gram-Schmidt Procedure",
               "tags": [
-                "math.la.d.gramschmidt, math.la.t.gramschmidt",
+                "math.la.d.gramschmidt",
+                "math.la.t.gramschmidt",
                 "math.la.d.vec.orthonormal_set"
               ]
             }
@@ -499,7 +516,8 @@
               "number": "IM",
               "title": "Inverse of a Matrix",
               "tags": [
-                "math.la.d.mat.inv, math.la.d.mat.invertible"
+                "math.la.d.mat.inv",
+                "math.la.d.mat.invertible"
               ]
             },
             {
@@ -635,7 +653,10 @@
               "number": "VS",
               "title": "Vector Spaces",
               "tags": [
-                "math.la.d.vec.add.arb, math.la.d.vec.scalar.mult.arb, math.la.d.vsp.axioms.arb, math.la.d.vec.arb",
+                "math.la.d.vec.add.arb",
+                "math.la.d.vec.scalar.mult.arb",
+                "math.la.d.vsp.axioms.arb",
+                "math.la.d.vec.arb",
                 "math.la.e.vsp.cn",
                 "math.la.e.vsp.mat.m_by_n",
                 "math.la.e.vsp.polynomial.leq_n",
@@ -714,7 +735,8 @@
               "number": "LI",
               "title": "Linear Independence",
               "tags": [
-                "math.la.d.vec.lindep.relation.rep, math.la.d.vec.lindep.relation.trvial.rep",
+                "math.la.d.vec.lindep.relation.rep",
+                "math.la.d.vec.lindep.relation.trvial.rep",
                 "math.la.d.vec.linindep.arb"
               ]
             },
@@ -780,7 +802,8 @@
               "number": "D",
               "title": "Dimension",
               "tags": [
-                "math.la.d.vsp.dim.arb, math.la.d.vsp.dim.finite_infinite.arb",
+                "math.la.d.vsp.dim.arb",
+                "math.la.d.vsp.dim.finite_infinite.arb",
                 "math.la.t.vsp.dim.more.lindep.arb",
                 "math.la.t.vsp.dim.arb"
               ]
@@ -806,7 +829,8 @@
               "number": "RNNM",
               "title": "Rank and Nullity of a Nonsingular Matrix",
               "tags": [
-                "math.la.t.equiv.rank, math.la.t.equiv.nullity"
+                "math.la.t.equiv.rank",
+                "math.la.t.equiv.nullity"
               ]
             }
           ]
@@ -820,7 +844,9 @@
               "title": "Goldilocks' Theorem",
               "tags": [
                 "math.la.t.vsp.linindep.extend",
-                "math.la.t.vsp.dim.more.lindep.arb, math.la.t.vsp.dim.less.span.arb, math.la.t.vsp.dim.span.linindep.arb",
+                "math.la.t.vsp.dim.more.lindep.arb",
+                "math.la.t.vsp.dim.less.span.arb",
+                "math.la.t.vsp.dim.span.linindep.arb",
                 "math.la.t.vsp.subspace.dim.arb",
                 "math.la.t.vsp.subspace.dim.equal"
               ]
@@ -928,7 +954,8 @@
               "number": "EEM",
               "title": "Eigenvalues and Eigenvectors of a Matrix",
               "tags": [
-                "math.la.d.mat.eigvec, math.la.d.mat.eig"
+                "math.la.d.mat.eigvec",
+                "math.la.d.mat.eig"
               ]
             },
             {
@@ -1026,7 +1053,8 @@
               "title": "Diagonalization",
               "tags": [
                 "math.la.d.mat.diagonal",
-                "math.la.d.mat.diagonalizable, math.la.d.mat.diagonalization",
+                "math.la.d.mat.diagonalizable",
+                "math.la.d.mat.diagonalization",
                 "math.la.t.mat.diagonalizable",
                 "math.la.t.mat.diagonalizable.charpoly",
                 "math.la.t.mat.diagonalizable.distinct"
@@ -1215,7 +1243,8 @@
               "title": "Invertible Linear Transformations",
               "tags": [
                 "math.la.d.lintrans.identity",
-                "math.la.d.lintrans.invertible.arb, math.la.d.lintrans.inv.arb",
+                "math.la.d.lintrans.invertible.arb",
+                "math.la.d.lintrans.inv.arb",
                 "math.la.t.lintrans.inv.arb",
                 "math.la.t.lintrans.inv.involution.arb"
               ]
@@ -1282,7 +1311,8 @@
               "title": "Characterization of Vector Spaces",
               "tags": [
                 "math.la.t.vsp.isomorphic.rncn",
-                "math.la.t.vsp.isomorphic.dim, math.la.t.vsp.dim.isomorphic"
+                "math.la.t.vsp.isomorphic.dim",
+                "math.la.t.vsp.dim.isomorphic"
               ]
             },
             {
@@ -1340,7 +1370,8 @@
               "number": "EELT",
               "title": "Eigenvalues and Eigenvectors of Linear Transformations",
               "tags": [
-                "math.la.d.lintrans.eig, math.la.d.lintrans.eigvec"
+                "math.la.d.lintrans.eig",
+                "math.la.d.lintrans.eigvec"
               ]
             },
             {
