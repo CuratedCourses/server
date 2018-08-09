@@ -4,6 +4,6 @@
   "authors": [
     "David Farmer"
   ],
-  "coverUrl": "/meta/comp-thumbnail.png",    
-  "contentUrl": "/meta/compare-books.htm"
+  "coverUrl": "/img/comp-thumbnail.png",    
+  "contentUrl": "./compare-books.htm"
 }

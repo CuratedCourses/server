@@ -296,6 +296,7 @@ module.exports.controller = function (app) {
 		      'description',
 		      'type',
 		      'pedagogicalTimeframe',
+		      'externalUrl',		      
 		      'pedagogicalPerspective',
 		      'language',
 		      'license',
