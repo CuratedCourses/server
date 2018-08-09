@@ -350,6 +350,7 @@ app.use(helmet.contentSecurityPolicy({ directives: {
     'http://userserve-ak.last.fm',
     'http://graph.facebook.com',
     'https://graph.facebook.com',
+    'https://platform-lookaside.fbsbx.com/',
     'http://*.fbcdn.net',
     'https://*.fbcdn.net',
     'http://*.ytimg.com',      
