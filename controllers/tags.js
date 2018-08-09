@@ -42,7 +42,7 @@ module.exports.controller = function (app) {
 	    Tag.find( {_id: new RegExp('^' + RegExp.quote(tagName + '.')) }, function(err,tags) {
 		if ((err) || (tags.length == 0)) {
 		    Tag.findOne( {_id: tagName}, function(err,tag) {
-			if (err) {
+			if ((err) || (!tag)) {
 			    req.flash( 'error', { msg: err.message });
 			    res.render('tags/tags', {
 				tagPrefix: tagName,
