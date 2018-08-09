@@ -455,8 +455,8 @@ if (app.get('env') === 'production' && config.logging) {
     
     // HACK: Remove when `express-winston` fixes this
     // HACK: See https://github.com/bithavoc/express-winston/issues/163
-    expressWinstonOptions.winstonInstance = winston.createLogger(expressWinstonOptions);
-    app.use(expressWinston.errorLogger(expressWinstonOptions));
+    //expressWinstonOptions.winstonInstance = winston.createLogger(expressWinstonOptions);
+    //app.use(expressWinston.errorLogger(expressWinstonOptions));
 }
 
 
