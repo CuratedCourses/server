@@ -18,17 +18,12 @@ block content
           a(href="/meta/" + article._id)
             img.img-thumbnail.img-fluid(src=article.coverUrl)
         .col-md-9
-          if article.contentUrl
-            if textbook.free
-              a.btn.btn-warning(href=textbook.contentUrl).pull-right            
-                i.fa.fa-download
-                | &nbsp;Download              
           h1
-            a(href="/meta/" + textbook._id)
-              | #{textbook.title}
+            a(href="/meta/" + article._id)
+              | #{article.title}
           - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
-          h4 by #{toSentence(textbook.authors)}
-          a.btn.btn-primary.btn-lg(href="/meta/" + textbook._id)
-            i.fa.fa-list-ol
-            | &nbsp;View Table of Contents&hellip;                  
+          h4 by #{toSentence(article.authors)}
+          //- a.btn.btn-primary.btn-lg(href="/meta/" + textbook._id)
+          //-   i.fa.fa-list-ol
+          //-   | &nbsp;View Table of Contents&hellip;                  
 
