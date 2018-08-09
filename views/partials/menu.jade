@@ -64,3 +64,7 @@ ul.nav.navbar-nav
     a(href='/assets/')
       i.fa.fa-paperclip.fa-fw
       | &nbsp;Resources
+  li(class=(url && (url.match(/^\/meta\//) || url.match(/^\/davidstuff\//) ))?'active':undefined)
+    a(href='/meta/')
+      i.fas.fa-chart-line
+      | &nbsp;Meta:vp

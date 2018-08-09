@@ -19,7 +19,7 @@ block content
             img.img-thumbnail.img-fluid(src=article.coverUrl)
         .col-md-9
           h1
-            a(href="/meta/" + article._id)
+            a(href=article.originalURL)
               | #{article.title}
           - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
           h4 by #{toSentence(article.authors)}
