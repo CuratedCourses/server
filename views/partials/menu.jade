@@ -39,19 +39,19 @@ ul.nav.navbar-nav
       li
         a(href='/guides/instructor-guide')
           i.fa.fa-chalkboard-teacher
-          | &nbsp;Instructor guide
+          | &nbsp;For the instructor
       li
         a(href='/guides/student-guide')
           i.fa.fa-book-open
-          | &nbsp; Student guide 
+          | &nbsp;For the student  
       li
         a(href='/guides/learning-outcomes')
           i.fas.fa-graduation-cap
-          | &nbsp; Linear Algebra Learning Outcomes
+          | &nbsp; Learning outcomes for Linear Algebra
       li
         a(href='/guides/peer-review')
           i.fas.fa-check-square
-          | &nbsp; Peer review 
+          | &nbsp; Resource approval process
       li
         a(href='/guides/worksheet-howto')
           i.fas.fa-edit
@@ -64,3 +64,7 @@ ul.nav.navbar-nav
     a(href='/assets/')
       i.fa.fa-paperclip.fa-fw
       | &nbsp;Resources
+  li(class=(url && (url.match(/^\/meta\//) || url.match(/^\/davidstuff\//) ))?'active':undefined)
+    a(href='/meta/')
+      i.fas.fa-chart-line
+      | &nbsp;Meta:vp

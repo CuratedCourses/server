@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Module Dependences
+ * Module Dependencies
  */
 
 var _ = require('lodash');
