@@ -22,7 +22,7 @@ var cafsFileSchema = new mongoose.Schema({
 
     // A mimetype string
     contentType: { type: String },
-});
+}, { versionKey: false });
 
 var CAFSFile = mongoose.model('CAFSFile', cafsFileSchema);
 

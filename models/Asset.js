@@ -98,7 +98,7 @@ var assetSchema = new mongoose.Schema({
 	remarks: { type: String }
     } ]
 
-});
+}, { versionKey: false });
 
 // Add text index -- with weird mongoose language_override option
 //
