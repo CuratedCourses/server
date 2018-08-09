@@ -1,4 +1,4 @@
-H3 Matrices
+### Matrices
 
 * Interpret existence and uniqueness of solutions geometrically
 
@@ -60,7 +60,7 @@ H3 Matrices
 
 * Compute an LU decomposition 
 
-H3 Determinants
+### Determinants
 
 * Provide a definition of the determinant
 
@@ -96,9 +96,9 @@ H3 Determinants
 
 * Describe how the determinant of a product of matrices relates to the determinant of the individual matrices
 
-H3 Vector spaces
-H4 Linear independence
-H4 Basis and dimension
+### Vector spaces
+#### Linear independence
+#### Basis and dimension
 
 * Provide an axiomatic description of an abstract vector space
 
@@ -138,7 +138,7 @@ H4 Basis and dimension
 
 * Describe a relationship between the row space and column space of a matrix
 
-H3 Linear transformations
+### Linear transformations
 
 * For a linear transformation between vector spaces, discuss its matrix relative to given bases
 
@@ -184,7 +184,7 @@ H3 Linear transformations
 
 * Discuss the kernel and image of a linear transformation in terms of nullity and rank of the matrix
 
-H3 Eigenvalues and eigenvectors
+### Eigenvalues and eigenvectors
 
 * Find the eigenvalues and eigenvectors of a matrix
 
@@ -208,7 +208,7 @@ H3 Eigenvalues and eigenvectors
 
 * Computational methods
 
-H3 Inner products
+### Inner products
 
 * Understand how to determine the angle between vectors and the orthogonality of vectors.
 
