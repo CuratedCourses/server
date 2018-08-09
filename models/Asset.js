@@ -316,7 +316,7 @@ module.exports.draftAssetFromHTML = function(user, externalUrl, document, callba
 				 } else {
 				     // Create a draft edit to this asset
 				     var newAsset = new Asset(previousAsset);
-				     newAsset._id = mongoose.Types.ObjectId();
+				     //newAsset._id = mongoose.Types.ObjectId();
 				     newAsset.replaces = previousAsset._id;
 				     newAsset.submitter = user._id;
 				     newAsset.draft = true;
@@ -374,7 +374,7 @@ module.exports.draftAssetFromBuffer = function(user, buffer, mimetype, filename,
 				 } else {
 				     // Create a draft edit to this asset
 				     var newAsset = new Asset(previousAsset);
-				     newAsset._id = mongoose.Types.ObjectId();
+				     //newAsset._id = mongoose.Types.ObjectId();
 				     newAsset.replaces = previousAsset._id;
 				     newAsset.submitter = user._id;
 				     newAsset.draft = true;
