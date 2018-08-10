@@ -28,3 +28,8 @@ open content. By measuring how the open content is being used and
 reused by instructors, the investigators will discover what features
 of online content are especially effective at encouraging broad
 adoption by mathematicians.
+
+## Getting Started
+
+- [Guide for Instructors](/guides/instructor-guide)
+- [Guide for Students](/guides/student-guide)
