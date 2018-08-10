@@ -1,0 +1,30 @@
+extends ../layouts/layout
+
+
+
+block head
+
+  title Bundles &middot; #{application}
+
+
+
+block styles
+
+
+
+block content
+
+  .mini-tron
+
+    .container
+
+      h1 Bundles
+
+      p
+
+        | Collections of Curated Courses importable to your learning management system
+
+  .container        
+
+    
+              
