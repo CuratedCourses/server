@@ -7,16 +7,12 @@ ul.nav.navbar-nav
     ul.dropdown-menu
       li
         a(href='/about')
-          i.fa.fa-fw.fa-building-o
+          i.fa.fa-fw.fa-building
           | &nbsp;About #{application}
       li
         a(href='/about/workshops')
           i.fa.fa-fw.fa-share-alt
           | &nbsp;Workshops
-      li
-        a(href='/about/making-videos')
-          i.fa.fa-fw.fa-video-camera
-          | &nbsp;Help making videos      
       li
         a(href='/about/presentations')
           i.fa.fa-fw.fa-tv
@@ -28,9 +24,48 @@ ul.nav.navbar-nav
       li.divider          
       li
         a(href='/contact')
-          i.fa.fa-fw.fa-envelope-o
+          i.fa.fa-fw.fa-envelope
           | &nbsp;Contact Us          
-  li(class=(url && url.match(/^\/assets\//))?'active':undefined)
+  li.dropdown(class=(url && url.match(/^\/guide/))?'active':undefined)
+    a.dropdown-toggle(href='#', data-toggle='dropdown')
+      i.fas.fa-book
+      | &nbsp;Guides
+      b.caret
+    ul.dropdown-menu
+      li
+        a(href='/guides/making-videos')
+          i.fa.fa-fw.fa-video
+          | &nbsp;How to make videos
+      li
+        a(href='/guides/instructor-guide')
+          i.fa.fa-chalkboard-teacher
+          | &nbsp;For the instructor
+      li
+        a(href='/guides/student-guide')
+          i.fa.fa-book-open
+          | &nbsp;For the student  
+      li
+        a(href='/guides/learning-outcomes')
+          i.fas.fa-graduation-cap
+          | &nbsp; Learning outcomes for Linear Algebra
+      li
+        a(href='/guides/peer-review')
+          i.fas.fa-check-square
+          | &nbsp; Resource approval process
+      li
+        a(href='/guides/worksheet-howto')
+          i.fas.fa-edit
+          | &nbsp; Worksheet how-to 
+      li
+        a(href='/guides/flipclass-howto')
+          i.fas.fa-school
+          | &nbsp; Flip class how-to 
+  li(class=(url && (url.match(/^\/assets\//) || url.match(/^\/textbooks\//) || url.match(/^\/bundles/) || url.match(/^\/math/) ))?'active':undefined)
     a(href='/assets/')
-      i.fa.fa-tasks.fa-fw
+      i.fa.fa-paperclip.fa-fw
       | &nbsp;Resources
+  li(class=(url && (url.match(/^\/meta\//) || url.match(/^\/davidstuff\//) ))?'active':undefined)
+    a(href='/meta/')
+      i.fas.fa-chart-line
+      | &nbsp;Meta
+      

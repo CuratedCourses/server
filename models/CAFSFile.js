@@ -22,13 +22,13 @@ var cafsFileSchema = new mongoose.Schema({
 
     // A mimetype string
     contentType: { type: String },
-});
+}, { versionKey: false });
 
 var CAFSFile = mongoose.model('CAFSFile', cafsFileSchema);
 
 module.exports = CAFSFile;
 
-module.exports.addressForContent = function(buffer, contentType) {
+module.exports.addressForContent = function(buffer, contentType, callback) {
     var hash = crypto.createHash(DIGEST_ALGORITHM).update(buffer).digest('base64');
 
     // These addresses may not be URL safe, but we want them to be
@@ -50,10 +50,14 @@ module.exports.addressForContent = function(buffer, contentType) {
 	    newFile.save(function (err, data) {
 		if (err) {
 		    console.log(err);
+		    callback(err);
 		} else {
 		    console.log( "Saved content to hash ", address );
+		    callback(null, address);
 		}
 	    });
+	} else {
+	    return callback(null, address);
 	}
     });
 

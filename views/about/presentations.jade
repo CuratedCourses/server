@@ -1,7 +1,7 @@
 extends ../layouts/layout
 
 block head
-  title About &middot; Presentations about CuratedCourses
+  title About &middot; Presentations about the CuratedCourses project
 
 block styles
 
@@ -32,15 +32,8 @@ block content
 
   .container
     .row
-      .col-md-12
-        include:markdown presentations.md
-    .row
       .col-md-3
-        +presentation("Designing Engaging In-Class Activities","engaging-in-class-activities.jpg","engaging-in-class-activities.pptx","engaging-in-class-activities.pdf")
+        +presentation("The CuratedCourses Project","jmm-2018-presentation.png","jmm-2018-presentation.pptx")
       .col-md-3
-        +presentation("Basics of the Flipped Classroom","flipped-101.jpg","flipped-101.pptx")
-      .col-md-3
-        +presentation("Writing Effective Pre-Class Knowledge Checks","preclass-checks.jpg","preclass-checks.pptx")      
-      .col-md-3
-        +presentation("What is an Open Educational Resource?","what-is-oer.png",null,"what-is-oer.pdf")
+        +presentation("Linear Algebra using CuratedCourses OERs","linalg_curated_JMM2018.png","linalg_curated_JMM2018.pptx")
         

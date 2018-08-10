@@ -1,0 +1,18 @@
+extends ../layouts/layout
+
+block head
+  title Guides &middot; Resource approval process
+
+block styles
+
+block content
+  .mini-tron
+    .container
+      h1 Resource approval process
+      p
+        | A proposal for updating the review process
+
+  .container
+    .row
+      .col-md-12
+        include:markdown peer-review.md

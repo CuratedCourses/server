@@ -31,6 +31,18 @@ var languages = require('./languages.js').languages;
 
 module.exports.controller = function (app) {
 
+  /**
+   * GET /bundles
+   * Show some bundled content
+   */
+
+  app.get('/bundles', function (req, res) {
+    res.render('assets/bundles', {
+      url: req.url
+    });
+  });
+    
+    
     /**
      * GET /assets/new
      * Invite a user to contribute a URL to an asset
@@ -284,6 +296,7 @@ module.exports.controller = function (app) {
 		      'description',
 		      'type',
 		      'pedagogicalTimeframe',
+		      'externalUrl',		      
 		      'pedagogicalPerspective',
 		      'language',
 		      'license',
@@ -366,7 +379,8 @@ module.exports.controller = function (app) {
 			 var approval = { remarks: req.body.remarks,
 					  user: req.user._id,
 					  date: new Date(),
-					  upvote: (req.body.action == "approve") };
+					  upvote: (req.body.action == "approve"),
+					  downvote: (req.body.action == "retract") };
 
 			 asset.approvals.push( approval );
 
@@ -376,6 +390,9 @@ module.exports.controller = function (app) {
 			 } else {
 			     if (approval.upvote)
 				 asset.published = true;
+
+			     if (approval.downvote)
+				 asset.published = false;
 			 
 			     asset.save( function(err) {
 				 if (err) {

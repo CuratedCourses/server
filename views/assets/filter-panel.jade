@@ -1,94 +1,100 @@
-div.float-right
-  span#asset-count
-  | &nbsp;resource
-  span.plural s
-div.float-left.btn-toolbar(role="toolbar")
-  div.btn-group(role="group")
+.row
+ .col-md-10
+  div.float-left.btn-toolbar(role="toolbar")
+    div.btn-group(role="group")
+      div.btn-group
+        button.btn.btn-xs.btn-secondary.dropdown-toggle(type="button",id="typeDropdown",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false")
+          | Type&nbsp;
+          span.caret
+        ul.dropdown-menu(aria-labelledby="typeDropdown")
+          li
+            a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="video")        
+              i.fa.fa-video
+              | &nbsp;Video
+          li 
+            a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="applet")
+              i.fa.fa-gamepad        
+              | &nbsp;Applet
+          li 
+            a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="sagecell")
+              i.fa.fa-cloud          
+              | &nbsp;SageMath Cell
+          li 
+            a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="formativequiz")
+              i.far.fa-question-circle
+              | &nbsp;Formative Quiz
+          li 
+            a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="summativequiz")
+              i.fa.fa-question-circle
+              | &nbsp;Summative Quiz
+          li 
+            a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="problem")
+              i.fa.fa-question
+              | &nbsp;Problem
+          li 
+            a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="handout")
+              i.fa.fa-file
+              | &nbsp;Handout
+          li 
+            a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="textbook")
+              i.fa.fa-book
+              | &nbsp;Textbook
+    div.btn-group(role="group")            
+      div.btn-group
+        button.btn.btn-xs.btn-secondary.dropdown-toggle(type="button",id="pedagogical-timeframeDropdown",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false")
+          | Timeframe&nbsp;
+          span.caret
+        ul.dropdown-menu(aria-labelledby="pedagogical-timeframeDropdown")
+          li 
+            a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="preclass")
+              i.fa.fa-backward
+              | &nbsp;Pre-class
+          li 
+            a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="inclass")
+              i.fa.fa-pause
+              | &nbsp;In-class
+          li 
+            a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="postclass")
+              i.fa.fa-forward
+              | &nbsp;Post-class
+          li 
+            a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="review")
+              i.fa.fa-redo
+              | &nbsp;Review            
+    div.btn-group(role="group")            
+      div.btn-group
+        button.btn.btn-xs.btn-secondary.dropdown-toggle(type="button",id="pedagogical-perspectiveDropdown",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false")
+          | Perspective&nbsp;
+          span.caret
+        ul.dropdown-menu(aria-labelledby="pedagogical-perspectiveDropdown")
+          li 
+            a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="introduction")
+              i.fa.fa-hourglass-start
+              | &nbsp;Introduction
+          li 
+            a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="example")
+              i.fa.fa-puzzle-piece
+              | &nbsp;Example
+          li 
+            a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="application")
+              i.fa.fa-cogs
+              | &nbsp;Application
+          li 
+            a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="proof")
+              i.far.fa-square
+              | &nbsp;Proof          
     div.btn-group
-      button.btn.btn-xs.btn-secondary.dropdown-toggle(type="button",id="typeDropdown",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false")
-        | Type&nbsp;
-        span.caret
-      ul.dropdown-menu(aria-labelledby="typeDropdown")
-        li
-          a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="video")        
-            i.fa.fa-video-camera
-            | &nbsp;Video
-        li 
-          a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="applet")
-            i.fa.fa-gamepad        
-            | &nbsp;Applet
-        li 
-          a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="sagecell")
-            i.fa.fa-cloud          
-            | &nbsp;SageMath Cell
-        li 
-          a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="formativequiz")
-            i.fa.fa-question-circle-o
-            | &nbsp;Formative Quiz
-        li 
-          a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="summativequiz")
-            i.fa.fa-question-circle
-            | &nbsp;Summative Quiz
-        li 
-          a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="problem")
-            i.fa.fa-question
-            | &nbsp;Problem
-        li 
-          a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="handout")
-            i.fa.fa-file-o
-            | &nbsp;Handout
-        li 
-          a.dropdown-item.add-filter(data-filter-property="type", data-filter-value="textbook")
-            i.fa.fa-book
-            | &nbsp;Textbook
-  div.btn-group(role="group")            
+      div#filters
     div.btn-group
-      button.btn.btn-xs.btn-secondary.dropdown-toggle(type="button",id="pedagogical-timeframeDropdown",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false")
-        | Timeframe&nbsp;
-        span.caret
-      ul.dropdown-menu(aria-labelledby="pedagogical-timeframeDropdown")
-        li 
-          a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="preclass")
-            i.fa.fa-backward
-            | &nbsp;Pre-class
-        li 
-          a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="inclass")
-            i.fa.fa-pause
-            | &nbsp;In-class
-        li 
-          a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="postclass")
-            i.fa.fa-forward
-            | &nbsp;Post-class
-        li 
-          a.dropdown-item.add-filter(data-filter-property="pedagogical-timeframe", data-filter-value="review")
-            i.fa.fa-repeat
-            | &nbsp;Review            
-  div.btn-group(role="group")            
-    div.btn-group
-      button.btn.btn-xs.btn-secondary.dropdown-toggle(type="button",id="pedagogical-perspectiveDropdown",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false")
-        | Perspective&nbsp;
-        span.caret
-      ul.dropdown-menu(aria-labelledby="pedagogical-perspectiveDropdown")
-        li 
-          a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="introduction")
-            i.fa.fa-hourglass-start
-            | &nbsp;Introduction
-        li 
-          a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="example")
-            i.fa.fa-puzzle-piece
-            | &nbsp;Example
-        li 
-          a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="application")
-            i.fa.fa-gears
-            | &nbsp;Application
-        li 
-          a.dropdown-item.add-filter(data-filter-property="pedagogical-perspective", data-filter-value="proof")
-            i.fa.fa-square-o
-            | &nbsp;Proof          
-  div.btn-group
-    div#filters
-  div.btn-group
-    button.btn.btn-danger.btn-xs#clear-filter(type="button")
-      i.fa.fa-eraser
-      | &nbsp;Clear Filter
-      span.plural s
+      button.btn.btn-danger.btn-xs#clear-filter(type="button")
+        i.fa.fa-eraser
+        | &nbsp;Clear Filter
+        span.plural s
+ .col-md-2
+   div.pull-right.text-muted
+    span#asset-count
+      i.fa.fa-spinner.fa-spin
+    | &nbsp;resource
+    span.plural s
+.row
+  &nbsp;

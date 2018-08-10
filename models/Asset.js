@@ -94,10 +94,11 @@ var assetSchema = new mongoose.Schema({
 	user: { type: Schema.Types.ObjectId, ref: 'User' },
 	date: { type: Date },
 	upvote: { type: Boolean },
+	downvote: { type: Boolean },	
 	remarks: { type: String }
     } ]
 
-});
+}, { versionKey: false });
 
 // Add text index -- with weird mongoose language_override option
 //
@@ -315,7 +316,7 @@ module.exports.draftAssetFromHTML = function(user, externalUrl, document, callba
 				 } else {
 				     // Create a draft edit to this asset
 				     var newAsset = new Asset(previousAsset);
-				     newAsset._id = mongoose.Types.ObjectId();
+				     //newAsset._id = mongoose.Types.ObjectId();
 				     newAsset.replaces = previousAsset._id;
 				     newAsset.submitter = user._id;
 				     newAsset.draft = true;
@@ -337,48 +338,53 @@ module.exports.draftAssetFromBuffer = function(user, buffer, mimetype, filename,
     asset.draft = true;
     asset.published = false;
 
-    var address = CAFSFile.addressForContent( buffer, mimetype );
-    asset.contentHash = address;
-    asset.contentType = mimetype;
+    CAFSFile.addressForContent( buffer, mimetype, function(err, address) {
+	if (err)
+	    callback(err);
+	else {
+	    asset.contentHash = address;
+	    asset.contentType = mimetype;
 
-    if (filename)
-	asset.title = filename;
+	    if (filename)
+		asset.title = filename;
 
-    asset.submitter = user._id;
+	    asset.submitter = user._id;
 
-    asset.accessibility = "";
-    asset.language = 'en';        
-    asset.pedagogicalTimeframe = "";
-    asset.pedagogicalPerspective = "";
-    asset.additionalPrerequisites = "";    
-
-    asset.submittedAt = new Date();
-    
-    // A file is, most generically, a handout
-    asset.type = "handout";
-    if ( (path.extname(filename) == '.sage') ||
-	 (path.extname(filename) == '.py') ||
-	 (mimetype.match( /sage/ )) ) {
-	asset.type = "sagecell";
-    }
-	
-    Asset.findOne( { externalUrl: asset.externalUrl,
-		     draft: false,
-		     published: true }, function(err,previousAsset) {
-			 if (err || (previousAsset === null)) {
-			     callback(null, asset);
-			 } else {
-			     // Create a draft edit to this asset
-			     var newAsset = new Asset(previousAsset);
-			     newAsset._id = mongoose.Types.ObjectId();
-			     newAsset.replaces = previousAsset._id;
-			     newAsset.submitter = user._id;
-			     newAsset.draft = true;
-			     newAsset.published = false;
-			     newAsset.approvals = [];
-			     newAsset.submittedAt = new Date();
-			     
-			     callback(null, newAsset);
-			 }
-		     });
+	    asset.accessibility = "";
+	    asset.language = 'en';        
+	    asset.pedagogicalTimeframe = "";
+	    asset.pedagogicalPerspective = "";
+	    asset.additionalPrerequisites = "";    
+	    
+	    asset.submittedAt = new Date();
+	    
+	    // A file is, most generically, a handout
+	    asset.type = "handout";
+	    if ( (path.extname(filename) == '.sage') ||
+		 (path.extname(filename) == '.py') ||
+		 (mimetype.match( /sage/ )) ) {
+		asset.type = "sagecell";
+	    }
+	    
+	    Asset.findOne( { externalUrl: asset.externalUrl,
+			     draft: false,
+			     published: true }, function(err,previousAsset) {
+				 if (err || (previousAsset === null)) {
+				     callback(null, asset);
+				 } else {
+				     // Create a draft edit to this asset
+				     var newAsset = new Asset(previousAsset);
+				     //newAsset._id = mongoose.Types.ObjectId();
+				     newAsset.replaces = previousAsset._id;
+				     newAsset.submitter = user._id;
+				     newAsset.draft = true;
+				     newAsset.published = false;
+				     newAsset.approvals = [];
+				     newAsset.submittedAt = new Date();
+				     
+				     callback(null, newAsset);
+				 }
+			     });
+	}
+    });
 };

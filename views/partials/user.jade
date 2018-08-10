@@ -46,7 +46,7 @@ if user
         li.divider
         li
           a(href='/logout')
-            i.fa.fa-fw.fa-sign-out
+            i.fa.fa-fw.fa-sign-out-alt
             | &nbsp;Logout 
 else
   //- No user/not logged in
@@ -55,5 +55,5 @@ else
       include search  
     li(class=url=='/login'?'active':undefined)
       a(href='/login')
-        i.fa.fa-sign-in.fa-fw
+        i.fa.fa-sign-in-alt.fa-fw
         | &nbsp;Sign In

@@ -149,20 +149,21 @@ module.exports.controller = function (app) {
 
         } else {
 
-          // update the user's record with login timestamp
+            // update the user's record with login timestamp
+	    /*
           user.activity.last_logon = Date.now();
           user.save(function (err) {
             if (err) {
               req.flash('error', { msg: err.message });
               return res.redirect('back');
             }
-          });
+          });*/
 
           // Log user in
           req.logIn(user, function (err) {
             if (err) {
               req.flash('error', { msg: err.message });
-              return res.redirect('back');
+		return res.redirect('back');
             }
 
             // Send user on their merry way

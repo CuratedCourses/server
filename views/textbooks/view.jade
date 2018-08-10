@@ -50,6 +50,7 @@ block content
       - function toSentence(arr) { return arr.slice(0, -2).join(', ') + (arr.slice(0, -2).length ? ', ' : '') + arr.slice(-2).join(', and '); }
       h4 by #{toSentence(textbook.authors)}
   .container
+    include ../partials/tabs    
     - var i = 1;
     for section in textbook.sections
       hr.separator

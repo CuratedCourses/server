@@ -25,7 +25,6 @@ var config            = require('./config/config');         // Get configuration
 
 var expressWinston    = require('express-winston');
 var winston           = require('winston');
-var winstonPapertrail = require('winston-papertrail').Papertrail;
 
 var helmet            = require('helmet');                  // https://github.com/evilpacket/helmet
 var semver            = require('semver');                  // https://npmjs.org/package/semver
@@ -246,10 +245,6 @@ app.use(morgan('combined', { stream: logFile }));
 if (app.get('env') === 'production' && config.logging) {
     let expressWinstonOptions = {
 	transports: [
-	    new winston.transports.Papertrail({
-		host: config.papertrail.host,
-		port: config.papertrail.port
-	    }),
             new winston.transports.Console({
 		json: true,
 		colorize: true
@@ -355,6 +350,7 @@ app.use(helmet.contentSecurityPolicy({ directives: {
     'http://userserve-ak.last.fm',
     'http://graph.facebook.com',
     'https://graph.facebook.com',
+    'https://platform-lookaside.fbsbx.com/',
     'http://*.fbcdn.net',
     'https://*.fbcdn.net',
     'http://*.ytimg.com',      
@@ -374,7 +370,10 @@ app.use(helmet.contentSecurityPolicy({ directives: {
     'http://linear.ups.edu/',
     'https://linear.ups.edu/',
     'http://linear.pugetsound.edu/',
-    'https://linear.pugetsound.edu/',            
+    'https://linear.pugetsound.edu/',
+    'http://www.overleaf.com/',
+    'https://www.overleaf.com/',
+    'https://*.githubusercontent.com/',
   ],
   mediaSrc: [
     "'self'"
@@ -448,10 +447,6 @@ fs.readdirSync('./controllers').forEach(function (file) {
 if (app.get('env') === 'production' && config.logging) {
     var expressWinstonOptions = {
 	transports: [
-	    new winston.transports.Papertrail({
-		host: config.papertrail.host,
-		port: config.papertrail.port
-	    }),    	    
             new winston.transports.Console({
 		json: true,
 		colorize: true
@@ -535,7 +530,7 @@ if (app.get('env') === 'production') {
     res.status(err.status || 500);
     debug('Error: ' + (err.status || 500).toString() + ' ' + err);
     res.render('error/500', {
-      error: {}  // don't leak information
+      error: err
     });
   });
 }

@@ -1,0 +1,18 @@
+extends ../layouts/layout
+
+block head
+  title Guides &middot; For the instructor
+
+block styles
+
+block content
+  .mini-tron
+    .container
+      h1 For the instructor
+      p
+        | A guide for instructors on how-to use CuratedCourses
+
+  .container
+    .row
+      .col-md-12
+        include:markdown instructor-guide.md

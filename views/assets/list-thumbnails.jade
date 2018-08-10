@@ -10,14 +10,7 @@ block content
       h1 Resources
       h2 all available resources      
   .container
-    hr
-    a.btn.btn-small.btn-primary(href='/textbooks/',role='button')
-            &nbsp;By Textbooks
-    a.btn.btn-small.btn-primary(href='/textbooks/lay',role='button')
-            &nbsp;By Topics
-    a.btn.btn-small.btn-primary(href='/math/la',role='button')
-            &nbsp;Browse        
-    hr
+    include ../partials/tabs
     include ./filter-panel.jade
     for asset in assets
       include ../partials/asset

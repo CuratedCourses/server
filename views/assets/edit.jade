@@ -20,7 +20,7 @@ block content
             div.form-group
               label(for="title") URL
               p.form-text.text-muted Where can learners find the resource on the internet?
-              input.form-control(type="url",placeholder=asset.externalUrl, readonly)
+              input.form-control(type="url",name="externalUrl",value=asset.externalUrl)
           if asset.contentHash
             div.form-group
               label(for="title") URL
@@ -62,7 +62,7 @@ block content
               label
                 input(type="radio",name="type",value="video",checked=(asset.type==="video"))
                 | Video&nbsp;
-                i.fa.fa-video-camera
+                i.fa.fa-video
             div.radio
               label
                 input(type="radio",name="type",value="applet",checked=(asset.type==="applet"))
@@ -77,7 +77,7 @@ block content
               label
                 input(type="radio",name="type",value="formativequiz",checked=(asset.type==="formativequiz"))
                 | Formative Quiz&nbsp;
-                i.fa.fa-question-circle-o
+                i.far.fa-question-circle
             div.radio
               label
                 input(type="radio",name="type",value="summativequiz",checked=(asset.type==="summativequiz"))
@@ -92,7 +92,7 @@ block content
               label
                 input(type="radio",name="type",value="handout",checked=(asset.type==="handout"))
                 | Handout&nbsp;
-                i.fa.fa-file-o
+                i.fa.fa-file
         hr.separator.hidden-lg.hidden-md
         div.col-md-4
           div.form-group
@@ -117,7 +117,7 @@ block content
               label
                 input(type="radio",name="pedagogicalTimeframe",value="review",checked=(asset.pedagogicalTimeframe==="review"))
                 | Review&nbsp;
-                i.fa.fa-repeat
+                i.fa.fa-redo
             div.radio
               label
                 input(type="radio",name="pedagogicalTimeframe",value="",checked=(asset.pedagogicalTimeframe===""))
@@ -141,12 +141,12 @@ block content
               label
                 input(type="radio",name="pedagogicalPerspective",value="application",checked=(asset.pedagogicalPerspective==="application"))
                 | Application&nbsp;
-                i.fa.fa-gears                
+                i.fa.fa-cogs                
             div.radio
               label
                 input(type="radio",name="pedagogicalPerspective",value="proof",checked=(asset.pedagogicalPerspective==="proof"))
                 | Proof&nbsp;
-                i.fa.fa-square-o
+                i.far.fa-square
             div.radio
               label
                 input(type="radio",name="pedagogicalPerspective",value="",checked=(asset.pedagogicalPerspective===""))
@@ -214,9 +214,9 @@ block content
 
       if !(asset.published)
         button.btn.btn-primary(type="submit",name="action",value="publish")
-          i.fa.fa-envelope-o.fa-fw
+          i.fa.fa-envelope.fa-fw
           | &nbsp;Submit for review
-
+          
       - scripts.push('save-in-place');
       if asset.draft
         button.btn.btn-default#save-button
